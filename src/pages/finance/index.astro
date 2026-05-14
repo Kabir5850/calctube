@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema } from '../../lib/seo';
+
+const calcs = [
+  { name: 'Mortgage Calculator', href: '/finance/mortgage-calculator/', desc: 'Calculate monthly payments and total interest on home loans.' },
+  { name: 'Loan Calculator', href: '/finance/loan-calculator/', desc: 'General-purpose loan payment calculator for any term.' },
+  { name: 'EMI Calculator', href: '/finance/emi-calculator/', desc: 'Indian-style equated monthly installment calculator.' },
+  { name: 'Compound Interest', href: '/finance/compound-interest-calculator/', desc: 'See how investments and savings grow over time.' },
+  { name: 'Salary Calculator', href: '/finance/salary-calculator/', desc: 'Gross-to-net salary by country with tax estimates.' },
+  { name: 'SIP Calculator', href: '/finance/sip-calculator/', desc: 'Indian mutual fund SIP returns calculator.' },
+  { name: 'FD Calculator', href: '/finance/fd-calculator/', desc: 'Fixed deposit maturity and interest calculator.' },
+  { name: 'PPF Calculator', href: '/finance/ppf-calculator/', desc: 'Public Provident Fund returns over 15 years.' },
+  { name: 'Tax Calculator (USA)', href: '/finance/tax-calculator-usa/', desc: 'Federal income tax estimator by bracket.' },
+  { name: 'Tax Calculator (India)', href: '/finance/tax-calculator-india/', desc: 'Old vs new tax regime comparison.' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Finance', url: '/finance/' },
+];
+---
+
+<BaseLayout
+  title="Finance Calculators — Mortgage, Loan, EMI, Tax & More"
+  description="Free finance calculators for mortgages, loans, EMIs, taxes, salary, compound interest, and more. Accurate, fast, no signup."
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <div class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>Finance Calculators</h1>
+    <p class="text-lg text-slate-700 mt-3">
+      Mortgage, loan, EMI, tax, salary, and investment calculators. All free, all instant.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+      {
+        calcs.map((c) => (
+          <a href={c.href} class="card hover:border-brand-300 no-underline block">
+            <div class="font-semibold text-slate-900">{c.name}</div>
+            <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

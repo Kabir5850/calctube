@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema } from '../lib/seo';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'About', url: '/about/' },
+];
+---
+
+<BaseLayout
+  title="About Calctube"
+  description="Calctube provides free, accurate online calculators for finance, health, math, and more. Built with care, audited for accuracy."
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <article class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>About Calctube</h1>
+
+    <p>
+      Calctube is a free online calculator hub built by a small team of engineers and educators who got tired of the cluttered, ad-heavy calculator sites that dominate Google. We wanted something faster, cleaner, and more accurate.
+    </p>
+
+    <h2>What we do</h2>
+    <p>
+      We build calculators for the everyday math that most people don't enjoy doing by hand — mortgages, loans, BMI, percentages, unit conversions, taxes. Every tool is free, works on mobile, and runs entirely in your browser. No accounts, no email gates, no premium tier.
+    </p>
+
+    <h2>How we ensure accuracy</h2>
+    <ul>
+      <li><strong>Every formula is sourced</strong> — we cite the authoritative source (USDA FoodData Central for nutrition, official IRS publications for taxes, central bank rate tables, etc.).</li>
+      <li><strong>Every calculator is tested</strong> against known reference outputs before publishing.</li>
+      <li><strong>Every page shows a "last updated" date</strong> so you know when the tool was last reviewed.</li>
+      <li>If you spot an error, please <a href="/contact/">tell us</a>. We fix issues within 48 hours.</li>
+    </ul>
+
+    <h2>Our editorial principles</h2>
+    <ul>
+      <li>Calculations are for informational purposes only — never a substitute for professional financial, medical, or legal advice.</li>
+      <li>We do not collect personal information from calculator inputs. Your numbers stay in your browser.</li>
+      <li>We disclose all advertising relationships and affiliate partnerships clearly.</li>
+      <li>We update tools when laws, rates, or formulas change.</li>
+    </ul>
+
+    <h2>How we make money</h2>
+    <p>
+      Calctube is supported by display advertising and select affiliate partnerships with financial services, insurance, and software providers. We never let advertisers influence which calculators we build or what answers they produce. The math is the math, regardless of who pays for ads.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Have a question, correction, or calculator request? Reach us at <a href="mailto:hello@calctube.com">hello@calctube.com</a> or via our <a href="/contact/">contact page</a>.
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,362 @@
+/**
+ * Master list of all calculators on Calctube.
+ * Single source of truth — used by homepage, search, sitemap, and category pages.
+ *
+ * When you add a new calculator:
+ *  1. Add an entry here
+ *  2. Create the .astro page at the matching `slug`
+ *  3. The homepage, search, and category pages will auto-update
+ */
+
+export type CalcCategory = 'finance' | 'health' | 'math' | 'conversion' | 'date-time' | 'construction' | 'auto';
+
+export interface Calculator {
+  slug: string;
+  href: string;
+  name: string;
+  description: string;
+  category: CalcCategory;
+  keywords: string[];
+  icon: string;        // emoji or short label
+  popular?: boolean;   // shown in "Popular" section
+  trending?: boolean;  // shown in "Trending" section
+  status: 'live' | 'coming-soon';
+}
+
+export const categoryMeta: Record<CalcCategory, { label: string; href: string; color: string; icon: string; description: string }> = {
+  finance: {
+    label: 'Finance',
+    href: '/finance/',
+    color: 'emerald',
+    icon: '💰',
+    description: 'Mortgage, loan, tax, salary, EMI, SIP, and investment calculators.',
+  },
+  health: {
+    label: 'Health',
+    href: '/health/',
+    color: 'rose',
+    icon: '❤️',
+    description: 'BMI, calorie, body fat, pregnancy, and fitness tools.',
+  },
+  math: {
+    label: 'Math',
+    href: '/math/',
+    color: 'violet',
+    icon: '🧮',
+    description: 'Percentage, fraction, scientific, statistics, and probability.',
+  },
+  conversion: {
+    label: 'Conversions',
+    href: '/conversions/',
+    color: 'amber',
+    icon: '🔄',
+    description: 'Units, currency, temperature, time zone, length, and weight.',
+  },
+  'date-time': {
+    label: 'Date & Time',
+    href: '/date-time/',
+    color: 'sky',
+    icon: '📅',
+    description: 'Age, date difference, business days, countdown, and time card.',
+  },
+  construction: {
+    label: 'Construction',
+    href: '/construction/',
+    color: 'orange',
+    icon: '🔨',
+    description: 'Concrete, paint, tile, roofing, wallpaper, and material estimators.',
+  },
+  auto: {
+    label: 'Auto',
+    href: '/auto/',
+    color: 'slate',
+    icon: '🚗',
+    description: 'Car loan, lease vs buy, fuel cost, and mileage.',
+  },
+};
+
+export const calculators: Calculator[] = [
+  // FINANCE
+  {
+    slug: 'mortgage-calculator',
+    href: '/finance/mortgage-calculator/',
+    name: 'Mortgage Calculator',
+    description: 'Monthly payment, total interest, and full amortization schedule.',
+    category: 'finance',
+    keywords: ['mortgage', 'home loan', 'monthly payment', 'amortization'],
+    icon: '🏠',
+    popular: true,
+    trending: true,
+    status: 'live',
+  },
+  {
+    slug: 'loan-calculator',
+    href: '/finance/loan-calculator/',
+    name: 'Loan Calculator',
+    description: 'Personal, auto, or any-purpose loan payment estimator.',
+    category: 'finance',
+    keywords: ['loan', 'personal loan', 'payment'],
+    icon: '💵',
+    popular: true,
+    status: 'live',
+  },
+  {
+    slug: 'emi-calculator',
+    href: '/finance/emi-calculator/',
+    name: 'EMI Calculator',
+    description: 'Indian-style equated monthly installment for any loan.',
+    category: 'finance',
+    keywords: ['emi', 'home loan emi', 'india'],
+    icon: '🇮🇳',
+    popular: true,
+    status: 'live',
+  },
+  {
+    slug: 'sip-calculator',
+    href: '/finance/sip-calculator/',
+    name: 'SIP Calculator',
+    description: 'Mutual fund SIP returns calculator with goal planning.',
+    category: 'finance',
+    keywords: ['sip', 'mutual fund', 'investment'],
+    icon: '📈',
+    trending: true,
+    status: 'coming-soon',
+  },
+  {
+    slug: 'compound-interest-calculator',
+    href: '/finance/compound-interest-calculator/',
+    name: 'Compound Interest',
+    description: 'See how your savings grow over time with compounding.',
+    category: 'finance',
+    keywords: ['compound interest', 'savings', 'investment growth'],
+    icon: '💹',
+    popular: true,
+    status: 'live',
+  },
+  {
+    slug: 'salary-calculator',
+    href: '/finance/salary-calculator/',
+    name: 'Salary Calculator',
+    description: 'Gross-to-net salary, taxes, and take-home pay.',
+    category: 'finance',
+    keywords: ['salary', 'paycheck', 'take home pay'],
+    icon: '💼',
+    status: 'coming-soon',
+  },
+  {
+    slug: 'tax-calculator-usa',
+    href: '/finance/tax-calculator-usa/',
+    name: 'US Tax Calculator',
+    description: 'Federal + state income tax estimator for 2026.',
+    category: 'finance',
+    keywords: ['tax', 'income tax', 'usa', 'irs'],
+    icon: '🇺🇸',
+    status: 'coming-soon',
+  },
+  {
+    slug: 'tax-calculator-india',
+    href: '/finance/tax-calculator-india/',
+    name: 'India Tax Calculator',
+    description: 'Old vs new tax regime comparison for FY 2026-27.',
+    category: 'finance',
+    keywords: ['income tax india', 'old vs new regime'],
+    icon: '🪙',
+    trending: true,
+    status: 'coming-soon',
+  },
+  {
+    slug: 'tip-calculator',
+    href: '/finance/tip-calculator/',
+    name: 'Tip Calculator',
+    description: 'Split bills and calculate tips for any party size.',
+    category: 'finance',
+    keywords: ['tip', 'bill split', 'restaurant'],
+    icon: '🍽️',
+    status: 'coming-soon',
+  },
+
+  // HEALTH
+  {
+    slug: 'bmi-calculator',
+    href: '/health/bmi-calculator/',
+    name: 'BMI Calculator',
+    description: 'Body Mass Index with metric and imperial units.',
+    category: 'health',
+    keywords: ['bmi', 'body mass index', 'weight'],
+    icon: '⚖️',
+    popular: true,
+    status: 'live',
+  },
+  {
+    slug: 'tdee-calculator',
+    href: '/health/tdee-calculator/',
+    name: 'TDEE & BMR',
+    description: 'Daily calorie burn based on activity level.',
+    category: 'health',
+    keywords: ['tdee', 'bmr', 'calorie burn'],
+    icon: '🔥',
+    popular: true,
+    status: 'coming-soon',
+  },
+  {
+    slug: 'body-fat-calculator',
+    href: '/health/body-fat-calculator/',
+    name: 'Body Fat %',
+    description: 'Estimate body fat percentage from measurements.',
+    category: 'health',
+    keywords: ['body fat', 'fitness'],
+    icon: '💪',
+    status: 'coming-soon',
+  },
+  {
+    slug: 'pregnancy-calculator',
+    href: '/health/pregnancy-calculator/',
+    name: 'Pregnancy Due Date',
+    description: 'Estimate your due date and pregnancy milestones.',
+    category: 'health',
+    keywords: ['pregnancy', 'due date', 'baby'],
+    icon: '🤰',
+    status: 'coming-soon',
+  },
+  {
+    slug: 'calorie-calculator',
+    href: '/health/calorie-calculator/',
+    name: 'Calorie Need',
+    description: 'Daily calories for weight loss, maintenance, or gain.',
+    category: 'health',
+    keywords: ['calorie need', 'weight loss', 'macros'],
+    icon: '🍎',
+    trending: true,
+    status: 'coming-soon',
+  },
+
+  // MATH
+  {
+    slug: 'percentage-calculator',
+    href: '/math/percentage-calculator/',
+    name: 'Percentage Calculator',
+    description: 'What is X% of Y, percentage change, increase/decrease.',
+    category: 'math',
+    keywords: ['percentage', 'percent', 'percent change'],
+    icon: '％',
+    popular: true,
+    status: 'live',
+  },
+  {
+    slug: 'fraction-calculator',
+    href: '/math/fraction-calculator/',
+    name: 'Fraction Calculator',
+    description: 'Add, subtract, multiply, divide fractions and simplify.',
+    category: 'math',
+    keywords: ['fraction', 'fractions', 'simplify'],
+    icon: '½',
+    status: 'coming-soon',
+  },
+  {
+    slug: 'scientific-calculator',
+    href: '/math/scientific-calculator/',
+    name: 'Scientific Calculator',
+    description: 'Full scientific calculator with trig, log, exp, and more.',
+    category: 'math',
+    keywords: ['scientific calculator', 'trigonometry'],
+    icon: '🔬',
+    status: 'coming-soon',
+  },
+
+  // CONVERSIONS
+  {
+    slug: 'unit-converter',
+    href: '/conversions/unit-converter/',
+    name: 'Unit Converter',
+    description: 'Length, weight, volume, temperature, and area conversions.',
+    category: 'conversion',
+    keywords: ['unit converter', 'length', 'weight'],
+    icon: '📏',
+    popular: true,
+    status: 'coming-soon',
+  },
+  {
+    slug: 'currency-converter',
+    href: '/conversions/currency-converter/',
+    name: 'Currency Converter',
+    description: 'Live exchange rates for 150+ currencies.',
+    category: 'conversion',
+    keywords: ['currency', 'exchange rate', 'forex'],
+    icon: '💱',
+    trending: true,
+    status: 'coming-soon',
+  },
+  {
+    slug: 'temperature-converter',
+    href: '/conversions/temperature-converter/',
+    name: 'Temperature Converter',
+    description: 'Celsius, Fahrenheit, Kelvin conversion.',
+    category: 'conversion',
+    keywords: ['celsius', 'fahrenheit', 'temperature'],
+    icon: '🌡️',
+    status: 'coming-soon',
+  },
+
+  // DATE & TIME
+  {
+    slug: 'age-calculator',
+    href: '/date-time/age-calculator/',
+    name: 'Age Calculator',
+    description: 'Exact age in years, months, days, hours, and minutes.',
+    category: 'date-time',
+    keywords: ['age', 'birthday', 'date'],
+    icon: '🎂',
+    popular: true,
+    status: 'coming-soon',
+  },
+  {
+    slug: 'date-difference-calculator',
+    href: '/date-time/date-difference-calculator/',
+    name: 'Date Difference',
+    description: 'Number of days between any two dates.',
+    category: 'date-time',
+    keywords: ['date difference', 'days between'],
+    icon: '📆',
+    status: 'coming-soon',
+  },
+  {
+    slug: 'countdown-timer',
+    href: '/date-time/countdown-timer/',
+    name: 'Countdown Timer',
+    description: 'Time until any future date or event.',
+    category: 'date-time',
+    keywords: ['countdown', 'timer'],
+    icon: '⏳',
+    status: 'coming-soon',
+  },
+
+  // CONSTRUCTION
+  {
+    slug: 'concrete-calculator',
+    href: '/construction/concrete-calculator/',
+    name: 'Concrete Calculator',
+    description: 'Volume in cubic yards or meters for slabs and footings.',
+    category: 'construction',
+    keywords: ['concrete', 'cubic yards'],
+    icon: '🧱',
+    status: 'coming-soon',
+  },
+  {
+    slug: 'paint-calculator',
+    href: '/construction/paint-calculator/',
+    name: 'Paint Calculator',
+    description: 'Gallons of paint needed for any room.',
+    category: 'construction',
+    keywords: ['paint', 'gallons', 'room'],
+    icon: '🎨',
+    status: 'coming-soon',
+  },
+];
+
+// Helper functions
+export const popularCalculators = calculators.filter((c) => c.popular);
+export const trendingCalculators = calculators.filter((c) => c.trending);
+export const liveCalculators = calculators.filter((c) => c.status === 'live');
+export const calculatorsByCategory = (category: CalcCategory) =>
+  calculators.filter((c) => c.category === category);
+export const totalCalculatorCount = calculators.length;

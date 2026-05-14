@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema } from '../../lib/seo';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Legal', url: '/legal/' },
+  { name: 'Cookie Policy', url: '/legal/cookies/' },
+];
+
+const lastUpdated = '2026-05-13';
+---
+
+<BaseLayout
+  title="Cookie Policy"
+  description="How Calctube uses cookies and your choices."
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <article class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>Cookie Policy</h1>
+    <p class="text-sm text-slate-500">Last updated: {lastUpdated}</p>
+
+    <h2>What are cookies?</h2>
+    <p>
+      Cookies are small text files stored on your device by your browser when you visit a website. They help sites remember your preferences and analyze traffic.
+    </p>
+
+    <h2>How we use cookies</h2>
+    <table class="w-full text-sm border border-slate-200 my-4">
+      <thead class="bg-slate-100">
+        <tr>
+          <th class="text-left p-2 border-b border-slate-200">Type</th>
+          <th class="text-left p-2 border-b border-slate-200">Purpose</th>
+          <th class="text-left p-2 border-b border-slate-200">Provider</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="p-2 border-b border-slate-200">Essential</td>
+          <td class="p-2 border-b border-slate-200">Site functionality, security</td>
+          <td class="p-2 border-b border-slate-200">Calctube, Cloudflare</td>
+        </tr>
+        <tr>
+          <td class="p-2 border-b border-slate-200">Analytics</td>
+          <td class="p-2 border-b border-slate-200">Anonymized traffic analytics</td>
+          <td class="p-2 border-b border-slate-200">Google Analytics, Cloudflare</td>
+        </tr>
+        <tr>
+          <td class="p-2 border-b border-slate-200">Advertising</td>
+          <td class="p-2 border-b border-slate-200">Relevant ads</td>
+          <td class="p-2 border-b border-slate-200">Google AdSense, ad partners</td>
+        </tr>
+        <tr>
+          <td class="p-2">Preferences</td>
+          <td class="p-2">Remember your inputs locally (calculator state)</td>
+          <td class="p-2">Calctube (browser only)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>You can refuse cookies via our cookie banner on first visit.</li>
+      <li>You can clear cookies anytime from your browser settings.</li>
+      <li>Opt out of Google Analytics: <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow">Google opt-out</a>.</li>
+      <li>Opt out of personalized ads: <a href="https://www.google.com/settings/ads" rel="nofollow">Google Ads Settings</a>.</li>
+    </ul>
+
+    <p>
+      Refusing non-essential cookies does not break the calculators — your math still works.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Cookie questions: <a href="mailto:privacy@calctube.com">privacy@calctube.com</a>
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema } from '../lib/seo';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Contact', url: '/contact/' },
+];
+---
+
+<BaseLayout
+  title="Contact Calctube"
+  description="Get in touch with the Calctube team. Report a bug, suggest a calculator, or just say hi."
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <article class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>Contact us</h1>
+    <p>
+      Have a question, found a bug, or want to suggest a calculator? Email us — we read every message and reply within 48 hours.
+    </p>
+
+    <div class="card mt-6">
+      <h2 class="!mt-0 !text-xl">📧 Email</h2>
+      <p class="!mt-2">
+        <a href="mailto:hello@calctube.com" class="text-lg font-medium">hello@calctube.com</a>
+      </p>
+
+      <h2 class="!text-xl">🐛 Bug reports</h2>
+      <p class="!mt-2">
+        Found a math error or broken tool? Email <a href="mailto:bugs@calctube.com">bugs@calctube.com</a> with:
+      </p>
+      <ul>
+        <li>The URL of the calculator</li>
+        <li>The values you entered</li>
+        <li>What result you expected vs what you got</li>
+      </ul>
+
+      <h2 class="!text-xl">💡 Calculator requests</h2>
+      <p class="!mt-2">
+        Need a calculator that isn't here yet? Send your suggestion to
+        <a href="mailto:ideas@calctube.com">ideas@calctube.com</a>. We add the most-requested tools first.
+      </p>
+
+      <h2 class="!text-xl">💼 Partnerships & advertising</h2>
+      <p class="!mt-2">
+        For partnership or advertising inquiries: <a href="mailto:partners@calctube.com">partners@calctube.com</a>
+      </p>
+    </div>
+  </article>
+</BaseLayout>
