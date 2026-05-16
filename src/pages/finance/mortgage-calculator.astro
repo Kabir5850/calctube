@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MortgageCalculator from '../../components/calculators/MortgageCalculator.tsx';
+import { mortgageLocales } from '../../data/mortgage-locales';
 import {
   buildCalculatorSchema,
   buildBreadcrumbSchema,
@@ -341,6 +342,36 @@ const relatedCalcs = [
             ))
           }
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!--   COUNTRY-SPECIFIC VARIANTS (pSEO)              -->
+  <!-- ============================================== -->
+  <section class="container-wide py-12 md:py-16">
+    <div class="max-w-4xl mx-auto">
+      <span class="chip-cyan mb-4">🌍 By country</span>
+      <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
+        Localized mortgage calculators.
+      </h2>
+      <p class="text-ink-700 mt-3 text-lg font-medium max-w-2xl">
+        Currency, rates, and tax rules vary by country. Use the localized version for accurate numbers.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-8">
+        {mortgageLocales.map((loc) => (
+          <a
+            href={`/finance/mortgage-calculator/${loc.slug}/`}
+            class="group bg-white border-[2.5px] border-ink-900 rounded-3xl p-4 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
+          >
+            <div class="text-3xl mb-2 group-hover:rotate-12 transition-transform inline-block">{loc.flag}</div>
+            <div class="font-extrabold text-ink-900 text-sm leading-tight" style="font-family: 'Inter Tight', sans-serif;">
+              {loc.country}
+            </div>
+            <div class="text-xs text-ink-600 mt-1 font-semibold">~{loc.typicalRate}% · {loc.currency}</div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
