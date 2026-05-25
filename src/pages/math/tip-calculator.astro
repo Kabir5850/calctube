@@ -114,7 +114,7 @@ const reviewer = getAuthor('calctube-editorial')!;
   <!-- CALCULATOR -->
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
-      <TipCalculator client:load />
+      <TipCalculator client:visible />
       {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Verified" /></div>}
     </div>
   </section>
