@@ -167,13 +167,13 @@ export const calculators: Calculator[] = [
   },
   {
     slug: 'tip-calculator',
-    href: '/finance/tip-calculator/',
+    href: '/math/tip-calculator/',
     name: 'Tip Calculator',
     description: 'Split bills and calculate tips for any party size.',
-    category: 'finance',
+    category: 'math',
     keywords: ['tip', 'bill split', 'restaurant'],
     icon: '🍽️',
-    status: 'coming-soon',
+    status: 'live',
   },
 
   // HEALTH
