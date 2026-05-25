@@ -196,6 +196,8 @@ const BOT_UA_FRAGMENTS = [
   'meta-externalagent', 'ccbot', 'crawler', 'spider', 'bot/',
   'lighthouse', 'pingdom', 'uptimerobot',
   'ahrefsbot', 'semrushbot', 'mj12bot',
+  // Google AdSense / Ads verification crawlers
+  'adsbot-google', 'adsbot', 'mediapartners-google',
 ];
 
 function isBot(userAgent: string | null): boolean {
