@@ -99,9 +99,14 @@ const hreflangs = [
   { hreflang: 'x-default', href: selfUrl },
 ];
 
-// Related pairs (find others that share the FROM or TO currency)
+// Reverse pair (the same conversion in the other direction — strong UX + SEO signal)
+// e.g., usd-to-aed → aed-to-usd. Surfaced as a featured card so users can flip direction.
+const reversePair = currencyPairs.find((p) => p.from === pair.to && p.to === pair.from) || null;
+
+// Related pairs (find others that share the FROM or TO currency, EXCLUDING the reverse pair
+// since it gets its own dedicated card above)
 const relatedPairs = currencyPairs
-  .filter((p) => p.slug !== pair.slug && (p.from === pair.from || p.to === pair.to || p.from === pair.to || p.to === pair.from))
+  .filter((p) => p.slug !== pair.slug && p.slug !== reversePair?.slug && (p.from === pair.from || p.to === pair.to || p.from === pair.to || p.to === pair.from))
   .slice(0, 6);
 ---
 
@@ -250,6 +255,36 @@ const relatedPairs = currencyPairs
     </div>
   </section>
 
+  <!-- REVERSE PAIR (featured) — direct link to convert the other way -->
+  {reversePair && (
+    <section class="container-wide py-10 md:py-12">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href={`/conversions/currency/${reversePair.slug}/`}
+          class="group block bg-yellow-accent border-[2.5px] border-ink-900 rounded-3xl p-6 sm:p-7 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
+        >
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="text-3xl sm:text-4xl flex items-center gap-3">
+              <span>{toCurr.flag}</span>
+              <span class="text-ink-900">→</span>
+              <span>{fromCurr.flag}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">↔ Convert the other way</div>
+              <div class="text-xl sm:text-2xl font-extrabold text-ink-900 leading-tight" style="font-family: 'Inter Tight', sans-serif; letter-spacing: -0.02em;">
+                {reversePair.from} to {reversePair.to} converter
+              </div>
+              <div class="text-sm text-ink-800 mt-1 font-semibold">
+                1 {reversePair.from} = {reversePair.rate} {reversePair.to}
+              </div>
+            </div>
+            <div class="text-ink-900 font-extrabold group-hover:translate-x-1 transition-transform">→</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
   <!-- RELATED PAIRS -->
   <section class="bg-ink-50 border-y-2 border-ink-900">
     <div class="container-wide py-12 md:py-16">
@@ -280,6 +315,12 @@ const relatedPairs = currencyPairs
               </a>
             );
           })}
+        </div>
+
+        <div class="mt-8">
+          <a href="/conversions/currency/" class="font-bold underline decoration-2 underline-offset-4 decoration-lime-accent text-ink-900">
+            ← All currency converters
+          </a>
         </div>
       </div>
     </div>

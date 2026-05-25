@@ -12,6 +12,9 @@ export function getStaticPaths() {
 
 const { author } = Astro.props;
 const pageUrl = `${SITE.url}/authors/${author.slug}/`;
+
+// Other Calctube reviewers — cross-linked for internal-link signal
+const otherAuthors = AUTHORS.filter((a) => a.slug !== author.slug);
 const displayName = author.credentials
   ? `${author.name}, ${author.credentials}`
   : author.name;
@@ -157,5 +160,32 @@ const breadcrumbSchema = {
         before any calculator is published.
       </p>
     </section>
+
+    {/* Other Calctube reviewers — internal-link signal so Google treats authors/ as a cluster */}
+    {otherAuthors.length > 0 && (
+      <section class="not-prose mt-10">
+        <h2 class="text-2xl font-extrabold text-ink-900 mb-4" style="font-family: 'Inter Tight', sans-serif;">
+          Other Calctube reviewers
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {otherAuthors.map((a: { slug: string; name: string; credentials?: string; shortBio: string }) => (
+            <a
+              href={`/authors/${a.slug}/`}
+              class="block bg-white border-[2.5px] border-ink-900 rounded-2xl p-4 no-underline shadow-sticker-sm hover:shadow-[6px_6px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+            >
+              <div class="font-extrabold text-ink-900 text-base" style="font-family: 'Inter Tight', sans-serif;">
+                {a.name}{a.credentials ? `, ${a.credentials}` : ''}
+              </div>
+              <div class="text-xs text-ink-600 mt-1 leading-snug">{a.shortBio}</div>
+            </a>
+          ))}
+        </div>
+        <div class="mt-6">
+          <a href="/authors/" class="font-bold underline decoration-2 underline-offset-4 decoration-lime-accent text-ink-900 text-sm">
+            ← All Calctube authors
+          </a>
+        </div>
+      </section>
+    )}
   </main>
 </BaseLayout>

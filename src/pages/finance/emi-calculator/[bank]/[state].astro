@@ -264,6 +264,17 @@ const sameState = bankStateCombos.filter((c) => c.stateSlug === state.slug && c.
           );
         })}
       </div>
+
+      <!-- Parent links for hierarchy clarity (helps Google understand bank > state nesting) -->
+      <div class="mt-10 flex flex-wrap gap-4 text-sm">
+        <a href={`/finance/emi-calculator/${bank.slug}/`} class="font-bold underline decoration-2 underline-offset-4 decoration-lime-accent text-ink-900">
+          ← {bank.bankName} EMI calculator (all states)
+        </a>
+        <span class="text-ink-400">·</span>
+        <a href="/finance/emi-calculator/" class="font-bold underline decoration-2 underline-offset-4 decoration-cyan-accent text-ink-900">
+          ← All bank EMI calculators
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>
