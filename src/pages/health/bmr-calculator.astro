@@ -48,10 +48,10 @@ const relatedCalcs = [
   { name: 'TDEE Calculator', href: '/health/tdee-calculator/', desc: 'Total daily calories with activity.', icon: '⚡', color: 'bg-lime-accent' },
   { name: 'Calorie Calculator', href: '/health/calorie-calculator/', desc: 'Calories for your weight goal.', icon: '🍎', color: 'bg-cyan-accent' },
   { name: 'BMI Calculator', href: '/health/bmi-calculator/', desc: 'Body Mass Index & category.', icon: '⚖️', color: 'bg-yellow-accent' },
-  { name: 'TDEE Calculator', href: '/health/tdee-calculator/', desc: 'Total daily energy with activity.', icon: '⚡', color: 'bg-pink-accent text-white' },
+  { name: 'Age Calculator', href: '/date-time/age-calculator/', desc: 'Exact age instantly.', icon: '🎂', color: 'bg-pink-accent text-white' },
 ];
 
-const reviewer = getAuthor('calctube-editorial')!;
+const reviewer = getAuthor('priya-nair')!;
 ---
 
 <BaseLayout
@@ -111,7 +111,7 @@ const reviewer = getAuthor('calctube-editorial')!;
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <BmrCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Verified" /></div>}
+      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 
@@ -165,6 +165,7 @@ const reviewer = getAuthor('calctube-editorial')!;
         <p>
           Use the activity multiplier table in the calculator above to find your TDEE — the actual calories you need each day accounting for your lifestyle. Sedentary office workers typically land at 1.2–1.375× BMR, while athletes can reach 1.7–1.9×.
         </p>
+        <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Mifflin MD et al. (1990), Am J Clin Nutr</a> · <a href="https://www.ncbi.nlm.nih.gov/books/NBK278991/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Institute of Medicine Dietary Reference Intakes</a></p>
       </div>
     </div>
   </section>

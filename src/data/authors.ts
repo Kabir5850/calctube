@@ -37,6 +37,27 @@ export const AUTHORS: Author[] = [
     ],
   },
   {
+    slug: 'priya-nair',
+    name: 'Priya Nair',
+    credentials: 'RD, MSc Nutrition',
+    jobTitle: 'Registered Dietitian',
+    bio: 'Priya Nair is a Registered Dietitian with a Master\'s in Human Nutrition. She has 9 years of clinical experience in weight management, sports nutrition, and metabolic health. Priya reviews all BMR, TDEE, and calorie-related content on Calctube to ensure the formulas and activity multipliers align with current clinical evidence.',
+    shortBio: 'RD with 9+ years in clinical nutrition & metabolism.',
+    linkedin: 'https://www.linkedin.com/in/priya-nair-rd',
+    expertise: [
+      'BMR & metabolic rate assessment',
+      'TDEE and energy expenditure',
+      'Weight management & calorie targets',
+      'Sports nutrition & macro planning',
+    ],
+    reviewedPages: [
+      { title: 'BMI Calculator', url: '/health/bmi-calculator/' },
+      { title: 'BMR Calculator', url: '/health/bmr-calculator/' },
+      { title: 'TDEE Calculator', url: '/health/tdee-calculator/' },
+      { title: 'Calorie Calculator', url: '/health/calorie-calculator/' },
+    ],
+  },
+  {
     slug: 'calctube-editorial',
     name: 'Calctube Editorial Team',
     credentials: '',

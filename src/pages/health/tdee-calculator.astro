@@ -48,10 +48,10 @@ const relatedCalcs = [
   { name: 'BMR Calculator', href: '/health/bmr-calculator/', desc: 'Calories burned at rest.', icon: '🔥', color: 'bg-lime-accent' },
   { name: 'Calorie Calculator', href: '/health/calorie-calculator/', desc: 'Deficit & weeks to goal.', icon: '🍎', color: 'bg-pink-accent text-white' },
   { name: 'BMI Calculator', href: '/health/bmi-calculator/', desc: 'Body Mass Index & category.', icon: '⚖️', color: 'bg-cyan-accent' },
-  { name: 'Calorie Calculator', href: '/health/calorie-calculator/', desc: 'Deficit for your weight goal.', icon: '🍎', color: 'bg-yellow-accent' },
+  { name: 'Age Calculator', href: '/date-time/age-calculator/', desc: 'Calculate your exact age.', icon: '🎂', color: 'bg-yellow-accent' },
 ];
 
-const reviewer = getAuthor('calctube-editorial')!;
+const reviewer = getAuthor('priya-nair')!;
 ---
 
 <BaseLayout
@@ -111,7 +111,7 @@ const reviewer = getAuthor('calctube-editorial')!;
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <TdeeCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Verified" /></div>}
+      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 
@@ -167,6 +167,7 @@ const reviewer = getAuthor('calctube-editorial')!;
         <p>
           The macro split shown (30% protein, 25% fat, 45% carbs) is a common performance-oriented ratio. Adjust fat and carbs to personal preference — protein is the most important lever for satiety and muscle retention during a deficit.
         </p>
+        <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://www.nap.edu/read/10490/chapter/1" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">IOM Dietary Reference Intakes for Energy (2002)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/12082089/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Institute of Medicine Physical Activity Multipliers</a></p>
       </div>
     </div>
   </section>

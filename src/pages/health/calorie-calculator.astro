@@ -48,10 +48,10 @@ const relatedCalcs = [
   { name: 'TDEE Calculator', href: '/health/tdee-calculator/', desc: 'Maintenance calories + macros.', icon: '⚡', color: 'bg-lime-accent' },
   { name: 'BMR Calculator', href: '/health/bmr-calculator/', desc: 'Calories burned at rest.', icon: '🔥', color: 'bg-yellow-accent' },
   { name: 'BMI Calculator', href: '/health/bmi-calculator/', desc: 'Body Mass Index & category.', icon: '⚖️', color: 'bg-cyan-accent' },
-  { name: 'BMR Calculator', href: '/health/bmr-calculator/', desc: 'Calories burned at rest.', icon: '💪', color: 'bg-pink-accent text-white' },
+  { name: 'Compound Interest', href: '/finance/compound-interest-calculator/', desc: 'Grow savings over time.', icon: '💹', color: 'bg-pink-accent text-white' },
 ];
 
-const reviewer = getAuthor('calctube-editorial')!;
+const reviewer = getAuthor('priya-nair')!;
 ---
 
 <BaseLayout
@@ -111,7 +111,7 @@ const reviewer = getAuthor('calctube-editorial')!;
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <CalorieDeficitCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Verified" /></div>}
+      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 
@@ -170,6 +170,7 @@ const reviewer = getAuthor('calctube-editorial')!;
         <p>
           <strong>Pace matters:</strong> A slow pace (−250 kcal/day) is sustainable for months but takes longer. An aggressive pace (−1,000 kcal/day) reaches the goal faster but increases the risk of muscle loss and rebound. Most nutrition professionals recommend −500 kcal/day as the sweet spot.
         </p>
+        <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://www.nhlbi.nih.gov/health/educational/lose_wt/index.htm" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">NIH Practical Guide to Obesity (2000)</a> · <a href="https://www.cdc.gov/healthyweight/calories/index.html" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">CDC Healthy Weight: Calories</a></p>
       </div>
     </div>
   </section>

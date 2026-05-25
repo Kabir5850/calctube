@@ -25,6 +25,13 @@ export default function CompoundInterestCalculator({ currency: currencyProp, loc
   const handleCurrencyChange = (next: CurrencyOption) => { setCurrency(next); setStoredCurrency(next.code); };
   const fmtUSD = (v: number) => formatMoney(v, currency);
 
+  const [copied, setCopied] = useState(false);
+  const [principal, setPrincipal] = useState<number>(10000);
+  const [rate, setRate] = useState<number>(8);
+  const [years, setYears] = useState<number>(20);
+  const [monthlyContribution, setMonthlyContribution] = useState<number>(500);
+  const [freq, setFreq] = useState<Frequency>(12);
+
   useEffect(() => {
     try {
       const p = new URLSearchParams(window.location.search);
@@ -43,13 +50,6 @@ export default function CompoundInterestCalculator({ currency: currencyProp, loc
       navigator.clipboard.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2500); });
     } catch {}
   }, [principal, rate, years, monthlyContribution]);
-
-  const [copied, setCopied] = useState(false);
-  const [principal, setPrincipal] = useState<number>(10000);
-  const [rate, setRate] = useState<number>(8);
-  const [years, setYears] = useState<number>(20);
-  const [monthlyContribution, setMonthlyContribution] = useState<number>(500);
-  const [freq, setFreq] = useState<Frequency>(12);
 
   const yearlyData = useMemo(() => {
     const data: Array<{ year: number; balance: number; contributed: number; interest: number }> = [];
