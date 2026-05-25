@@ -8,3 +8,6 @@ dist/
 .DS_Store
 .vscode/
 .idea/
+
+# Internal backlink/outreach kit — local only, not for public repo
+BACKLINK_KIT/
