@@ -10,6 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "og:png": "node scripts/generate-og-png.js",
+    "logos": "node scripts/generate-logos.js",
     "indexnow": "node scripts/ping-indexnow.js",
     "postbuild": "node scripts/ping-indexnow.js"
   },

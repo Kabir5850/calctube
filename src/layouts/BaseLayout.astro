@@ -175,9 +175,15 @@ const navLinks = [
     <meta name="twitter:description" content={trimmedDescription} />
     <meta name="twitter:image" content={new URL(ogImage, SITE.url).toString()} />
 
-    <!-- Favicon -->
+    <!-- Favicons — full suite generated from public/logo-mark.svg via `npm run logos` -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="msapplication-TileColor" content="#a3e635" />
+    <meta name="msapplication-TileImage" content="/mstile-150x150.png" />
 
     <!-- Fonts — trimmed to 3 weights per family (was 5 + 4 = 9 woff2 files, saves ~180KB).
          Loaded non-render-blocking via media swap trick: browser fetches in parallel, applies
