@@ -86,9 +86,9 @@ const useCases = [
   {
     title: 'Filing taxes?',
     icon: '🪙',
-    desc: 'Compare regimes, estimate liability, plan deductions.',
-    cta: 'Tax Calculator',
-    href: '/finance/tax-calculator-india/',
+    desc: 'Compare old vs new regime by Indian state.',
+    cta: 'Old vs New Regime',
+    href: '/finance/old-vs-new-tax-regime-india/',
     chipColor: 'chip-cyan',
   },
 ];
@@ -124,7 +124,7 @@ const schemas = [buildFAQSchema(faqs)];
 ---
 
 <BaseLayout
-  title="Calctube — Free Online Calculators for Finance, Health, Math & More"
+  title="Calctube — Free Online Calculators"
   description="100+ free, fast, accurate calculators. Mortgage, BMI, EMI, SIP, currency, tax, percentage and more. No signup. Mobile-first. Free forever."
   schemas={schemas}
 >
@@ -133,10 +133,10 @@ const schemas = [buildFAQSchema(faqs)];
   <!-- ============================================== -->
   <section class="relative overflow-hidden bg-white">
     <!-- Aurora background blur layers -->
-    <div class="absolute inset-0 -z-10" aria-hidden="true">
-      <div class="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] bg-brand-400/40 rounded-full blur-[120px] float-slow"></div>
-      <div class="absolute top-[-5%] right-[-10%] w-[500px] h-[500px] bg-pink-accent/30 rounded-full blur-[120px] float-slow-2"></div>
-      <div class="absolute bottom-[-15%] left-[30%] w-[600px] h-[600px] bg-lime-accent/30 rounded-full blur-[140px] float-slow" style="animation-delay: -3s;"></div>
+    <div class="absolute inset-0 -z-10" aria-hidden="true" style="contain: layout style paint;">
+      <div class="absolute top-[-10%] left-[-5%] w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-400/40 rounded-full blur-[60px] md:blur-[120px] float-slow"></div>
+      <div class="absolute top-[-5%] right-[-10%] w-[250px] h-[250px] md:w-[500px] md:h-[500px] bg-pink-accent/30 rounded-full blur-[60px] md:blur-[120px] float-slow-2"></div>
+      <div class="hidden md:block absolute bottom-[-15%] left-[30%] w-[600px] h-[600px] bg-lime-accent/30 rounded-full blur-[140px] float-slow" style="animation-delay: -3s;"></div>
     </div>
 
     <!-- Grain texture -->
@@ -173,19 +173,22 @@ const schemas = [buildFAQSchema(faqs)];
         </p>
 
         <!-- Search -->
-        <div class="fade-in fade-in-delay-3 mt-9 md:mt-12">
+        <!-- z-30 so the search dropdown stacks above later .fade-in siblings
+             (each .fade-in uses transform: translateY which creates a new stacking
+             context — later siblings paint on top by default). -->
+        <div class="fade-in fade-in-delay-3 mt-9 md:mt-12 relative z-30">
           <CalcSearch calculators={calculators} client:load />
           <div class="flex flex-wrap items-center justify-center gap-2 mt-5">
             <span class="text-xs sm:text-sm text-ink-500 font-medium">Try:</span>
             <a href="/finance/mortgage-calculator/" class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-white border-2 border-ink-200 hover:border-ink-900 hover:bg-lime-accent text-ink-900 no-underline transition-all">mortgage 🏠</a>
             <a href="/health/bmi-calculator/" class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-white border-2 border-ink-200 hover:border-ink-900 hover:bg-pink-accent hover:text-white text-ink-900 no-underline transition-all">bmi ⚖️</a>
             <a href="/finance/sip-calculator/" class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-white border-2 border-ink-200 hover:border-ink-900 hover:bg-yellow-accent text-ink-900 no-underline transition-all">sip 📈</a>
-            <a href="/finance/tip-calculator/" class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-white border-2 border-ink-200 hover:border-ink-900 hover:bg-cyan-accent text-ink-900 no-underline transition-all">tip 🍽️</a>
+            <a href="/finance/emi-calculator/" class="text-xs sm:text-sm font-bold px-3 py-1 rounded-full bg-white border-2 border-ink-200 hover:border-ink-900 hover:bg-cyan-accent text-ink-900 no-underline transition-all">emi 🇮🇳</a>
           </div>
         </div>
 
         <!-- CTAs -->
-        <div class="fade-in fade-in-delay-4 mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="fade-in fade-in-delay-4 mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
           <a href="/finance/mortgage-calculator/" class="btn-primary-lime w-full sm:w-auto">
             Try Mortgage Calc →
           </a>
@@ -244,19 +247,16 @@ const schemas = [buildFAQSchema(faqs)];
       {
         popularCalculators.map((calc, idx) => {
           const bgClass = popularColors[idx % popularColors.length];
-          return (
-            <a
-              href={calc.href}
-              class={`group relative ${bgClass} border-2 border-ink-900 rounded-3xl p-5 sm:p-6 no-underline
-                     shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)]
-                     hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200`}
-            >
-              {calc.status === 'coming-soon' && (
+          const isLive = calc.status === 'live';
+          const cardClass = `group relative ${bgClass} border-2 border-ink-900 rounded-3xl p-5 sm:p-6 no-underline shadow-sticker ${isLive ? 'hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200' : 'opacity-80'}`;
+          const inner = (
+            <>
+              {!isLive && (
                 <span class="absolute -top-2 -right-2 chip-white !text-[9px] !px-2 !py-0.5">
                   Soon
                 </span>
               )}
-              <div class="text-4xl sm:text-5xl mb-3 sm:mb-4 transition-transform group-hover:scale-110 group-hover:rotate-6 inline-block">
+              <div class={`text-4xl sm:text-5xl mb-3 sm:mb-4 inline-block ${isLive ? 'transition-transform group-hover:scale-110 group-hover:rotate-6' : ''}`}>
                 {calc.icon}
               </div>
               <div class="font-extrabold text-ink-900 text-sm sm:text-base leading-tight" style="font-family: 'Inter Tight', sans-serif;">
@@ -265,7 +265,12 @@ const schemas = [buildFAQSchema(faqs)];
               <p class="text-xs sm:text-sm text-ink-800 mt-1.5 leading-snug line-clamp-2 font-medium">
                 {calc.description}
               </p>
-            </a>
+            </>
+          );
+          return isLive ? (
+            <a href={calc.href} class={cardClass}>{inner}</a>
+          ) : (
+            <div class={cardClass} aria-disabled="true">{inner}</div>
           );
         })
       }
@@ -373,22 +378,29 @@ const schemas = [buildFAQSchema(faqs)];
               </div>
               <p class="text-sm text-ink-800 mb-5 leading-relaxed font-medium">{meta.description}</p>
               <ul class="space-y-1.5 mb-5 flex-1">
-                {calcs.map((c) => (
-                  <li>
-                    <a
-                      href={c.href}
-                      class="flex items-center gap-2.5 text-sm text-ink-900 hover:text-brand-700 no-underline py-1 font-semibold group/item"
-                    >
+                {calcs.map((c) => {
+                  const isLive = c.status === 'live';
+                  const liInner = (
+                    <>
                       <span class="text-base flex-shrink-0">{c.icon}</span>
-                      <span class="group-hover/item:underline truncate">{c.name}</span>
-                      {c.status === 'coming-soon' && (
+                      <span class={`truncate ${isLive ? 'group-hover/item:underline' : ''}`}>{c.name}</span>
+                      {!isLive && (
                         <span class="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-white border border-ink-300 text-ink-600 uppercase tracking-wider flex-shrink-0">
                           Soon
                         </span>
                       )}
-                    </a>
-                  </li>
-                ))}
+                    </>
+                  );
+                  return (
+                    <li>
+                      {isLive ? (
+                        <a href={c.href} class="flex items-center gap-2.5 text-sm text-ink-900 hover:text-brand-700 no-underline py-1 font-semibold group/item">{liInner}</a>
+                      ) : (
+                        <div class="flex items-center gap-2.5 text-sm text-ink-500 py-1 font-semibold" aria-disabled="true">{liInner}</div>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
               <a
                 href={meta.href}

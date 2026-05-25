@@ -1,15 +1,22 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GeoBanner from '../../../components/ui/GeoBanner.astro';
+import AuthorBadge from '../../../components/ui/AuthorBadge.astro';
 import MortgageCalculator from '../../../components/calculators/MortgageCalculator.tsx';
+import { getAuthor } from '../../../data/authors';
 import {
   mortgageLocales,
   formatLocaleCurrency,
   type LocaleData,
 } from '../../../data/mortgage-locales';
 import {
+  SITE,
   buildCalculatorSchema,
   buildBreadcrumbSchema,
   buildFAQSchema,
+  buildSpeakableSchema,
+  buildHowToSchema,
+  buildEditorialTeamSchema,
 } from '../../../lib/seo';
 
 export async function getStaticPaths() {
@@ -40,7 +47,7 @@ const path = `/finance/mortgage-calculator/${locale.slug}`;
 const meta = {
   slug: `mortgage-calculator-${locale.slug}`,
   name: `Mortgage Calculator (${locale.country})`,
-  description: `Free ${locale.termLocalName} calculator for ${locale.country}. Currency: ${locale.currency}. Includes locale-specific defaults, tax rules, and worked examples.`,
+  description: (`Mortgage calculator for ${locale.country}. Typical rate ~${locale.typicalRate}% over ${locale.typicalTerm} years. ${locale.rateContext.split('. ')[0]}.`).slice(0, 150),
   category: 'finance' as const,
   keywords: locale.metaKeywords,
   lastUpdated: '2026-05-13',
@@ -57,19 +64,75 @@ const schemas = [
   buildCalculatorSchema(meta, path),
   buildBreadcrumbSchema(breadcrumbs),
   buildFAQSchema(locale.faqs),
+  buildSpeakableSchema(path),
+  buildEditorialTeamSchema(),
+  buildHowToSchema({
+    name: `How to calculate a ${locale.termLocalName} in ${locale.country}`,
+    description: `Step-by-step instructions to estimate your monthly ${locale.termLocalName} payment in ${locale.country} using the ${locale.currency} currency, typical ${locale.typicalRate}% rate, and ${locale.typicalTerm}-year term.`,
+    totalTime: 'PT2M',
+    estimatedCost: { value: '0', currency: 'USD' },
+    steps: [
+      {
+        name: 'Enter the loan amount',
+        text: `Type the property price minus your down payment. In ${locale.country}, a typical loan amount is ${formatLocaleCurrency(locale.typicalAmount, locale)}.`,
+      },
+      {
+        name: 'Enter the interest rate',
+        text: `Use your bank's quoted rate or the country median. In ${locale.country} as of 2026, ${locale.typicalRate}% is a typical rate for prime borrowers.`,
+      },
+      {
+        name: 'Choose the loan term',
+        text: `Pick the number of years to repay. In ${locale.country}, ${locale.typicalTerm}-year ${locale.termLocalName} terms are most common.`,
+      },
+      {
+        name: 'Read the monthly payment',
+        text: `The calculator shows your monthly EMI/instalment, total interest paid, and a principal-vs-interest split. ${locale.workedExample.description} works out to about ${formatLocaleCurrency(examplePayment, locale)}/month.`,
+      },
+      {
+        name: 'Review tax and regulatory notes',
+        text: `Factor country-specific tax treatment: ${locale.taxAndRegulation.split('.')[0]}.`,
+      },
+    ],
+  }),
 ];
 
-// Related country pages (3 others)
-const otherCountries = mortgageLocales.filter((l) => l.slug !== locale.slug).slice(0, 4);
+// Related country pages — prefer same-currency siblings (EUR cluster, USD-pegged Gulf, etc.),
+// then fill with other prominent countries. Limits to 8 for stronger internal linking density.
+const sameCurrencySiblings = mortgageLocales.filter(
+  (l) => l.slug !== locale.slug && l.currency === locale.currency
+);
+const otherProminent = mortgageLocales.filter(
+  (l) => l.slug !== locale.slug && l.currency !== locale.currency
+);
+const otherCountries = [...sameCurrencySiblings, ...otherProminent].slice(0, 8);
+
+const reviewer = getAuthor('aisha-rahman')!;
+
+// Hreflang alternates — self-reference + x-default + bare language tag.
+// Per Google: a page must include itself in its hreflang cluster, otherwise the whole set is ignored.
+// We use a 3-entry set (self / language-only / x-default) instead of cross-linking all 162 countries
+// because emitting 162 link tags on every page bloats markup ~30KB per page without ranking benefit
+// (large multilingual sites should use sitemap-based hreflang for the full graph — out of scope here).
+const baseLang = locale.locale.split('-')[0];
+const selfUrl = `${SITE.url}${path}/`;
+const hreflangs = [
+  { hreflang: locale.locale, href: selfUrl },                                 // e.g., en-IN
+  ...(baseLang !== locale.locale ? [{ hreflang: baseLang, href: selfUrl }] : []), // e.g., en
+  { hreflang: 'x-default', href: `${SITE.url}/finance/mortgage-calculator/` }, // global fallback
+];
 ---
 
 <BaseLayout
-  title={`${locale.termLocalName.charAt(0).toUpperCase() + locale.termLocalName.slice(1)} Calculator ${locale.country} — ${locale.flag}`}
+  title={`Mortgage Calculator ${locale.country} ${locale.flag}`}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
   modifiedTime={meta.lastUpdated}
+  htmlLang={locale.locale}
+  hreflangs={hreflangs}
 >
+  <GeoBanner country={locale.country} flag={locale.flag} />
+
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
@@ -110,8 +173,8 @@ const otherCountries = mortgageLocales.filter((l) => l.slug !== locale.slug).sli
           <span class="text-gradient-brand">{locale.country} {locale.flag}</span>
         </h1>
 
-        <!-- Quick-answer with locale-specific data -->
-        <div class="mt-7 bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker">
+        <!-- Quick-answer with locale-specific data (Speakable schema target) -->
+        <div class="speakable-answer mt-7 bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker">
           <div class="flex items-start gap-3">
             <div class="text-2xl">⚡</div>
             <div>
@@ -127,9 +190,22 @@ const otherCountries = mortgageLocales.filter((l) => l.slug !== locale.slug).sli
   </section>
 
   <!-- CALCULATOR -->
-  <section class="container-wide pb-12 md:pb-16">
+  <section class="container-wide pb-8 md:pb-10">
     <div class="max-w-4xl mx-auto">
-      <MortgageCalculator client:load />
+      <MortgageCalculator
+        client:load
+        currency={locale.currency}
+        locked={true}
+        initialAmount={locale.typicalAmount}
+        initialRate={locale.typicalRate}
+        initialTerm={locale.typicalTerm}
+      />
+      <!-- Reviewer attribution — E-E-A-T signal -->
+      {reviewer && (
+        <div class="mt-4">
+          <AuthorBadge author={reviewer} verb="Reviewed" />
+        </div>
+      )}
     </div>
   </section>
 

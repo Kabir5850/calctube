@@ -31,12 +31,104 @@ export function buildOrganizationSchema() {
     '@id': `${SITE.url}/#organization`,
     name: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/logo.png`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE.url}/logo.png`,
+      width: 512,
+      height: 512,
+    },
     description: SITE.description,
+    foundingDate: '2026',
+    knowsAbout: [
+      'Personal finance',
+      'Mortgage calculations',
+      'EMI calculations',
+      'Currency conversion',
+      'Tax planning',
+      'Investment calculations',
+      'Loan amortization',
+    ],
+    publishingPrinciples: `${SITE.url}/about/`,
     sameAs: [
       `https://twitter.com/${SITE.twitter.replace('@', '')}`,
       `https://linkedin.com/company/${SITE.name.toLowerCase()}`,
     ],
+  };
+}
+
+/**
+ * E-E-A-T author/editor entity. Surfaces Experience, Expertise, Authoritativeness, Trust signals
+ * that Google's quality raters and AI citation systems look for.
+ */
+export function buildEditorialTeamSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${SITE.url}/#editorial-team`,
+    name: `${SITE.name} Editorial Team`,
+    parentOrganization: { '@id': `${SITE.url}/#organization` },
+    description:
+      'The Calctube editorial team researches lender rates, tax regulations, and currency flows from primary sources (RBI, SAMA, HMRC, Bank Indonesia, CBO, and equivalent regulators), and updates page content quarterly. Calculator formulas are derived from standard financial mathematics (annuity, simple interest, compound interest) and verified against published bank EMI schedules.',
+    knowsAbout: [
+      'Indian banking products (RBI repo-linked loans, MCLR, PMAY-CLSS)',
+      'Mortgage products across 22 countries',
+      'Currency remittance corridors and exchange rate mechanisms',
+      'Income tax regimes (India old vs new, country-specific tax treatment)',
+      'Islamic finance structures (Murabaha, Ijara)',
+    ],
+  };
+}
+
+/**
+ * Speakable schema flags Q&A and Quick Answer blocks as voice-assistant and AI-snippet eligible.
+ * Used by Google Assistant, Alexa, Siri, ChatGPT search, and Perplexity to identify
+ * the answer-first content suitable for spoken or AI-overview surfacing.
+ */
+export function buildSpeakableSchema(path: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE.url}${path}#speakable`,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.speakable-answer', '.speakable-summary'],
+    },
+    url: `${SITE.url}${path}`,
+  };
+}
+
+/**
+ * HowTo schema flags calculator pages as step-by-step instructions.
+ * Heavily used by Google AI Overviews and Bing Copilot for "how to calculate X" queries.
+ */
+export function buildHowToSchema(opts: {
+  name: string;
+  description: string;
+  steps: Array<{ name: string; text: string }>;
+  totalTime?: string; // ISO 8601 duration, e.g., 'PT2M'
+  estimatedCost?: { value: string; currency: string };
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: opts.name,
+    description: opts.description,
+    ...(opts.totalTime ? { totalTime: opts.totalTime } : {}),
+    ...(opts.estimatedCost
+      ? {
+          estimatedCost: {
+            '@type': 'MonetaryAmount',
+            currency: opts.estimatedCost.currency,
+            value: opts.estimatedCost.value,
+          },
+        }
+      : {}),
+    step: opts.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
   };
 }
 

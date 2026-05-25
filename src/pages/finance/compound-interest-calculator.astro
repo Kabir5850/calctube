@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import CompoundInterestCalculator from '../../components/calculators/CompoundInterestCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
+import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'compound-interest-calculator', name: 'Compound Interest Calculator',
@@ -11,6 +13,7 @@ const meta = {
   lastUpdated: '2026-05-13', ratingValue: '4.9', ratingCount: '167',
 };
 const path = '/finance/compound-interest-calculator';
+const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Finance', url: '/finance/' }, { name: 'Compound Interest', url: path },
 ];
@@ -80,7 +83,10 @@ const relatedCalcs = [
 
   <!-- CALCULATOR -->
   <section class="container-wide pb-12 md:pb-16">
-    <div class="max-w-4xl mx-auto"><CompoundInterestCalculator client:load /></div>
+    <div class="max-w-4xl mx-auto">
+      <CompoundInterestCalculator client:load />
+      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
+    </div>
   </section>
 
   <!-- THE MATH -->

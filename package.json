@@ -10,7 +10,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "og:png": "node scripts/generate-og-png.js",
-    "prebuild": "node scripts/generate-og-png.js"
+    "indexnow": "node scripts/ping-indexnow.js",
+    "prebuild": "node scripts/generate-og-png.js",
+    "postbuild": "node scripts/ping-indexnow.js"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.0",

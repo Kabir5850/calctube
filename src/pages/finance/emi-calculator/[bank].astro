@@ -6,6 +6,9 @@ import {
   buildCalculatorSchema,
   buildBreadcrumbSchema,
   buildFAQSchema,
+  buildSpeakableSchema,
+  buildHowToSchema,
+  buildEditorialTeamSchema,
 } from '../../../lib/seo';
 
 export async function getStaticPaths() {
@@ -42,9 +45,46 @@ const schemas = [
   buildCalculatorSchema(meta, path),
   buildBreadcrumbSchema(breadcrumbs),
   buildFAQSchema(bank.faqs),
+  buildSpeakableSchema(path),
+  buildEditorialTeamSchema(),
+  buildHowToSchema({
+    name: `How to calculate your ${bank.bankName} EMI`,
+    description: `Step-by-step instructions to estimate your monthly EMI for ${bank.bankName} home, personal, or car loan using current 2026 interest rates.`,
+    totalTime: 'PT2M',
+    estimatedCost: { value: '0', currency: 'INR' },
+    steps: [
+      {
+        name: 'Choose the loan type',
+        text: `Pick home, personal, or car loan. ${bank.bankName} current typical rates: home ${bank.homeLoanRate.typical}%, personal ${bank.personalLoanRate.typical}%, car ${bank.carLoanRate.typical}%.`,
+      },
+      {
+        name: 'Enter the loan amount',
+        text: `Type the principal amount you want to borrow. For ${bank.bankName} home loans, the typical range is ₹15 lakh to ₹5 crore based on your income eligibility.`,
+      },
+      {
+        name: 'Enter the interest rate',
+        text: `Use ${bank.bankName}'s quoted rate or the typical rate. As of 2026, ${bank.bankName} home loan rate is ${bank.homeLoanRate.min}-${bank.homeLoanRate.max}% (typical ${bank.homeLoanRate.typical}%).`,
+      },
+      {
+        name: 'Choose the tenure',
+        text: `Pick the number of years to repay. ${bank.bankName} offers up to 30 years on home loans, 5 years on personal loans, and 7 years on car loans.`,
+      },
+      {
+        name: 'Read the EMI and total interest',
+        text: `The calculator shows your monthly EMI, total interest paid, and an amortization schedule. Factor in ${bank.bankName} processing fee: ${bank.processingFee}`,
+      },
+    ],
+  }),
 ];
 
-const otherBanks = emiBanks.filter((b) => b.slug !== bank.slug).slice(0, 5);
+// Related banks — prefer those with similar home loan typical rate (within 50 bps) first,
+// then fall back to other banks. Provides stronger topical clustering (PSU vs private positioning).
+const sameTierBanks = emiBanks
+  .filter((b) => b.slug !== bank.slug && Math.abs(b.homeLoanRate.typical - bank.homeLoanRate.typical) <= 0.5)
+  .sort((a, b) => Math.abs(a.homeLoanRate.typical - bank.homeLoanRate.typical) - Math.abs(b.homeLoanRate.typical - bank.homeLoanRate.typical));
+const otherTierBanks = emiBanks
+  .filter((b) => b.slug !== bank.slug && Math.abs(b.homeLoanRate.typical - bank.homeLoanRate.typical) > 0.5);
+const otherBanks = [...sameTierBanks, ...otherTierBanks].slice(0, 8);
 ---
 
 <BaseLayout
@@ -91,7 +131,7 @@ const otherBanks = emiBanks.filter((b) => b.slug !== bank.slug).slice(0, 5);
           <span class="text-gradient-brand">2026 rates.</span>
         </h1>
 
-        <div class="mt-7 bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker">
+        <div class="speakable-answer mt-7 bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker">
           <div class="flex items-start gap-3">
             <div class="text-2xl">⚡</div>
             <div>

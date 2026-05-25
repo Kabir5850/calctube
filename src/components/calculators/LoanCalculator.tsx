@@ -1,11 +1,17 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import {
+  DEFAULT_CURRENCY,
+  detectClientCurrency,
+  formatMoney,
+  getCurrency,
+  setStoredCurrency,
+  type CurrencyOption,
+} from '../../lib/currency';
+import CurrencySelect from '../ui/CurrencySelect';
 
-function formatCurrency(value: number, currency = 'USD'): string {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency,
-    maximumFractionDigits: 0,
-  }).format(value);
+interface LoanCalculatorProps {
+  currency?: string;
+  locked?: boolean;
 }
 
 function calculateLoan(principal: number, annualRatePct: number, months: number) {
@@ -28,7 +34,15 @@ function calculateLoan(principal: number, annualRatePct: number, months: number)
   };
 }
 
-export default function LoanCalculator() {
+export default function LoanCalculator({ currency: currencyProp, locked: lockedProp }: LoanCalculatorProps = {}) {
+  const isLocked = lockedProp ?? Boolean(currencyProp);
+  const [currency, setCurrency] = useState<CurrencyOption>(
+    currencyProp ? getCurrency(currencyProp) : DEFAULT_CURRENCY
+  );
+  useEffect(() => { if (!isLocked) setCurrency(detectClientCurrency()); }, [isLocked]);
+  const handleCurrencyChange = (next: CurrencyOption) => { setCurrency(next); setStoredCurrency(next.code); };
+  const fmt = (v: number) => formatMoney(v, currency);
+
   const [amount, setAmount] = useState<number>(20000);
   const [rate, setRate] = useState<number>(9.5);
   const [years, setYears] = useState<number>(5);
@@ -42,17 +56,11 @@ export default function LoanCalculator() {
       <div className="bg-white border-[2.5px] border-ink-900 rounded-3xl overflow-hidden shadow-sticker">
         {/* Header */}
         <div className="bg-cyan-accent border-b-[2.5px] border-ink-900 px-5 sm:px-7 py-4 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">💵</span>
-            <h2 className="!text-lg sm:!text-xl !my-0 !text-ink-900 font-extrabold" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.02em' }}>Loan Calculator</h2>
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="text-2xl flex-shrink-0">💵</span>
+            <h2 className="!text-lg sm:!text-xl !my-0 !text-ink-900 font-extrabold truncate" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.02em' }}>Loan Calculator</h2>
           </div>
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink-900">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ink-900 opacity-50"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-ink-900"></span>
-            </span>
-            Live
-          </span>
+          <CurrencySelect value={currency} onChange={handleCurrencyChange} locked={isLocked} />
         </div>
 
         {/* Inputs */}
@@ -60,11 +68,11 @@ export default function LoanCalculator() {
           <div>
             <label htmlFor="loan-amount" className="block text-xs font-extrabold uppercase tracking-wider text-ink-700 mb-2">Loan Amount</label>
             <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none">$</span>
+              <span className={`absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none ${currency.symbol.length > 1 ? 'text-xs' : ''}`}>{currency.symbol}</span>
               <input
                 id="loan-amount" type="number" min={500} step={500} value={amount}
                 onChange={(e) => setAmount(Number(e.target.value) || 0)}
-                className="w-full pl-7 pr-3 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-base font-bold focus:outline-none focus:ring-4 focus:ring-cyan-accent transition-all"
+                className={`w-full ${currency.symbol.length > 1 ? 'pl-12' : 'pl-7'} pr-3 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-base font-bold focus:outline-none focus:ring-4 focus:ring-cyan-accent transition-all`}
                 inputMode="numeric"
               />
             </div>
@@ -107,17 +115,17 @@ export default function LoanCalculator() {
         <div className="p-5 sm:p-7 bg-white grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 border-t-[2.5px] border-ink-900">
           <div className="bg-cyan-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
             <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-900 mb-1">Monthly Payment</div>
-            <div className="text-3xl sm:text-4xl font-extrabold text-ink-900 leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{formatCurrency(result.monthlyPayment)}</div>
+            <div className="text-3xl sm:text-4xl font-extrabold text-ink-900 leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{fmt(result.monthlyPayment)}</div>
             <div className="text-xs text-ink-800 mt-2 font-semibold">/month</div>
           </div>
           <div className="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
             <div className="text-[10px] font-extrabold uppercase tracking-wider text-white mb-1">Total Interest</div>
-            <div className="text-3xl sm:text-4xl font-extrabold text-white leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{formatCurrency(result.totalInterest)}</div>
+            <div className="text-3xl sm:text-4xl font-extrabold text-white leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{fmt(result.totalInterest)}</div>
             <div className="text-xs text-white/90 mt-2 font-semibold">{interestPct}% of total</div>
           </div>
           <div className="bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
             <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-900 mb-1">Total Paid</div>
-            <div className="text-3xl sm:text-4xl font-extrabold text-ink-900 leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{formatCurrency(result.totalPaid)}</div>
+            <div className="text-3xl sm:text-4xl font-extrabold text-ink-900 leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{fmt(result.totalPaid)}</div>
             <div className="text-xs text-ink-800 mt-2 font-semibold">over {years} year{years > 1 ? 's' : ''}</div>
           </div>
         </div>

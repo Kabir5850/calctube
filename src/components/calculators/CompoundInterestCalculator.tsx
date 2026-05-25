@@ -1,12 +1,50 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
+import {
+  DEFAULT_CURRENCY,
+  detectClientCurrency,
+  formatMoney,
+  getCurrency,
+  setStoredCurrency,
+  type CurrencyOption,
+} from '../../lib/currency';
+import CurrencySelect from '../ui/CurrencySelect';
 
 type Frequency = 1 | 2 | 4 | 12 | 365;
 
-function fmtUSD(n: number): string {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+interface CompoundInterestCalculatorProps {
+  currency?: string;
+  locked?: boolean;
 }
 
-export default function CompoundInterestCalculator() {
+export default function CompoundInterestCalculator({ currency: currencyProp, locked: lockedProp }: CompoundInterestCalculatorProps = {}) {
+  const isLocked = lockedProp ?? Boolean(currencyProp);
+  const [currency, setCurrency] = useState<CurrencyOption>(
+    currencyProp ? getCurrency(currencyProp) : DEFAULT_CURRENCY
+  );
+  useEffect(() => { if (!isLocked) setCurrency(detectClientCurrency()); }, [isLocked]);
+  const handleCurrencyChange = (next: CurrencyOption) => { setCurrency(next); setStoredCurrency(next.code); };
+  const fmtUSD = (v: number) => formatMoney(v, currency);
+
+  useEffect(() => {
+    try {
+      const p = new URLSearchParams(window.location.search);
+      if (p.get('p')) setPrincipal(Number(p.get('p')));
+      if (p.get('r')) setRate(Number(p.get('r')));
+      if (p.get('y')) setYears(Number(p.get('y')));
+      if (p.get('c')) setMonthlyContribution(Number(p.get('c')));
+    } catch {}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleShare = useCallback(() => {
+    try {
+      const params = new URLSearchParams({ p: String(principal), r: String(rate), y: String(years), c: String(monthlyContribution) });
+      const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+      navigator.clipboard.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2500); });
+    } catch {}
+  }, [principal, rate, years, monthlyContribution]);
+
+  const [copied, setCopied] = useState(false);
   const [principal, setPrincipal] = useState<number>(10000);
   const [rate, setRate] = useState<number>(8);
   const [years, setYears] = useState<number>(20);
@@ -45,17 +83,11 @@ export default function CompoundInterestCalculator() {
     <div className="relative not-prose">
       <div className="bg-white border-[2.5px] border-ink-900 rounded-3xl overflow-hidden shadow-sticker">
         <div className="bg-lime-accent border-b-[2.5px] border-ink-900 px-5 sm:px-7 py-4 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">💹</span>
-            <h2 className="!text-lg sm:!text-xl !my-0 !text-ink-900 font-extrabold" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.02em' }}>Compound Interest</h2>
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="text-2xl flex-shrink-0">💹</span>
+            <h2 className="!text-lg sm:!text-xl !my-0 !text-ink-900 font-extrabold truncate" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.02em' }}>Compound Interest</h2>
           </div>
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink-900">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ink-900 opacity-50"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-ink-900"></span>
-            </span>
-            Live
-          </span>
+          <CurrencySelect value={currency} onChange={handleCurrencyChange} locked={isLocked} />
         </div>
 
         {/* Inputs */}
@@ -63,9 +95,9 @@ export default function CompoundInterestCalculator() {
           <div>
             <label htmlFor="ci-principal" className="block text-xs font-extrabold uppercase tracking-wider text-ink-700 mb-2">Initial Investment</label>
             <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none">$</span>
+              <span className={`absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none ${currency.symbol.length > 1 ? 'text-xs' : ''}`}>{currency.symbol}</span>
               <input id="ci-principal" type="number" min={0} step={100} value={principal} onChange={(e) => setPrincipal(Number(e.target.value) || 0)}
-                className="w-full pl-7 pr-3 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-base font-bold focus:outline-none focus:ring-4 focus:ring-lime-accent transition-all"
+                className={`w-full ${currency.symbol.length > 1 ? 'pl-12' : 'pl-7'} pr-3 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-base font-bold focus:outline-none focus:ring-4 focus:ring-lime-accent transition-all`}
                 inputMode="numeric" />
             </div>
             <input type="range" min={0} max={500000} step={500} value={principal} onChange={(e) => setPrincipal(Number(e.target.value))} className="w-full mt-2 accent-lime-accent" aria-label="Principal slider" />
@@ -73,9 +105,9 @@ export default function CompoundInterestCalculator() {
           <div>
             <label htmlFor="ci-contribution" className="block text-xs font-extrabold uppercase tracking-wider text-ink-700 mb-2">Monthly Contribution</label>
             <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none">$</span>
+              <span className={`absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none ${currency.symbol.length > 1 ? 'text-xs' : ''}`}>{currency.symbol}</span>
               <input id="ci-contribution" type="number" min={0} step={50} value={monthlyContribution} onChange={(e) => setMonthlyContribution(Number(e.target.value) || 0)}
-                className="w-full pl-7 pr-3 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-base font-bold focus:outline-none focus:ring-4 focus:ring-cyan-accent transition-all"
+                className={`w-full ${currency.symbol.length > 1 ? 'pl-12' : 'pl-7'} pr-3 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-base font-bold focus:outline-none focus:ring-4 focus:ring-cyan-accent transition-all`}
                 inputMode="numeric" />
             </div>
             <input type="range" min={0} max={5000} step={50} value={monthlyContribution} onChange={(e) => setMonthlyContribution(Number(e.target.value))} className="w-full mt-2 accent-cyan-accent" aria-label="Contribution slider" />
@@ -182,6 +214,13 @@ export default function CompoundInterestCalculator() {
             </div>
           </div>
         </div>
+      </div>
+      {/* Share */}
+      <div className="px-5 sm:px-7 pb-5 bg-white border-t-2 border-ink-100 pt-4">
+        <button type="button" onClick={handleShare}
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-ink-900 text-xs font-extrabold transition-all ${copied ? 'bg-lime-accent text-ink-900' : 'bg-white text-ink-700 hover:bg-lime-accent'}`}>
+          {copied ? '✓ Copied!' : '↗ Share this calculation'}
+        </button>
       </div>
       <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Compound interest = the 8th wonder of the world (Einstein, allegedly)</div>
     </div>

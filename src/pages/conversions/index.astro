@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema } from '../../lib/seo';
+import { currencyPairs } from '../../data/currency-pairs';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Conversions', url: '/conversions/' },
+];
+
+const categories = [
+  { name: 'Currency Converters', href: '/conversions/currency/', desc: `Live exchange rates for ${currencyPairs.length}+ currency pairs — USD, INR, GBP, EUR, AED, SAR, and more.`, emoji: '💱', count: currencyPairs.length },
+];
+
+const popular = currencyPairs.filter((p) => p.popularity === 'huge').slice(0, 12);
+---
+
+<BaseLayout
+  title="Conversion Calculators — Currency & Units"
+  description={`Free conversion calculators for currency (${currencyPairs.length}+ pairs), units, and more. Live rates, no signup, mobile-first.`}
+  schemas={[buildBreadcrumbSchema(breadcrumbs)]}
+>
+  <div class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>Conversion Calculators</h1>
+    <p class="text-lg text-slate-700 mt-3">
+      Free currency and unit converters. Live exchange rates updated regularly.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+      {
+        categories.map((c) => (
+          <a href={c.href} class="card hover:border-brand-300 no-underline block">
+            <div class="text-2xl mb-2">{c.emoji}</div>
+            <div class="font-semibold text-slate-900">
+              {c.name} <span class="text-slate-500 font-normal">· {c.count} pairs</span>
+            </div>
+            <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+          </a>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-12">Most-searched currency pairs</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-4">
+      {
+        popular.map((p) => (
+          <a
+            href={`/conversions/currency/${p.slug}/`}
+            class="card hover:border-brand-300 no-underline block text-center"
+          >
+            <div class="font-semibold text-slate-900">{p.from} → {p.to}</div>
+            <div class="text-xs text-slate-600 mt-1">1 {p.from} = {p.rate} {p.to}</div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

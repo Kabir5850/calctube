@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { AUTHORS } from '../../data/authors';
+import { SITE } from '../../lib/seo';
+
+const pageUrl = `${SITE.url}/authors/`;
+---
+
+<BaseLayout
+  title="Calculator Experts & Reviewers"
+  description="Meet the financial experts and editorial team who review and verify every calculator on Calctube for accuracy and real-world relevance."
+  canonical={pageUrl}
+>
+  <main class="container-prose py-12 sm:py-16">
+    <h1>Our Experts</h1>
+    <p class="text-ink-600 text-lg leading-relaxed">
+      Every calculator on Calctube is reviewed by qualified financial professionals and our editorial team
+      to ensure mathematical accuracy and practical usefulness.
+    </p>
+
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5 not-prose">
+      {AUTHORS.map((author) => {
+        const displayName = author.credentials
+          ? `${author.name}, ${author.credentials}`
+          : author.name;
+        return (
+          <a
+            href={`/authors/${author.slug}/`}
+            class="flex items-start gap-4 p-5 card card-hover no-underline group"
+          >
+            {/* Avatar */}
+            {author.avatar ? (
+              <img
+                src={author.avatar}
+                alt={`${author.name} headshot`}
+                class="w-14 h-14 rounded-full object-cover flex-shrink-0 border-2 border-ink-200"
+                width="56"
+                height="56"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-brand-400 to-violet-500 flex items-center justify-center text-white font-extrabold text-xl flex-shrink-0 border-2 border-ink-200">
+                {author.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
+              </div>
+            )}
+
+            <div class="min-w-0">
+              <div class="font-extrabold text-ink-900 group-hover:text-brand-600 transition-colors text-sm leading-tight">
+                {displayName}
+              </div>
+              <div class="text-xs text-ink-500 font-semibold mt-0.5">{author.jobTitle}</div>
+              <p class="text-xs text-ink-600 mt-2 leading-relaxed">{author.shortBio}</p>
+              {author.reviewedPages.length > 0 && (
+                <div class="text-[10px] font-bold text-brand-600 mt-2 uppercase tracking-wider">
+                  {author.reviewedPages.length} calculators reviewed →
+                </div>
+              )}
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="mt-12 bg-ink-50 border-2 border-ink-200 rounded-2xl p-5 sm:p-6">
+      <h2 class="!mt-0">Our Review Process</h2>
+      <p>
+        Before any calculator goes live on Calctube, it passes through a two-stage review:
+        first a mathematical accuracy check against authoritative reference formulas,
+        then a real-world sanity check against published rates, actuarial tables, or regulatory guidelines.
+        We update formulas whenever underlying regulations or industry norms change.
+      </p>
+    </div>
+  </main>
+</BaseLayout>

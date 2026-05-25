@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema } from '../../lib/seo';
+
+const liveCalcs = [
+  { name: 'Age Calculator', href: '/date-time/age-calculator/', desc: 'Exact age in years, months, and days from any birth date — plus next birthday countdown.', icon: '🎂' },
+  { name: 'Date Difference Calculator', href: '/date-time/date-difference-calculator/', desc: 'Days, weeks, and months between any two dates — with estimated working days.', icon: '📅' },
+];
+
+const upcomingCalcs = [
+  { name: 'Countdown Timer', desc: 'Live countdown to any future date or event — birthdays, deadlines, launches.', icon: '⏳' },
+  { name: 'Business Days Calculator', desc: 'Working days between dates excluding weekends and country-specific public holidays.', icon: '📆' },
+  { name: 'Time Card Calculator', desc: 'Weekly timecard hours and pay including overtime at custom rates.', icon: '⏰' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Date & Time', url: '/date-time/' },
+];
+
+const faqs = [
+  {
+    q: 'Does the age calculator handle leap years?',
+    a: 'Yes. The age calculator uses calendar arithmetic — it counts full years by comparing the month and day, then counts remaining months, then remaining days. Leap years are handled correctly so February 29th birthdays get the right result.',
+  },
+  {
+    q: 'How is the date difference calculator different from just subtracting dates?',
+    a: "Plain subtraction gives you total days. Our date difference calculator also breaks the result down into years, months, and days (accounting for months of different lengths), and estimates working days by removing weekends — giving you a more useful answer for project planning.",
+  },
+  {
+    q: 'Will the business days calculator support public holidays?',
+    a: 'Yes — the next version will include built-in public holiday lists for the US, UK, India, UAE, Saudi Arabia, Australia, Canada, and the EU, with an option to add custom holidays.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Date & Time Calculators — Calctube',
+    description: 'Free age, date difference, countdown, and business day calculators. Fast, accurate, no signup.',
+    url: 'https://calctube.com/date-time/',
+    isPartOf: { '@id': 'https://calctube.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: liveCalcs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `https://calctube.com${c.href}`,
+        name: c.name,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Date & Time Calculators — Age, Date Difference, Countdown"
+  description="Calculators for age, date difference, countdown timer, business days, and time cards. Coming soon to Calctube. Free, no signup."
+  schemas={schemas}
+>
+  <div class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>Date &amp; Time Calculators</h1>
+    <p class="text-lg text-slate-700 mt-3">
+      Age, date difference, countdown, and business day calculators. All handle leap years, month-end edge cases, and varying month lengths correctly. Free, no signup.
+    </p>
+
+    <h2 class="mt-10">Available now</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {liveCalcs.map((c) => (
+        <a href={c.href} class="card hover:border-brand-300 no-underline block">
+          <div class="text-3xl mb-2">{c.icon}</div>
+          <div class="font-semibold text-slate-900">{c.name}</div>
+          <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <h2 class="mt-10">Coming soon</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {upcomingCalcs.map((c) => (
+        <div class="card opacity-80">
+          <div class="flex items-start gap-3">
+            <div class="text-3xl">{c.icon}</div>
+            <div class="flex-1">
+              <div class="font-semibold text-slate-900 flex items-center gap-2">
+                {c.name}
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 uppercase">Soon</span>
+              </div>
+              <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="mt-10">Frequently asked questions</h2>
+    <div class="space-y-3 mt-4">
+      {faqs.map((f) => (
+        <details class="card">
+          <summary class="cursor-pointer font-semibold text-slate-900">{f.q}</summary>
+          <p class="text-sm text-slate-700 mt-2 !leading-relaxed">{f.a}</p>
+        </details>
+      ))}
+    </div>
+
+    <div class="card bg-lime-50 border-lime-200 mt-10">
+      <h3 class="!mt-0">Need a calculator we haven't built yet?</h3>
+      <p class="text-sm text-slate-700 mt-2">
+        Email <a href="mailto:ideas@calctube.com" class="text-brand-600 font-semibold">ideas@calctube.com</a> with the specific tool you need. Requested calculators ship within 7 days.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,7 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import LoanCalculator from '../../components/calculators/LoanCalculator.tsx';
+import { loanTerms } from '../../data/loan-terms';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
+import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'loan-calculator',
@@ -13,6 +16,7 @@ const meta = {
   ratingValue: '4.8', ratingCount: '94',
 };
 const path = '/finance/loan-calculator';
+const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' },
   { name: 'Finance', url: '/finance/' },
@@ -83,7 +87,10 @@ const relatedCalcs = [
 
   <!-- CALCULATOR -->
   <section class="container-wide pb-12 md:pb-16">
-    <div class="max-w-4xl mx-auto"><LoanCalculator client:load /></div>
+    <div class="max-w-4xl mx-auto">
+      <LoanCalculator client:load />
+      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
+    </div>
   </section>
 
   <!-- HOW TO USE -->
@@ -147,6 +154,36 @@ const relatedCalcs = [
               </summary>
               <div class="px-5 md:px-6 pb-5 md:pb-6 text-ink-700 leading-relaxed font-medium">{faq.a}</div>
             </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BY TERM (pSEO) -->
+  <section class="bg-ink-50 border-y-2 border-ink-900">
+    <div class="container-wide py-12 md:py-16">
+      <div class="max-w-4xl mx-auto">
+        <span class="chip-cyan mb-4">⏱️ By term length</span>
+        <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
+          Personal loan by term length.
+        </h2>
+        <p class="text-ink-700 mt-3 text-lg font-medium max-w-2xl">
+          Shorter terms = lower rates and less interest. Longer terms = lower monthly payment.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8">
+          {loanTerms.map((t) => (
+            <a
+              href={`/finance/${t.slug}-loan-calculator/`}
+              class="group bg-white border-[2.5px] border-ink-900 rounded-2xl p-4 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
+            >
+              <div class="text-2xl mb-2 group-hover:scale-110 transition-transform inline-block">⏱️</div>
+              <div class="font-extrabold text-ink-900 text-base leading-tight" style="font-family: 'Inter Tight', sans-serif;">
+                {t.years}-year
+              </div>
+              <div class="text-xs text-ink-600 mt-1 font-semibold">~{t.defaultRate}% APR</div>
+            </a>
           ))}
         </div>
       </div>

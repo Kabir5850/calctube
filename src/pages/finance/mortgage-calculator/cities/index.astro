@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema, buildFAQSchema } from '../../../../lib/seo';
+import { indiaCities } from '../../../../data/india-cities';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Finance', url: '/finance/' },
+  { name: 'Mortgage Calculator', url: '/finance/mortgage-calculator/' },
+  { name: 'Cities', url: '/finance/mortgage-calculator/cities/' },
+];
+
+// Group by state
+const byState = new Map<string, typeof indiaCities>();
+for (const c of indiaCities) {
+  if (!byState.has(c.stateName)) byState.set(c.stateName, [] as any);
+  byState.get(c.stateName)!.push(c);
+}
+const states = [...byState.entries()]
+  .map(([name, cities]) => ({ name, cities }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const metros = indiaCities.filter((c) => c.hraTier === 'metro');
+
+const faqs = [
+  { q: 'How many Indian city home loan calculators does Calctube offer?', a: `Calctube currently has ${indiaCities.length} city-specific Indian home loan EMI calculators, each with local stamp duty rates, registration charges, women buyer discounts, typical ticket size, and top lender positioning for that city.` },
+  { q: 'What is the stamp duty difference between Indian states?', a: 'Stamp duty in India ranges from 4% (Goa, women buyers Maharashtra) to 8% (most states for men). Registration is typically 1% on top. Tamil Nadu has the highest combined burden at 11% (7% stamp + 4% registration, no women discount). Maharashtra offers 1% women buyer discount; Karnataka and Delhi offer 2% discounts.' },
+  { q: 'Why do home loan rates vary by city?', a: 'Rate cards are uniform per bank nationally, but effective rates vary by city due to (1) employer pre-approval depth at top metros, (2) PSU bank home-state pricing concessions (BoB in Gujarat, Canara in Karnataka, Federal Bank in Kerala), (3) ticket size — Mumbai/Bengaluru typical ₹80L–1.5cr ticket may qualify for premium negotiated rates not available in tier-3.' },
+];
+---
+
+<BaseLayout
+  title={`Home Loan EMI Calculators — ${indiaCities.length} Indian Cities`}
+  description={`Free home loan EMI calculators for ${indiaCities.length} Indian cities. Local stamp duty, registration, women buyer discounts, typical ticket size, and top lender comparisons for Mumbai, Bengaluru, Chennai, Delhi-NCR and more.`}
+  schemas={[buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)]}
+>
+  <div class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>Home Loan EMI Calculators by Indian City</h1>
+    <p class="text-lg text-slate-700 mt-3">
+      {indiaCities.length} cities covered. Each calculator uses the local stamp duty rate, registration charge, women buyer discount, typical mid-segment ticket, and top lender positioning specific to that city.
+    </p>
+
+    <h2 class="mt-10">Metro cities</h2>
+    <p class="text-sm text-slate-600 !mt-1">Metro HRA tier (50% exemption) — Mumbai, Delhi-NCR, Bengaluru, Chennai, Kolkata, Hyderabad.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+      {
+        metros.map((c) => (
+          <a
+            href={`/finance/mortgage-calculator/cities/${c.slug}/`}
+            class="card hover:border-brand-300 no-underline block"
+          >
+            <div class="text-2xl mb-1">{c.flag}</div>
+            <div class="font-semibold text-slate-900">{c.name}</div>
+            <div class="text-xs text-slate-600 mt-1">~{c.typicalRate}% · {c.stateName}</div>
+          </a>
+        ))
+      }
+    </div>
+
+    {
+      states.map((s) => (
+        <section class="mt-12">
+          <h2 class="!mt-0">
+            {s.name}
+            <span class="text-sm text-slate-500 font-normal ml-2">{s.cities.length} cities</span>
+          </h2>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 mt-4">
+            {s.cities.map((c) => (
+              <a
+                href={`/finance/mortgage-calculator/cities/${c.slug}/`}
+                class="block px-3 py-2 rounded-lg border border-slate-200 hover:border-brand-400 hover:bg-brand-50 no-underline text-sm"
+              >
+                <span class="font-semibold text-slate-900">{c.flag} {c.name}</span>
+                <span class="text-slate-500 ml-2 text-xs">~{c.typicalRate}%</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="mt-12">
+      <h2>FAQ</h2>
+      <dl class="mt-4 space-y-4">
+        {
+          faqs.map((f) => (
+            <div class="card">
+              <dt class="font-semibold text-slate-900">{f.q}</dt>
+              <dd class="text-sm text-slate-700 mt-1 !leading-snug">{f.a}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+  </div>
+</BaseLayout>

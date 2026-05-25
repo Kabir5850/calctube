@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema } from '../../lib/seo';
+
+const liveCalcs = [
+  {
+    name: 'Percentage Calculator',
+    href: '/math/percentage-calculator/',
+    desc: 'What is X% of Y, percentage change, percentage increase or decrease — every variant on one page.',
+    icon: '％',
+  },
+  {
+    name: 'Tip Calculator',
+    href: '/math/tip-calculator/',
+    desc: 'Split a restaurant bill any way — choose tip %, divide between people, see per-person total.',
+    icon: '🍽️',
+  },
+  {
+    name: 'Discount Calculator',
+    href: '/math/discount-calculator/',
+    desc: 'Sale price from % off, original price from sale price, or discount % from before/after price.',
+    icon: '🏷️',
+  },
+];
+
+const upcomingCalcs = [
+  { name: 'Fraction Calculator', desc: 'Add, subtract, multiply, divide fractions and simplify to lowest terms.', icon: '½' },
+  { name: 'Scientific Calculator', desc: 'Full scientific calculator with trig, log, exp, factorial, and inverse functions.', icon: '🔬' },
+  { name: 'Statistics Calculator', desc: 'Mean, median, mode, standard deviation, variance, and quartiles from any dataset.', icon: '📊' },
+  { name: 'Quadratic Equation Solver', desc: 'Solve ax² + bx + c = 0 with real and complex roots, full working shown.', icon: '∛' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Math', url: '/math/' },
+];
+
+const faqs = [
+  {
+    q: 'Do Calctube math calculators show the working?',
+    a: 'Yes. Every result shows the formula used, the substituted values, and the steps to the answer. The goal is to teach the math, not just hand over a number.',
+  },
+  {
+    q: 'Can I use Calctube math calculators for homework?',
+    a: 'Yes — they are accurate and free. We recommend writing out the working yourself afterwards so the method sticks.',
+  },
+  {
+    q: 'Why is the percentage calculator one page instead of three?',
+    a: 'Most users want "what is X% of Y", "what % is X of Y", and "Y is X% more than what" — all variations of the same arithmetic. One page lets you toggle between the modes without losing your inputs.',
+  },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Math Calculators — Calctube',
+    description: 'Free percentage, fraction, scientific, and statistics calculators with worked steps.',
+    url: 'https://calctube.com/math/',
+    isPartOf: { '@id': 'https://calctube.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: liveCalcs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `https://calctube.com${c.href}`,
+        name: c.name,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Math Calculators — Percentage, Fractions, Scientific & Statistics"
+  description="Free math calculators with worked steps — percentage, fraction, scientific functions, and statistics. Every formula and step shown. No signup."
+  schemas={schemas}
+>
+  <div class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>Math Calculators</h1>
+    <p class="text-lg text-slate-700 mt-3">
+      Percentage, fractions, scientific functions, and statistics. Every calculator shows the formula and the working — not just the answer.
+    </p>
+
+    <h2 class="mt-10">Available now</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {liveCalcs.map((c) => (
+        <a href={c.href} class="card hover:border-brand-300 no-underline block">
+          <div class="text-3xl mb-2">{c.icon}</div>
+          <div class="font-semibold text-slate-900">{c.name}</div>
+          <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <h2 class="mt-10">Coming soon</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {upcomingCalcs.map((c) => (
+        <div class="card opacity-70">
+          <div class="flex items-start gap-3">
+            <div class="text-3xl">{c.icon}</div>
+            <div class="flex-1">
+              <div class="font-semibold text-slate-900 flex items-center gap-2">
+                {c.name}
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 uppercase">Soon</span>
+              </div>
+              <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="mt-10">About Calctube math tools</h2>
+    <p class="text-slate-700 leading-relaxed">
+      Math is best learned by seeing the steps, not just the answer. Every Calctube math calculator shows the formula, substitutes your values, and walks the working out line by line. The goal is for the underlying method to stick — so the next time you encounter the same kind of problem, you can do it on paper.
+    </p>
+
+    <h2 class="mt-10">Frequently asked questions</h2>
+    <div class="space-y-3 mt-4">
+      {faqs.map((f) => (
+        <details class="card">
+          <summary class="cursor-pointer font-semibold text-slate-900">{f.q}</summary>
+          <p class="text-sm text-slate-700 mt-2 !leading-relaxed">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

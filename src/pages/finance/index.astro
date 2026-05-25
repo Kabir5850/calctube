@@ -4,16 +4,29 @@ import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
 
 const calcs = [
-  { name: 'Mortgage Calculator', href: '/finance/mortgage-calculator/', desc: 'Calculate monthly payments and total interest on home loans.' },
+  { name: 'Mortgage Calculator', href: '/finance/mortgage-calculator/', desc: 'Monthly payments, PITI breakdown, PMI, extra payments, biweekly savings — 160+ countries.' },
   { name: 'Loan Calculator', href: '/finance/loan-calculator/', desc: 'General-purpose loan payment calculator for any term.' },
-  { name: 'EMI Calculator', href: '/finance/emi-calculator/', desc: 'Indian-style equated monthly installment calculator.' },
+  { name: 'Retirement Calculator', href: '/finance/retirement-calculator/', desc: 'Project your retirement savings with compound growth and inflation-adjusted values.' },
+  { name: 'Inflation Calculator', href: '/finance/inflation-calculator/', desc: 'Purchasing power over time — what is $X from [year] worth today?' },
+  { name: 'Net Worth Calculator', href: '/finance/net-worth-calculator/', desc: 'Track assets vs liabilities to see your true net worth and debt-to-asset ratio.' },
+  { name: 'EMI Calculator', href: '/finance/emi-calculator/', desc: 'Indian-style equated monthly installment calculator with bank-by-bank breakdowns.' },
   { name: 'Compound Interest', href: '/finance/compound-interest-calculator/', desc: 'See how investments and savings grow over time.' },
-  { name: 'Salary Calculator', href: '/finance/salary-calculator/', desc: 'Gross-to-net salary by country with tax estimates.' },
-  { name: 'SIP Calculator', href: '/finance/sip-calculator/', desc: 'Indian mutual fund SIP returns calculator.' },
-  { name: 'FD Calculator', href: '/finance/fd-calculator/', desc: 'Fixed deposit maturity and interest calculator.' },
+  { name: 'SIP Calculator', href: '/finance/sip-calculator/', desc: 'Indian mutual fund SIP returns calculator with goal planning.' },
+  { name: 'FD Calculator', href: '/finance/fd-calculator/', desc: 'Fixed deposit maturity and interest by bank.' },
   { name: 'PPF Calculator', href: '/finance/ppf-calculator/', desc: 'Public Provident Fund returns over 15 years.' },
-  { name: 'Tax Calculator (USA)', href: '/finance/tax-calculator-usa/', desc: 'Federal income tax estimator by bracket.' },
-  { name: 'Tax Calculator (India)', href: '/finance/tax-calculator-india/', desc: 'Old vs new tax regime comparison.' },
+  { name: 'RD Calculator', href: '/finance/rd-calculator/', desc: 'Recurring deposit maturity calculator for Indian banks.' },
+  { name: 'HRA Calculator', href: '/finance/hra-calculator/', desc: 'House Rent Allowance exemption for Indian income tax.' },
+  { name: 'GST Calculator', href: '/finance/gst-calculator/', desc: 'India GST inclusive/exclusive amount and rate finder.' },
+  { name: 'Income Tax India', href: '/finance/income-tax-india/maharashtra/', desc: 'State-by-state old vs new regime comparison for FY 2026-27.' },
+  { name: 'Old vs New Regime', href: '/finance/old-vs-new-tax-regime-india/', desc: 'Side-by-side comparison of India\'s two income-tax regimes.' },
+  { name: 'Indian City EMI Calculators', href: '/finance/mortgage-calculator/cities/', desc: 'Home loan EMI by Indian city — Mumbai, Bengaluru, Chennai, Delhi-NCR and 280+ more with local stamp duty and lender notes.' },
+  { name: 'SBI vs HDFC Home Loan', href: '/finance/sbi-vs-hdfc-home-loan/', desc: 'Compare SBI and HDFC home loan rates, processing speed, and real EMI.' },
+  { name: 'HDFC vs ICICI Personal Loan', href: '/finance/hdfc-vs-icici-personal-loan/', desc: 'HDFC vs ICICI personal loan — EMI, rates, and disbursal speed compared.' },
+  { name: 'FHA vs Conventional Mortgage', href: '/finance/fha-vs-conventional-mortgage/', desc: 'US homebuyer comparison — FHA vs conventional down payment, rates, and PMI.' },
+  { name: 'PPF vs ELSS', href: '/finance/ppf-vs-elss-investment/', desc: 'Section 80C comparison — PPF vs ELSS over 15-year returns.' },
+  { name: 'SIP vs Lump Sum', href: '/finance/sip-vs-lump-sum-investment/', desc: 'Which investment style wins — SIP vs lump sum over 10 years.' },
+  { name: '10-Year vs 30-Year Mortgage', href: '/finance/10-year-vs-30-year-mortgage/', desc: 'Total interest, EMI, and payoff tradeoffs between short and long mortgages.' },
+  { name: '15-Year vs 30-Year Mortgage', href: '/finance/15-year-vs-30-year-mortgage/', desc: 'The classic mid-tenure decision for US homebuyers.' },
 ];
 
 const breadcrumbs = [

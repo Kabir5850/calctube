@@ -166,12 +166,24 @@
   .fade-in-delay-4 { animation-delay: 0.32s; }
   .fade-in-delay-5 { animation-delay: 0.40s; }
 
-  /* ====== Float ====== */
+  /* ====== Float (animations disabled on mobile + reduced-motion users for performance) ======
+     Continuous CSS animation on blurred orbs is GPU-expensive on low-end mobile devices,
+     pushing LCP past 4s and consuming main-thread budget. Limit to desktop + opt-in motion. */
   .float-slow {
-    animation: float 6s ease-in-out infinite;
+    will-change: auto;
   }
   .float-slow-2 {
-    animation: float 9s ease-in-out infinite;
+    will-change: auto;
+  }
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .float-slow {
+      animation: float 6s ease-in-out infinite;
+      will-change: transform;
+    }
+    .float-slow-2 {
+      animation: float 9s ease-in-out infinite;
+      will-change: transform;
+    }
   }
 
   /* ====== Aurora background animation ====== */
@@ -286,6 +298,36 @@
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+@media print {
+  /* Hide nav, footer, cookie banner, share buttons */
+  nav, footer, .cookie-banner, [data-print-hide] {
+    display: none !important;
+  }
+  /* Reset colors to black on white for legibility */
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  /* Keep calculator card visible */
+  .shadow-sticker, .shadow-sticker-sm {
+    box-shadow: none !important;
+  }
+  /* Expand collapsed amortization table */
+  [data-print-expand] {
+    display: block !important;
+  }
+  /* Page breaks */
+  section {
+    break-inside: avoid;
+  }
 }
 
 /* ==========================================================================
