@@ -2,7 +2,8 @@
 import '../styles/global.css';
 import { SITE, buildOrganizationSchema, buildWebsiteSchema } from '../lib/seo';
 import Logo from '../components/ui/Logo.astro';
-import CookieBanner from '../components/ui/CookieBanner.astro';
+// Cookie banner removed 2026-05-25: replaced by Google-certified CMP (auto-injected
+// by adsbygoogle.js on EU/UK/Swiss visitors per AdSense requirement).
 
 export interface HreflangAlternate {
   hreflang: string;    // e.g., 'en-IN', 'ar-AE', 'x-default'
@@ -93,18 +94,8 @@ const navLinks = [
         security_storage: 'granted',
         wait_for_update: 500,
       });
-      // Read existing consent and apply if previously granted
-      (function () {
-        var m = document.cookie.match(/(?:^|; )calctube-consent=([^;]+)/);
-        if (m && decodeURIComponent(m[1]) === 'all') {
-          gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            ad_personalization: 'granted',
-            analytics_storage: 'granted',
-          });
-        }
-      })();
+      // Consent updates are handled by Google's certified CMP (auto-injected by
+      // adsbygoogle.js). Default-deny above stays; CMP flips it on user accept.
     </script>
 
     <!-- GTM + GA4 loader — DEFERRED until after first paint to free the main thread.
@@ -367,9 +358,6 @@ const navLinks = [
         </div>
       </div>
     </footer>
-
-    <!-- Cookie consent banner (Google Consent Mode v2 controller) -->
-    <CookieBanner />
 
     <script is:inline>
       // Mobile menu toggle
