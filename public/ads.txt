@@ -1,12 +1,1 @@
-# Calctube ads.txt
-# https://calctube.com/ads.txt
-#
-# Authorized digital sellers (ads.txt) per IAB Tech Lab spec:
-# https://iabtechlab.com/ads-txt-about/
-#
-# AdSense not yet approved. Once approved, add:
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-#
-# Until then this file exists to:
-#  1. Avoid 404 / soft-404 when bots query /ads.txt
-#  2. Be ready for AdSense application review (Google checks this URL)
+google.com, pub-1115172981829710, DIRECT, f08c47fec0942fa0
