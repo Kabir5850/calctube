@@ -11,6 +11,7 @@
     "astro": "astro",
     "og:png": "node scripts/generate-og-png.js",
     "logos": "node scripts/generate-logos.js",
+    "logos:countries-banks": "node scripts/generate-country-bank-logos.js",
     "indexnow": "node scripts/ping-indexnow.js",
     "postbuild": "node scripts/ping-indexnow.js"
   },

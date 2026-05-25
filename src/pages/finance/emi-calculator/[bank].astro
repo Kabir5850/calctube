@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import EmiCalculator from '../../../components/calculators/EmiCalculator.tsx';
+import BankIcon from '../../../components/ui/BankIcon.astro';
 import { emiBanks, type BankData } from '../../../data/emi-banks';
 import {
   buildCalculatorSchema,
@@ -122,7 +123,7 @@ const otherBanks = [...sameTierBanks, ...otherTierBanks].slice(0, 8);
       <div class="max-w-3xl">
         <div class="flex flex-wrap items-center gap-2 mb-5">
           <span class="chip-yellow">🇮🇳 India</span>
-          <span class="chip-cyan">{bank.emoji} {bank.bankName}</span>
+          <span class="chip-cyan inline-flex items-center gap-1.5"><BankIcon slug={bank.slug} size={18} alt={bank.bankName} /> {bank.bankName}</span>
           <span class="chip-white"><span class="text-ink-500">Last updated</span><span>{meta.lastUpdated}</span></span>
         </div>
 
@@ -201,7 +202,7 @@ const otherBanks = [...sameTierBanks, ...otherTierBanks].slice(0, 8);
   <!-- WHY THIS BANK -->
   <section class="container-wide py-12 md:py-16">
     <div class="max-w-4xl mx-auto">
-      <span class="chip-cyan mb-4">{bank.emoji} About {bank.bankName}</span>
+      <span class="chip-cyan mb-4 inline-flex items-center gap-1.5"><BankIcon slug={bank.slug} size={18} alt={bank.bankName} /> About {bank.bankName}</span>
       <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
         Why choose {bank.bankName}?
       </h2>
