@@ -25,16 +25,16 @@ async function main() {
   try {
     sitemapXml = readFileSync(sitemapPath, 'utf-8');
   } catch (e) {
-    console.error('❌ sitemap-0.xml not found. Run `npm run build` first.');
-    process.exit(1);
+    console.warn('⚠️  sitemap-0.xml not found — skipping IndexNow ping (build still succeeds).');
+    return; // Exit 0 — never fail the build over a missing sitemap
   }
 
   const urls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   console.log(`📍 Found ${urls.length} URLs in sitemap`);
 
   if (urls.length === 0) {
-    console.error('❌ No URLs found in sitemap');
-    process.exit(1);
+    console.warn('⚠️  No URLs found in sitemap — skipping IndexNow ping.');
+    return;
   }
 
   const payload = {
