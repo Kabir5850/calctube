@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/ui/Breadcrumbs.astro';
+import FlagIcon from '../../../components/ui/FlagIcon.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../../lib/seo';
 import { currencyPairs, currencies } from '../../../data/currency-pairs';
+import { flagSlugForCurrency } from '../../../lib/flag-helpers';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -51,8 +53,10 @@ const faqs = [
             href={`/conversions/currency/${p.slug}/`}
             class="card hover:border-brand-300 no-underline block"
           >
-            <div class="font-semibold text-slate-900 text-sm">
-              {currencies[p.from]?.flag} {p.from} → {p.to} {currencies[p.to]?.flag}
+            <div class="font-semibold text-slate-900 text-sm flex items-center gap-1.5 flex-wrap">
+              {flagSlugForCurrency(p.from) && <FlagIcon slug={flagSlugForCurrency(p.from)!} size={18} alt={p.from} />}
+              <span>{p.from} → {p.to}</span>
+              {flagSlugForCurrency(p.to) && <FlagIcon slug={flagSlugForCurrency(p.to)!} size={18} alt={p.to} />}
             </div>
             <div class="text-xs text-slate-600 mt-1">1 {p.from} = {p.rate} {p.to}</div>
           </a>
@@ -63,8 +67,10 @@ const faqs = [
     {
       groups.map((g) => (
         <section class="mt-12">
-          <h2 class="!mt-0">
-            From {g.currency.flag} {g.currency.name} ({g.code})
+          <h2 class="!mt-0 flex items-center gap-2 flex-wrap">
+            <span>From</span>
+            {flagSlugForCurrency(g.code) && <FlagIcon slug={flagSlugForCurrency(g.code)!} size={24} alt={g.currency.name} />}
+            <span>{g.currency.name} ({g.code})</span>
             <span class="text-sm text-slate-500 font-normal ml-2">{g.pairs.length} pairs</span>
           </h2>
           <p class="text-sm text-slate-600 !mt-1">{g.currency.popularUses.join(' · ')}</p>

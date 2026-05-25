@@ -60,6 +60,8 @@ const SLUG_TO_ISO = {
   'solomon-islands': 'sb', 'cook-islands': 'ck', dominica: 'dm',
   // Extras seen in some pSEO routes
   china: 'cn',
+  // Supranational / multi-country flags used by currencies (EUR, XAF, XOF, XCD)
+  eu: 'eu',
 };
 
 async function downloadFlag(slug, iso) {
@@ -165,8 +167,58 @@ async function generateBankLogos() {
 }
 
 // ============================================================================
+// INDIAN STATE LOGOS — branded circles with 2-letter state abbreviation
+// ============================================================================
+const statesDir = path.join(projectRoot, 'public', 'states');
+fs.mkdirSync(statesDir, { recursive: true });
+
+// Standard Indian state postal codes (2-letter). Slugs that don't map fall back
+// to first-2-letters-of-slug uppercase.
+const STATE_ABBR = {
+  maharashtra: 'MH', karnataka: 'KA', 'tamil-nadu': 'TN', delhi: 'DL',
+  'uttar-pradesh': 'UP', gujarat: 'GJ', 'west-bengal': 'WB', telangana: 'TG',
+  rajasthan: 'RJ', haryana: 'HR', punjab: 'PB', kerala: 'KL',
+  'andhra-pradesh': 'AP', 'madhya-pradesh': 'MP', bihar: 'BR', odisha: 'OD',
+  assam: 'AS', jharkhand: 'JH', chhattisgarh: 'CG', uttarakhand: 'UK',
+  'himachal-pradesh': 'HP', goa: 'GA', tripura: 'TR', manipur: 'MN',
+  meghalaya: 'ML', nagaland: 'NL', mizoram: 'MZ', sikkim: 'SK',
+  'jammu-and-kashmir': 'JK', ladakh: 'LA', puducherry: 'PY',
+  'andaman-and-nicobar': 'AN', chandigarh: 'CH', 'dadra-nagar-haveli': 'DN',
+  lakshadweep: 'LD', 'arunachal-pradesh': 'AR',
+};
+
+function stateSvg(abbr, color) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <circle cx="32" cy="32" r="32" fill="${color}"/>
+  <text x="32" y="32" text-anchor="middle" dominant-baseline="central"
+        font-family="Inter Tight, -apple-system, system-ui, sans-serif"
+        font-weight="800" font-size="26" fill="#ffffff" letter-spacing="-0.02em">${abbr}</text>
+</svg>`;
+}
+
+async function generateStateLogos() {
+  const tsSource = fs.readFileSync(path.join(projectRoot, 'src', 'data', 'india-states.ts'), 'utf-8');
+  const states = [];
+  const re = /slug:\s*['"]([^'"]+)['"][\s\S]*?name:\s*['"]([^'"]+)['"]/g;
+  let m;
+  while ((m = re.exec(tsSource)) !== null) {
+    states.push({ slug: m[1], name: m[2] });
+  }
+  console.log(`\n🏛️  Generating ${states.length} state circle SVGs…`);
+  let count = 0;
+  for (const { slug, name } of states) {
+    const abbr = STATE_ABBR[slug] || slug.slice(0, 2).toUpperCase();
+    const color = colorForSlug(slug);
+    fs.writeFileSync(path.join(statesDir, `${slug}.svg`), stateSvg(abbr, color));
+    count++;
+  }
+  console.log(`  ✓ ${count} state logos written to public/states/`);
+}
+
+// ============================================================================
 // Main
 // ============================================================================
 await generateFlags();
 await generateBankLogos();
-console.log('\n✅ Country + bank logo generation complete.');
+await generateStateLogos();
+console.log('\n✅ Country + bank + state logo generation complete.');

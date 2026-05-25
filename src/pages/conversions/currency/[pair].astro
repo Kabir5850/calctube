@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CurrencyConverter from '../../../components/calculators/CurrencyConverter.tsx';
+import FlagIcon from '../../../components/ui/FlagIcon.astro';
 import { currencyPairs, currencies, type CurrencyPair } from '../../../data/currency-pairs';
+import { flagSlugForCurrency } from '../../../lib/flag-helpers';
 import { SITE } from '../../../lib/seo';
 import {
   buildCalculatorSchema,
@@ -144,9 +146,9 @@ const relatedPairs = currencyPairs
 
       <div class="max-w-3xl">
         <div class="flex flex-wrap items-center gap-2 mb-5">
-          <span class="chip-cyan">{fromCurr.flag} {pair.from}</span>
+          <span class="chip-cyan inline-flex items-center gap-1.5">{flagSlugForCurrency(pair.from) ? <FlagIcon slug={flagSlugForCurrency(pair.from)!} size={18} alt={pair.from} /> : <span>{fromCurr.flag}</span>} {pair.from}</span>
           <span class="text-xl font-bold text-ink-500">→</span>
-          <span class="chip-cyan">{toCurr.flag} {pair.to}</span>
+          <span class="chip-cyan inline-flex items-center gap-1.5">{flagSlugForCurrency(pair.to) ? <FlagIcon slug={flagSlugForCurrency(pair.to)!} size={18} alt={pair.to} /> : <span>{toCurr.flag}</span>} {pair.to}</span>
           {pair.popularity === 'huge' && <span class="chip-yellow">🔥 Most searched</span>}
           {pair.popularity === 'high' && <span class="chip-lime">⚡ Popular</span>}
           <span class="chip-white"><span class="text-ink-500">Rate as of</span><span>{pair.lastUpdated}</span></span>
@@ -264,10 +266,10 @@ const relatedPairs = currencyPairs
           class="group block bg-yellow-accent border-[2.5px] border-ink-900 rounded-3xl p-6 sm:p-7 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
         >
           <div class="flex flex-wrap items-center gap-4">
-            <div class="text-3xl sm:text-4xl flex items-center gap-3">
-              <span>{toCurr.flag}</span>
-              <span class="text-ink-900">→</span>
-              <span>{fromCurr.flag}</span>
+            <div class="flex items-center gap-3">
+              {flagSlugForCurrency(reversePair.from) ? <FlagIcon slug={flagSlugForCurrency(reversePair.from)!} size={40} alt={reversePair.from} /> : <span class="text-3xl sm:text-4xl">{toCurr.flag}</span>}
+              <span class="text-ink-900 text-3xl">→</span>
+              {flagSlugForCurrency(reversePair.to) ? <FlagIcon slug={flagSlugForCurrency(reversePair.to)!} size={40} alt={reversePair.to} /> : <span class="text-3xl sm:text-4xl">{fromCurr.flag}</span>}
             </div>
             <div class="flex-1 min-w-0">
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">↔ Convert the other way</div>
@@ -303,10 +305,10 @@ const relatedPairs = currencyPairs
                 href={`/conversions/currency/${other.slug}/`}
                 class="group bg-white border-[2.5px] border-ink-900 rounded-2xl p-4 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
               >
-                <div class="text-xl mb-2 flex items-center gap-2">
-                  <span>{oFrom.flag}</span>
+                <div class="mb-2 flex items-center gap-2">
+                  {flagSlugForCurrency(other.from) ? <FlagIcon slug={flagSlugForCurrency(other.from)!} size={20} alt={other.from} /> : <span class="text-xl">{oFrom.flag}</span>}
                   <span class="text-ink-400">→</span>
-                  <span>{oTo.flag}</span>
+                  {flagSlugForCurrency(other.to) ? <FlagIcon slug={flagSlugForCurrency(other.to)!} size={20} alt={other.to} /> : <span class="text-xl">{oTo.flag}</span>}
                 </div>
                 <div class="font-extrabold text-ink-900 text-sm leading-tight" style="font-family: 'Inter Tight', sans-serif;">
                   {other.from} to {other.to}

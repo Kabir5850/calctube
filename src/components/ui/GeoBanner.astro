@@ -11,11 +11,14 @@
  *
  * The actual UI is rendered client-side to avoid showing for direct/SEO arrivals.
  */
+import FlagIcon from './FlagIcon.astro';
+
 export interface Props {
-  country: string;  // e.g., "United Arab Emirates"
-  flag: string;     // e.g., "🇦🇪"
+  country: string;     // e.g., "United Arab Emirates"
+  flag: string;        // Legacy emoji fallback (kept for back-compat)
+  slug?: string;       // Country slug for SVG flag (e.g., 'uae')
 }
-const { country, flag } = Astro.props;
+const { country, flag, slug } = Astro.props;
 ---
 
 <div
@@ -28,7 +31,7 @@ const { country, flag } = Astro.props;
 >
   <div class="container-wide py-2.5 sm:py-3 flex items-center justify-between gap-3 flex-wrap">
     <p class="text-sm sm:text-base font-semibold text-ink-900 !leading-tight !mb-0 flex items-center gap-2 min-w-0">
-      <span class="text-xl flex-shrink-0" aria-hidden="true">{flag}</span>
+      {slug ? <FlagIcon slug={slug} size={24} alt={`${country} flag`} class="flex-shrink-0" /> : <span class="text-xl flex-shrink-0" aria-hidden="true">{flag}</span>}
       <span class="truncate">
         Showing <strong class="font-extrabold">{country}</strong> because that&rsquo;s where you are.
       </span>
