@@ -11,3 +11,6 @@ dist/
 
 # Internal backlink/outreach kit — local only, not for public repo
 BACKLINK_KIT/
+
+# Debug/audit logs — local only
+logs/
