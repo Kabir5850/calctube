@@ -29,10 +29,10 @@ const path = `/finance/emi-calculator/${bank.slug}`;
 const meta = {
   slug: `emi-calculator-${bank.slug}`,
   name: `${bank.bankName} EMI Calculator`,
-  description: `Free ${bank.bankName} EMI calculator for home, personal, and car loans. Current rates: home ${bank.homeLoanRate.typical}%, personal ${bank.personalLoanRate.typical}%, car ${bank.carLoanRate.typical}% p.a.`,
+  description: `Free ${bank.bankName} EMI calculator (2026). Home loan from ${bank.homeLoanRate.min}%, personal from ${bank.personalLoanRate.min}%, car from ${bank.carLoanRate.min}% p.a. Monthly EMI, total interest & amortization table.`,
   category: 'finance' as const,
   keywords: bank.metaKeywords,
-  lastUpdated: '2026-05-13',
+  lastUpdated: '2026-05-28',
 };
 
 const breadcrumbs = [
@@ -89,7 +89,7 @@ const otherBanks = [...sameTierBanks, ...otherTierBanks].slice(0, 8);
 ---
 
 <BaseLayout
-  title={`${bank.bankName} EMI Calculator — Home, Personal & Car Loans`}
+  title={`${bank.bankName} Home Loan EMI Calculator 2026`}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}

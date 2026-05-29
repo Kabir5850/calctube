@@ -43,10 +43,10 @@ const fmtUSD = (v: number) =>
 const meta = {
   slug: `${variant.slug}-loan-calculator`,
   name: `${variant.years}-Year Personal Loan Calculator`,
-  description: `Free ${variant.years}-year personal loan calculator. Calculate monthly payment and total interest. ${variant.positioning.slice(0, 120)}`,
+  description: `Free ${variant.years}-year loan calculator (2026). ${fmtUSD(variant.defaultAmount)} at ${variant.defaultRate}% = ${fmtUSD(Math.round(thisMonthly))}/mo. Total interest: ${fmtUSD(Math.round(thisInterest))}. Instant amortization.`,
   category: 'finance' as const,
   keywords: variant.metaKeywords,
-  lastUpdated: '2026-05-13',
+  lastUpdated: '2026-05-28',
 };
 
 const breadcrumbs = [

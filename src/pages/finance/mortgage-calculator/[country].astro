@@ -48,10 +48,10 @@ const path = `/finance/mortgage-calculator/${locale.slug}`;
 const meta = {
   slug: `mortgage-calculator-${locale.slug}`,
   name: `Mortgage Calculator (${locale.country})`,
-  description: (`Mortgage calculator for ${locale.country}. Typical rate ~${locale.typicalRate}% over ${locale.typicalTerm} years. ${locale.rateContext.split('. ')[0]}.`).slice(0, 150),
+  description: `Free ${locale.country} mortgage calculator (2026). ${formatLocaleCurrency(locale.workedExample.amount, locale)} at ${locale.workedExample.rate}% for ${locale.workedExample.term} yrs = ~${formatLocaleCurrency(Math.round(examplePayment), locale)}/mo. Instant amortization table.`,
   category: 'finance' as const,
   keywords: locale.metaKeywords,
-  lastUpdated: '2026-05-13',
+  lastUpdated: '2026-05-28',
 };
 
 const breadcrumbs = [
@@ -124,7 +124,7 @@ const hreflangs = [
 ---
 
 <BaseLayout
-  title={`Mortgage Calculator ${locale.country} ${locale.flag}`}
+  title={`${locale.country} Mortgage Calculator 2026`}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}

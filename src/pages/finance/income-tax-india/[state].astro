@@ -29,7 +29,7 @@ const meta = {
   description: `Free income tax calculator for ${state.name} (FY 2025-26). Compare Old vs New regime. Includes ${state.monthlyProfessionalTax > 0 ? `state Professional Tax ₹${state.monthlyProfessionalTax}/mo` : 'no Professional Tax (state-exempt)'}. HRA ${state.hraTier === 'metro' ? '50%' : '40%'} exemption tier.`,
   category: 'finance' as const,
   keywords: state.metaKeywords,
-  lastUpdated: '2026-05-13',
+  lastUpdated: '2026-05-28',
 };
 
 const breadcrumbs = [
@@ -53,7 +53,7 @@ const hraExemption = state.hraTier === 'metro' ? '50%' : '40%';
 ---
 
 <BaseLayout
-  title={`${state.name} Income Tax Calculator — Old vs New Regime FY 2025-26`}
+  title={`${state.name} Income Tax Calculator FY 2025-26`}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}

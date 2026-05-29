@@ -45,10 +45,10 @@ const fmtUSD = (v: number) =>
 const meta = {
   slug: `${variant.slug}-mortgage-calculator`,
   name: `${variant.years}-Year Mortgage Calculator`,
-  description: `Free ${variant.years}-year fixed mortgage calculator. Compare monthly payment, total interest, and payoff timeline against 10/15/20/25/30/40-year mortgages. ${variant.positioning}`,
+  description: `Free ${variant.years}-year mortgage calculator (2026). ${fmtUSD(variant.defaultAmount)} at ${variant.defaultRate}% = ${fmtUSD(Math.round(thisMonthly))}/mo. Total interest: ${fmtUSD(Math.round(thisInterest))}. Compare all terms.`,
   category: 'finance' as const,
   keywords: variant.metaKeywords,
-  lastUpdated: '2026-05-13',
+  lastUpdated: '2026-05-28',
 };
 
 const breadcrumbs = [
