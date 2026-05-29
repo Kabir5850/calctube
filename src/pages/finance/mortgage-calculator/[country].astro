@@ -109,16 +109,17 @@ const otherCountries = [...sameCurrencySiblings, ...otherProminent].slice(0, 8);
 
 const reviewer = getAuthor('aisha-rahman')!;
 
-// Hreflang alternates — self-reference + x-default + bare language tag.
-// Per Google: a page must include itself in its hreflang cluster, otherwise the whole set is ignored.
-// We use a 3-entry set (self / language-only / x-default) instead of cross-linking all 162 countries
-// because emitting 162 link tags on every page bloats markup ~30KB per page without ranking benefit
-// (large multilingual sites should use sitemap-based hreflang for the full graph — out of scope here).
-const baseLang = locale.locale.split('-')[0];
+// Hreflang alternates — self-reference + x-default.
+// All content is English, so we use English language codes:
+//   • English-speaking locales (en-*): use country-specific English (en-CA, en-AU…)
+//   • Non-English locales (fi-FI, nl-NL, de-DE…): use plain 'en' since the page
+//     content is English, not the native language.
+// Setting hreflang="fi" for an English page is WRONG — it tells Google the page
+// is Finnish, causing a language-signal mismatch that hurts rankings.
+const contentLang = locale.language.startsWith('en') ? locale.language : 'en';
 const selfUrl = `${SITE.url}${path}/`;
 const hreflangs = [
-  { hreflang: locale.locale, href: selfUrl },                                 // e.g., en-IN
-  ...(baseLang !== locale.locale ? [{ hreflang: baseLang, href: selfUrl }] : []), // e.g., en
+  { hreflang: contentLang, href: selfUrl },
   { hreflang: 'x-default', href: `${SITE.url}/finance/mortgage-calculator/` }, // global fallback
 ];
 ---
@@ -129,7 +130,7 @@ const hreflangs = [
   schemas={schemas}
   publishedTime={meta.lastUpdated}
   modifiedTime={meta.lastUpdated}
-  htmlLang={locale.locale}
+  htmlLang={locale.language.startsWith('en') ? locale.language : 'en'}
   hreflangs={hreflangs}
 >
   <GeoBanner country={locale.country} flag={locale.flag} slug={locale.slug} />
