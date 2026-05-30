@@ -32,25 +32,9 @@ const faqs = [
   },
 ];
 
-const schemas = [
-  buildBreadcrumbSchema(breadcrumbs),
-  {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Construction Calculators — Calctube',
-    description: 'Concrete, paint, tile, roofing, wallpaper, and drywall material calculators. Coming soon.',
-    url: 'https://calctube.com/construction/',
-    isPartOf: { '@id': 'https://calctube.com/#website' },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  },
+// No structured data — page is noindexed (coming-soon placeholder).
+// Schema on noindexed pages wastes crawl budget without ranking benefit.
+const schemas: object[] = [];
 ];
 ---
 
