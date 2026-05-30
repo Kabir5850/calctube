@@ -13,6 +13,13 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
+      // Exclude pages marked noindex — no point signaling Google to crawl them.
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return !['/og-preview/', '/logo-gallery/', '/contact/', '/construction/'].some(
+          (p) => path === p || path.startsWith(p)
+        );
+      },
       // Differentiate priorities so Google focuses crawl budget on important pages.
       // Homepage 1.0, category hubs 0.9, calculator hubs 0.8, long-tail spokes 0.5.
       serialize(item) {
