@@ -20,7 +20,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          # Upgraded from 20 → 24: GitHub Actions removes Node.js 20 on 2026-09-16
+          # and forces node24 as default starting 2026-06-16.
+          node-version: '24'
           cache: 'npm'
 
       - name: Install dependencies
@@ -30,7 +32,10 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        # Upgraded from v3 → v4: wrangler-action@v3 uses node20 runtime (breaking June 16).
+        # v4 was updated 2026-05-12 to node24. No wranglerVersion pin — installs wrangler
+        # v4 latest. The "pages deploy" command syntax is identical between wrangler v3 and v4.
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
