@@ -5,6 +5,14 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Force node24 runtime for any action still declaring node20.
+# GitHub starts enforcing node24 from 2026-06-16; node20 fully removed 2026-09-16.
+# FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 is the official runner escape hatch
+# (ForceNode24Variable in Runner.Common/Constants.cs) — acts as a safety net
+# for any transitive third-party actions that haven't yet migrated.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 permissions:
   contents: read
   deployments: write
@@ -15,13 +23,17 @@ jobs:
     name: Build & Deploy
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        # Upgraded v4 → v5: actions/checkout@v4 (latest patch v4.3.1) declares
+        # "using: node20" and will NOT be updated within the v4 major.
+        # v5.0.0 (Aug 2024) is the official node24 release for this action.
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        # Upgraded v4 → v5: actions/setup-node@v4 (latest patch v4.4.0) declares
+        # "using: node20" and will NOT be updated within the v4 major.
+        # v5.0.0 (Sep 2024) is the official node24 release for this action.
+        uses: actions/setup-node@v5
         with:
-          # Upgraded from 20 → 24: GitHub Actions removes Node.js 20 on 2026-09-16
-          # and forces node24 as default starting 2026-06-16.
           node-version: '24'
           cache: 'npm'
 
@@ -32,9 +44,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        # Upgraded from v3 → v4: wrangler-action@v3 uses node20 runtime (breaking June 16).
-        # v4 was updated 2026-05-12 to node24. No wranglerVersion pin — installs wrangler
-        # v4 latest. The "pages deploy" command syntax is identical between wrangler v3 and v4.
+        # wrangler-action@v4 already migrated to node24 on 2026-05-12 — no change.
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
