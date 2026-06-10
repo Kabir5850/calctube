@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DateDifferenceCalculator from '../../components/calculators/DateDifferenceCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
+import AuthorBadge from '../../components/ui/AuthorBadge.astro';
+import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'date-difference-calculator',
@@ -48,6 +50,7 @@ const relatedCalcs = [
   { name: 'BMI Calculator', href: '/health/bmi-calculator/', desc: 'Body Mass Index.', icon: '⚖️', color: 'bg-cyan-accent' },
   { name: 'Percentage Calculator', href: '/math/percentage-calculator/', desc: 'Percents in 3 modes.', icon: '🧮', color: 'bg-pink-accent' },
 ];
+const reviewer = getAuthor('calctube-editorial');
 ---
 
 <BaseLayout
@@ -111,6 +114,13 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <DateDifferenceCalculator client:visible />
+    </div>
+  </section>
+
+  <!-- Reviewer attribution — E-E-A-T signal -->
+  <section class="container-wide pt-2 pb-8">
+    <div class="max-w-4xl mx-auto">
+      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
     </div>
   </section>
 

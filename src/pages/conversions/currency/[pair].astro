@@ -84,6 +84,27 @@ const yearChange = (((pair.rate - pair.yearAgoRate) / pair.yearAgoRate) * 100).t
 const fiveYearDirection = pair.rate > pair.fiveYearAgoRate ? 'up' : 'down';
 const yearDirection = pair.rate > pair.yearAgoRate ? 'up' : 'down';
 
+// Quick-reference conversion table — genuinely useful, unique per pair, and matches
+// the way people actually search ("100 usd to inr", "5000 aed to inr").
+const tableAmounts = [1, 5, 10, 25, 50, 100, 500, 1000, 5000, 10000];
+const inverseRate = 1 / pair.rate;
+// Format a converted value with sensible precision (more decimals for tiny rates).
+function fmtConverted(v: number): string {
+  if (v >= 1000) return v.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  if (v >= 1) return v.toLocaleString('en-US', { maximumFractionDigits: 2 });
+  return v.toLocaleString('en-US', { maximumFractionDigits: 4 });
+}
+// Build a human-readable "why people convert this pair" line from each currency's real uses.
+const fromUses = fromCurr.popularUses;
+const toUses = toCurr.popularUses;
+// 5-year trend in plain words for the explanatory paragraph.
+const trendWord = fiveYearDirection === 'up'
+  ? `strengthened about ${fiveYearChange.replace('-', '')}%`
+  : `weakened about ${fiveYearChange.replace('-', '')}%`;
+const yearTrendWord = yearDirection === 'up'
+  ? `up ${yearChange.replace('-', '')}%`
+  : `down ${yearChange.replace('-', '')}%`;
+
 // Hreflang — self-referencing with the dominant locale(s) for this corridor.
 // Currency pairs are English-language pages. We attach x-default + 'en' + any
 // non-English locale from the FROM or TO currency to capture in-country signals.
@@ -229,6 +250,95 @@ const relatedPairs = currencyPairs
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK CONVERSION TABLE — unique, high-utility content per pair -->
+  <section class="container-wide py-12 md:py-16">
+    <div class="max-w-4xl mx-auto">
+      <span class="chip-cyan mb-4">🔢 Quick reference</span>
+      <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
+        {pair.from} to {pair.to} conversion table.
+      </h2>
+      <p class="text-ink-700 mt-3 text-lg font-medium max-w-2xl">
+        Common {fromCurr.name} amounts converted to {toCurr.name} at today's rate of
+        <strong>1 {pair.from} = {pair.rate} {pair.to}</strong>. The reverse holds too:
+        <strong>1 {pair.to} = {fmtConverted(inverseRate)} {pair.from}</strong>.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+        <!-- from → to -->
+        <div class="bg-white border-[2.5px] border-ink-900 rounded-2xl overflow-hidden shadow-sticker-sm">
+          <div class="bg-ink-900 text-white px-5 py-3 font-extrabold text-sm" style="font-family: 'Inter Tight', sans-serif;">
+            {pair.from} → {pair.to}
+          </div>
+          <table class="w-full text-sm">
+            <tbody>
+              {tableAmounts.map((amt, i) => (
+                <tr class={i % 2 === 0 ? 'bg-white' : 'bg-ink-50'}>
+                  <td class="px-5 py-2.5 font-semibold text-ink-900">{fmtConverted(amt)} {pair.from}</td>
+                  <td class="px-5 py-2.5 text-right font-bold text-ink-900">{fmtConverted(amt * pair.rate)} {pair.to}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <!-- to → from -->
+        <div class="bg-white border-[2.5px] border-ink-900 rounded-2xl overflow-hidden shadow-sticker-sm">
+          <div class="bg-ink-900 text-white px-5 py-3 font-extrabold text-sm" style="font-family: 'Inter Tight', sans-serif;">
+            {pair.to} → {pair.from}
+          </div>
+          <table class="w-full text-sm">
+            <tbody>
+              {tableAmounts.map((amt, i) => (
+                <tr class={i % 2 === 0 ? 'bg-white' : 'bg-ink-50'}>
+                  <td class="px-5 py-2.5 font-semibold text-ink-900">{fmtConverted(amt)} {pair.to}</td>
+                  <td class="px-5 py-2.5 text-right font-bold text-ink-900">{fmtConverted(amt * inverseRate)} {pair.from}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CONVERT + RATE CONTEXT — unique prose per pair -->
+  <section class="bg-ink-50 border-y-2 border-ink-900">
+    <div class="container-wide py-12 md:py-16">
+      <div class="max-w-3xl mx-auto">
+        <span class="chip-lime mb-4">💡 About this corridor</span>
+        <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
+          Why people convert {pair.from} to {pair.to}.
+        </h2>
+
+        <div class="prose-custom mt-6 space-y-4 text-ink-800 leading-relaxed font-medium">
+          <p>
+            The {pair.from}/{pair.to} corridor is driven mostly by {fromUses[0]}{fromUses[1] ? ` and ${fromUses[1]}` : ''}.
+            On the {toCurr.name} side, demand comes from {toUses[0]}{toUses[1] ? `, ${toUses[1]}` : ''}{toUses[2] ? `, and ${toUses[2]}` : ''}.
+            Because both sides see steady two-way flow, {pair.from}/{pair.to} is one of the more liquid pairs in this region — which usually means
+            tighter spreads and smaller markups than thinly-traded exotic pairs.
+          </p>
+          <p>
+            Over the past 12 months the {fromCurr.name} has moved <strong>{yearTrendWord}</strong> against the {toCurr.name},
+            and over five years it has <strong>{trendWord}</strong> (from {pair.fiveYearAgoRate} to {pair.rate}).
+            If you're sending money on this corridor, that trend matters: a {fiveYearDirection === 'up' ? 'rising' : 'falling'} rate
+            means timing your transfer — or locking a rate with a forward contract for large amounts — can change the {toCurr.name} you receive by a meaningful margin.
+          </p>
+          <p>
+            <strong>Getting the best {pair.from} → {pair.to} rate.</strong> The figure above is the mid-market rate — the
+            "true" rate banks and brokers reference. Most banks add a 1–3% margin on top and may charge a flat wire fee.
+            Specialist services (Wise, Remitly, and regional exchange houses on this corridor) typically convert closer to mid-market.
+            Always compare the <em>effective rate after all fees</em>, not just the headline rate — on a large {pair.from} transfer,
+            a 2% difference is real money.
+          </p>
+        </div>
+
+        <p class="text-xs text-ink-500 mt-6 italic">
+          Rates shown are indicative mid-market rates as of {pair.lastUpdated} and are for informational purposes only —
+          not a quote or financial advice. Confirm the live rate with your provider before transacting.
+        </p>
       </div>
     </div>
   </section>

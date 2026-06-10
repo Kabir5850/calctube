@@ -8,6 +8,8 @@ import {
   buildBreadcrumbSchema,
   buildFAQSchema,
 } from '../../../lib/seo';
+import AuthorBadge from '../../../components/ui/AuthorBadge.astro';
+import { getAuthor } from '../../../data/authors';
 
 const path = '/finance/income-tax-india';
 
@@ -80,6 +82,7 @@ const relatedCalcs = [
   { name: 'SIP Calculator', href: '/finance/sip-calculator/', desc: 'Mutual fund SIP returns.', icon: '📈', color: 'bg-yellow-accent' },
   { name: 'Old vs New Regime', href: '/finance/old-vs-new-tax-regime-india/', desc: 'Side-by-side tax regime comparison.', icon: '⚖️', color: 'bg-violet-300' },
 ];
+const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout
@@ -142,6 +145,13 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <IncomeTaxIndiaCalculator client:load />
+    </div>
+  </section>
+
+  <!-- Reviewer attribution — E-E-A-T signal -->
+  <section class="container-wide pt-2 pb-8">
+    <div class="max-w-4xl mx-auto">
+      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
     </div>
   </section>
 

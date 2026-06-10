@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PercentageCalculator from '../../components/calculators/PercentageCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
+import AuthorBadge from '../../components/ui/AuthorBadge.astro';
+import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'percentage-calculator', name: 'Percentage Calculator',
@@ -28,6 +30,7 @@ const relatedCalcs = [
   { name: 'Tax Calculator', href: '/finance/tax-calculator-india/', desc: 'Income tax estimator.', icon: '🪙', color: 'bg-cyan-accent' },
   { name: 'Fraction Calculator', href: '/math/fraction-calculator/', desc: 'Add, simplify fractions.', icon: '½', color: 'bg-rose-300' },
 ];
+const reviewer = getAuthor('calctube-editorial');
 ---
 
 <BaseLayout title="Percentage Calculator — 3 Modes in One Tool" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
@@ -81,6 +84,13 @@ const relatedCalcs = [
   <!-- CALCULATOR -->
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto"><PercentageCalculator client:load /></div>
+  </section>
+
+  <!-- Reviewer attribution — E-E-A-T signal -->
+  <section class="container-wide pt-2 pb-8">
+    <div class="max-w-4xl mx-auto">
+      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
+    </div>
   </section>
 
   <!-- THE MATH -->

@@ -9,6 +9,8 @@ import {
   buildHowToSchema,
   buildEditorialTeamSchema,
 } from '../../lib/seo';
+import AuthorBadge from '../../components/ui/AuthorBadge.astro';
+import { getAuthor } from '../../data/authors';
 
 const path = '/finance/gst-calculator';
 
@@ -73,6 +75,8 @@ const schemas = [
     ],
   }),
 ];
+
+const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout
@@ -136,6 +140,13 @@ const schemas = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <GstCalculator client:load />
+    </div>
+  </section>
+
+  <!-- Reviewer attribution — E-E-A-T signal -->
+  <section class="container-wide pt-2 pb-8">
+    <div class="max-w-4xl mx-auto">
+      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
     </div>
   </section>
 

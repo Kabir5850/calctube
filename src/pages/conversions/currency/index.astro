@@ -5,6 +5,8 @@ import FlagIcon from '../../../components/ui/FlagIcon.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../../lib/seo';
 import { currencyPairs, currencies } from '../../../data/currency-pairs';
 import { flagSlugForCurrency } from '../../../lib/flag-helpers';
+import AuthorBadge from '../../../components/ui/AuthorBadge.astro';
+import { getAuthor } from '../../../data/authors';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -31,6 +33,7 @@ const faqs = [
   { q: 'Which is the most-searched currency pair?', a: 'Globally, EUR/USD has the highest forex trading volume. For Indian remittance users, USD/INR is most-searched, followed by AED/INR (UAE diaspora), GBP/INR (UK), CAD/INR (Canada), and AUD/INR (Australia).' },
   { q: 'Are these rates good for forex trading?', a: 'No — Calctube rates are for reference and remittance planning, not for trading. Forex traders should use a regulated broker with live tick data and a trading platform.' },
 ];
+const reviewer = getAuthor('calctube-editorial');
 ---
 
 <BaseLayout
@@ -102,5 +105,10 @@ const faqs = [
         }
       </dl>
     </section>
+
+    <!-- Reviewer attribution — E-E-A-T signal -->
+    <div class="mt-12">
+      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
+    </div>
   </div>
 </BaseLayout>
