@@ -215,7 +215,17 @@ export const onRequest: PagesFunction = async (context: PagesContext) => {
   const { request, next } = context;
   const url = new URL(request.url);
 
-  // Only intercept the homepage. Deep pages always serve as-requested.
+  // Canonical host: 301 www → apex for EVERY path, including bots.
+  // www.calctube.com was serving the full site (HTTP 200) as a duplicate, which
+  // GSC flagged as "Alternate page with proper canonical tag" and which splits
+  // crawl signals. A permanent redirect consolidates everything onto calctube.com.
+  // Runs before the bot/geo logic below so it applies site-wide, not just on `/`.
+  if (url.hostname === 'www.calctube.com') {
+    url.hostname = 'calctube.com';
+    return Response.redirect(url.toString(), 301);
+  }
+
+  // Only intercept the homepage for geo logic. Deep pages serve as-requested.
   if (url.pathname !== '/' && url.pathname !== '/index.html') {
     return next();
   }
