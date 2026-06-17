@@ -79,23 +79,40 @@ const navLinks = [
 <!doctype html>
 <html lang={htmlLang}>
   <head>
-    <!-- Google Consent Mode v2 — DEFAULT DENY before any tracker loads.
-         This is the legal-safe state for EU/UK/CA users. Cookie banner flips
-         to 'granted' on user accept. Must come BEFORE GTM/gtag/AdSense. -->
+    <!-- Google Consent Mode v2 — REGION-SCOPED defaults. Must come BEFORE any tracker.
+         GDPR/UK-GDPR/Swiss-FADP require prior consent, so the EEA + UK + CH default to
+         DENIED until Google's certified CMP collects consent. Everywhere else (India,
+         US, Gulf, etc. — the bulk of Calctube traffic) defaults to GRANTED so GA4
+         receives full analytics immediately. Previously this defaulted DENIED globally,
+         which meant non-EU visitors only sent cookieless pings → GA4 showed ~no data. -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // 1) Global default — grant (covers India, US, UAE, and all non-GDPR regions).
       gtag('consent', 'default', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+      });
+      // 2) Region override — DENY by default across the EEA + UK + Switzerland until the
+      //    CMP records consent (legally required there). The certified CMP flips these.
+      gtag('consent', 'default', {
+        region: [
+          'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT',
+          'LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO',
+          'GB','CH'
+        ],
         ad_storage: 'denied',
         ad_user_data: 'denied',
         ad_personalization: 'denied',
         analytics_storage: 'denied',
-        functionality_storage: 'granted',
-        security_storage: 'granted',
         wait_for_update: 500,
       });
-      // Consent updates are handled by Google's certified CMP (auto-injected by
-      // adsbygoogle.js). Default-deny above stays; CMP flips it on user accept.
+      // Consent updates for EEA/UK/CH are handled by Google's certified CMP
+      // (auto-injected by adsbygoogle.js) — it flips the region defaults on user accept.
     </script>
 
     <!-- GTM + GA4 loader — DEFERRED until after first paint to free the main thread.
