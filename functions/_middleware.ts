@@ -225,31 +225,29 @@ export const onRequest: PagesFunction = async (context: PagesContext) => {
     return Response.redirect(url.toString(), 301);
   }
 
-  // Only intercept the homepage for geo logic. Deep pages serve as-requested.
+  // Only decorate the homepage with geo info. Deep pages serve as-requested.
   if (url.pathname !== '/' && url.pathname !== '/index.html') {
     return next();
   }
 
-  // Bypass for explicit opt-out
-  if (url.searchParams.get('nogeo') === '1') return next();
-
-  // Bypass for users who said "stay on homepage"
-  const cookieHeader = request.headers.get('cookie') || '';
-  if (/(?:^|; )geo-pref=stay/.test(cookieHeader)) return next();
-
-  // Bypass for bots — critical for SEO
-  if (isBot(request.headers.get('user-agent'))) return next();
-
-  // Look up country
+  // NO redirect: the homepage always serves 200 for everyone (users AND bots).
+  // Auto-redirecting `/` to a deep country page handed all root-URL equity to one
+  // calculator, bounced brand-search visitors, and (because bots were exempted)
+  // served users and Googlebot different responses. Instead, we set a short-lived
+  // cookie with the visitor's suggested country slug; the homepage reads it
+  // client-side and shows a dismissible "try your country's calculator" banner.
   const country = request.cf?.country?.toUpperCase();
-  if (!country) return next();
-
-  const entry = COUNTRY_MAP[country];
-  if (!entry) return next();
-
-  // Redirect to country page, marking it as auto so the page can show the banner
-  const target = `/finance/mortgage-calculator/${entry.slug}/?geo=auto`;
-  return Response.redirect(new URL(target, url).toString(), 302);
+  const entry = country ? COUNTRY_MAP[country] : undefined;
+  const response = await next();
+  if (entry && !isBot(request.headers.get('user-agent'))) {
+    const decorated = new Response(response.body, response);
+    decorated.headers.append(
+      'Set-Cookie',
+      `geo-suggest=${entry.slug}; Path=/; Max-Age=86400; SameSite=Lax`
+    );
+    return decorated;
+  }
+  return response;
 };
 
 export const onRequestPost: PagesFunction = async (context) => context.next();

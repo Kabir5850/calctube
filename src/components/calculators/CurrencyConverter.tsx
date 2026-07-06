@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
 interface Props {
   fromCode: string;
@@ -29,10 +29,34 @@ export default function CurrencyConverter({
   const [amount, setAmount] = useState<number>(1);
   const [direction, setDirection] = useState<'from-to' | 'to-from'>('from-to');
 
+  // Live mid-market rate (open.er-api.com — free, daily ECB-style refresh, no key).
+  // Falls back silently to the build-time rate if the fetch fails or the pair is missing.
+  const [liveRate, setLiveRate] = useState<number | null>(null);
+  const [liveDate, setLiveDate] = useState<string | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`https://open.er-api.com/v6/latest/${fromCode}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (cancelled || !data || data.result !== 'success') return;
+        const r = data.rates?.[toCode];
+        if (typeof r === 'number' && r > 0) {
+          setLiveRate(r);
+          try {
+            setLiveDate(new Date(data.time_last_update_utc).toISOString().slice(0, 10));
+          } catch { setLiveDate('today'); }
+        }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [fromCode, toCode]);
+
+  const effectiveRate = liveRate ?? rate;
+
   const result = useMemo(() => {
-    if (direction === 'from-to') return amount * rate;
-    return amount / rate;
-  }, [amount, rate, direction]);
+    if (direction === 'from-to') return amount * effectiveRate;
+    return amount / effectiveRate;
+  }, [amount, effectiveRate, direction]);
 
   const activeFrom = direction === 'from-to' ? { code: fromCode, symbol: fromSymbol, name: fromName, flag: fromFlag } : { code: toCode, symbol: toSymbol, name: toName, flag: toFlag };
   const activeTo = direction === 'from-to' ? { code: toCode, symbol: toSymbol, name: toName, flag: toFlag } : { code: fromCode, symbol: fromSymbol, name: fromName, flag: fromFlag };
@@ -55,7 +79,7 @@ export default function CurrencyConverter({
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ink-900 opacity-50"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-ink-900"></span>
             </span>
-            Rate as of {lastUpdated}
+            {liveRate ? `Live rate · ${liveDate}` : `Rate as of ${lastUpdated}`}
           </span>
         </div>
 
@@ -107,7 +131,7 @@ export default function CurrencyConverter({
               {fmt(result, activeTo.code)}
             </div>
             <div className="text-xs text-ink-800 mt-3 font-semibold">
-              Rate: 1 {activeFrom.code} = {direction === 'from-to' ? rate.toFixed(4) : (1 / rate).toFixed(6)} {activeTo.code}
+              Rate: 1 {activeFrom.code} = {direction === 'from-to' ? effectiveRate.toFixed(4) : (1 / effectiveRate).toFixed(6)} {activeTo.code}{liveRate ? ' (live)' : ''}
             </div>
           </div>
         </div>
@@ -127,7 +151,7 @@ export default function CurrencyConverter({
               </thead>
               <tbody>
                 {commonAmounts.map((a, idx) => {
-                  const converted = direction === 'from-to' ? a * rate : a / rate;
+                  const converted = direction === 'from-to' ? a * effectiveRate : a / effectiveRate;
                   return (
                     <tr key={a} className={`border-b border-ink-100 ${idx % 2 === 0 ? 'bg-white' : 'bg-ink-50'}`}>
                       <td className="px-3 py-2 font-bold text-ink-900">{fmt(a, activeFrom.code)}</td>
@@ -141,7 +165,7 @@ export default function CurrencyConverter({
         </div>
       </div>
       <div className="text-xs text-ink-500 mt-3 px-1 font-bold">
-        ✨ Mid-market rate · {lastUpdated} · Real-world transfer rates may differ 0.5-3% depending on provider · Not financial advice
+        ✨ Mid-market rate · {liveRate ? `live, updated ${liveDate}` : `as of ${lastUpdated}`} · Real-world transfer rates may differ 0.5-3% depending on provider · Not financial advice
       </div>
     </div>
   );

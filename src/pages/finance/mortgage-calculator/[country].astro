@@ -117,6 +117,15 @@ const reviewer = getAuthor('aisha-rahman')!;
 // Setting hreflang="fi" for an English page is WRONG — it tells Google the page
 // is Finnish, causing a language-signal mismatch that hurts rankings.
 const contentLang = locale.language.startsWith('en') ? locale.language : 'en';
+
+// H1 must match what people actually type into Google (Latin script). For
+// locales whose local term is non-Latin (Greek, Arabic, Pashto, Thai…), a
+// mixed-script H1 like "Στεγαστικό δάνειο Calculator Cyprus" matches nothing —
+// use "Mortgage Calculator" in the H1 and surface the local term as a chip.
+const isLatinTerm = /^[ -ɏḀ-ỿ’'’-]+$/.test(locale.termLocalName);
+const h1Term = isLatinTerm
+  ? locale.termLocalName.charAt(0).toUpperCase() + locale.termLocalName.slice(1)
+  : 'Mortgage';
 const selfUrl = `${SITE.url}${path}/`;
 const hreflangs = [
   { hreflang: contentLang, href: selfUrl },
@@ -171,9 +180,14 @@ const hreflangs = [
         </div>
 
         <h1 class="!text-4xl sm:!text-5xl md:!text-6xl !font-extrabold !tracking-tight !leading-[1.05] text-ink-900" style="font-family: 'Inter Tight', sans-serif; letter-spacing: -0.035em;">
-          {locale.termLocalName.charAt(0).toUpperCase() + locale.termLocalName.slice(1)} Calculator
+          {h1Term} Calculator
           <span class="text-gradient-brand inline-flex items-baseline gap-2">{locale.country} <FlagIcon slug={locale.slug} size={40} alt={`${locale.country} flag`} class="-mb-1 self-center" /></span>
         </h1>
+        {!isLatinTerm && (
+          <p class="mt-3 text-ink-600 font-semibold text-base">
+            Known locally as <span class="text-ink-900 font-extrabold">{locale.termLocalName}</span>
+          </p>
+        )}
 
         <!-- Quick-answer with locale-specific data (Speakable schema target) -->
         <div class="speakable-answer mt-7 bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker">
@@ -217,7 +231,7 @@ const hreflangs = [
       <div class="max-w-4xl mx-auto">
         <span class="chip-cyan mb-4 inline-flex items-center gap-1.5"><FlagIcon slug={locale.slug} size={18} alt={`${locale.country} flag`} /> Local context</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
-          {locale.termLocalName.charAt(0).toUpperCase() + locale.termLocalName.slice(1)}s in {locale.country}
+          {isLatinTerm ? `${h1Term}s` : 'Mortgages'} in {locale.country}
         </h2>
 
         <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">

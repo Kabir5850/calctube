@@ -41,6 +41,21 @@ export default defineConfig({
         const url = new URL(item.url);
         const path = url.pathname;
 
+        // HONEST per-cluster lastmod — bump the matching date ONLY when that
+        // cluster's underlying data/content genuinely changes. Never use the
+        // build timestamp: stamping 796 URLs "changed" on every deploy teaches
+        // Google the field is unreliable and it gets ignored.
+        const CLUSTER_LASTMOD = [
+          [/^\/finance\/mortgage-calculator\/cities\//, '2026-05-17'], // india-cities data
+          [/^\/finance\/mortgage-calculator\//, '2026-07-07'],         // bank sections + H1 fix
+          [/^\/finance\/emi-calculator\//, '2026-05-24'],              // emi-banks data
+          [/^\/finance\/income-tax-india\//, '2026-07-07'],            // PT-led retitle
+          [/^\/conversions\/currency\//, '2026-07-07'],                // live-rate converter
+          [/^\/$/, '2026-07-07'],                                      // homepage (geo banner)
+        ];
+        const match = CLUSTER_LASTMOD.find(([re]) => re.test(path));
+        if (match) item.lastmod = match[1];
+
         // Homepage
         if (path === '/') {
           item.priority = 1.0;

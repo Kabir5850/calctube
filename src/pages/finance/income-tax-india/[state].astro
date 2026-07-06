@@ -25,8 +25,11 @@ const path = `/finance/income-tax-india/${state.slug}`;
 
 const meta = {
   slug: `income-tax-india-${state.slug}`,
-  name: `Income Tax Calculator — ${state.name}`,
-  description: `Free income tax calculator for ${state.name} (FY 2025-26). Compare Old vs New regime. Includes ${state.monthlyProfessionalTax > 0 ? `state Professional Tax ₹${state.monthlyProfessionalTax}/mo` : 'no Professional Tax (state-exempt)'}. HRA ${state.hraTier === 'metro' ? '50%' : '40%'} exemption tier.`,
+  // Income tax is FEDERAL in India — what actually differs by state is
+  // Professional Tax and HRA tier. Lead with that (it's also the only honest
+  // differentiator between these 16 pages, per scaled-content guidance).
+  name: `Take-Home & Professional Tax Calculator — ${state.name}`,
+  description: `${state.name} take-home salary calculator (FY 2025-26): ${state.monthlyProfessionalTax > 0 ? `₹${state.monthlyProfessionalTax}/mo state Professional Tax` : 'zero Professional Tax (state-exempt)'}, HRA ${state.hraTier === 'metro' ? '50%' : '40%'} tier, and Old vs New regime income tax compared.`,
   category: 'finance' as const,
   keywords: state.metaKeywords,
   lastUpdated: '2026-05-28',
@@ -53,7 +56,7 @@ const hraExemption = state.hraTier === 'metro' ? '50%' : '40%';
 ---
 
 <BaseLayout
-  title={`${state.name} Income Tax Calculator FY 2025-26`}
+  title={`${state.name} Take-Home & Professional Tax Calculator FY 2025-26`}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -96,8 +99,8 @@ const hraExemption = state.hraTier === 'metro' ? '50%' : '40%';
         </div>
 
         <h1 class="!text-4xl sm:!text-5xl md:!text-6xl !font-extrabold !tracking-tight !leading-[1.05] text-ink-900" style="font-family: 'Inter Tight', sans-serif; letter-spacing: -0.035em;">
-          {state.name} Income Tax
-          <span class="text-gradient-brand">Calculator.</span>
+          {state.name} Take-Home
+          <span class="text-gradient-brand">& Professional Tax.</span>
         </h1>
 
         <div class="mt-7 bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker">

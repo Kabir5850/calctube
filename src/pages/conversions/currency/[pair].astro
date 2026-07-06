@@ -34,7 +34,9 @@ const path = `/conversions/currency/${pair.slug}`;
 const meta = {
   slug: `${pair.slug}-converter`,
   name: `${pair.from} to ${pair.to} Converter`,
-  description: (`${pair.from} to ${pair.to} converter. 1 ${pair.from} = ${pair.rate} ${pair.to}. ${pair.context.slice(0, 90)}`).slice(0, 155),
+  // No baked-in rate here: FX moves daily and a build-time number goes stale in
+  // the SERP snippet. The live rate renders client-side in the converter.
+  description: (`${pair.from} to ${pair.to} converter with live mid-market rate, historical trend & conversion table. ${pair.context.slice(0, 80)}`).slice(0, 155),
   category: 'conversion' as const,
   keywords: pair.metaKeywords,
   lastUpdated: pair.lastUpdated,
@@ -134,7 +136,7 @@ const relatedPairs = currencyPairs
 ---
 
 <BaseLayout
-  title={`${pair.from} to ${pair.to} Converter — 1 ${pair.from} = ${pair.rate} ${pair.to}`}
+  title={`${pair.from} to ${pair.to} Converter — Live ${toCurr.name} Rate`}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}

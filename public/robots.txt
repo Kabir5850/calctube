@@ -58,11 +58,13 @@ User-agent: Yandex
 Allow: /
 
 # Block clearly malicious / scraper bots
+# Ahrefs + Semrush ALLOWED so we can monitor our own backlinks/rankings
+# with their free tiers (was Disallow — made this a conscious decision).
 User-agent: SemrushBot
-Disallow: /
+Allow: /
 
 User-agent: AhrefsBot
-Disallow: /
+Allow: /
 
 User-agent: MJ12bot
 Disallow: /
