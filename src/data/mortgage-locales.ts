@@ -492,6 +492,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 20,
     },
     metaKeywords: ['mortgage calculator france', 'simulateur pret immobilier', 'french mortgage calculator', 'pret immobilier calcul'],
+    localBanks: [
+      { name: 'Crédit Agricole', note: 'France\'s largest mortgage lender through its regional caisses. Fixed-rate 20–25 year prêts immobiliers are the norm; strong in rural and secondary-city lending and a common first stop for foreign buyers with French income.', rateRange: '3.1–3.6%', ltv: 'up to 80%' },
+      { name: 'BNP Paribas', note: 'Major national lender with dedicated expat and non-resident desks. Non-residents typically need 20–30% down and face slightly higher pricing, but English-language servicing is available.', rateRange: '3.2–3.8%', ltv: '70–80%' },
+      { name: 'CCF (ex-HSBC France)', note: 'HSBC\'s French retail network was sold and relaunched as CCF in 2024 — existing HSBC France mortgages moved across. Still a popular route for international and UK-linked buyers seeking a French mortgage.', rateRange: '3.2–3.9%', ltv: 'up to 80%' },
+      { name: 'Crédit Mutuel & CIC', note: 'Mutual banking group with competitive fixed rates and strong regional coverage. French mortgages are almost always fixed for the full term and total debt payments are capped at 35% of income (HCSF rule).', rateRange: '3.1–3.7%', ltv: 'up to 80%' },
+    ],
   },
 
   // ============ NEW ZEALAND ============
@@ -756,6 +762,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 25,
     },
     metaKeywords: ['mortgage calculator uae', 'dubai mortgage calculator', 'eibor mortgage', 'uae home loan'],
+    localBanks: [
+      { name: 'Emirates NBD', note: 'Dubai\'s largest bank and one of the biggest mortgage books in the UAE. Fixed-then-EIBOR structures are standard (2–5 years fixed, then EIBOR + margin); salary-transfer customers get the best pricing.', rateRange: '3.9–4.8%', ltv: 'up to 80% (expats)' },
+      { name: 'FAB (First Abu Dhabi Bank)', note: 'The UAE\'s largest bank by assets, strong in Abu Dhabi and increasingly competitive in Dubai. Central Bank caps apply: 80% LTV for expat first homes under AED 5M, 85% for UAE nationals.', rateRange: '3.9–4.7%', ltv: '80–85%' },
+      { name: 'ADCB & Mashreq', note: 'Aggressive challengers on rate promotions and pre-approvals — Mashreq in particular for digital-first applications and non-resident investor mortgages on Dubai property.', rateRange: '4.0–5.0%', ltv: 'up to 80%' },
+      { name: 'Dubai Islamic Bank (DIB)', note: 'Largest Islamic lender: Ijara and Murabaha home finance with profit rates broadly level with conventional EMIs. Popular with buyers who want Sharia-compliant structures on the same EIBOR-linked economics.', rateRange: '4.0–5.0%', ltv: 'up to 80%' },
+    ],
   },
 
   // ============ NETHERLANDS ============
@@ -1284,6 +1296,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 20,
     },
     metaKeywords: ['mortgage calculator bangladesh', 'home loan calculator bangladesh', 'ebl home loan calculator', 'bangladesh home loan'],
+    localBanks: [
+      { name: 'IPDC Finance', note: 'The country\'s first private financial institution and a leading housing-finance NBFI. Home loans for salaried and self-employed borrowers with tenors to 25 years; known for faster processing than the big banks.', rateRange: '10–13%', ltv: 'up to 70%' },
+      { name: 'DBH (Delta Brac Housing)', note: 'Bangladesh\'s specialist housing-finance institution — the closest thing to a dedicated mortgage lender, consistently AAA-rated. Finances apartments in Dhaka and Chattogram at up to 70% of value.', rateRange: '9.5–12.5%', ltv: 'up to 70%' },
+      { name: 'BRAC Bank & City Bank', note: 'Leading private commercial banks with large home-loan books (City Bank\'s "City Home" and BRAC\'s home loan for landed property and apartments). Salaried professionals in Dhaka get the sharpest rates.', rateRange: '10–13%', ltv: '60–70%' },
+      { name: 'BHBFC (state)', note: 'Bangladesh House Building Finance Corporation — the government housing lender, offering lower-rate loans for construction and flat purchase, including special schemes outside Dhaka/Chattogram metro areas.', rateRange: '8–9%', ltv: 'up to 80%' },
+    ],
   },
 
   // ============ INDONESIA ============
@@ -1592,6 +1610,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 30,
     },
     metaKeywords: ['mortgage calculator hong kong', 'hsbc mortgage calculator hk', 'hong kong home loan', 'hibor mortgage calculator'],
+    localBanks: [
+      { name: 'HSBC Hong Kong', note: 'The territory\'s dominant mortgage lender. Standard structure is HIBOR + ~1.3% with a Prime-linked cap (P − spread), so payments float with HIBOR but can never exceed the capped rate. Green-mortgage and new-build tie-ins are common.', rateRange: '3.5–4.1%', ltv: 'up to 70%' },
+      { name: 'BOC Hong Kong', note: 'Bank of China (Hong Kong) matches HSBC on HIBOR-linked pricing and is especially strong on new-development mortgage packages with developer rebates. Cash rebates of ~1% are a standard negotiating point.', rateRange: '3.5–4.1%', ltv: 'up to 70%' },
+      { name: 'Hang Seng Bank', note: 'HSBC-group bank with near-identical mortgage economics but often sharper cash-rebate offers for refinancing. Popular for switching once a penalty period ends.', rateRange: '3.5–4.2%', ltv: 'up to 70%' },
+      { name: 'Standard Chartered HK', note: 'Competitive HIBOR plans and a strong Mortgage One offset account — interest earned on deposits offsets mortgage interest, useful for borrowers holding large HKD balances.', rateRange: '3.6–4.2%', ltv: 'up to 70%' },
+    ],
   },
 
   // ============ TURKEY ============
@@ -2620,6 +2644,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 15,
     },
     metaKeywords: ['mortgage calculator myanmar', 'myanmar housing loan', 'kbz home loan calculator', 'yangon mortgage rates'],
+    localBanks: [
+      { name: 'Yoma Bank', note: 'One of the most active private housing lenders, known for its home-loan tie-ups with Yangon condo developments (often marketed through property portals like iMyanmarHouse). Tenors typically 10–15 years.', rateRange: '13–16%', ltv: 'up to 60%' },
+      { name: 'KBZ Bank', note: 'Myanmar\'s largest private bank. Home loans concentrate on Yangon and Mandalay apartments for salaried borrowers; documentation and land-title checks dominate approval timelines.', rateRange: '13–16%', ltv: 'up to 60%' },
+      { name: 'AYA Bank & CB Bank', note: 'Major private banks offering housing loans at broadly similar double-digit MMK rates, usually requiring substantial down payments and payroll relationships.', rateRange: '13–17%', ltv: '50–60%' },
+      { name: 'CHDB', note: 'The state-linked Construction, Housing and Infrastructure Development Bank — channel for government affordable-housing projects with subsidised rates and longer tenors on qualifying units.', rateRange: '8.5–12%', ltv: 'up to 70%' },
+    ],
   },
   {
     slug: 'cambodia',
@@ -3080,6 +3110,12 @@ export const mortgageLocales: LocaleData[] = [
     ],
     workedExample: { description: 'A USh 350,000,000 home loan at 17.5% over a 15-year term', amount: 350000000, rate: 17.5, term: 15 },
     metaKeywords: ['mortgage calculator uganda', 'housing finance bank mortgage', 'stanbic uganda home loan', 'centenary bank mortgage'],
+    localBanks: [
+      { name: 'Housing Finance Bank', note: 'Uganda\'s specialist mortgage lender (majority state-owned). The default choice for salaried Kampala buyers — purchase, construction, and incremental-build loans with tenors to 20 years.', rateRange: '15–19%', ltv: 'up to 80%' },
+      { name: 'Stanbic Bank Uganda', note: 'The largest commercial bank, with the deepest mortgage book among private lenders. Competitive UGX rates for payroll clients and USD mortgages for diaspora and NGO-sector earners.', rateRange: '15–18%', ltv: 'up to 80%' },
+      { name: 'Centenary Bank', note: 'Uganda\'s biggest microfinance-rooted bank, strong on incremental construction lending outside Kampala where formal titles are being regularised.', rateRange: '17–21%', ltv: 'up to 70%' },
+      { name: 'DFCU & Absa Uganda', note: 'Mid-tier commercial lenders competing on salary-scheme mortgages; Absa leans on group-wide diaspora products. High nominal UGX rates reflect double-digit policy rates rather than lender margin alone.', rateRange: '16–20%', ltv: 'up to 75%' },
+    ],
   },
   {
     slug: 'tunisia', country: 'Tunisia', flag: '🇹🇳', language: 'fr-TN', currency: 'TND',
@@ -3367,6 +3403,12 @@ export const mortgageLocales: LocaleData[] = [
     ],
     workedExample: { description: 'A J$18,000,000 mortgage at 10.5% over a 25-year term', amount: 18000000, rate: 10.5, term: 25 },
     metaKeywords: ['jamaica mortgage calculator', 'nht loan calculator', 'ncb mortgage rates', 'jamaica home loan'],
+    localBanks: [
+      { name: 'NCB (National Commercial Bank)', note: 'Jamaica\'s largest bank and a mortgage market leader. JMD mortgages for residents plus USD options for diaspora buyers; rates trend a few points above the NHT\'s subsidised tiers.', rateRange: '8.5–11%', ltv: 'up to 90%' },
+      { name: 'Scotiabank Jamaica', note: 'Major commercial lender competing directly with NCB on rate promotions and pre-qualified salary-account offers. Strong diaspora lending desk for Jamaicans abroad buying back home.', rateRange: '8.5–11%', ltv: 'up to 90%' },
+      { name: 'JN Bank & VM Building Society', note: 'The mutual/building-society pair with deep roots in Jamaican home lending — often the sharpest rates for first-time buyers and long histories with remittance-funded deposits.', rateRange: '8–10.5%', ltv: 'up to 95%' },
+      { name: 'NHT (National Housing Trust)', note: 'The payroll-funded state scheme every contributor should check first: subsidised loans at 0–5% by income band, usable alone or stacked with a commercial mortgage from NCB/Scotia/JN.', rateRange: '0–5%', ltv: 'up to 95%' },
+    ],
   },
   {
     slug: 'barbados',
@@ -3798,6 +3840,12 @@ export const mortgageLocales: LocaleData[] = [
     ],
     workedExample: { description: 'A FJ$ 350,000 mortgage at 6.0% over a 25-year term', amount: 350000, rate: 6.0, term: 25 },
     metaKeywords: ['fiji mortgage calculator', 'fnpf home loan', 'hfc bank fiji', 'suva home loan'],
+    localBanks: [
+      { name: 'HFC Bank', note: 'Fiji\'s home-finance specialist (majority-owned by the FNPF pension fund). The first stop for most local buyers in Suva, Nadi and Lautoka, with first-home packages and construction loans.', rateRange: '4.5–6%', ltv: 'up to 90%' },
+      { name: 'BSP (Bank South Pacific)', note: 'The largest bank in the Pacific with a big Fijian mortgage book. Competitive owner-occupier rates and lending against both freehold and approved iTaukei-lease land.', rateRange: '5–6.5%', ltv: 'up to 85%' },
+      { name: 'Westpac & ANZ Fiji', note: 'The two Australian banks compete for salaried professionals and expatriates; useful for buyers wanting offshore-income assessment on Fijian property.', rateRange: '5–7%', ltv: 'up to 80%' },
+      { name: 'FNPF withdrawal scheme', note: 'Fiji National Provident Fund members can withdraw part of their pension balance for a housing deposit or to reduce an existing mortgage — commonly stacked with an HFC or BSP loan.', ltv: 'deposit support' },
+    ],
   },
   {
     slug: 'papua-new-guinea',
@@ -4058,6 +4106,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 25,
     },
     metaKeywords: ['Mauritius home loan', 'MCB mortgage', 'SBM PDS loan', 'Mauritius Prime Lending Rate'],
+    localBanks: [
+      { name: 'MCB (Mauritius Commercial Bank)', note: 'The island\'s largest bank and mortgage leader. PLR-linked housing loans for residents, plus dedicated foreign-buyer lending on PDS/IRS/RES scheme property; salary-domiciled clients get the best margins.', rateRange: '6–7.5%', ltv: 'up to 85%' },
+      { name: 'SBM (State Bank of Mauritius)', note: 'The second pillar of Mauritian banking, pricing neck-and-neck with MCB. Strong on government-scheme lending and staff/payroll packages; also finances non-citizens buying under approved schemes.', rateRange: '6–7.5%', ltv: 'up to 85%' },
+      { name: 'Absa & Bank One', note: 'Challenger banks that compete on fixed-intro rates and expat/foreign-currency mortgages (EUR/USD income assessed) for PDS villa purchases.', rateRange: '6.5–8.5%', ltv: 'up to 80%' },
+      { name: 'MHC (Mauritius Housing Company)', note: 'The state housing lender: subsidised loans for lower- and middle-income Mauritians, first-home schemes, and government-guarantee products below commercial pricing.', rateRange: '4.5–6.5%', ltv: 'up to 100%' },
+    ],
   },
   {
     slug: 'botswana',
