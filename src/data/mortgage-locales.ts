@@ -34,6 +34,17 @@ export interface LocaleData {
     term: number;
   };
   metaKeywords: string[];
+  /**
+   * Optional per-bank mortgage breakdown. Populated for countries where the
+   * highest-intent search queries are bank-specific ("bank of cyprus mortgage",
+   * "BML housing loan", etc.). Renders a "Local banks & rates" comparison table.
+   */
+  localBanks?: Array<{
+    name: string;       // Bank / lender name
+    note: string;       // 1-2 sentence summary of its mortgage offering
+    rateRange?: string; // e.g. "4.0–4.5%" — shown as a chip when present
+    ltv?: string;       // e.g. "up to 80%" — shown as a chip when present
+  }>;
 }
 
 export const mortgageLocales: LocaleData[] = [
@@ -2729,6 +2740,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 25,
     },
     metaKeywords: ['mortgage calculator cyprus', 'cyprus home loan calculator', 'bank of cyprus mortgage', 'hellenic bank home loan'],
+    localBanks: [
+      { name: 'Bank of Cyprus', note: 'The island\'s largest lender by far. A standard 25-year euro mortgage to a salaried Cypriot prices around 4.0–4.5% at up to 80% LTV in early 2026, after ECB cuts eased pricing from the 2023–24 peak.', rateRange: '4.0–4.5%', ltv: 'up to 80%' },
+      { name: 'Hellenic Bank', note: 'The second-largest bank, materially bigger in retail mortgages since absorbing the Co-operative Central Bank loan book. Pricing is broadly level with Bank of Cyprus for prime salaried borrowers.', rateRange: '4.0–4.75%', ltv: 'up to 80%' },
+      { name: 'Eurobank Cyprus & Alpha Bank Cyprus', note: 'Greek-parent banks that lean toward higher-income, professional and non-resident clients. Competitive on larger tickets and euro-income foreign buyers, though with tighter underwriting on CIS-source funds.', rateRange: '4.25–5.0%', ltv: 'up to 70%' },
+      { name: 'Housing Finance Corporation & KOAG', note: 'State-linked bodies offering subsidised mortgages to young couples and lower-income buyers under government housing schemes, at terms below commercial bank pricing.', rateRange: '2.0–3.5%', ltv: 'up to 90%' },
+    ],
   },
   {
     slug: 'estonia',
@@ -3255,6 +3272,12 @@ export const mortgageLocales: LocaleData[] = [
     ],
     workedExample: { description: 'A MVR 2,500,000 housing loan at 8% over a 20-year term', amount: 2500000, rate: 8, term: 20 },
     metaKeywords: ['mortgage calculator maldives', 'hdfc maldives housing loan', 'bank of maldives mortgage', 'hiyaa scheme finance'],
+    localBanks: [
+      { name: 'Bank of Maldives (BML)', note: 'The state-owned market leader by a wide margin. Offers MVR and USD housing loans to salaried Maldivians, typically at up to 70% LTV — USD loans being common for the resort-industry workforce.', rateRange: '7.5–9%', ltv: 'up to 70%' },
+      { name: 'HDFC Maldives', note: 'The specialist long-term home-finance institution (founded 2004 with IFC/ADB participation). Originates most Hulhumalé Hiyaa / Gedhoruveriya scheme mortgages over 20–25 years at concessional terms.', rateRange: '6.5–9%', ltv: 'up to 80%' },
+      { name: 'Maldives Islamic Bank (MIB)', note: 'Sharia-compliant home finance via Murabaha and Diminishing Musharaka structures. Effective profit rates are broadly comparable to conventional loans, and many buyers prefer it on faith grounds.', rateRange: '6.5–9%', ltv: 'up to 70%' },
+      { name: 'Habib Bank & State Bank of India (Maldives)', note: 'Foreign-bank branches offering housing finance to Maldivian nationals, generally on smaller volumes than BML and HDFC.', rateRange: '8–10%', ltv: 'up to 70%' },
+    ],
   },
   {
     slug: 'bhutan', country: 'Bhutan', flag: '🇧🇹', language: 'en-BT', currency: 'BTN',
@@ -3694,6 +3717,12 @@ export const mortgageLocales: LocaleData[] = [
     ],
     workedExample: { description: 'A UI-equivalent UYU 4,000,000 mortgage at 5.0% real over a 25-year term', amount: 4000000, rate: 5.0, term: 25 },
     metaKeywords: ['uruguay mortgage calculator', 'credito hipotecario uruguay', 'unidad indexada ui', 'bhu mortgage'],
+    localBanks: [
+      { name: 'Banco República (BROU)', note: 'The state-owned universal bank with the largest overall mortgage book. Most originations are UI-indexed (CPI-linked) at real rates of 4–6% over 20–25 years, sharing inflation risk with the borrower.', rateRange: '4–6% real (UI)', ltv: 'up to 80%' },
+      { name: 'Banco Hipotecario (BHU)', note: 'The specialised state housing bank, focused exclusively on mortgages and overseen by ANV. Long-tenor UI loans with a strong affordable-housing tilt for first-time buyers.', rateRange: '4–6% real (UI)', ltv: 'up to 90%' },
+      { name: 'Santander Uruguay & Itaú Uruguay', note: 'The two largest private banks, lending to higher-income borrowers in Montevideo (Pocitos, Carrasco, Punta Carretas). Offer both UI-indexed and nominal UYU mortgages.', rateRange: '4.5–6% real (UI)', ltv: 'up to 75%' },
+      { name: 'BBVA & Scotiabank Uruguay', note: 'International private banks active in the prime Montevideo segment, typically pricing UI mortgages a touch above the state banks with tighter LTV caps.', rateRange: '5–6% real (UI)', ltv: 'up to 70%' },
+    ],
   },
   {
     slug: 'guatemala',
@@ -4419,6 +4448,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 25,
     },
     metaKeywords: ['Belize home loan', 'Atlantic Bank mortgage', 'Belize Bank QRP loan', 'San Pedro property finance'],
+    localBanks: [
+      { name: 'Belize Bank', note: 'The largest commercial bank, with the widest branch network and a deep residential mortgage book. Lends to citizens and to foreign / QRP buyers in Ambergris Caye, Placencia and Cayo, capped at 80% LTV on owner-occupied homes with terms to 25 years.', rateRange: '8.5–11%', ltv: 'up to 80%' },
+      { name: 'Atlantic Bank', note: 'Co-leader in Belizean home lending and one of the most active lenders to foreign buyers, typically at 60–70% LTV for non-resident purchasers using US income. Standard 15–25 year terms.', rateRange: '8.5–11%', ltv: '60–80%' },
+      { name: 'Heritage Bank', note: 'A smaller commercial lender that competes hard for expat and QRP mortgages, including USD-income borrowers buying on the cayes. Pricing tracks the broader 8.5–11% commercial band.', rateRange: '8.5–11%', ltv: '60–75%' },
+      { name: 'Development Finance Corporation (DFC)', note: 'The state-owned development bank offering subsidised home loans to Belizean citizens under government affordable-housing programmes — well below commercial rates, but restricted to nationals for owner-occupied homes.', rateRange: '6–7.5%', ltv: 'up to 90%' },
+    ],
   },
   {
     slug: 'moldova',
