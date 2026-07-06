@@ -135,6 +135,17 @@ export const calculators: Calculator[] = [
     status: 'live',
   },
   {
+    slug: 'simple-interest-calculator',
+    href: '/finance/simple-interest-calculator/',
+    name: 'Simple Interest',
+    description: 'Interest on principal only — SI = P × R × T.',
+    category: 'finance',
+    keywords: ['simple interest', 'simple interest calculator', 'flat rate', 'principal rate time'],
+    icon: '🧾',
+    popular: true,
+    status: 'live',
+  },
+  {
     slug: 'salary-calculator',
     href: '/finance/salary-calculator/',
     name: 'Salary Calculator',
