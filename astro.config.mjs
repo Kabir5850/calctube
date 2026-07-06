@@ -14,10 +14,14 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
       // Exclude pages marked noindex — no point signaling Google to crawl them.
-      // The bank×state combo pages (/finance/emi-calculator/{bank}/{state}/) are
-      // noindexed (thin templated content, AdSense low-value flag) — keep them out
-      // of the sitemap to avoid a contradictory crawl signal. The bank HUB pages
-      // (/finance/emi-calculator/{bank}/) stay indexed and in the sitemap.
+      // Two thin combo tiers are noindexed (templated doorway content, AdSense
+      // low-value flag, "Crawled - currently not indexed" in GSC) and kept out of
+      // the sitemap to avoid a contradictory crawl signal:
+      //   • bank×state  (/finance/emi-calculator/{bank}/{state}/)
+      //   • city×bank   (/finance/mortgage-calculator/cities/{city}/{bank}/)
+      // The HUB pages — bank hubs (/finance/emi-calculator/{bank}/) and city hubs
+      // (/finance/mortgage-calculator/cities/{city}/) — stay indexed and in the
+      // sitemap; those carry genuinely unique per-page content.
       filter: (page) => {
         const path = new URL(page).pathname;
         const prefixExcluded = ['/og-preview/', '/logo-gallery/', '/contact/', '/construction/'].some(
@@ -25,7 +29,9 @@ export default defineConfig({
         );
         // Bank×state = exactly two path segments after /finance/emi-calculator/
         const isBankState = /^\/finance\/emi-calculator\/[^/]+\/[^/]+\/?$/.test(path);
-        return !prefixExcluded && !isBankState;
+        // City×bank = exactly two path segments after /finance/mortgage-calculator/cities/
+        const isCityBank = /^\/finance\/mortgage-calculator\/cities\/[^/]+\/[^/]+\/?$/.test(path);
+        return !prefixExcluded && !isBankState && !isCityBank;
       },
       // Differentiate priorities so Google focuses crawl budget on important pages.
       // Homepage 1.0, category hubs 0.9, calculator hubs 0.8, long-tail spokes 0.5.
