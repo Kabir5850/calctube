@@ -12,7 +12,9 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
+      // No lastmod: stamping every URL with the build time on each deploy makes
+      // the field meaningless (Google ignores lastmod once it proves unreliable).
+      // Better to omit it than to lie about 796 pages changing daily.
       // Exclude pages marked noindex — no point signaling Google to crawl them.
       // Two thin combo tiers are noindexed (templated doorway content, AdSense
       // low-value flag, "Crawled - currently not indexed" in GSC) and kept out of
