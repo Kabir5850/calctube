@@ -184,6 +184,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 25,
     },
     metaKeywords: ['mortgage calculator canada', 'canadian mortgage', 'cmhc insurance', 'stress test mortgage'],
+    localBanks: [
+      { name: 'RBC (Royal Bank of Canada)', note: 'Canada\'s largest mortgage lender. Five-year fixed terms on 25-year amortizations are the standard product; posted rates run higher than the discretionary rates most borrowers actually negotiate.', rateRange: '4.3–5.3%', ltv: 'up to 95% (CMHC-insured)' },
+      { name: 'TD Canada Trust', note: 'Second-largest book, known for flexible prepayment privileges and a HELOC (FlexLine) commonly stacked with the mortgage. Like all federally regulated lenders, applicants must pass the B-20 stress test at the higher of contract+2% or 5.25%.', rateRange: '4.3–5.4%', ltv: 'up to 95% (insured)' },
+      { name: 'Scotiabank & BMO', note: 'Aggressive on rate matches and cash-back offers, and strong in the newcomer segment (Scotia StartRight, BMO NewStart) — relevant for recent immigrants without Canadian credit history.', rateRange: '4.4–5.5%', ltv: 'up to 95% (insured)' },
+      { name: 'Monoline lenders & brokers', note: 'First National, MCAP and other broker-channel lenders often undercut the Big Six by 10–30 bps on identical insured mortgages. Roughly half of Canadian mortgages now originate through brokers.', rateRange: '4.1–5.1%', ltv: 'up to 95% (insured)' },
+    ],
   },
 
   // ============ AUSTRALIA ============
@@ -812,6 +818,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 30,
     },
     metaKeywords: ['hypotheek berekenen', 'mortgage calculator netherlands', 'nhg hypotheek', 'dutch mortgage calculator'],
+    localBanks: [
+      { name: 'ING', note: 'The largest Dutch retail bank and a hypotheek market leader. Ten- and twenty-year fixed periods dominate; interest is tax-deductible only on annuity or linear repayment schedules for post-2013 loans.', rateRange: '3.6–4.4%', ltv: 'up to 100%' },
+      { name: 'Rabobank', note: 'Co-operative giant with the deepest branch presence outside the Randstad. Strong on self-build and agricultural-adjacent property; pricing is level with ING for standard annuity mortgages.', rateRange: '3.6–4.4%', ltv: 'up to 100%' },
+      { name: 'ABN AMRO', note: 'Third of the big three, popular with expats via its dedicated international desk (English-language advice, 30%-ruling income accepted). The Netherlands allows up to 100% LTV — no down payment required, though buyer costs (~4-6%) are paid from savings.', rateRange: '3.7–4.5%', ltv: 'up to 100%' },
+      { name: 'Obvion & insurer-lenders (NHG)', note: 'Rabobank-owned Obvion, plus Aegon/Nationale-Nederlanden, compete hard on NHG-guaranteed mortgages (homes under the NHG cap) — the guarantee cuts rates by ~0.3-0.6% versus non-NHG loans.', rateRange: '3.4–4.1% (NHG)', ltv: 'up to 100%' },
+    ],
   },
 
   // ============ BELGIUM ============
@@ -1032,6 +1044,12 @@ export const mortgageLocales: LocaleData[] = [
       term: 30,
     },
     metaKeywords: ['mortgage calculator ireland', 'irish mortgage calculator', 'help to buy ireland', 'aib mortgage calculator'],
+    localBanks: [
+      { name: 'AIB (Allied Irish Banks)', note: 'Ireland\'s biggest mortgage lender, sharpest on green mortgages (BER B3+ homes get the best fixed rates). Central Bank rules cap most first-time buyers at 4× gross income and 90% LTV.', rateRange: '3.5–4.5%', ltv: 'up to 90% (FTB)' },
+      { name: 'Bank of Ireland', note: 'Joint market leader, known for fixed-rate cashback offers (up to 2-3% back at drawdown) — attractive upfront but usually a slightly higher rate than AIB\'s green pricing over the term.', rateRange: '3.6–4.6%', ltv: 'up to 90% (FTB)' },
+      { name: 'PTSB', note: 'The third pillar bank, competitive for switchers and 3-year fixed terms. First-time buyers can stack the Help-to-Buy tax rebate (up to €30,000) and the First Home shared-equity scheme on new builds.', rateRange: '3.7–4.7%', ltv: 'up to 90% (FTB)' },
+      { name: 'Avant Money & ICS', note: 'Non-bank lenders (Avant backed by Bankinter) that brought sub-4% long-term fixes to the Irish market — up to 25-30 year full-term fixed rates, a product the pillar banks don\'t match.', rateRange: '3.4–4.3%', ltv: 'up to 90%' },
+    ],
   },
 
   // ============ PORTUGAL ============
@@ -3196,6 +3214,12 @@ export const mortgageLocales: LocaleData[] = [
     ],
     workedExample: { description: 'A JD 120,000 home loan at 7.5% over a 25-year term', amount: 120000, rate: 7.5, term: 25 },
     metaKeywords: ['mortgage calculator jordan', 'housing bank jordan mortgage', 'arab bank home loan', 'jmrc mortgage'],
+    localBanks: [
+      { name: 'Housing Bank for Trade & Finance', note: 'Founded as Jordan\'s housing-finance specialist and still the reference mortgage lender. JOD housing loans for salaried residents with tenors to 25-30 years; salary transfer earns the best pricing.', rateRange: '6.5–8.5%', ltv: 'up to 80%' },
+      { name: 'Arab Bank', note: 'Jordan\'s largest bank, strong with professionals and expatriate Jordanians. Offers both resident JOD mortgages and programmes for Jordanians working in the Gulf buying property back home.', rateRange: '6.5–8.5%', ltv: 'up to 80%' },
+      { name: 'Cairo Amman Bank & Bank al Etihad', note: 'Active retail challengers on housing loans, frequently running reduced-rate campaigns tied to developer partnerships in Amman (Abdali, Dabouq, Rabieh corridors).', rateRange: '7–9%', ltv: 'up to 75%' },
+      { name: 'JMRC-refinanced lenders', note: 'The Jordan Mortgage Refinance Company provides long-term liquidity to member banks, enabling fixed-rate periods in a market where Central Bank of Jordan rates keep variable pricing high.', rateRange: '6–8%', ltv: 'up to 80%' },
+    ],
   },
   {
     slug: 'venezuela', country: 'Venezuela', flag: '🇻🇪', language: 'es-VE', currency: 'USD',
