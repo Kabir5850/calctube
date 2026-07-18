@@ -338,6 +338,17 @@ export const calculators: Calculator[] = [
     status: 'live',
   },
   {
+    slug: 'cgpa-to-percentage-calculator',
+    href: '/math/cgpa-to-percentage-calculator/',
+    name: 'CGPA to Percentage',
+    description: 'Convert CGPA to percentage & back — CBSE, VTU, Anna, Mumbai.',
+    category: 'math',
+    keywords: ['cgpa to percentage', 'cgpa calculator', 'percentage to cgpa', 'cbse cgpa'],
+    icon: '🎓',
+    popular: true,
+    status: 'live',
+  },
+  {
     slug: 'fraction-calculator',
     href: '/math/fraction-calculator/',
     name: 'Fraction Calculator',
