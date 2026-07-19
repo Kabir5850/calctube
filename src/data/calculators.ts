@@ -451,7 +451,7 @@ export const calculators: Calculator[] = [
     category: 'math',
     keywords: ['scientific calculator', 'trigonometry'],
     icon: '🔬',
-    status: 'coming-soon',
+    status: 'live',
   },
 
   // CONVERSIONS
@@ -486,6 +486,18 @@ export const calculators: Calculator[] = [
     category: 'conversion',
     keywords: ['celsius', 'fahrenheit', 'temperature'],
     icon: '🌡️',
+    status: 'live',
+  },
+
+  {
+    slug: 'time-zone-converter',
+    href: '/conversions/time-zone-converter/',
+    name: 'Time Zone Converter',
+    description: 'Convert times between world zones — EST, IST, GMT, PST — with DST.',
+    category: 'conversion',
+    keywords: ['time zone converter', 'est to ist', 'gmt to ist', 'world clock', 'time difference'],
+    icon: '🌐',
+    popular: true,
     status: 'live',
   },
 
