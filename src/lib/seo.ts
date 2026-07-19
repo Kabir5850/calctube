@@ -13,6 +13,15 @@ export const SITE = {
   defaultOgImage: '/og-default.png',
 };
 
+/** Canonical trailing-slash form of an internal path, so JSON-LD url/@id values
+ *  match the served (canonical) URL and never point at a redirecting variant.
+ *  Pages define `path` without a trailing slash; the built page is served at
+ *  `path + '/'`, so emitting the bare path in schema created "Page with redirect"
+ *  crawls in Search Console. */
+export function slashPath(p: string): string {
+  return !p || p === '/' ? '/' : p.endsWith('/') ? p : p + '/';
+}
+
 export interface CalculatorMeta {
   slug: string;
   name: string;
@@ -88,12 +97,12 @@ export function buildSpeakableSchema(path: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${SITE.url}${path}#speakable`,
+    '@id': `${SITE.url}${slashPath(path)}#speakable`,
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: ['.speakable-answer', '.speakable-summary'],
     },
-    url: `${SITE.url}${path}`,
+    url: `${SITE.url}${slashPath(path)}`,
   };
 }
 
@@ -156,9 +165,9 @@ export function buildCalculatorSchema(meta: CalculatorMeta, path: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    '@id': `${SITE.url}${path}#app`,
+    '@id': `${SITE.url}${slashPath(path)}#app`,
     name: meta.name,
-    url: `${SITE.url}${path}`,
+    url: `${SITE.url}${slashPath(path)}`,
     description: meta.description,
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'Any (Web)',
@@ -189,7 +198,7 @@ export function buildBreadcrumbSchema(items: Array<{ name: string; url: string }
       '@type': 'ListItem',
       position: idx + 1,
       name: item.name,
-      item: item.url.startsWith('http') ? item.url : `${SITE.url}${item.url}`,
+      item: item.url.startsWith('http') ? item.url : `${SITE.url}${slashPath(item.url)}`,
     })),
   };
 }
