@@ -6,8 +6,12 @@ import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowT
 import { getAuthor } from '../../data/authors';
 import { unitPairs, UNITS } from '../../data/unit-pairs';
 
-const popularPairs = unitPairs.filter((p) => p.popular);
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+// Group every pair by category so all 48 are one click from the hub.
+const CAT_ORDER = ['length', 'weight', 'volume', 'speed', 'area', 'data', 'temperature'];
+const pairsByCat = CAT_ORDER
+  .map((c) => ({ cat: c, pairs: unitPairs.filter((p) => p.category === c) }))
+  .filter((g) => g.pairs.length);
 
 const meta = {
   slug: 'unit-converter', name: 'Unit Converter',
@@ -167,22 +171,29 @@ const relatedCalcs = [
     </div>
   </section>
 
-  <!-- POPULAR PAIR PAGES -->
+  <!-- ALL PAIR PAGES (grouped by category) -->
   <section class="container-wide py-12 md:py-16">
     <div class="max-w-4xl mx-auto">
-      <span class="chip bg-yellow-accent text-ink-900 mb-4">⚡ Popular conversions</span>
+      <span class="chip bg-yellow-accent text-ink-900 mb-4">⚡ All conversions</span>
       <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">Jump to a specific conversion.</h2>
-      <p class="mt-3 text-ink-700 font-medium">Dedicated pages with the formula, worked examples and a full two-way table for the most-searched conversions.</p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-8">
-        {popularPairs.map((p) => {
-          const f = UNITS[p.from], t = UNITS[p.to];
-          return (
-            <a href={`/conversions/unit-converter/${p.slug}/`} class="group bg-white border-[2.5px] border-ink-900 rounded-2xl p-4 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
-              <div class="font-extrabold text-ink-900 text-sm leading-tight" style="font-family: 'Inter Tight', sans-serif;">{f.symbol} → {t.symbol}</div>
-              <div class="text-xs text-ink-600 mt-1 font-semibold">{cap(f.name)} to {t.name}</div>
-            </a>
-          );
-        })}
+      <p class="mt-3 text-ink-700 font-medium">Every conversion has its own page with the formula, worked examples and a full two-way table.</p>
+      <div class="mt-8 space-y-8">
+        {pairsByCat.map((g) => (
+          <div>
+            <h3 class="!text-lg !font-extrabold text-ink-900 mb-3 capitalize">{g.cat}</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {g.pairs.map((p) => {
+                const f = UNITS[p.from], t = UNITS[p.to];
+                return (
+                  <a href={`/conversions/unit-converter/${p.slug}/`} class="group bg-white border-[2.5px] border-ink-900 rounded-2xl p-4 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+                    <div class="font-extrabold text-ink-900 text-sm leading-tight" style="font-family: 'Inter Tight', sans-serif;">{f.symbol} → {t.symbol}</div>
+                    <div class="text-xs text-ink-600 mt-1 font-semibold">{cap(f.name)} to {t.name}</div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

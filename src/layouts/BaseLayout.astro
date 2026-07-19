@@ -40,26 +40,24 @@ const {
 
 const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE.url).toString();
 
-// SEO safety: enforce title <60 chars and description <155 chars to prevent SERP truncation.
-// Suffix " | Calctube" is 11 chars. HTML entities expand: '&' -> '&amp;' (+4), '"' -> '&quot;' (+5).
-// Estimate worst-case expansion per char and budget accordingly.
+// SEO: keep the rendered <title> within ~60 visible characters (Google's SERP
+// display width). Google shows the DECODED title, so budget by visible characters
+// — not HTML-entity-expanded length. The previous logic counted '&' as 5 chars and
+// forced " | Calctube" onto every title, truncating real keywords with an ellipsis.
+// Preference: keep the brand suffix if it fits; else keep the full keyword title
+// without the brand; only hard-truncate when the title itself exceeds 60 chars.
 const SITE_SUFFIX = ` | ${SITE.name}`;
-function htmlExpandedLength(s: string): number {
-  return s.length
-    + (s.match(/&/g)?.length ?? 0) * 4
-    + (s.match(/"/g)?.length ?? 0) * 5
-    + (s.match(/</g)?.length ?? 0) * 3
-    + (s.match(/>/g)?.length ?? 0) * 3;
+const TITLE_MAX = 60;
+let fullTitle: string;
+if (title.includes(SITE.name)) {
+  fullTitle = title;
+} else if (title.length + SITE_SUFFIX.length <= TITLE_MAX) {
+  fullTitle = `${title}${SITE_SUFFIX}`;
+} else if (title.length <= TITLE_MAX) {
+  fullTitle = title;
+} else {
+  fullTitle = title.slice(0, TITLE_MAX - 1).trimEnd() + '…';
 }
-let rawTitle = title;
-const TITLE_BUDGET = 60 - SITE_SUFFIX.length; // 49 chars visible
-if (!rawTitle.includes(SITE.name)) {
-  while (htmlExpandedLength(rawTitle) > TITLE_BUDGET - 1 && rawTitle.length > 10) {
-    rawTitle = rawTitle.slice(0, -1);
-  }
-  if (rawTitle !== title) rawTitle = rawTitle.trimEnd() + '…';
-}
-const fullTitle = rawTitle.includes(SITE.name) ? rawTitle : `${rawTitle}${SITE_SUFFIX}`;
 
 const trimmedDescription = description.length > 155
   ? description.slice(0, 154).trimEnd() + '…'
