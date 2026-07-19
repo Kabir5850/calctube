@@ -4,35 +4,19 @@ import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
 
 const liveCalcs = [
-  {
-    name: 'BMI Calculator',
-    href: '/health/bmi-calculator/',
-    desc: 'Body Mass Index with metric and imperial units. Instant category lookup against WHO ranges.',
-    icon: '⚖️',
-  },
-  {
-    name: 'BMR Calculator',
-    href: '/health/bmr-calculator/',
-    desc: 'Basal Metabolic Rate via Mifflin-St Jeor. Shows calories burned at rest + activity multipliers.',
-    icon: '🔥',
-  },
-  {
-    name: 'TDEE Calculator',
-    href: '/health/tdee-calculator/',
-    desc: 'Total Daily Energy Expenditure with activity level. See maintenance calories and macro targets.',
-    icon: '⚡',
-  },
-  {
-    name: 'Calorie Calculator',
-    href: '/health/calorie-calculator/',
-    desc: 'Daily calorie target for weight loss, maintenance, or muscle gain. With estimated timeline.',
-    icon: '🍎',
-  },
+  { name: 'BMI Calculator', href: '/health/bmi-calculator/', desc: 'Body Mass Index with metric and imperial units. Instant category lookup against WHO ranges.', icon: '⚖️' },
+  { name: 'Calorie Calculator', href: '/health/calorie-calculator/', desc: 'Daily calorie target for weight loss, maintenance, or muscle gain — with estimated timeline.', icon: '🍎' },
+  { name: 'BMR Calculator', href: '/health/bmr-calculator/', desc: 'Basal Metabolic Rate via Mifflin-St Jeor — calories burned at rest.', icon: '🔥' },
+  { name: 'TDEE Calculator', href: '/health/tdee-calculator/', desc: 'Total Daily Energy Expenditure by activity level, with maintenance calories and macros.', icon: '⚡' },
+  { name: 'Body Fat Calculator', href: '/health/body-fat-calculator/', desc: 'Body fat percentage via the US Navy tape method, with ACE category ranges.', icon: '💪' },
+  { name: 'Ideal Weight Calculator', href: '/health/ideal-weight-calculator/', desc: 'Healthy weight range for your height — Devine, Robinson, Miller, Hamwi and BMI.', icon: '🎯' },
+  { name: 'Water Intake Calculator', href: '/health/water-intake-calculator/', desc: 'Daily water need from body weight, activity level and climate.', icon: '💧' },
+  { name: 'Pregnancy Due Date', href: '/health/pregnancy-calculator/', desc: "Due date, current week and trimester from your last period (Naegele's rule).", icon: '🤰' },
+  { name: 'Ovulation Calculator', href: '/health/ovulation-calculator/', desc: 'Your fertile window and estimated ovulation date from your cycle.', icon: '🌸' },
 ];
 
 const upcomingCalcs = [
-  { name: 'Body Fat % Calculator', desc: 'US Navy method using neck, waist, and hip measurements.', icon: '💪' },
-  { name: 'Pregnancy Due Date', desc: 'Due date and pregnancy milestones from last menstrual period.', icon: '🤰' },
+  { name: 'Macro Calculator', desc: 'Protein, carb and fat gram targets from your daily calorie goal.', icon: '🥗' },
 ];
 
 const breadcrumbs = [

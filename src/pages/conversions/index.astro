@@ -14,6 +14,12 @@ const categories = [
 ];
 
 const popular = currencyPairs.filter((p) => p.popularity === 'huge').slice(0, 12);
+
+const converters = [
+  { name: 'Unit Converter', href: '/conversions/unit-converter/', desc: 'Length, weight, volume, area, speed and data — km to miles, kg to lbs, cm to inches and more.', emoji: '🔄' },
+  { name: 'Temperature Converter', href: '/conversions/temperature-converter/', desc: 'Celsius, Fahrenheit and Kelvin — convert instantly, with a reference table from freezing to boiling.', emoji: '🌡️' },
+  { name: 'Time Zone Converter', href: '/conversions/time-zone-converter/', desc: 'Convert a time between world zones (EST, IST, GMT, PST) with daylight saving handled automatically.', emoji: '🌐' },
+];
 ---
 
 <BaseLayout
@@ -36,6 +42,19 @@ const popular = currencyPairs.filter((p) => p.popularity === 'huge').slice(0, 12
             <div class="font-semibold text-slate-900">
               {c.name} <span class="text-slate-500 font-normal">· {c.count} pairs</span>
             </div>
+            <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+          </a>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-12">Unit &amp; time converters</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {
+        converters.map((c) => (
+          <a href={c.href} class="card hover:border-brand-300 no-underline block">
+            <div class="text-2xl mb-2">{c.emoji}</div>
+            <div class="font-semibold text-slate-900">{c.name}</div>
             <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
           </a>
         ))
