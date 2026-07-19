@@ -51,7 +51,7 @@ export function buildOrganizationSchema() {
     publishingPrinciples: `${SITE.url}/about/`,
     sameAs: [
       `https://twitter.com/${SITE.twitter.replace('@', '')}`,
-      `https://linkedin.com/company/${SITE.name.toLowerCase()}`,
+      'https://www.linkedin.com/company/calctube/',
     ],
   };
 }
