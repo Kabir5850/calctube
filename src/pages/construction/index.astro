@@ -3,13 +3,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
 
+const liveCalcs = [
+  { name: 'Concrete Calculator', href: '/construction/concrete-calculator/', desc: 'Cubic yards, cubic meters and bags of concrete for slabs and footings — with a waste allowance.', icon: '🧱' },
+  { name: 'Paint Calculator', href: '/construction/paint-calculator/', desc: 'Gallons or litres of paint for a room, from dimensions, coats, doors and windows.', icon: '🎨' },
+  { name: 'Tile Calculator', href: '/construction/tile-calculator/', desc: 'Tiles and boxes needed for a floor or wall, adjusted for waste and layout.', icon: '🟦' },
+  { name: 'Brick Calculator', href: '/construction/brick-calculator/', desc: 'How many bricks and mortar bags for a wall of any size, single or double layer.', icon: '🧱' },
+  { name: 'Roofing Calculator', href: '/construction/roofing-calculator/', desc: 'Roofing squares and shingle bundles from footprint and roof pitch.', icon: '🏠' },
+];
+
 const upcomingCalcs = [
-  { name: 'Concrete Calculator', desc: 'Cubic yards or cubic meters of concrete for slabs, footings, columns, and stairs.', icon: '🧱' },
-  { name: 'Paint Calculator', desc: 'Gallons or litres of paint needed by room — accounts for primer coats and trim.', icon: '🎨' },
-  { name: 'Tile Calculator', desc: 'Tiles needed by area with waste percentage adjustment for layout pattern.', icon: '🟦' },
-  { name: 'Roofing Calculator', desc: 'Roofing squares, shingle bundles, and underlayment by roof pitch and area.', icon: '🏠' },
-  { name: 'Wallpaper Calculator', desc: 'Rolls of wallpaper needed, accounting for pattern repeat and door/window cutouts.', icon: '🖼️' },
-  { name: 'Drywall Calculator', desc: 'Sheets of drywall, screws, joint compound, and tape by wall area.', icon: '🪛' },
+  { name: 'Wallpaper Calculator', desc: 'Rolls of wallpaper accounting for pattern repeat and cutouts.', icon: '🖼️' },
+  { name: 'Drywall Calculator', desc: 'Sheets, screws, joint compound and tape by wall area.', icon: '🪛' },
 ];
 
 const breadcrumbs = [
@@ -18,42 +22,60 @@ const breadcrumbs = [
 ];
 
 const faqs = [
-  {
-    q: 'When will the construction calculators launch?',
-    a: 'We are shipping the concrete and paint calculators first — both within the next 30 days. The full construction suite (tile, roofing, drywall, wallpaper) is on the 90-day roadmap.',
-  },
-  {
-    q: 'Will the calculators support both imperial and metric units?',
-    a: 'Yes. All construction calculators will toggle between US imperial (feet, square feet, cubic yards, gallons) and metric (metres, square metres, cubic metres, litres) — defaulting based on your locale.',
-  },
-  {
-    q: 'How much waste do the calculators add?',
-    a: 'Default waste factors: 10% for concrete, 10–15% for tile (depending on layout pattern), 5% for paint, 10% for shingles, 15% for wallpaper with pattern repeat. All values are adjustable on each calculator.',
-  },
+  { q: 'Do the construction calculators support metric and imperial units?', a: 'Yes. The concrete, paint, tile and brick calculators toggle between US imperial (feet, square feet, cubic yards, gallons) and metric (metres, square metres, cubic metres, litres). The roofing calculator uses US roofing squares, the industry standard for shingles.' },
+  { q: 'How much waste should I add to a material estimate?', a: 'Sensible defaults are about 10% for concrete, brick and shingles, 10–15% for tile (more for diagonal or patterned layouts), and roughly 5% for paint. Every calculator lets you set the waste percentage. Ordering a little extra is almost always cheaper than a second delivery or a dye-lot mismatch.' },
+  { q: 'Are these estimates accurate enough to order materials?', a: 'They are accurate for planning and ordering everyday DIY and trade jobs, and each one shows the formula so you can check the working. For structural work, complex roofs, or anything requiring engineering sign-off, confirm quantities with your supplier or a professional before ordering.' },
 ];
 
-// No structured data — page is noindexed (coming-soon placeholder).
-// Schema on noindexed pages wastes crawl budget without ranking benefit.
-const schemas: object[] = [];
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Construction Calculators — Calctube',
+    description: 'Free material estimators for concrete, paint, tile, brick and roofing, in imperial and metric units.',
+    url: 'https://calctube.com/construction/',
+    isPartOf: { '@id': 'https://calctube.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: liveCalcs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://calctube.com${c.href}`, name: c.name })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
 ---
 
 <BaseLayout
-  title="Construction Calculators — Concrete, Paint, Tile, Roofing"
-  description="Material estimators for concrete, paint, tile, roofing, drywall, and wallpaper. Both imperial and metric units. Coming soon to Calctube."
+  title="Construction Calculators — Concrete, Paint, Tile, Brick & Roofing"
+  description="Free material estimators for concrete, paint, tile, brick and roofing. Imperial and metric units, waste allowances, and the formula shown. No signup."
   schemas={schemas}
-  noindex={true}
 >
   <div class="container-prose py-8">
     <Breadcrumbs items={breadcrumbs} />
     <h1>Construction Calculators</h1>
     <p class="text-lg text-slate-700 mt-3">
-      Material estimators for concrete, paint, tile, roofing, drywall, and wallpaper. Built for DIY homeowners, contractors, and trade pros — with imperial and metric units throughout.
+      Material estimators for concrete, paint, tile, brick and roofing — built for DIY homeowners, contractors and trade pros. Every calculator shows the formula, the waste factor, and works in imperial or metric units.
     </p>
 
-    <h2 class="mt-10">On the roadmap</h2>
+    <h2 class="mt-10">Available now</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {liveCalcs.map((c) => (
+        <a href={c.href} class="card hover:border-brand-300 no-underline block">
+          <div class="text-3xl mb-2">{c.icon}</div>
+          <div class="font-semibold text-slate-900">{c.name}</div>
+          <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <h2 class="mt-10">Coming soon</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
       {upcomingCalcs.map((c) => (
-        <div class="card opacity-80">
+        <div class="card opacity-70">
           <div class="flex items-start gap-3">
             <div class="text-3xl">{c.icon}</div>
             <div class="flex-1">
@@ -68,9 +90,9 @@ const schemas: object[] = [];
       ))}
     </div>
 
-    <h2 class="mt-10">Why we are building these</h2>
+    <h2 class="mt-10">Estimate materials without the guesswork</h2>
     <p class="text-slate-700 leading-relaxed">
-      Most online material estimators either oversimplify (no waste factor, no pattern allowance) or hide the working behind a signup wall. Calctube's construction tools will show the formula, the waste factor used, and the source — so quantity surveyors and DIY homeowners alike can verify the result.
+      Most online material estimators either oversimplify — no waste factor, no allowance for openings or pitch — or hide the working behind a signup. Calctube's construction tools show the formula, the assumptions used (coverage rates, bricks per square foot, shingle bundles per square), and let you adjust the waste percentage, so DIY homeowners and quantity surveyors alike can verify every number before ordering.
     </p>
 
     <h2 class="mt-10">Frequently asked questions</h2>
@@ -81,13 +103,6 @@ const schemas: object[] = [];
           <p class="text-sm text-slate-700 mt-2 !leading-relaxed">{f.a}</p>
         </details>
       ))}
-    </div>
-
-    <div class="card bg-lime-50 border-lime-200 mt-10">
-      <h3 class="!mt-0">Need a construction calculator now?</h3>
-      <p class="text-sm text-slate-700 mt-2">
-        Email <a href="mailto:ideas@calctube.com" class="text-brand-600 font-semibold">ideas@calctube.com</a> with the specific estimator and units you need. We ship requested calculators within 7 days.
-      </p>
     </div>
   </div>
 </BaseLayout>

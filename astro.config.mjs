@@ -26,7 +26,7 @@ export default defineConfig({
       // sitemap; those carry genuinely unique per-page content.
       filter: (page) => {
         const path = new URL(page).pathname;
-        const prefixExcluded = ['/og-preview/', '/logo-gallery/', '/contact/', '/construction/'].some(
+        const prefixExcluded = ['/og-preview/', '/logo-gallery/', '/contact/'].some(
           (p) => path === p || path.startsWith(p)
         );
         // Bank×state = exactly two path segments after /finance/emi-calculator/
@@ -72,7 +72,8 @@ export default defineConfig({
           path === '/math/' ||
           path === '/conversions/' ||
           path === '/date-time/' ||
-          path === '/construction/'
+          path === '/construction/' ||
+          path === '/auto/'
         ) {
           item.priority = 0.9;
           item.changefreq = 'weekly';

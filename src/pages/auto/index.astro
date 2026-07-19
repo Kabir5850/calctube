@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import { buildBreadcrumbSchema } from '../../lib/seo';
+
+const liveCalcs = [
+  { name: 'Fuel Cost Calculator', href: '/auto/fuel-cost-calculator/', desc: 'Work out the fuel cost of any trip from distance, mileage and fuel price — one-way or round trip.', icon: '⛽' },
+  { name: 'Fuel Economy Calculator', href: '/auto/fuel-economy-calculator/', desc: 'Compute MPG or km/L from distance and fuel used, and convert between MPG, km/L and L/100km.', icon: '📊' },
+  { name: 'Car Depreciation Calculator', href: '/auto/car-depreciation-calculator/', desc: "Estimate how much a car is worth after each year at a chosen depreciation rate.", icon: '📉' },
+  { name: 'Lease vs Buy Calculator', href: '/auto/lease-vs-buy-calculator/', desc: 'Compare the total cost of leasing versus financing and keeping a car over the same term.', icon: '🚗' },
+  { name: 'Car Loan Calculator', href: '/finance/car-loan-calculator/', desc: 'Monthly EMI or payment on a car loan from price, down payment, rate and tenure.', icon: '💳' },
+];
+
+const upcomingCalcs = [
+  { name: 'Cost Per Mile Calculator', desc: 'Total running cost per mile including fuel, insurance and maintenance.', icon: '🛣️' },
+];
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Auto', url: '/auto/' },
+];
+
+const faqs = [
+  { q: 'How do I work out the fuel cost of a trip?', a: 'Divide the trip distance by your vehicle\'s fuel economy to get the fuel used, then multiply by the price per gallon or litre. For example, a 300-mile trip at 30 MPG uses 10 gallons; at $3.50 a gallon that is $35. The fuel cost calculator does this for one-way and round trips in US or metric units.' },
+  { q: 'Is it cheaper to lease or buy a car?', a: 'It depends on how long you keep the car and how much it holds its value. Leasing usually has lower monthly payments but you own nothing at the end; buying costs more up front but you keep an asset with a resale value. The lease-vs-buy calculator compares the total cost of each over the same term so you can see the real difference.' },
+  { q: 'How much does a car depreciate each year?', a: 'A typical car loses around 15–20% of its value each year, with the steepest drop in the first year (often about 20%). Luxury cars, EVs and high-mileage vehicles depreciate differently. The car depreciation calculator lets you set the rate and see the value year by year.' },
+];
+
+const schemas = [
+  buildBreadcrumbSchema(breadcrumbs),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Auto Calculators — Calctube',
+    description: 'Free car calculators: fuel cost, fuel economy, depreciation, lease vs buy and car loan.',
+    url: 'https://calctube.com/auto/',
+    isPartOf: { '@id': 'https://calctube.com/#website' },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: liveCalcs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, url: `https://calctube.com${c.href}`, name: c.name })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<BaseLayout
+  title="Auto Calculators — Fuel Cost, Economy, Depreciation & Lease"
+  description="Free car calculators: trip fuel cost, fuel economy (MPG/km-L), car depreciation, lease vs buy, and car loan payments. Imperial and metric. No signup."
+  schemas={schemas}
+>
+  <div class="container-prose py-8">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1>Auto Calculators</h1>
+    <p class="text-lg text-slate-700 mt-3">
+      Everything for running the numbers on a car — trip fuel cost, fuel economy, depreciation, lease versus buy, and loan payments. Each calculator shows the formula and works in US or metric units.
+    </p>
+
+    <h2 class="mt-10">Available now</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {liveCalcs.map((c) => (
+        <a href={c.href} class="card hover:border-brand-300 no-underline block">
+          <div class="text-3xl mb-2">{c.icon}</div>
+          <div class="font-semibold text-slate-900">{c.name}</div>
+          <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <h2 class="mt-10">Coming soon</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {upcomingCalcs.map((c) => (
+        <div class="card opacity-70">
+          <div class="flex items-start gap-3">
+            <div class="text-3xl">{c.icon}</div>
+            <div class="flex-1">
+              <div class="font-semibold text-slate-900 flex items-center gap-2">
+                {c.name}
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 uppercase">Soon</span>
+              </div>
+              <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="mt-10">The real cost of a car</h2>
+    <p class="text-slate-700 leading-relaxed">
+      The sticker price is only the start. Fuel, depreciation, financing and the lease-versus-buy decision often matter more over the life of a car than the headline number. These calculators break each of those down with the formula shown — so you can compare options honestly before you commit.
+    </p>
+
+    <h2 class="mt-10">Frequently asked questions</h2>
+    <div class="space-y-3 mt-4">
+      {faqs.map((f) => (
+        <details class="card">
+          <summary class="cursor-pointer font-semibold text-slate-900">{f.q}</summary>
+          <p class="text-sm text-slate-700 mt-2 !leading-relaxed">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
