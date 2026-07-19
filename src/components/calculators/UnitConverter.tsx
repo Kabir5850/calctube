@@ -91,11 +91,17 @@ function fmt(n: number): string {
   return Number(n.toPrecision(7)).toLocaleString('en-US', { maximumFractionDigits: 6 });
 }
 
-export default function UnitConverter() {
-  const [catKey, setCatKey] = useState('length');
-  const cat = CATEGORIES.find((c) => c.key === catKey)!;
-  const [fromSym, setFromSym] = useState('km');
-  const [toSym, setToSym] = useState('mi');
+interface UnitConverterProps {
+  initialCategory?: string;
+  initialFrom?: string;
+  initialTo?: string;
+}
+
+export default function UnitConverter({ initialCategory = 'length', initialFrom = 'km', initialTo = 'mi' }: UnitConverterProps) {
+  const [catKey, setCatKey] = useState(initialCategory);
+  const cat = CATEGORIES.find((c) => c.key === catKey) ?? CATEGORIES[0];
+  const [fromSym, setFromSym] = useState(initialFrom);
+  const [toSym, setToSym] = useState(initialTo);
   const [value, setValue] = useState<number>(1);
 
   const from = cat.units.find((u) => u.sym === fromSym) ?? cat.units[0];

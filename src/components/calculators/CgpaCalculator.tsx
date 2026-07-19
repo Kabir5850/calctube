@@ -1,18 +1,25 @@
 import { useState, useMemo } from 'react';
 
 // University conversion formulas students actually search for.
-type FormulaKey = 'cbse' | 'vtu' | 'anna' | 'mu' | 'custom';
+export type FormulaKey = 'cbse' | 'vtu' | 'anna' | 'mu' | 'gtu' | 'makaut' | 'custom';
 const FORMULAS: Record<FormulaKey, { label: string; toPct: (c: number) => number; toCgpa: (p: number) => number; note: string }> = {
   cbse:   { label: 'CBSE / Generic (×9.5)', toPct: (c) => c * 9.5, toCgpa: (p) => p / 9.5, note: 'CBSE and most 10-point universities: Percentage = CGPA × 9.5' },
   vtu:    { label: 'VTU ((CGPA−0.75)×10)', toPct: (c) => (c - 0.75) * 10, toCgpa: (p) => p / 10 + 0.75, note: 'Visvesvaraya Technological University: % = (CGPA − 0.75) × 10' },
   anna:   { label: 'Anna University ((CGPA−0.5)×10)', toPct: (c) => (c - 0.5) * 10, toCgpa: (p) => p / 10 + 0.5, note: 'Anna University: % = (CGPA − 0.5) × 10' },
   mu:     { label: 'Mumbai University (7.1×CGPA+11)', toPct: (c) => 7.1 * c + 11, toCgpa: (p) => (p - 11) / 7.1, note: 'University of Mumbai (7-point average formula): % = 7.1 × CGPA + 11' },
+  gtu:    { label: 'GTU ((CGPA−0.5)×10)', toPct: (c) => (c - 0.5) * 10, toCgpa: (p) => p / 10 + 0.5, note: 'Gujarat Technological University: % = (CGPA − 0.5) × 10' },
+  makaut: { label: 'MAKAUT / WBUT ((CGPA−0.75)×10)', toPct: (c) => (c - 0.75) * 10, toCgpa: (p) => p / 10 + 0.75, note: 'MAKAUT (formerly WBUT): % = (CGPA − 0.75) × 10' },
   custom: { label: 'Custom multiplier', toPct: (c) => c * 9.5, toCgpa: (p) => p / 9.5, note: 'Set your own multiplier if your university uses a different factor.' },
 };
 
-export default function CgpaCalculator() {
-  const [mode, setMode] = useState<'toPct' | 'toCgpa'>('toPct');
-  const [formula, setFormula] = useState<FormulaKey>('cbse');
+interface CgpaCalculatorProps {
+  initialFormula?: FormulaKey;
+  initialMode?: 'toPct' | 'toCgpa';
+}
+
+export default function CgpaCalculator({ initialFormula = 'cbse', initialMode = 'toPct' }: CgpaCalculatorProps) {
+  const [mode, setMode] = useState<'toPct' | 'toCgpa'>(initialMode);
+  const [formula, setFormula] = useState<FormulaKey>(initialFormula);
   const [cgpa, setCgpa] = useState<number>(8.5);
   const [pct, setPct] = useState<number>(80);
   const [mult, setMult] = useState<number>(9.5);

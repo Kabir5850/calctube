@@ -51,6 +51,8 @@ export default defineConfig({
           [/^\/finance\/emi-calculator\//, '2026-05-24'],              // emi-banks data
           [/^\/finance\/income-tax-india\//, '2026-07-07'],            // PT-led retitle
           [/^\/conversions\/currency\//, '2026-07-07'],                // live-rate converter
+          [/^\/conversions\/unit-converter\//, '2026-07-19'],          // unit-pair tier
+          [/^\/math\/cgpa-to-percentage\//, '2026-07-19'],             // per-university cgpa tier
           [/^\/$/, '2026-07-07'],                                      // homepage (geo banner)
         ];
         const match = CLUSTER_LASTMOD.find(([re]) => re.test(path));
@@ -102,6 +104,10 @@ export default defineConfig({
           path === '/finance/inflation-calculator/' ||
           path === '/finance/net-worth-calculator/' ||
           path === '/conversions/currency/' ||
+          path === '/conversions/unit-converter/' ||
+          path === '/conversions/temperature-converter/' ||
+          path === '/math/cgpa-to-percentage-calculator/' ||
+          path === '/math/gpa-calculator/' ||
           path === '/finance/mortgage-calculator/cities/'
         ) {
           item.priority = 0.85;
@@ -112,6 +118,8 @@ export default defineConfig({
         // Long-tail programmatic SEO spokes
         if (
           path.startsWith('/conversions/currency/') ||
+          path.startsWith('/conversions/unit-converter/') ||
+          path.startsWith('/math/cgpa-to-percentage/') ||
           path.startsWith('/finance/mortgage-calculator/') ||
           path.startsWith('/finance/emi-calculator/') ||
           path.startsWith('/finance/income-tax-india/')
