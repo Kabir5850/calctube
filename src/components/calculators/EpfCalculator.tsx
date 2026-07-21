@@ -152,7 +152,7 @@ export default function EpfCalculator() {
                 inputMode="numeric" />
             </div>
             <input type="range" min={5000} max={200000} step={500} value={result.salary} onChange={(e) => setSalary(Number(e.target.value))} className="w-full mt-2 accent-lime-accent" aria-label="Basic plus DA slider" />
-            <div className="text-[10px] text-ink-500 mt-1.5 font-bold">Basic + Dearness Allowance only — not gross CTC</div>
+            <div className="text-[10px] text-ink-500 mt-1.5 font-bold">Basic + Dearness Allowance only, not gross CTC</div>
           </div>
           <div>
             <label htmlFor="epf-age" className="block text-xs font-extrabold uppercase tracking-wider text-ink-700 mb-2">Current Age</label>
@@ -202,7 +202,7 @@ export default function EpfCalculator() {
                 inputMode="decimal" />
               <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none">%</span>
             </div>
-            <div className="text-[10px] text-ink-500 mt-1.5 font-bold">8.25% — set by the EPFO Board of Trustees</div>
+            <div className="text-[10px] text-ink-500 mt-1.5 font-bold">8.25%, set by the EPFO Board of Trustees</div>
           </div>
         </div>
 
@@ -231,7 +231,7 @@ export default function EpfCalculator() {
           <div className="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
             <div className="text-[10px] font-extrabold uppercase tracking-wider text-white mb-1">EPS Pension Pool</div>
             <div className="text-3xl sm:text-4xl font-extrabold text-white leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{fmtINRShort(result.totalEps)}</div>
-            <div className="text-xs text-white/90 mt-2 font-semibold">separate — funds a monthly pension, not a lump sum</div>
+            <div className="text-xs text-white/90 mt-2 font-semibold">separate: funds a monthly pension, not a lump sum</div>
           </div>
         </div>
 
@@ -261,7 +261,7 @@ export default function EpfCalculator() {
               <li className="flex items-start gap-3">
                 <span className="shrink-0 w-6 h-6 rounded-full bg-cyan-accent border-2 border-ink-900 text-[11px] font-extrabold text-ink-900 flex items-center justify-center">2</span>
                 <div className="text-xs sm:text-sm font-semibold text-ink-800 leading-snug">
-                  <strong className="text-ink-900">Your employer matches 12%</strong> = {fmtINR(EMPLOYER_RATE * result.salary)} — but this one splits in two.
+                  <strong className="text-ink-900">Your employer matches 12%</strong> = {fmtINR(EMPLOYER_RATE * result.salary)}, but this one splits in two.
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -271,7 +271,7 @@ export default function EpfCalculator() {
                   {result.epsCapped ? (
                     <>8.33% of {fmtINR(result.salary)} would be {fmtINR(EPS_RATE * result.salary)}, but the diversion is capped at 8.33% of the ₹15,000 wage ceiling, so it stops at ₹1,250 a month.</>
                   ) : (
-                    <>Your Basic + DA is at or below the ₹15,000 wage ceiling, so the full 8.33% is diverted — the ₹1,250 cap does not bite yet.</>
+                    <>Your Basic + DA is at or below the ₹15,000 wage ceiling, so the full 8.33% is diverted. The ₹1,250 cap does not bite yet.</>
                   )}
                 </div>
               </li>

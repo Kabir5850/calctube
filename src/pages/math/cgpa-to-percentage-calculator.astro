@@ -23,11 +23,11 @@ const breadcrumbs = [
 const table = [10, 9.5, 9, 8.5, 8, 7.5, 7, 6.5, 6, 5.5, 5].map((c) => ({ cgpa: c, pct: c * 9.5 }));
 
 const faqs = [
-  { q: 'How do I convert CGPA to percentage?', a: 'For CBSE and most Indian 10-point universities, multiply your CGPA by 9.5. So a CGPA of 8.5 = 8.5 × 9.5 = 80.75%. This "×9.5" factor is the CBSE-recommended formula, derived from averaging the percentage ranges of grade points. Some universities use their own formula — VTU uses (CGPA − 0.75) × 10, Anna University uses (CGPA − 0.5) × 10, and Mumbai University uses 7.1 × CGPA + 11. Always check your grade card or university handbook for the exact method.' },
-  { q: 'Why multiply CGPA by 9.5?', a: 'CBSE arrived at 9.5 by taking the average of the upper and lower percentage bounds of grades A1 to E, across the five subjects with the highest grade points. It\'s an official, board-recommended approximation — not an exact science, which is why a CGPA of 10 maps to 95%, not 100%. Different boards and universities use different multipliers because their grade-to-percentage bands differ.' },
+  { q: 'How do I convert CGPA to percentage?', a: 'For CBSE and most Indian 10-point universities, multiply your CGPA by 9.5. So a CGPA of 8.5 = 8.5 × 9.5 = 80.75%. This "×9.5" factor is the CBSE-recommended formula, derived from averaging the percentage ranges of grade points. Some universities use their own formula. VTU uses (CGPA − 0.75) × 10, Anna University uses (CGPA − 0.5) × 10, and Mumbai University uses 7.1 × CGPA + 11. Always check your grade card or university handbook for the exact method.' },
+  { q: 'Why multiply CGPA by 9.5?', a: 'CBSE arrived at 9.5 by taking the average of the upper and lower percentage bounds of grades A1 to E, across the five subjects with the highest grade points. It\'s an official, board-recommended approximation, not an exact science, which is why a CGPA of 10 maps to 95%, not 100%. Different boards and universities use different multipliers because their grade-to-percentage bands differ.' },
   { q: 'How do I convert percentage to CGPA?', a: 'Reverse the formula: divide your percentage by 9.5 (for the CBSE ×9.5 system). So 76% ÷ 9.5 = 8.0 CGPA. Toggle this calculator to "Percentage → CGPA" and it does it for you across the different university formulas. Note that because these are approximations, converting back and forth can shift the last decimal slightly.' },
-  { q: 'Is CGPA out of 10 the same everywhere?', a: 'No. India\'s 10-point CGPA (CBSE, most universities) is the most common, but the US uses a 4.0 GPA scale, and some Indian universities use a 7-point or 4-point scale. A 9.0 CGPA on the 10-point scale is roughly a 3.7-3.8 GPA on the US 4.0 scale — but exact conversion for study-abroad applications should follow WES or the target university\'s official method, not a simple formula.' },
-  { q: 'Does a higher CGPA always mean a higher percentage?', a: 'Within the same formula, yes — the conversion is a straight line. But the same CGPA gives different percentages under different formulas: a CGPA of 8.0 is 76% under CBSE (×9.5), 72.5% under VTU, and 75% under Anna University. That\'s why you must use your own university\'s formula when it matters for eligibility or applications — a wrong formula can put you above or below a cut-off.' },
+  { q: 'Is CGPA out of 10 the same everywhere?', a: 'No. India\'s 10-point CGPA (CBSE, most universities) is the most common, but the US uses a 4.0 GPA scale, and some Indian universities use a 7-point or 4-point scale. A 9.0 CGPA on the 10-point scale is roughly a 3.7-3.8 GPA on the US 4.0 scale, but exact conversion for study-abroad applications should follow WES or the target university\'s official method, not a simple formula.' },
+  { q: 'Does a higher CGPA always mean a higher percentage?', a: 'Within the same formula, yes. The conversion is a straight line. But the same CGPA gives different percentages under different formulas: a CGPA of 8.0 is 76% under CBSE (×9.5), 72.5% under VTU, and 75% under Anna University. That\'s why you must use your own university\'s formula when it matters for eligibility or applications. A wrong formula can put you above or below a cut-off.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -41,7 +41,7 @@ const schemas = [
     steps: [
       { name: 'Pick your university formula', text: 'Select CBSE/Generic (×9.5), VTU, Anna University, Mumbai University, or a custom multiplier.' },
       { name: 'Enter your CGPA', text: 'Type your CGPA out of 10 (e.g. 8.5).' },
-      { name: 'Read the percentage', text: 'The calculator applies the formula — CGPA 8.5 × 9.5 = 80.75% under CBSE.' },
+      { name: 'Read the percentage', text: 'The calculator applies the formula: CGPA 8.5 × 9.5 = 80.75% under CBSE.' },
     ],
   }),
 ];
@@ -53,7 +53,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="CGPA to Percentage Calculator — CBSE, VTU, Anna & Mumbai University" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="CGPA to Percentage Calculator: CBSE, VTU, Anna & Mumbai University" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-violet-300/40 rounded-full blur-[120px] float-slow"></div>
@@ -91,7 +91,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                For <strong>CBSE and most Indian universities</strong>, Percentage = <strong>CGPA × 9.5</strong>. So a CGPA of <strong>8.5 = 80.75%</strong>, and a CGPA of 9.2 = 87.4%. VTU, Anna and Mumbai University use different formulas — pick yours below, and convert <strong>both ways</strong>.
+                For <strong>CBSE and most Indian universities</strong>, Percentage = <strong>CGPA × 9.5</strong>. So a CGPA of <strong>8.5 = 80.75%</strong>, and a CGPA of 9.2 = 87.4%. VTU, Anna and Mumbai University use different formulas. Pick yours below, and convert <strong>both ways</strong>.
               </p>
             </div>
           </div>
@@ -129,7 +129,7 @@ const relatedCalcs = [
             </tbody>
           </table>
         </div>
-        <p class="text-xs text-ink-500 mt-3 font-medium">CBSE/generic 10-point formula. VTU, Anna University and Mumbai University use different formulas — switch the formula in the calculator above.</p>
+        <p class="text-xs text-ink-500 mt-3 font-medium">CBSE/generic 10-point formula. VTU, Anna University and Mumbai University use different formulas. Switch the formula in the calculator above.</p>
       </div>
     </div>
   </section>

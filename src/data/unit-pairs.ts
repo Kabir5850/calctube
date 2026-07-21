@@ -26,7 +26,7 @@ export const UNITS: Record<string, Unit> = {
   // LENGTH — base metre
   mm:      { key: 'mm', name: 'millimeter', plural: 'millimeters', symbol: 'mm', category: 'length', factor: 0.001, usage: 'small dimensions in engineering, screens and rainfall' },
   cm:      { key: 'cm', name: 'centimeter', plural: 'centimeters', symbol: 'cm', category: 'length', factor: 0.01, usage: 'body measurements, height and everyday lengths in metric countries' },
-  meters:  { key: 'meters', name: 'meter', plural: 'meters', symbol: 'm', category: 'length', factor: 1, usage: 'the SI base length unit — rooms, fabric, athletics tracks' },
+  meters:  { key: 'meters', name: 'meter', plural: 'meters', symbol: 'm', category: 'length', factor: 1, usage: 'the SI base length unit (rooms, fabric, athletics tracks)' },
   km:      { key: 'km', name: 'kilometer', plural: 'kilometers', symbol: 'km', category: 'length', factor: 1000, usage: 'road distances and running events across most of the world' },
   inches:  { key: 'inches', name: 'inch', plural: 'inches', symbol: 'in', category: 'length', factor: 0.0254, usage: 'screen sizes, and everyday lengths in the US and UK' },
   feet:    { key: 'feet', name: 'foot', plural: 'feet', symbol: 'ft', category: 'length', factor: 0.3048, usage: 'height and room dimensions in the US and UK' },
@@ -48,7 +48,7 @@ export const UNITS: Record<string, Unit> = {
   gallons:     { key: 'gallons', name: 'gallon', plural: 'gallons', symbol: 'gal', category: 'volume', factor: 3.7854118, usage: 'fuel and large liquids in the US' },
 
   // SPEED — base m/s
-  mps:   { key: 'mps', name: 'meter per second', plural: 'meters per second', symbol: 'm/s', category: 'speed', factor: 1, usage: 'the SI speed unit — physics and wind speed' },
+  mps:   { key: 'mps', name: 'meter per second', plural: 'meters per second', symbol: 'm/s', category: 'speed', factor: 1, usage: 'the SI speed unit (physics and wind speed)' },
   kmh:   { key: 'kmh', name: 'kilometer per hour', plural: 'kilometers per hour', symbol: 'km/h', category: 'speed', factor: 0.2777778, usage: 'vehicle speed and limits in most countries' },
   mph:   { key: 'mph', name: 'mile per hour', plural: 'miles per hour', symbol: 'mph', category: 'speed', factor: 0.44704, usage: 'vehicle speed and limits in the US and UK' },
   knots: { key: 'knots', name: 'knot', plural: 'knots', symbol: 'kn', category: 'speed', factor: 0.5144444, usage: 'aviation, sailing and marine navigation' },

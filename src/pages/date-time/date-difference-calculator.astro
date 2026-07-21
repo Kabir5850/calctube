@@ -8,7 +8,7 @@ import { getAuthor } from '../../data/authors';
 const meta = {
   slug: 'date-difference-calculator',
   name: 'Date Difference Calculator',
-  description: 'Free date difference calculator. Find the exact number of days, weeks, months, and years between any two dates — plus an estimate of working days.',
+  description: 'Free date difference calculator. Find the exact number of days, weeks, months, and years between any two dates, plus an estimate of working days.',
   category: 'date-time' as const,
   keywords: ['date difference calculator', 'days between dates', 'how many days between', 'date calculator', 'days between two dates', 'working days calculator'],
   lastUpdated: '2026-05-25',
@@ -32,11 +32,11 @@ const faqs = [
   },
   {
     q: 'What does "years, months, days" breakdown mean?',
-    a: 'It is the human-readable breakdown: first count full elapsed years, then remaining full months, then remaining days — the same way we describe a person\'s age. It\'s more intuitive than just showing total days.',
+    a: 'It is the human-readable breakdown: first count full elapsed years, then remaining full months, then remaining days, the same way we describe a person\'s age. It\'s more intuitive than just showing total days.',
   },
   {
     q: 'Can I calculate the difference for future dates?',
-    a: 'Yes — both the start and end date fields accept any valid date, past or future. You can plan project timelines, contract periods, or event countdowns.',
+    a: 'Yes. Both the start and end date fields accept any valid date, past or future. You can plan project timelines, contract periods, or event countdowns.',
   },
   {
     q: 'What does the Swap button do?',
@@ -54,7 +54,7 @@ const reviewer = getAuthor('calctube-editorial');
 ---
 
 <BaseLayout
-  title="Date Difference Calculator — Days, Weeks, Months"
+  title="Date Difference Calculator: Days, Weeks, Months"
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -101,7 +101,7 @@ const reviewer = getAuthor('calctube-editorial');
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                From <strong>January 1, 2020</strong> to <strong>May 25, 2026</strong> is <strong>2,336 days</strong> — that's 333 weeks 5 days, approximately 1,669 working days, and 6 years 4 months 24 days.
+                From <strong>January 1, 2020</strong> to <strong>May 25, 2026</strong> is <strong>2,336 days</strong>. That's 333 weeks 5 days, approximately 1,669 working days, and 6 years 4 months 24 days.
               </p>
             </div>
           </div>
@@ -133,7 +133,7 @@ const reviewer = getAuthor('calctube-editorial');
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mt-8">
           {[
             { num: '1', text: 'Enter your start date in the first field.', color: 'bg-cyan-accent' },
-            { num: '2', text: 'Enter the end date — defaults to today. Use the Swap button to reverse.', color: 'bg-lime-accent' },
+            { num: '2', text: 'Enter the end date, which defaults to today. Use the Swap button to reverse.', color: 'bg-lime-accent' },
             { num: '3', text: 'See total days, week breakdown, years/months/days, and working days estimate.', color: 'bg-yellow-accent' },
           ].map((step) => (
             <div class={`${step.color} border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm`}>

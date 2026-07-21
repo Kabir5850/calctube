@@ -53,7 +53,7 @@ export default function BudgetCalculator() {
               <div className="text-2xl sm:text-3xl font-extrabold text-ink-900 whitespace-nowrap" style={{ fontFamily: 'Inter Tight' }}>{fmt(r.amt)}</div>
             </div>
           ))}
-          {needsPct + wantsPct > 100 && <p className="text-xs text-pink-600 font-bold">Needs + Wants exceed 100% — reduce one so there's room to save.</p>}
+          {needsPct + wantsPct > 100 && <p className="text-xs text-pink-600 font-bold">Needs + Wants exceed 100%. Reduce one so there's room to save.</p>}
         </div>
       </div>
       <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Based on take-home (post-tax) pay. Amounts shown in your currency's units. Adjust the splits to fit your situation.</div>

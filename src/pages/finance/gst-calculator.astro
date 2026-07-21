@@ -35,15 +35,15 @@ const faqs = [
     a: 'India has five standard GST rates: 0% (essential goods like fresh fruits, vegetables, milk, eggs, healthcare services, education), 5% (transport, packaged food, basic apparel), 12% (processed food, computer software, mobile phones), 18% (most goods and services, including restaurants, financial services, telecom), and 28% (luxury items, automobiles, tobacco, aerated drinks). Additional cess applies on luxury cars, tobacco, and sin goods.',
   },
   {
-    q: 'GST inclusive vs exclusive — what\'s the difference?',
+    q: 'GST inclusive vs exclusive: what\'s the difference?',
     a: 'GST-exclusive: the price you see does NOT include GST. You add GST on top. Example: ₹10,000 + 18% GST = ₹11,800 total. GST-inclusive: the price you see ALREADY includes GST. You extract GST from it. Example: ₹11,800 total includes ₹1,800 GST and ₹10,000 net amount. Retail consumer prices (MRP-based) are typically GST-inclusive; B2B invoices and quotations are typically GST-exclusive. Always check which one applies before calculating.',
   },
   {
-    q: 'CGST + SGST vs IGST — when does each apply?',
-    a: 'CGST (Central GST) + SGST (State GST) apply to intra-state transactions where the seller and buyer are in the same state. Each is half of the total GST rate — so 18% GST splits into 9% CGST + 9% SGST. IGST (Integrated GST) applies to inter-state transactions and equals the full rate (e.g., 18%). The buyer\'s state gets the SGST/IGST share. From an end-customer perspective, the total tax burden is identical; the split only affects how tax is distributed between Centre and States.',
+    q: 'CGST + SGST vs IGST: when does each apply?',
+    a: 'CGST (Central GST) + SGST (State GST) apply to intra-state transactions where the seller and buyer are in the same state. Each is half of the total GST rate, so 18% GST splits into 9% CGST + 9% SGST. IGST (Integrated GST) applies to inter-state transactions and equals the full rate (e.g., 18%). The buyer\'s state gets the SGST/IGST share. From an end-customer perspective, the total tax burden is identical; the split only affects how tax is distributed between Centre and States.',
   },
   {
-    q: 'GST on services in India — common rates?',
+    q: 'GST on services in India: common rates?',
     a: 'Most services attract 18% GST including: financial services (bank charges, brokerage, insurance), telecom (mobile, internet), professional services (CA, lawyer, consultant), restaurant services (some at 5% non-AC), hotel rooms (₹7,500+ at 18%, lower bands at 12%), e-commerce platforms, courier and transport (some at 5%). Healthcare and education services are exempt. Specific composition schemes exist for small businesses (1-5% turnover-based) but are not pass-through to customers.',
   },
   {
@@ -80,7 +80,7 @@ const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout
-  title="GST Calculator India — Add or Remove GST 🧾"
+  title="GST Calculator India: Add or Remove GST 🧾"
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -160,23 +160,23 @@ const reviewer = getAuthor('aisha-rahman');
 
         <div class="mt-8 space-y-3">
           <div class="bg-white border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
-            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">0% — Exempt / Nil-rated</div>
+            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">0%: Exempt / Nil-rated</div>
             <p class="text-ink-700 font-medium text-sm !m-0">Fresh fruits and vegetables, milk, eggs, unpacked food grains, books, newspapers, healthcare services, education services, prasad, salt.</p>
           </div>
           <div class="bg-white border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
-            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">5% — Basic goods + transport</div>
+            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">5%: Basic goods + transport</div>
             <p class="text-ink-700 font-medium text-sm !m-0">Packaged food items, edible oils, sugar, tea/coffee, life-saving medicines, public transport (rail, bus), small restaurants without AC, footwear under ₹500, clothes under ₹1,000.</p>
           </div>
           <div class="bg-white border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
-            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">12% — Processed food + mid-tier goods</div>
+            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">12%: Processed food + mid-tier goods</div>
             <p class="text-ink-700 font-medium text-sm !m-0">Processed food, butter, cheese, ghee, computer software, mobile phones (basic), hotel rooms ₹1,000-7,500, ayurvedic medicines, business class air travel.</p>
           </div>
           <div class="bg-white border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
-            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">18% — Standard rate (most goods + services)</div>
+            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">18%: Standard rate (most goods + services)</div>
             <p class="text-ink-700 font-medium text-sm !m-0">Most consumer goods (electronics, cosmetics, footwear over ₹500, clothes over ₹1,000), financial services (bank charges, brokerage, insurance), telecom (mobile, internet), restaurants with AC, hotel rooms ₹7,500+, professional services.</p>
           </div>
           <div class="bg-white border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
-            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">28% — Luxury + sin goods</div>
+            <div class="font-extrabold text-lg text-ink-900 mb-1" style="font-family: 'Inter Tight', sans-serif;">28%: Luxury + sin goods</div>
             <p class="text-ink-700 font-medium text-sm !m-0">Automobiles (with cess), aerated drinks, tobacco products (with cess), luxury watches, premium cosmetics, paan masala, betting/gambling, racing. Cess on luxury cars and sin goods adds 12-200% on top.</p>
           </div>
         </div>

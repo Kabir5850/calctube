@@ -66,7 +66,7 @@ export default function WordCounter() {
           <p className="text-xs text-ink-600 mt-4 font-semibold">Speaking time ≈ {fmtTime(stats.speakMin)} at 130 words per minute.</p>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Counts update as you type. Nothing is uploaded — everything runs in your browser.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Counts update as you type. Nothing is uploaded. Everything runs in your browser.</div>
     </div>
   );
 }

@@ -21,8 +21,8 @@ const breadcrumbs = [
 const faqs = [
   { q: 'What is EMI?', a: 'EMI (Equated Monthly Installment) is the fixed amount you pay your lender every month for a loan. It includes both principal repayment and interest. Indian banks standardize loan repayments around the EMI structure.' },
   { q: 'How is EMI calculated?', a: 'EMI = [P × r × (1+r)^n] / [(1+r)^n − 1], where P is the principal, r is the monthly interest rate (annual ÷ 12), and n is the tenure in months. This is the same formula RBI-regulated banks use.' },
-  { q: 'Does this work for home, auto, and personal loans?', a: 'Yes — the EMI math is identical across loan types. Only the typical rate range differs: home (8–10% p.a.), auto (8–12%), personal (10–18%), education (8–12%).' },
-  { q: 'Does it include processing fees?', a: "No — this shows pure interest + principal. Indian banks typically charge a 0.25–2% processing fee upfront. Ask your lender for the effective APR which folds those in." },
+  { q: 'Does this work for home, auto, and personal loans?', a: 'Yes. The EMI math is identical across loan types. Only the typical rate range differs: home (8–10% p.a.), auto (8–12%), personal (10–18%), education (8–12%).' },
+  { q: 'Does it include processing fees?', a: "No. This shows pure interest + principal. Indian banks typically charge a 0.25–2% processing fee upfront. Ask your lender for the effective APR which folds those in." },
   { q: 'Can I reduce my EMI?', a: 'Three ways: (1) negotiate a lower rate (especially if MCLR/repo rate has dropped), (2) extend the tenure (lowers EMI but raises total interest), (3) part-prepayment (allowed without penalty on most floating-rate loans).' },
   { q: 'Tax benefits on home loans?', a: 'Under Indian Income Tax Act, you can claim up to ₹1.5 lakh deduction on principal repayment (Section 80C) and ₹2 lakh on interest (Section 24b) for a self-occupied property. Consult a CA for your specific case.' },
 ];
@@ -36,7 +36,7 @@ const relatedCalcs = [
 const reviewer = getAuthor('aisha-rahman');
 ---
 
-<BaseLayout title="EMI Calculator — Home, Personal, Auto Loan EMI" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="EMI Calculator: Home, Personal, Auto Loan EMI" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
@@ -104,7 +104,7 @@ const reviewer = getAuthor('aisha-rahman');
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">3 steps. 0 confusion.</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mt-8">
           {[
-            { num: '1', text: 'Enter loan amount (₹) — home, auto, personal, anything', color: 'bg-yellow-accent' },
+            { num: '1', text: 'Enter loan amount (₹): home, auto, personal, anything', color: 'bg-yellow-accent' },
             { num: '2', text: 'Enter the annual interest rate (p.a.)', color: 'bg-pink-accent text-white' },
             { num: '3', text: 'Choose tenure in years (or use 10y/20y/30y quick pick)', color: 'bg-cyan-accent' },
           ].map((step) => (

@@ -59,7 +59,7 @@ export default function OvulationCalculator() {
           {first ? (
             <>
               <div className="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 sm:p-6 shadow-sticker-sm">
-                <div className="text-[10px] font-extrabold uppercase tracking-wider text-white mb-1">Most fertile — likely ovulation</div>
+                <div className="text-[10px] font-extrabold uppercase tracking-wider text-white mb-1">Most fertile, likely ovulation</div>
                 <div className="text-3xl sm:text-4xl font-extrabold text-white leading-tight" style={{ fontFamily: 'Inter Tight', letterSpacing: '-0.03em' }}>{fmt(first.ovulation)}</div>
                 <p className="text-sm text-white font-bold mt-3 !m-0">Fertile window: <strong>{fmt(first.fertileStart)} → {fmt(first.fertileEnd)}</strong> (about 6 days).</p>
               </div>
@@ -87,7 +87,7 @@ export default function OvulationCalculator() {
           )}
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Calendar estimate (ovulation ≈ next period − 14 days). Not a contraceptive method — cycles vary. Ovulation kits or tracking are more precise.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Calendar estimate (ovulation ≈ next period − 14 days). Not a contraceptive method. Cycles vary. Ovulation kits or tracking are more precise.</div>
     </div>
   );
 }

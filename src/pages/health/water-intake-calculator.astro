@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'water-intake-calculator', name: 'Water Intake Calculator',
-  description: 'Free daily water intake calculator. Estimate how much water you should drink per day from your body weight, activity level and climate — in litres, glasses and fluid ounces.',
+  description: 'Free daily water intake calculator. Estimate how much water you should drink per day from your body weight, activity level and climate, in litres, glasses and fluid ounces.',
   category: 'health' as const,
   keywords: ['water intake calculator', 'how much water should i drink', 'daily water intake', 'water calculator', 'hydration calculator'],
   lastUpdated: '2026-07-18',
@@ -28,7 +28,7 @@ const table = weights.map((kg) => {
 const faqs = [
   { q: 'How much water should I drink a day?', a: 'A practical estimate is about 30–35 ml of fluid per kilogram of body weight, before adjusting for exercise and heat. For a 70 kg adult that\'s roughly 2.3 litres a day from all fluids. The old "8 glasses (2 litres)" rule is a reasonable average for many people, but a lighter or heavier person needs proportionally less or more. This calculator scales the figure to you.' },
   { q: 'Does exercise change how much water I need?', a: 'Yes. You lose fluid through sweat, so active days need more. A common guideline is an extra 350–500 ml for every 30 minutes of exercise, and more in heat. This calculator adds roughly 350 ml per 30 minutes of activity you enter. For long or intense sessions, also replace electrolytes (sodium, potassium), not just water.' },
-  { q: 'Do coffee, tea and food count toward my water intake?', a: 'Yes. All beverages — including tea and coffee — count toward hydration; the mild diuretic effect of caffeine at normal amounts doesn\'t cancel out the fluid. Food contributes too, supplying about 20% of most people\'s water through fruit, vegetables, soups and other moist foods. The target here refers to total fluid, so you don\'t need to drink it all as plain water.' },
+  { q: 'Do coffee, tea and food count toward my water intake?', a: 'Yes. All beverages, including tea and coffee, count toward hydration; the mild diuretic effect of caffeine at normal amounts doesn\'t cancel out the fluid. Food contributes too, supplying about 20% of most people\'s water through fruit, vegetables, soups and other moist foods. The target here refers to total fluid, so you don\'t need to drink it all as plain water.' },
   { q: 'Can you drink too much water?', a: 'Rarely, but yes. Drinking a very large amount in a short time can dilute blood sodium (hyponatraemia), which is dangerous. This is mostly a risk for endurance athletes over-drinking during events, or certain medical conditions. For everyday life, spreading fluids through the day and drinking to thirst keeps you safe. If you have kidney, heart or liver conditions, follow your doctor\'s fluid advice over any calculator.' },
   { q: 'How do I know if I\'m drinking enough?', a: 'The simplest check is urine colour: pale straw yellow usually means well hydrated, while dark yellow suggests you need more. Thirst, dry mouth, headaches and tiredness can be early signs of mild dehydration. Your needs rise in hot weather, at altitude, when ill with fever, and during pregnancy or breastfeeding.' },
 ];
@@ -57,7 +57,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Water Intake Calculator — How Much Water Should You Drink?" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Water Intake Calculator: How Much Water Should You Drink?" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -94,7 +94,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                A good estimate is <strong>about 33 ml of fluid per kg of body weight</strong> — roughly <strong>2.3 litres for a 70 kg adult</strong> — plus ~350 ml per 30 minutes of exercise and more in heat. Enter your details below for a personalised target in litres and glasses.
+                A good estimate is <strong>about 33 ml of fluid per kg of body weight</strong>, roughly <strong>2.3 litres for a 70 kg adult</strong>, plus ~350 ml per 30 minutes of exercise and more in heat. Enter your details below for a personalised target in litres and glasses.
               </p>
             </div>
           </div>

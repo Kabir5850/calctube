@@ -111,7 +111,7 @@ const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout
-  title={`${bank.bankName} Home Loan ${city.name} — EMI Calculator ${city.flag} | ${bank.homeLoanRate.typical}%`}
+  title={`${bank.bankName} Home Loan ${city.name}: EMI Calculator ${city.flag} | ${bank.homeLoanRate.typical}%`}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -305,20 +305,20 @@ const reviewer = getAuthor('aisha-rahman');
           For a {city.name} buyer specifically, the practical math looks like this: on the city's typical
           {formatINRShort(city.typicalLoanAmount)} ticket at {bank.bankName}'s {bank.homeLoanRate.typical}% rate over 20 years,
           you're looking at roughly <strong>{fmtINR(cityBankEmi)}/month</strong> and <strong>{formatINRShort(totalInterest)}</strong>
-          in total interest. Add {city.stateName}'s {city.stampDutyPct + city.registrationPct}% stamp duty and registration —
-          about {formatINRShort(stampDutyAmount)} upfront — and the real cash you need at signing climbs well above the down payment alone.
+          in total interest. Add {city.stateName}'s {city.stampDutyPct + city.registrationPct}% stamp duty and registration
+          (about {formatINRShort(stampDutyAmount)} upfront), and the real cash you need at signing climbs well above the down payment alone.
           Budget for it early; many {city.name} first-time buyers underestimate this line item.
         </p>
         <p>
           <strong>On prepayment:</strong> {bank.prepaymentPolicy} That matters most for {city.name} professionals expecting
-          variable income (bonuses, ESOPs, appraisal jumps) — the ability to part-prepay without penalty on a floating-rate loan
+          variable income (bonuses, ESOPs, appraisal jumps). The ability to part-prepay without penalty on a floating-rate loan
           can shave years off the tenure. If your employer is on {bank.bankName}'s {city.name} pre-approval list above, you also
           get the disbursal-speed edge ({combo.disbursalDays.split(',')[0]}), which is decisive when you're competing for a
           property in a fast-moving {city.name} micro-market.
         </p>
         <p class="text-sm text-ink-600">
-          Compare against at least one public-sector lender (SBI, Canara, or PNB) and one other private bank before committing —
-          the rate gap between the cheapest and most expensive mainstream {city.name} lender on the same profile is often
+          Compare against at least one public-sector lender (SBI, Canara, or PNB) and one other private bank before committing.
+          The rate gap between the cheapest and most expensive mainstream {city.name} lender on the same profile is often
           20–40 basis points, which compounds into lakhs over a 20-year term. Use the calculator above with each bank's rate to see your own numbers.
         </p>
       </div>

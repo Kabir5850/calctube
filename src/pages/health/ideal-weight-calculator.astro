@@ -27,8 +27,8 @@ const table = heights.map((cm) => {
 
 const faqs = [
   { q: 'What is "ideal body weight" and how is it calculated?', a: 'Ideal body weight (IBW) is an estimate of a healthy weight based only on your height and sex, originally created to help doctors dose medication. The best-known is the Devine formula: men 50 kg + 2.3 kg for each inch over 5 feet; women 45.5 kg + 2.3 kg per inch over 5 feet. The Robinson, Miller and Hamwi formulas tweak the constants. This calculator shows all four plus the healthy BMI range so you can compare.' },
-  { q: 'Which formula should I use?', a: 'No single formula is "correct" — they were derived from different populations and give slightly different numbers. For a practical target, the healthy BMI range (a BMI of 18.5–24.9 for your height) is more widely used today because it gives a range rather than a single number, allowing for natural variation. Treat the formula figures as reference points within that range.' },
-  { q: 'Why do the formulas ignore my body frame and muscle?', a: 'They were built as simple height-based estimates, so they can\'t account for a larger frame, higher muscle mass, or age. A muscular athlete may weigh well above their "ideal" figure yet have low body fat. That\'s why IBW is a starting point, not a verdict — pair it with body fat percentage and how you feel and perform.' },
+  { q: 'Which formula should I use?', a: 'No single formula is "correct". They were derived from different populations and give slightly different numbers. For a practical target, the healthy BMI range (a BMI of 18.5–24.9 for your height) is more widely used today because it gives a range rather than a single number, allowing for natural variation. Treat the formula figures as reference points within that range.' },
+  { q: 'Why do the formulas ignore my body frame and muscle?', a: 'They were built as simple height-based estimates, so they can\'t account for a larger frame, higher muscle mass, or age. A muscular athlete may weigh well above their "ideal" figure yet have low body fat. That\'s why IBW is a starting point, not a verdict. Pair it with body fat percentage and how you feel and perform.' },
   { q: 'Is ideal weight different for men and women?', a: 'Yes. Every formula uses a lower base weight for women, reflecting average differences in build and muscle mass. For the same height, a woman\'s ideal-weight figure comes out a few kilograms lower than a man\'s. This calculator switches the constants automatically when you pick your sex.' },
   { q: 'How do I find my healthy weight range from BMI?', a: 'Multiply the BMI limits by your height in metres squared. For a healthy BMI of 18.5–24.9 at 170 cm (1.7 m): low = 18.5 × 1.7² = 53.5 kg, high = 24.9 × 1.7² = 72 kg. The table on this page lists the range for common heights so you can look yours up directly.' },
 ];
@@ -57,7 +57,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Ideal Weight Calculator — Healthy Weight for Your Height" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Ideal Weight Calculator: Healthy Weight for Your Height" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-lime-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -116,7 +116,7 @@ const relatedCalcs = [
       <div class="max-w-3xl mx-auto">
         <span class="chip bg-lime-accent text-ink-900 mb-4">📊 Quick reference</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">Healthy weight range by height.</h2>
-        <p class="mt-3 text-ink-700 font-medium">Based on a BMI of 18.5–24.9. The same height covers a wide healthy band — there's no single "correct" number.</p>
+        <p class="mt-3 text-ink-700 font-medium">Based on a BMI of 18.5–24.9. The same height covers a wide healthy band. There's no single "correct" number.</p>
         <div class="mt-8 overflow-x-auto">
           <table class="w-full bg-white border-[2.5px] border-ink-900 rounded-2xl shadow-sticker-sm overflow-hidden border-separate border-spacing-0 text-sm">
             <thead><tr class="bg-ink-900 text-white">

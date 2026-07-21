@@ -18,7 +18,7 @@ const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Finance', url: '/finance/' }, { name: 'Compound Interest', url: path },
 ];
 const faqs = [
-  { q: 'What is compound interest?', a: 'Compound interest is interest earned on both your original principal AND on interest previously earned. Unlike simple interest, it accelerates over time — Einstein allegedly called it the 8th wonder of the world.' },
+  { q: 'What is compound interest?', a: 'Compound interest is interest earned on both your original principal AND on interest previously earned. Unlike simple interest, it accelerates over time. Einstein allegedly called it the 8th wonder of the world.' },
   { q: 'How is it calculated?', a: 'The classic formula is A = P(1 + r/n)^(nt), where A is final amount, P is principal, r is annual rate, n is compounding periods per year, t is years. This calculator extends it to include regular contributions.' },
   { q: 'Why does compounding frequency matter?', a: 'More frequent compounding = more growth, but the difference between annual and monthly is small. Over 30 years at 7%, daily compounding only beats annual by ~3%. Time and contribution amount matter way more.' },
   { q: "Whats a realistic return rate to use?", a: 'Long-term US stock market average: ~10% nominal, ~7% after inflation. Bond yields: 3–5%. Savings accounts: 0.5–5%. Use 7% for stock-heavy portfolios, 4% for balanced retirement estimates.' },
@@ -108,7 +108,7 @@ const relatedCalcs = [
             <li class="sm:col-span-2"><span class="font-extrabold text-yellow-accent">t</span> = number of years</li>
           </ul>
           <p class="text-sm text-ink-300 mt-6">
-            With monthly contributions, the formula gets more complex — this calculator simulates period-by-period growth, which is what real compounding looks like.
+            With monthly contributions, the formula gets more complex. This calculator simulates period-by-period growth, which is what real compounding looks like.
           </p>
         </div>
         <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">SEC Investor.gov Compound Interest</a> · <a href="https://www.federalreserve.gov/releases/h15/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Federal Reserve Historical Interest Rates</a></p>

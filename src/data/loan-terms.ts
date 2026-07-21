@@ -47,7 +47,7 @@ export const loanTerms: LoanTermVariant[] = [
     pros: [
       'Lowest interest rate available for personal loans',
       'Total interest typically 60-70% less than a 7-year of same amount',
-      'Fast equity-free payoff — debt-free in 36 months',
+      'Fast equity-free payoff, debt-free in 36 months',
       'Lenders see short-term loans as lower risk = best APR offers',
     ],
     cons: [
@@ -69,7 +69,7 @@ export const loanTerms: LoanTermVariant[] = [
       },
       {
         q: 'Can I refinance a 3-year loan if rates drop?',
-        a: 'Yes, but it rarely pays off. Refinancing closing costs (1-5% origination) usually exceed the interest savings on the short remaining term. Make extra payments instead — most US personal loans have no prepayment penalty.',
+        a: 'Yes, but it rarely pays off. Refinancing closing costs (1-5% origination) usually exceed the interest savings on the short remaining term. Make extra payments instead. Most US personal loans have no prepayment penalty.',
       },
     ],
     metaKeywords: ['3 year personal loan calculator', '3 year loan calculator', 'short term loan calculator'],
@@ -85,7 +85,7 @@ export const loanTerms: LoanTermVariant[] = [
     rateMax: 22.0,
     popularity: 'most-common',
     positioning:
-      'The mainstream personal loan. Five years is the most-offered term by US online lenders — long enough to keep payments manageable, short enough to keep total interest reasonable. Roughly 50% of all personal loans in 2026 are 5-year.',
+      'The mainstream personal loan. Five years is the most-offered term by US online lenders, long enough to keep payments manageable, short enough to keep total interest reasonable. Roughly 50% of all personal loans in 2026 are 5-year.',
     bestFor: [
       'Mid-size debt consolidation ($10K-$50K)',
       'Home improvement projects requiring contractor payments',
@@ -105,11 +105,11 @@ export const loanTerms: LoanTermVariant[] = [
       'Tied to lender for 5 years (no easy escape if better rates emerge)',
     ],
     uniqueAngle:
-      'A $20,000 loan at 10.5% over 5 years = $430/month and $5,793 total interest. The same loan at 10.5% over 7 years = $339/month but $8,500 total interest. The 5-year saves $2,707 in interest at the cost of $91/month — almost always the winning trade for borrowers who can afford it.',
+      'A $20,000 loan at 10.5% over 5 years = $430/month and $5,793 total interest. The same loan at 10.5% over 7 years = $339/month but $8,500 total interest. The 5-year saves $2,707 in interest at the cost of $91/month, almost always the winning trade for borrowers who can afford it.',
     faqs: [
       {
         q: 'Why are 5-year personal loans the most common?',
-        a: 'Three reasons converge: (1) Fintech lenders (SoFi, Marcus, Upstart) standardized 36/60/84-month terms — 60 months balances payment + interest. (2) 60 months matches typical car-loan terms, mentally anchoring borrowers. (3) Regulatory limits — many states cap personal-loan terms at 84 months total, making 60 the comfortable middle.',
+        a: 'Three reasons converge: (1) Fintech lenders (SoFi, Marcus, Upstart) standardized 36/60/84-month terms. 60 months balances payment + interest. (2) 60 months matches typical car-loan terms, mentally anchoring borrowers. (3) Regulatory limits. Many states cap personal-loan terms at 84 months total, making 60 the comfortable middle.',
       },
       {
         q: '5-year personal loan vs credit card balance transfer?',
@@ -149,22 +149,22 @@ export const loanTerms: LoanTermVariant[] = [
       'Rate is typically 1.5-2.5% higher than 5-year (lenders price longer risk)',
       'Total interest can exceed principal on higher-APR loans',
       'Origination fees compound the effective cost',
-      'Fewer lenders offer 84-month terms — comparison shopping limited',
+      'Fewer lenders offer 84-month terms, limiting comparison shopping',
     ],
     uniqueAngle:
-      'A $30,000 loan at 12.5% over 7 years = $537/month and $15,116 total interest. The same loan at 11.0% over 5 years = $652/month and $9,140 total interest. The 7-year saves $115/month but costs $5,976 more in total interest. Worth it ONLY if the $115/month buffer truly enables financial stability — not just delays it.',
+      'A $30,000 loan at 12.5% over 7 years = $537/month and $15,116 total interest. The same loan at 11.0% over 5 years = $652/month and $9,140 total interest. The 7-year saves $115/month but costs $5,976 more in total interest. Worth it ONLY if the $115/month buffer truly enables financial stability, not just delays it.',
     faqs: [
       {
         q: 'When does a 7-year personal loan make sense?',
-        a: 'Three valid scenarios: (1) Loan amount above $25K where the 5-year payment exceeds 30% of monthly income. (2) Variable-income earners (self-employed, commission) who need conservative monthly obligations. (3) Borrowers using the loan for income-generating purposes (home improvement that boosts rental yield, business expansion) — where lower monthly preserves operating cash flow.',
+        a: 'Three valid scenarios: (1) Loan amount above $25K where the 5-year payment exceeds 30% of monthly income. (2) Variable-income earners (self-employed, commission) who need conservative monthly obligations. (3) Borrowers using the loan for income-generating purposes (home improvement that boosts rental yield, business expansion), where lower monthly preserves operating cash flow.',
       },
       {
         q: 'Are 7-year personal loans hard to find?',
-        a: 'Yes — limited lender pool. Major options in 2026: LightStream (84-month for prime borrowers), SoFi (84-month for amounts $5K+), Upgrade (84-month), Best Egg (84-month). Major banks (Wells Fargo, Chase, BofA) typically cap personal loans at 60 months. Credit unions vary widely.',
+        a: 'Yes, limited lender pool. Major options in 2026: LightStream (84-month for prime borrowers), SoFi (84-month for amounts $5K+), Upgrade (84-month), Best Egg (84-month). Major banks (Wells Fargo, Chase, BofA) typically cap personal loans at 60 months. Credit unions vary widely.',
       },
       {
         q: 'Can I prepay a 7-year personal loan?',
-        a: 'Almost always yes, without penalty. All major US online lenders (SoFi, LightStream, Marcus, Upstart, Upgrade) allow free prepayment. Some state-licensed lenders impose 1-2% prepayment penalties — verify in your loan agreement before signing.',
+        a: 'Almost always yes, without penalty. All major US online lenders (SoFi, LightStream, Marcus, Upstart, Upgrade) allow free prepayment. Some state-licensed lenders impose 1-2% prepayment penalties. Verify in your loan agreement before signing.',
       },
     ],
     metaKeywords: ['7 year personal loan calculator', '7 year loan', '84 month loan calculator'],
@@ -180,7 +180,7 @@ export const loanTerms: LoanTermVariant[] = [
     rateMax: 28.0,
     popularity: 'long-tail',
     positioning:
-      'The extended unsecured loan. Rare in mainstream personal lending — most banks cap personal loans at 7 years. Available only from select fintech lenders and HELOC-style products. Best for very large amounts or secured-loan structures.',
+      'The extended unsecured loan. Rare in mainstream personal lending. Most banks cap personal loans at 7 years. Available only from select fintech lenders and HELOC-style products. Best for very large amounts or secured-loan structures.',
     bestFor: [
       'Large home-improvement projects ($50K+)',
       'Major medical bills with structured payment plans',
@@ -188,7 +188,7 @@ export const loanTerms: LoanTermVariant[] = [
       'Education or career-transition loans with deferred income',
     ],
     pros: [
-      'Lowest monthly payment available — useful for very large amounts',
+      'Lowest monthly payment available, useful for very large amounts',
       'Allows much higher loan principal under standard DTI math',
       'When secured (HELOC), rates drop to 6-9% range',
     ],
@@ -199,14 +199,14 @@ export const loanTerms: LoanTermVariant[] = [
       'Often disguised as a HELOC or 401(k) loan with separate risks',
     ],
     uniqueAngle:
-      'A $50,000 loan at 14% over 10 years = $776/month and $43,151 total interest. The 10-year loan costs you nearly the original principal again in interest. The same loan at 11.5% over 5 years = $1,099/month and $15,940 total interest. The 10-year saves $323/month — but costs $27,211 more. For any unsecured personal loan over 7 years, consider whether a HELOC (typically 7-9% APR) is the better structure.',
+      'A $50,000 loan at 14% over 10 years = $776/month and $43,151 total interest. The 10-year loan costs you nearly the original principal again in interest. The same loan at 11.5% over 5 years = $1,099/month and $15,940 total interest. The 10-year saves $323/month, but costs $27,211 more. For any unsecured personal loan over 7 years, consider whether a HELOC (typically 7-9% APR) is the better structure.',
     faqs: [
       {
         q: 'Can I get a 10-year personal loan?',
         a: 'Possible but rare. LightStream offers up to 144-month terms for home improvement specifically. SoFi caps at 84 months for true personal loans. For 10+ year horizons on amounts above $25K, you\'re typically better served by a HELOC (Home Equity Line of Credit) at 7-9% APR, or a securities-backed line at 5-7%.',
       },
       {
-        q: '10-year personal loan vs HELOC — which is better?',
+        q: '10-year personal loan vs HELOC: which is better?',
         a: 'HELOC almost always wins on math. A HELOC at 8% over 10 years on $50K = $607/month and $22,791 total interest (vs $776 and $43,151 for unsecured 10-year). The catch: HELOC requires home equity (you secure the loan against your property), and rates are typically variable. If you have the equity, HELOC is the cheaper structure.',
       },
       {

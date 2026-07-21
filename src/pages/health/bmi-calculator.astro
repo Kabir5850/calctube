@@ -20,7 +20,7 @@ const faqs = [
   { q: 'What is BMI?', a: 'BMI (Body Mass Index) is a number calculated from your weight and height. It is used as a quick screening tool to categorize weight status. The formula is: BMI = weight (kg) ÷ height² (m).' },
   { q: 'What are the BMI categories (WHO)?', a: 'Below 18.5 = Underweight. 18.5–24.9 = Normal/healthy. 25.0–29.9 = Overweight. 30.0 and above = Obese (with three sub-classes). These are WHO standard ranges for adults.' },
   { q: 'Is BMI accurate for everyone?', a: "BMI is a screening tool, not a diagnosis. It doesn't distinguish muscle from fat. Athletes and bodybuilders often have BMI in the 'overweight' range despite low body fat. Pregnant women, children, and the elderly need different metrics." },
-  { q: 'Should I use BMI or body fat percentage?', a: 'For everyday use, BMI is fine — it correlates with health outcomes at a population level. For more precision, combine BMI with waist-to-hip ratio or body-fat % measurement.' },
+  { q: 'Should I use BMI or body fat percentage?', a: 'For everyday use, BMI is fine. It correlates with health outcomes at a population level. For more precision, combine BMI with waist-to-hip ratio or body-fat % measurement.' },
   { q: 'What is a healthy BMI?', a: 'Generally 18.5 to 24.9 for adults. However, for South and East Asian populations, the WHO suggests 18.5 to 22.9 due to differences in body composition and disease risk.' },
 ];
 const schemas = [buildCalculatorSchema(meta, path), buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
@@ -33,7 +33,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="BMI Calculator — Metric & Imperial 2026" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="BMI Calculator: Metric & Imperial 2026" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
@@ -71,7 +71,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                A <strong>170 cm tall person weighing 70 kg</strong> has a BMI of <strong>24.2</strong> — in the healthy range (18.5–24.9). Enter your numbers below to see where you fall.
+                A <strong>170 cm tall person weighing 70 kg</strong> has a BMI of <strong>24.2</strong>, in the healthy range (18.5–24.9). Enter your numbers below to see where you fall.
               </p>
             </div>
           </div>
@@ -122,7 +122,7 @@ const relatedCalcs = [
         </div>
         <p class="mt-6 text-sm text-ink-300">
           Imperial version: BMI = (weight in lbs × 703) ÷ height² (in inches).
-          Both give identical results — units cancel out.
+          Both give identical results. Units cancel out.
         </p>
       </div>
       <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">WHO Obesity and Overweight Fact Sheet</a> · <a href="https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">NIH BMI Calculator</a></p>

@@ -10,9 +10,9 @@ const breadcrumbs = [
   { name: 'FHA vs Conventional', url: path },
 ];
 const faqs = [
-  { q: 'FHA vs Conventional — which is better for a first-time buyer?', a: 'FHA wins if your FICO is 580-680 and/or you have less than 10% down. Conventional wins if FICO is 720+ and you have 20%+ down (avoiding PMI). The middle case (FICO 680-720, 5-10% down): math is close — Conventional with PMI usually edges out FHA when PMI auto-cancels at 78% LTV.' },
+  { q: 'FHA vs Conventional: which is better for a first-time buyer?', a: 'FHA wins if your FICO is 580-680 and/or you have less than 10% down. Conventional wins if FICO is 720+ and you have 20%+ down (avoiding PMI). The middle case (FICO 680-720, 5-10% down): math is close. Conventional with PMI usually edges out FHA when PMI auto-cancels at 78% LTV.' },
   { q: 'What is the minimum down payment for FHA vs Conventional?', a: 'FHA: 3.5% down (FICO 580+) or 10% down (FICO 500-579). Conventional: 3% down (Fannie/Freddie HomeReady/Home Possible programs), 5% down (standard), 20% down (avoids PMI). FHA\'s 3.5% is among the lowest standard programs in the US.' },
-  { q: 'What about FHA mortgage insurance vs Conventional PMI?', a: 'FHA: Upfront MIP of 1.75% (rolled into loan) + monthly MIP of 0.5-1.05% for the life of the loan (or 11 years if down payment ≥ 10%). Conventional PMI: 0.15-2.5% annually, AUTO-CANCELS at 78% LTV. The "life of loan" MIP on FHA is a major disadvantage for long-term holders — Conventional becomes cheaper over time as PMI drops off.' },
+  { q: 'What about FHA mortgage insurance vs Conventional PMI?', a: 'FHA: Upfront MIP of 1.75% (rolled into loan) + monthly MIP of 0.5-1.05% for the life of the loan (or 11 years if down payment ≥ 10%). Conventional PMI: 0.15-2.5% annually, AUTO-CANCELS at 78% LTV. The "life of loan" MIP on FHA is a major disadvantage for long-term holders. Conventional becomes cheaper over time as PMI drops off.' },
   { q: 'Can I refinance FHA to Conventional?', a: 'Yes. The standard play: take FHA at purchase (lower down + lenient credit), build 20%+ equity through appreciation and principal payment, then refinance to Conventional to drop the lifetime MIP. Many homebuyers execute this exact move 5-10 years post-purchase.' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
@@ -34,7 +34,7 @@ const pmiAnnual = (loanAmount * 0.005) / 12;
 const fmtUSD = (v: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(v);
 ---
 
-<BaseLayout title="FHA vs Conventional Mortgage — Which Saves More?" description="FHA vs Conventional mortgage compared. Real numbers on $350K loan: down payment, MIP/PMI, rate, total cost over 30 years. Plus the right path for your FICO + down payment combination." schemas={schemas}>
+<BaseLayout title="FHA vs Conventional Mortgage: Which Saves More?" description="FHA vs Conventional mortgage compared. Real numbers on $350K loan: down payment, MIP/PMI, rate, total cost over 30 years. Plus the right path for your FICO + down payment combination." schemas={schemas}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-yellow-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -50,7 +50,7 @@ const fmtUSD = (v: number) => new Intl.NumberFormat('en-US', { style: 'currency'
         </div>
         <h1 class="!text-4xl sm:!text-5xl md:!text-6xl !font-extrabold !tracking-tight !leading-[1.05] text-ink-900" style="font-family: 'Inter Tight', sans-serif; letter-spacing: -0.035em;">FHA vs Conventional <span class="text-gradient-brand">Mortgage.</span></h1>
         <div class="mt-7 bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker">
-          <p class="text-ink-900 text-base sm:text-lg !m-0 leading-relaxed font-medium"><strong>TL;DR:</strong> FHA wins on entry — lower FICO requirements (580 vs 620), lower down payment (3.5% vs 5%). Conventional wins on long-term cost — PMI auto-cancels at 78% LTV; FHA MIP stays for life of loan. The smart play: enter via FHA, refinance to Conventional once you hit 80% LTV.</p>
+          <p class="text-ink-900 text-base sm:text-lg !m-0 leading-relaxed font-medium"><strong>TL;DR:</strong> FHA wins on entry: lower FICO requirements (580 vs 620), lower down payment (3.5% vs 5%). Conventional wins on long-term cost: PMI auto-cancels at 78% LTV; FHA MIP stays for life of loan. The smart play: enter via FHA, refinance to Conventional once you hit 80% LTV.</p>
         </div>
       </div>
     </div>

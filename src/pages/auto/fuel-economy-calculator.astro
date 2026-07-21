@@ -26,11 +26,11 @@ const mpgRows = [20, 25, 30, 35, 40, 50].map((mpg) => ({
 }));
 
 const faqs = [
-  { q: 'How do I calculate fuel economy?', a: 'Divide the distance travelled by the fuel used, keeping units consistent. In US units, a car that covers 300 miles on 12 gallons returns 300 ÷ 12 = 25.0 MPG. In metric units you divide kilometres by litres to get km/L — the same trip works out to about 10.63 km/L, or 9.41 L/100km. This calculator does the division and shows all three figures at once, so you never have to convert by hand.' },
+  { q: 'How do I calculate fuel economy?', a: 'Divide the distance travelled by the fuel used, keeping units consistent. In US units, a car that covers 300 miles on 12 gallons returns 300 ÷ 12 = 25.0 MPG. In metric units you divide kilometres by litres to get km/L. The same trip works out to about 10.63 km/L, or 9.41 L/100km. This calculator does the division and shows all three figures at once, so you never have to convert by hand.' },
   { q: 'How do I convert MPG to L/100km?', a: 'Use L/100km = 235.215 ÷ MPG. For example, 30 MPG becomes 235.215 ÷ 30 = 7.84 L/100km, and 25 MPG becomes 9.41 L/100km. The two units run in opposite directions: MPG counts distance per unit of fuel (higher is better) while L/100km counts fuel per fixed distance (lower is better). The constant 235.215 assumes the US gallon of 3.785 litres.' },
-  { q: 'How do I convert MPG to km/L (and back)?', a: 'Multiply MPG by 0.425144 to get km/L — so 40 MPG is 40 × 0.425144 = 17.01 km/L. To go the other way, multiply km/L by 2.35215 to get MPG, since 2.35215 is 1 ÷ 0.425144. Both km/L and MPG measure distance per unit of fuel, so a higher number always means better economy in either unit.' },
-  { q: 'Is a higher or a lower number better?', a: 'For MPG and km/L, higher is better — you are travelling further on the same fuel. For L/100km, lower is better — you are burning less fuel to cover the same distance. As an example, a thrifty 50 MPG car uses just 4.70 L/100km, while a thirsty 20 MPG vehicle uses 11.76 L/100km — more than double the fuel for the same journey.' },
-  { q: 'Does this use US or imperial gallons?', a: 'The MPG figures and the 0.425144 and 235.215 constants are all based on the US gallon (3.785 litres). The imperial gallon used in the UK is larger — about 1.20095 US gallons — so imperial MPG numbers look higher for the same real economy. For instance, 30 US MPG is roughly 30 × 1.20095 = 36.03 imperial MPG. If your figure is in imperial MPG, divide by 1.20095 before comparing here.' },
+  { q: 'How do I convert MPG to km/L (and back)?', a: 'Multiply MPG by 0.425144 to get km/L, so 40 MPG is 40 × 0.425144 = 17.01 km/L. To go the other way, multiply km/L by 2.35215 to get MPG, since 2.35215 is 1 ÷ 0.425144. Both km/L and MPG measure distance per unit of fuel, so a higher number always means better economy in either unit.' },
+  { q: 'Is a higher or a lower number better?', a: 'For MPG and km/L, higher is better. You are travelling further on the same fuel. For L/100km, lower is better. You are burning less fuel to cover the same distance. As an example, a thrifty 50 MPG car uses just 4.70 L/100km, while a thirsty 20 MPG vehicle uses 11.76 L/100km, more than double the fuel for the same journey.' },
+  { q: 'Does this use US or imperial gallons?', a: 'The MPG figures and the 0.425144 and 235.215 constants are all based on the US gallon (3.785 litres). The imperial gallon used in the UK is larger (about 1.20095 US gallons), so imperial MPG numbers look higher for the same real economy. For instance, 30 US MPG is roughly 30 × 1.20095 = 36.03 imperial MPG. If your figure is in imperial MPG, divide by 1.20095 before comparing here.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -57,7 +57,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Fuel Economy Calculator — MPG, km/L & L/100km Converter" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Fuel Economy Calculator: MPG, km/L & L/100km Converter" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-lime-accent/40 rounded-full blur-[120px] float-slow"></div>
@@ -94,7 +94,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Fuel economy = <strong>distance ÷ fuel</strong>. A car that goes 300 miles on 12 gallons returns <strong>25.0 MPG</strong> — the same as <strong>10.63 km/L</strong> or <strong>9.41 L/100km</strong>. Higher MPG and km/L are better; lower L/100km is better.
+                Fuel economy = <strong>distance ÷ fuel</strong>. A car that goes 300 miles on 12 gallons returns <strong>25.0 MPG</strong>, the same as <strong>10.63 km/L</strong> or <strong>9.41 L/100km</strong>. Higher MPG and km/L are better; lower L/100km is better.
               </p>
             </div>
           </div>

@@ -23,10 +23,10 @@ const cycles = [24, 26, 28, 30, 32, 34];
 const table = cycles.map((c) => ({ c, ov: c - 14, fertile: `Day ${c - 19} – ${c - 13}` }));
 
 const faqs = [
-  { q: 'When do you ovulate?', a: 'Ovulation typically happens about 14 days before your next period starts — not necessarily on "day 14" of your cycle. That\'s because the luteal phase (from ovulation to the next period) is fairly constant at around 14 days, while the first half of the cycle varies. So on a 28-day cycle you ovulate around day 14, but on a 32-day cycle it\'s closer to day 18. This calculator uses your cycle length to place the day.' },
+  { q: 'When do you ovulate?', a: 'Ovulation typically happens about 14 days before your next period starts, not necessarily on "day 14" of your cycle. That\'s because the luteal phase (from ovulation to the next period) is fairly constant at around 14 days, while the first half of the cycle varies. So on a 28-day cycle you ovulate around day 14, but on a 32-day cycle it\'s closer to day 18. This calculator uses your cycle length to place the day.' },
   { q: 'What is the fertile window?', a: 'It\'s the roughly 6-day span when conception is possible: the 5 days before ovulation plus ovulation day itself. Sperm can survive up to about 5 days in the reproductive tract, while the egg lives around 12–24 hours after release. The two or three days leading up to ovulation are usually the most fertile. This tool highlights that whole window.' },
   { q: 'How accurate is calendar-based ovulation prediction?', a: 'It\'s a useful estimate for people with regular cycles, but it assumes a consistent cycle length and a standard 14-day luteal phase, which isn\'t true for everyone. Stress, illness, travel and conditions like PCOS can shift ovulation. For more precision, combine the calendar estimate with ovulation predictor kits (which detect the LH surge), basal body temperature tracking, or cervical mucus changes.' },
-  { q: 'Can I use this as birth control?', a: 'No. Calendar-based prediction is not a reliable contraceptive method on its own — cycles vary and sperm survive several days, so the "safe" days are far from guaranteed. If you\'re avoiding pregnancy, use a proven contraceptive method and talk to a healthcare provider. This calculator is intended for people trying to conceive or simply understanding their cycle.' },
+  { q: 'Can I use this as birth control?', a: 'No. Calendar-based prediction is not a reliable contraceptive method on its own. Cycles vary and sperm survive several days, so the "safe" days are far from guaranteed. If you\'re avoiding pregnancy, use a proven contraceptive method and talk to a healthcare provider. This calculator is intended for people trying to conceive or simply understanding their cycle.' },
   { q: 'How does cycle length change my ovulation day?', a: 'Since ovulation is counted back 14 days from the next period, a longer cycle moves ovulation later and a shorter cycle moves it earlier. On a 24-day cycle you\'d ovulate around day 10; on a 34-day cycle, around day 20. The reference table on this page lists the estimated ovulation day for common cycle lengths.' },
 ];
 const schemas = [
@@ -54,7 +54,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Ovulation Calculator — Find Your Fertile Window" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Ovulation Calculator: Find Your Fertile Window" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-pink-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -91,7 +91,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                You ovulate about <strong>14 days before your next period</strong> (not always day 14). Your <strong>fertile window</strong> is the 5 days before ovulation plus ovulation day — about 6 days. Enter your last period and cycle length below to map your most fertile days.
+                You ovulate about <strong>14 days before your next period</strong> (not always day 14). Your <strong>fertile window</strong> is the 5 days before ovulation plus ovulation day, about 6 days. Enter your last period and cycle length below to map your most fertile days.
               </p>
             </div>
           </div>

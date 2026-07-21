@@ -105,7 +105,7 @@ export default function CgpaCalculator({ initialFormula = 'cbse', initialMode = 
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Formulas vary by university — pick yours above or set a custom multiplier. Check your official grade card for the exact conversion.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Formulas vary by university. Pick yours above or set a custom multiplier. Check your official grade card for the exact conversion.</div>
     </div>
   );
 }

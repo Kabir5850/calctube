@@ -32,7 +32,7 @@ const breadcrumbs = [
 const faqs = [
   {
     q: 'What is a SIP and how does it work?',
-    a: 'SIP (Systematic Investment Plan) is a method of investing a fixed amount in mutual funds at regular intervals (typically monthly). Each instalment buys mutual fund units at the prevailing NAV — so when markets are low, you buy more units, and when markets are high, you buy fewer. Over long horizons (15-20+ years), this rupee-cost averaging smooths out volatility and historically delivers ~12% annualized returns in Indian equity funds.',
+    a: 'SIP (Systematic Investment Plan) is a method of investing a fixed amount in mutual funds at regular intervals (typically monthly). Each instalment buys mutual fund units at the prevailing NAV, so when markets are low, you buy more units, and when markets are high, you buy fewer. Over long horizons (15-20+ years), this rupee-cost averaging smooths out volatility and historically delivers ~12% annualized returns in Indian equity funds.',
   },
   {
     q: 'How is SIP maturity value calculated?',
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: 'Are SIP returns guaranteed?',
-    a: 'No. SIP is a method of investing, not a product. The underlying mutual fund returns depend on equity/debt market performance — they can be negative in any given year. The 12% historical average is an aggregate; individual years range from -50% (2008) to +60% (2020-2021). Long-term (15+ year) rolling returns for equity mutual funds have been positive in essentially all historical windows, but past performance does not guarantee future results.',
+    a: 'No. SIP is a method of investing, not a product. The underlying mutual fund returns depend on equity/debt market performance. They can be negative in any given year. The 12% historical average is an aggregate; individual years range from -50% (2008) to +60% (2020-2021). Long-term (15+ year) rolling returns for equity mutual funds have been positive in essentially all historical windows, but past performance does not guarantee future results.',
   },
 ];
 
@@ -81,7 +81,7 @@ const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout
-  title="SIP Calculator — Mutual Fund Returns Estimator 📈"
+  title="SIP Calculator: Mutual Fund Returns Estimator 📈"
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -129,7 +129,7 @@ const reviewer = getAuthor('aisha-rahman');
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                ₹10,000/month SIP at <strong>12% annual return</strong> over <strong>15 years</strong> = approximately <strong>₹50.4 lakh maturity value</strong>. Total invested: ₹18 lakh. Wealth gained: ~₹32.4 lakh — the power of compounding. Add 10% annual step-up to boost maturity to ~₹83 lakh.
+                ₹10,000/month SIP at <strong>12% annual return</strong> over <strong>15 years</strong> = approximately <strong>₹50.4 lakh maturity value</strong>. Total invested: ₹18 lakh. Wealth gained: ~₹32.4 lakh, the power of compounding. Add 10% annual step-up to boost maturity to ~₹83 lakh.
               </p>
             </div>
           </div>
@@ -164,7 +164,7 @@ const reviewer = getAuthor('aisha-rahman');
             A Systematic Investment Plan invests a fixed amount in mutual funds monthly, leveraging <strong>rupee-cost averaging</strong> (buying more units when markets fall, fewer when they rise) and <strong>compound returns</strong> (where each month's investment earns returns on top of all prior months' investments). Over 15-20+ year horizons, this combination has historically produced 11-13% annualized returns in Indian equity mutual funds, comfortably ahead of fixed deposits (6-7%) and inflation (5-7%).
           </p>
           <p class="text-ink-700 leading-relaxed font-medium">
-            <strong>Step-up SIPs</strong> increase your monthly contribution by a fixed percentage each year (typically matching salary growth at 5-15%/yr). Mathematically, step-up SIPs front-load less capital and back-load more — but because later contributions still benefit from substantial remaining compounding time, total wealth at maturity typically grows 50-100% larger than flat SIPs over 20-year horizons.
+            <strong>Step-up SIPs</strong> increase your monthly contribution by a fixed percentage each year (typically matching salary growth at 5-15%/yr). Mathematically, step-up SIPs front-load less capital and back-load more, but because later contributions still benefit from substantial remaining compounding time, total wealth at maturity typically grows 50-100% larger than flat SIPs over 20-year horizons.
           </p>
           <p class="text-ink-700 leading-relaxed font-medium">
             <strong>Caveats:</strong> All return assumptions are approximations of historical averages; actual mutual fund returns vary year-to-year and can be negative in any single year. SEBI requires standardized disclosure of "amount invested vs amount you would have" in mutual fund marketing. SIPs are not insurance and not guaranteed. For 5-year horizons or shorter, consider lower-risk debt funds. For 15+ year horizons, equity-heavy diversified or index funds have historically been optimal.

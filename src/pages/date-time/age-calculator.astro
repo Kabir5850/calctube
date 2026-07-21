@@ -8,7 +8,7 @@ import { getAuthor } from '../../data/authors';
 const meta = {
   slug: 'age-calculator',
   name: 'Age Calculator',
-  description: 'Free age calculator. Enter your date of birth to instantly find your exact age in years, months, and days — plus your next birthday countdown and fun life stats.',
+  description: 'Free age calculator. Enter your date of birth to instantly find your exact age in years, months, and days, plus your next birthday countdown and fun life stats.',
   category: 'date-time' as const,
   keywords: ['age calculator', 'how old am i', 'date of birth calculator', 'age in years months days', 'birthday calculator', 'next birthday'],
   lastUpdated: '2026-05-25',
@@ -24,7 +24,7 @@ const breadcrumbs = [
 const faqs = [
   {
     q: 'How is age calculated in years, months, and days?',
-    a: 'Start with the full difference in calendar years. Then count remaining months. Then count remaining days — adjusting for varying month lengths. For example, if you were born on March 15 and today is May 25, you\'re 2 months and 10 days past your birthday this year.',
+    a: 'Start with the full difference in calendar years. Then count remaining months. Then count remaining days, adjusting for varying month lengths. For example, if you were born on March 15 and today is May 25, you\'re 2 months and 10 days past your birthday this year.',
   },
   {
     q: 'Why does the day count sometimes feel off?',
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: 'Can I calculate age for a future date?',
-    a: 'Yes — change the "Calculate As Of" date to any future date and the calculator will show your projected age on that day. Useful for finding your age at a milestone event.',
+    a: 'Yes. Change the "Calculate As Of" date to any future date and the calculator will show your projected age on that day. Useful for finding your age at a milestone event.',
   },
   {
     q: 'How is the next birthday countdown calculated?',
@@ -54,7 +54,7 @@ const reviewer = getAuthor('calctube-editorial');
 ---
 
 <BaseLayout
-  title="Age Calculator — Exact Age in Years, Months & Days"
+  title="Age Calculator: Exact Age in Years, Months & Days"
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -101,7 +101,7 @@ const reviewer = getAuthor('calctube-editorial');
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Someone born on <strong>March 15, 1990</strong> is <strong>36 years, 2 months, and 10 days old</strong> as of May 25, 2026 — with their next birthday in 294 days (March 15, 2027).
+                Someone born on <strong>March 15, 1990</strong> is <strong>36 years, 2 months, and 10 days old</strong> as of May 25, 2026, with their next birthday in 294 days (March 15, 2027).
               </p>
             </div>
           </div>
@@ -133,8 +133,8 @@ const reviewer = getAuthor('calctube-editorial');
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mt-8">
           {[
             { num: '1', text: 'Enter your date of birth using the date picker.', color: 'bg-lime-accent' },
-            { num: '2', text: '"Calculate As Of" defaults to today — change it to any past or future date.', color: 'bg-cyan-accent' },
-            { num: '3', text: 'See exact years, months, days — plus birthday countdown and fun life stats.', color: 'bg-yellow-accent' },
+            { num: '2', text: '"Calculate As Of" defaults to today. Change it to any past or future date.', color: 'bg-cyan-accent' },
+            { num: '3', text: 'See exact years, months, days, plus birthday countdown and fun life stats.', color: 'bg-yellow-accent' },
           ].map((step) => (
             <div class={`${step.color} border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm`}>
               <div class="text-3xl font-extrabold mb-3 leading-none" style="font-family: 'Inter Tight', sans-serif;">{step.num}</div>
@@ -156,7 +156,7 @@ const reviewer = getAuthor('calctube-editorial');
         <ol class="space-y-3 text-sm text-ink-300">
           <li class="flex gap-3"><span class="text-lime-accent font-extrabold">1.</span><span>Compute full calendar <strong class="text-white">years</strong> elapsed between DOB and target date.</span></li>
           <li class="flex gap-3"><span class="text-cyan-accent font-extrabold">2.</span><span>From the remaining partial year, count full <strong class="text-white">months</strong>, adjusting for months with different day counts.</span></li>
-          <li class="flex gap-3"><span class="text-pink-accent font-extrabold">3.</span><span>The leftover is the <strong class="text-white">day</strong> count — always exact because we account for 28/29/30/31-day months.</span></li>
+          <li class="flex gap-3"><span class="text-pink-accent font-extrabold">3.</span><span>The leftover is the <strong class="text-white">day</strong> count, always exact because we account for 28/29/30/31-day months.</span></li>
           <li class="flex gap-3"><span class="text-yellow-accent font-extrabold">4.</span><span>Total days = (target − DOB) in ms ÷ 86,400,000. Weeks = ⌊totalDays ÷ 7⌋.</span></li>
         </ol>
       </div>

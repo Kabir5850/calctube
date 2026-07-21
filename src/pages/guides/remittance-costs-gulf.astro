@@ -33,16 +33,16 @@ const worstVsBest = yearly[0].yearlyLoss - yearly[2].yearlyLoss;
 const fmtAED = (v: number) => `AED ${v.toLocaleString('en-US', { maximumFractionDigits: 0 })}`;
 
 const faqs = [
-  { q: 'Why does the "0 fee" transfer still cost me money?', a: 'Because the real charge is hidden in the exchange rate. A provider advertising zero fees but converting your dirhams 2-3% below the mid-market rate is charging 2-3% — it just never appears as a line item. Always compare the rate you\'re offered against the mid-market rate (the one shown on our converters), multiply the gap by your transfer amount, and add the visible fee. That total is the true cost.' },
-  { q: 'What is the mid-market rate?', a: 'The midpoint between the global buy and sell price of a currency — the rate banks trade at with each other, and the one you see on Google, Reuters, or Calctube\'s converters. No consumer service gives you exactly mid-market, but the best get within 0.3-0.7%. Anything more than 1.5% below mid-market is an expensive transfer, whatever the marketing says.' },
-  { q: `How much do I lose per year sending ${fmtAED(MONTHLY_AED)} monthly through a bank?`, a: `At a typical 3% FX margin plus ~AED 100 wire fee, each transfer quietly costs about ${fmtAED(yearly[0].perTransferLoss)} — roughly ${fmtAED(yearly[0].yearlyLoss)} a year. The same volume through a low-margin digital provider costs about ${fmtAED(yearly[2].yearlyLoss)}. The difference — ${fmtAED(worstVsBest)} a year — is a month's rent in many home cities, lost to nothing but routing.` },
-  { q: 'Are exchange houses in the UAE safe?', a: 'Licensed exchange houses (Al Ansari, LuLu Exchange, Al Fardan and peers) are regulated by the UAE Central Bank and move a large share of the Gulf\'s remittances. They\'re typically far cheaper than banks for cash and account transfers, especially on South Asian corridors where competition is fierce. Check the payout speed and the exact rate offered on the day — spreads vary by corridor and volume.' },
-  { q: 'When is the best time to send money home?', a: 'Nobody can time FX reliably — but you can avoid the worst timing. Corridors like AED→INR and AED→PKR move 3-8% across a year (the dirham is dollar-pegged, so this is really USD vs your home currency). If a transfer isn\'t urgent, set a rate alert near the recent high instead of converting on payday by habit. And never let timing anxiety push you into a high-margin "instant" product — the guaranteed 2% loss usually outweighs the speculative 2% gain.' },
+  { q: 'Why does the "0 fee" transfer still cost me money?', a: 'Because the real charge is hidden in the exchange rate. A provider advertising zero fees but converting your dirhams 2-3% below the mid-market rate is charging 2-3%. It just never appears as a line item. Always compare the rate you\'re offered against the mid-market rate (the one shown on our converters), multiply the gap by your transfer amount, and add the visible fee. That total is the true cost.' },
+  { q: 'What is the mid-market rate?', a: 'The midpoint between the global buy and sell price of a currency, the rate banks trade at with each other, and the one you see on Google, Reuters, or Calctube\'s converters. No consumer service gives you exactly mid-market, but the best get within 0.3-0.7%. Anything more than 1.5% below mid-market is an expensive transfer, whatever the marketing says.' },
+  { q: `How much do I lose per year sending ${fmtAED(MONTHLY_AED)} monthly through a bank?`, a: `At a typical 3% FX margin plus ~AED 100 wire fee, each transfer quietly costs about ${fmtAED(yearly[0].perTransferLoss)}, roughly ${fmtAED(yearly[0].yearlyLoss)} a year. The same volume through a low-margin digital provider costs about ${fmtAED(yearly[2].yearlyLoss)}. The difference (${fmtAED(worstVsBest)} a year) is a month's rent in many home cities, lost to nothing but routing.` },
+  { q: 'Are exchange houses in the UAE safe?', a: 'Licensed exchange houses (Al Ansari, LuLu Exchange, Al Fardan and peers) are regulated by the UAE Central Bank and move a large share of the Gulf\'s remittances. They\'re typically far cheaper than banks for cash and account transfers, especially on South Asian corridors where competition is fierce. Check the payout speed and the exact rate offered on the day. Spreads vary by corridor and volume.' },
+  { q: 'When is the best time to send money home?', a: 'Nobody can time FX reliably, but you can avoid the worst timing. Corridors like AED→INR and AED→PKR move 3-8% across a year (the dirham is dollar-pegged, so this is really USD vs your home currency). If a transfer isn\'t urgent, set a rate alert near the recent high instead of converting on payday by habit. And never let timing anxiety push you into a high-margin "instant" product. The guaranteed 2% loss usually outweighs the speculative 2% gain.' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 ---
 
-<BaseLayout title={`The True Cost of Sending Money Home from the Gulf (2026) — ${fmtAED(worstVsBest)}/Year Hides in the Rate`} description={`Bank wire vs exchange house vs digital: sending ${fmtAED(MONTHLY_AED)}/month home can cost ${fmtAED(yearly[0].yearlyLoss)} or ${fmtAED(yearly[2].yearlyLoss)} a year for the identical transfer. Corridor-by-corridor math for AED to INR, PKR, PHP, BDT, NPR & EGP.`} schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
+<BaseLayout title={`The True Cost of Sending Money Home from the Gulf (2026): ${fmtAED(worstVsBest)}/Year Hides in the Rate`} description={`Bank wire vs exchange house vs digital: sending ${fmtAED(MONTHLY_AED)}/month home can cost ${fmtAED(yearly[0].yearlyLoss)} or ${fmtAED(yearly[2].yearlyLoss)} a year for the identical transfer. Corridor-by-corridor math for AED to INR, PKR, PHP, BDT, NPR & EGP.`} schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-lime-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -80,7 +80,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Sending <strong>{fmtAED(MONTHLY_AED)} home every month</strong> costs about <strong>{fmtAED(yearly[0].yearlyLoss)}/year</strong> through a typical bank wire, but only <strong>{fmtAED(yearly[2].yearlyLoss)}/year</strong> through a low-margin digital provider — same money, same destination. The <strong>{fmtAED(worstVsBest)}</strong> difference hides in the exchange rate, not the fee line.
+                Sending <strong>{fmtAED(MONTHLY_AED)} home every month</strong> costs about <strong>{fmtAED(yearly[0].yearlyLoss)}/year</strong> through a typical bank wire, but only <strong>{fmtAED(yearly[2].yearlyLoss)}/year</strong> through a low-margin digital provider: same money, same destination. The <strong>{fmtAED(worstVsBest)}</strong> difference hides in the exchange rate, not the fee line.
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
     <div class="max-w-3xl mx-auto prose prose-lg">
       <h2 style="font-family: 'Inter Tight', sans-serif;">The two prices of every transfer</h2>
       <p class="text-ink-700 font-medium leading-relaxed">
-        Every remittance has a visible price and a hidden one. The visible price is the transfer fee — AED 15 here, AED 100 there. The hidden price is the <em>FX margin</em>: the gap between the mid-market rate and the rate you're actually given. For the millions of workers sending salaries home from the UAE, Saudi Arabia and Qatar, the hidden price is almost always the bigger one — and it scales with the amount, so it hits the biggest senders hardest.
+        Every remittance has a visible price and a hidden one. The visible price is the transfer fee: AED 15 here, AED 100 there. The hidden price is the <em>FX margin</em>: the gap between the mid-market rate and the rate you're actually given. For the millions of workers sending salaries home from the UAE, Saudi Arabia and Qatar, the hidden price is almost always the bigger one, and it scales with the amount, so it hits the biggest senders hardest.
       </p>
       <div class="not-prose overflow-x-auto">
         <table class="w-full bg-white border-[2.5px] border-ink-900 rounded-2xl shadow-sticker-sm overflow-hidden border-separate border-spacing-0 text-sm">
@@ -119,7 +119,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 
       <h2 style="font-family: 'Inter Tight', sans-serif;">Corridor by corridor</h2>
       <p class="text-ink-700 font-medium leading-relaxed">
-        The Gulf's remittance corridors are among the world's largest — and the most competitive, which keeps exchange-house margins tighter here than almost anywhere. Live mid-market reference rates for the six biggest AED corridors (tap any pair to convert):
+        The Gulf's remittance corridors are among the world's largest, and the most competitive, which keeps exchange-house margins tighter here than almost anywhere. Live mid-market reference rates for the six biggest AED corridors (tap any pair to convert):
       </p>
       <div class="not-prose grid grid-cols-2 sm:grid-cols-3 gap-3">
         {corridors.map((c) => (
@@ -131,7 +131,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
         ))}
       </div>
       <p class="text-ink-700 font-medium leading-relaxed mt-6">
-        Two practical rules fall out of this data. First, <strong>the dirham is pegged to the dollar</strong>, so every corridor above is really "USD versus the home currency" — when the rupee or taka weakens against the dollar, your dirhams buy more at home, and vice versa. Second, <strong>corridor competition sets your floor</strong>: AED→INR and AED→PHP are so contested that even average providers stay under 1.5% total cost, while thinner corridors (AED→NPR, AED→EGP) reward more comparison shopping before each transfer.
+        Two practical rules fall out of this data. First, <strong>the dirham is pegged to the dollar</strong>, so every corridor above is really "USD versus the home currency": when the rupee or taka weakens against the dollar, your dirhams buy more at home, and vice versa. Second, <strong>corridor competition sets your floor</strong>: AED→INR and AED→PHP are so contested that even average providers stay under 1.5% total cost, while thinner corridors (AED→NPR, AED→EGP) reward more comparison shopping before each transfer.
       </p>
       {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>

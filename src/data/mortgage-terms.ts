@@ -44,8 +44,8 @@ export const mortgageTerms: TermVariant[] = [
     pros: [
       'Lowest interest rate (typically 0.5-1.0% below 30-year)',
       'Massive total-interest savings vs longer terms',
-      'Builds equity rapidly — 100% paid in 10 years',
-      'No PMI removal anxiety — equity climbs fast',
+      'Builds equity rapidly, 100% paid in 10 years',
+      'No PMI removal anxiety as equity climbs fast',
     ],
     cons: [
       'Monthly payment nearly 2× a 30-year on same principal',
@@ -54,19 +54,19 @@ export const mortgageTerms: TermVariant[] = [
       'Lost opportunity cost vs investing the payment difference',
     ],
     uniqueAngle:
-      'A $400,000 loan at 5.75% over 10 years = $4,393/month and $127,118 total interest. The same loan at 6.5% over 30 years = $2,528/month but $510,178 total interest. The 10-year saves $383,060 in interest — but at the cost of $1,865/month in cash flow for a decade.',
+      'A $400,000 loan at 5.75% over 10 years = $4,393/month and $127,118 total interest. The same loan at 6.5% over 30 years = $2,528/month but $510,178 total interest. The 10-year saves $383,060 in interest, but at the cost of $1,865/month in cash flow for a decade.',
     faqs: [
       {
         q: 'Is a 10-year mortgage worth it?',
-        a: 'For borrowers with strong cash flow and a goal of being mortgage-free quickly, yes — the interest savings vs 30-year are typically 60-75% of total interest. The trade-off: you sacrifice roughly $1,500-$2,000/month in cash flow flexibility, which would have funded retirement accounts, emergencies, or other investments.',
+        a: 'For borrowers with strong cash flow and a goal of being mortgage-free quickly, yes, the interest savings vs 30-year are typically 60-75% of total interest. The trade-off: you sacrifice roughly $1,500-$2,000/month in cash flow flexibility, which would have funded retirement accounts, emergencies, or other investments.',
       },
       {
-        q: '10-year mortgage vs 15-year — what is the difference?',
+        q: '10-year mortgage vs 15-year: what is the difference?',
         a: 'The 10-year rate is typically 15-25 basis points lower than a 15-year, but the monthly payment is 25-35% higher. On a $400K loan: 10-year ≈ $4,393/mo and $127K interest; 15-year ≈ $3,322/mo and $198K interest. The 5 extra years of payments cost ~$71K more in interest.',
       },
       {
         q: 'Can you get a 10-year mortgage in 2026?',
-        a: 'Yes — most major US lenders (Bank of America, Chase, Wells Fargo, US Bank, Quicken/Rocket) offer 10-year fixed mortgages. They\'re less common than 15- or 30-year because the higher monthly payment limits the eligible borrower pool. Best rates require a 740+ FICO and stable W-2 income.',
+        a: 'Yes, most major US lenders (Bank of America, Chase, Wells Fargo, US Bank, Quicken/Rocket) offer 10-year fixed mortgages. They\'re less common than 15- or 30-year because the higher monthly payment limits the eligible borrower pool. Best rates require a 740+ FICO and stable W-2 income.',
       },
     ],
     metaKeywords: ['10 year mortgage calculator', '10 year fixed rate mortgage', 'aggressive mortgage payoff'],
@@ -100,19 +100,19 @@ export const mortgageTerms: TermVariant[] = [
       'May reduce capacity to max retirement contributions',
     ],
     uniqueAngle:
-      'A $350,000 loan at 6.0% over 15 years = $2,953/month and $181,548 total interest. The same loan at 6.5% over 30 years = $2,212/month but $446,408 total interest. The 15-year costs $741/month more but saves $264,860 — effectively a 12-15% guaranteed return on the extra payment vs a 30-year.',
+      'A $350,000 loan at 6.0% over 15 years = $2,953/month and $181,548 total interest. The same loan at 6.5% over 30 years = $2,212/month but $446,408 total interest. The 15-year costs $741/month more but saves $264,860, effectively a 12-15% guaranteed return on the extra payment vs a 30-year.',
     faqs: [
       {
         q: 'Is a 15-year mortgage better than a 30-year?',
-        a: 'Mathematically, yes — for the same loan amount, a 15-year saves roughly 55-65% in total interest because you pay for half the time at a lower rate. The trade-off: the monthly payment is ~35% higher. Use a 15-year if you can comfortably afford the higher payment AND have already maxed retirement contributions.',
+        a: 'Mathematically, yes, for the same loan amount, a 15-year saves roughly 55-65% in total interest because you pay for half the time at a lower rate. The trade-off: the monthly payment is ~35% higher. Use a 15-year if you can comfortably afford the higher payment AND have already maxed retirement contributions.',
       },
       {
         q: 'How much do I need to earn for a 15-year mortgage?',
         a: 'Lenders typically cap mortgage + taxes + insurance at 28-31% of gross monthly income. For a $350K loan at 6% (15-year payment ~$2,953/mo + ~$700 taxes/insurance ≈ $3,650), you\'d need household gross income of ~$140K-$155K/year to qualify comfortably.',
       },
       {
-        q: '15-year mortgage vs invest the difference — which builds more wealth?',
-        a: 'Historical math: investing the monthly difference ($741 in our example) in stocks averaging 7% real returns over 15 years yields roughly $230K. The 15-year mortgage saves $265K in interest. The 15-year wins by ~$35K — and that\'s before factoring in the guaranteed return + lower stress + behavioral advantage of forced savings.',
+        q: '15-year mortgage vs invest the difference: which builds more wealth?',
+        a: 'Historical math: investing the monthly difference ($741 in our example) in stocks averaging 7% real returns over 15 years yields roughly $230K. The 15-year mortgage saves $265K in interest. The 15-year wins by ~$35K, and that\'s before factoring in the guaranteed return + lower stress + behavioral advantage of forced savings.',
       },
       {
         q: 'Can I make extra payments on a 30-year to mimic a 15-year payoff?',
@@ -130,7 +130,7 @@ export const mortgageTerms: TermVariant[] = [
     defaultAmount: 380000,
     defaultRate: 6.25,
     positioning:
-      'The middle path. Costs roughly 15% more per month than a 30-year, but cuts total interest by about 35%. Underused — most borrowers default to 15 or 30 without considering this option.',
+      'The middle path. Costs roughly 15% more per month than a 30-year, but cuts total interest by about 35%. Underused. Most borrowers default to 15 or 30 without considering this option.',
     whoItsFor: [
       'Buyers who want to pay off mortgage faster than 30-year but can\'t stretch to a 15-year payment',
       'Refinancers extending or shortening from an existing loan',
@@ -144,25 +144,25 @@ export const mortgageTerms: TermVariant[] = [
       'Strong middle ground for risk-balanced families',
     ],
     cons: [
-      'Less common — fewer lenders offer it',
+      'Less common, so fewer lenders offer it',
       'Less marketing attention than 15- or 30-year',
       'Rate spread vs 30-year is smaller than 15-year vs 30-year',
       'May not be the optimal interest-saving option vs 15-year',
     ],
     uniqueAngle:
-      'A $380,000 loan at 6.25% over 20 years = $2,778/month and $286,795 total interest. The same loan at 6.5% over 30 years = $2,402/month but $484,605 total interest. The 20-year costs $376/month more but saves $197,810 — a meaningful middle-ground for borrowers who find 15-year unaffordable.',
+      'A $380,000 loan at 6.25% over 20 years = $2,778/month and $286,795 total interest. The same loan at 6.5% over 30 years = $2,402/month but $484,605 total interest. The 20-year costs $376/month more but saves $197,810, a meaningful middle-ground for borrowers who find 15-year unaffordable.',
     faqs: [
       {
         q: 'Why is a 20-year mortgage less common than 15 or 30?',
-        a: 'Two reasons: (1) The interest-rate discount vs 30-year is smaller than 15-year vs 30-year, making the savings math less dramatic. (2) Marketing inertia — Fannie Mae and Freddie Mac standardized around 15 and 30, and most lenders default to those terms. But 20-year is available from major banks and credit unions.',
+        a: 'Two reasons: (1) The interest-rate discount vs 30-year is smaller than 15-year vs 30-year, making the savings math less dramatic. (2) Marketing inertia. Fannie Mae and Freddie Mac standardized around 15 and 30, and most lenders default to those terms. But 20-year is available from major banks and credit unions.',
       },
       {
-        q: '20-year mortgage vs 15-year mortgage — which to pick?',
-        a: 'If you can afford the 15-year payment, pick it — savings are larger and the rate is lower. If the 15-year payment strains your budget, the 20-year is a smart compromise. The 20-year still saves ~$95K-$130K in interest vs a 30-year on a typical $400K loan.',
+        q: '20-year mortgage vs 15-year mortgage: which to pick?',
+        a: 'If you can afford the 15-year payment, pick it. Savings are larger and the rate is lower. If the 15-year payment strains your budget, the 20-year is a smart compromise. The 20-year still saves ~$95K-$130K in interest vs a 30-year on a typical $400K loan.',
       },
       {
         q: 'Can I refinance from a 30-year to a 20-year?',
-        a: 'Yes. If you\'re 5-10 years into a 30-year and have built equity + improved credit, refinancing into a 20-year is a common move — it shortens total mortgage life without the payment shock of a 15-year. Run the break-even on closing costs (typically 2-3 years).',
+        a: 'Yes. If you\'re 5-10 years into a 30-year and have built equity + improved credit, refinancing into a 20-year is a common move. It shortens total mortgage life without the payment shock of a 15-year. Run the break-even on closing costs (typically 2-3 years).',
       },
     ],
     metaKeywords: ['20 year mortgage calculator', '20 year fixed mortgage', '20 year vs 30 year', 'mid-term mortgage'],
@@ -176,7 +176,7 @@ export const mortgageTerms: TermVariant[] = [
     defaultAmount: 400000,
     defaultRate: 6.4,
     positioning:
-      'The 5-years-shorter option. The standard term in Canada, UK, and Australia — and a quiet alternative in the US. Modest payment increase, modest interest savings.',
+      'The 5-years-shorter option. The standard term in Canada, UK, and Australia, and a quiet alternative in the US. Modest payment increase, modest interest savings.',
     whoItsFor: [
       'Canadian, UK, Australian, and Singapore borrowers (where 25-year is standard)',
       'US borrowers who want to shave 5 years off a 30-year without stress',
@@ -190,7 +190,7 @@ export const mortgageTerms: TermVariant[] = [
       'Aligns with 25-year career and retirement timing',
     ],
     cons: [
-      'Less common in the US — fewer rate quotes',
+      'Less common in the US, fewer rate quotes',
       'Smaller interest savings than 20-year option',
       'Smaller rate discount vs 30-year',
     ],
@@ -203,11 +203,11 @@ export const mortgageTerms: TermVariant[] = [
       },
       {
         q: '25-year vs 30-year mortgage on the same loan?',
-        a: 'A $400K loan at 6.4% (25yr) ≈ $2,683/mo and $404,940 interest. Same loan at 6.5% (30yr) ≈ $2,528/mo and $510,178 interest. 25-year costs $155/mo more but saves ~$105K total interest — solid trade-off for buyers comfortable with the slightly higher payment.',
+        a: 'A $400K loan at 6.4% (25yr) ≈ $2,683/mo and $404,940 interest. Same loan at 6.5% (30yr) ≈ $2,528/mo and $510,178 interest. 25-year costs $155/mo more but saves ~$105K total interest, solid trade-off for buyers comfortable with the slightly higher payment.',
       },
       {
         q: 'Is a 25-year mortgage available in the US?',
-        a: 'Yes — most major US lenders offer 25-year fixed mortgages, though they\'re less promoted than 15 or 30. Rates are typically 5-15 bps below a 30-year. If your goal is "5 years shorter than 30 without a 15-year payment," a 25-year is the obvious answer.',
+        a: 'Yes, most major US lenders offer 25-year fixed mortgages, though they\'re less promoted than 15 or 30. Rates are typically 5-15 bps below a 30-year. If your goal is "5 years shorter than 30 without a 15-year payment," a 25-year is the obvious answer.',
       },
     ],
     metaKeywords: ['25 year mortgage calculator', '25 year fixed mortgage', 'canadian mortgage 25 year', 'uk 25 year mortgage'],
@@ -243,11 +243,11 @@ export const mortgageTerms: TermVariant[] = [
       'Mortgage outlives your career if you start at 35+',
     ],
     uniqueAngle:
-      'A $400,000 loan at 6.5% over 30 years = $2,528/month and $510,178 total interest. You pay $910,178 to borrow $400,000 — meaning interest costs more than the original loan principal. The 30-year fixed exists because Fannie Mae and Freddie Mac securitize them, which is unique to the US mortgage market.',
+      'A $400,000 loan at 6.5% over 30 years = $2,528/month and $510,178 total interest. You pay $910,178 to borrow $400,000, meaning interest costs more than the original loan principal. The 30-year fixed exists because Fannie Mae and Freddie Mac securitize them, which is unique to the US mortgage market.',
     faqs: [
       {
         q: 'Why is 30 years the standard mortgage term in the US?',
-        a: 'Fannie Mae and Freddie Mac (government-sponsored enterprises created in 1938 and 1970) buy 30-year fixed-rate mortgages from banks and securitize them — making them safe and cheap to originate. This US-only structure spreads payments long enough to make homes affordable on middle-class incomes. Most other countries cap at 25 years.',
+        a: 'Fannie Mae and Freddie Mac (government-sponsored enterprises created in 1938 and 1970) buy 30-year fixed-rate mortgages from banks and securitize them, making them safe and cheap to originate. This US-only structure spreads payments long enough to make homes affordable on middle-class incomes. Most other countries cap at 25 years.',
       },
       {
         q: 'How much do I save by paying off a 30-year mortgage early?',
@@ -255,10 +255,10 @@ export const mortgageTerms: TermVariant[] = [
       },
       {
         q: 'Is a 30-year mortgage a bad idea?',
-        a: 'Not at all — it\'s a tool. For first-time buyers and those in expensive markets, the 30-year often is the only viable option. The "bad" scenario is taking a 30-year, never making extra payments, and never refinancing as rates drop. The good scenario: take a 30-year, max your 401(k), make occasional principal pre-payments.',
+        a: 'Not at all. It\'s a tool. For first-time buyers and those in expensive markets, the 30-year often is the only viable option. The "bad" scenario is taking a 30-year, never making extra payments, and never refinancing as rates drop. The good scenario: take a 30-year, max your 401(k), make occasional principal pre-payments.',
       },
       {
-        q: '30-year mortgage refinance — when does it make sense?',
+        q: '30-year mortgage refinance: when does it make sense?',
         a: 'The rule of thumb: refinance when current rates are at least 0.75-1.0% below your locked rate AND you plan to stay in the home long enough to recoup closing costs (typically 2-3 years). After 2024-25 rate cuts, refinancing a 2023-rate mortgage often makes sense.',
       },
     ],
@@ -294,15 +294,15 @@ export const mortgageTerms: TermVariant[] = [
       'Mortgage outlives your working career',
     ],
     uniqueAngle:
-      'A $500,000 loan at 7.0% over 40 years = $3,107/month and $991,469 total interest. The same loan at 6.5% over 30 years = $3,160/month and $637,723 total interest. The 40-year saves only $53/month — but costs $353,746 more in total interest. Only worth it for hardship or qualification edge-cases.',
+      'A $500,000 loan at 7.0% over 40 years = $3,107/month and $991,469 total interest. The same loan at 6.5% over 30 years = $3,160/month and $637,723 total interest. The 40-year saves only $53/month, but costs $353,746 more in total interest. Only worth it for hardship or qualification edge-cases.',
     faqs: [
       {
         q: 'Why would anyone choose a 40-year mortgage?',
-        a: 'Three main scenarios: (1) FHA loan modifications — FHA introduced the 40-year mod in 2023 for borrowers facing hardship. (2) Extremely high-cost markets where a 30-year still doesn\'t fit budget. (3) Some Asian markets (Japan, South Korea) where multi-generational mortgages are normalized.',
+        a: 'Three main scenarios: (1) FHA loan modifications. FHA introduced the 40-year mod in 2023 for borrowers facing hardship. (2) Extremely high-cost markets where a 30-year still doesn\'t fit budget. (3) Some Asian markets (Japan, South Korea) where multi-generational mortgages are normalized.',
       },
       {
-        q: '40-year vs 30-year mortgage — what is the math?',
-        a: 'On a $500K loan: 40-year at 7.0% = $3,107/mo and $991,469 interest. 30-year at 6.5% = $3,160/mo and $637,723 interest. The 40-year only saves $53/month — barely meaningful — but costs $353,746 more in total interest. Almost never a winning trade unless you genuinely can\'t make the 30-year payment.',
+        q: '40-year vs 30-year mortgage: what is the math?',
+        a: 'On a $500K loan: 40-year at 7.0% = $3,107/mo and $991,469 interest. 30-year at 6.5% = $3,160/mo and $637,723 interest. The 40-year only saves $53/month (barely meaningful) but costs $353,746 more in total interest. Almost never a winning trade unless you genuinely can\'t make the 30-year payment.',
       },
       {
         q: 'Where can I get a 40-year mortgage?',

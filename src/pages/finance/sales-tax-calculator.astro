@@ -32,10 +32,10 @@ const rates = [
 
 const faqs = [
   { q: 'How do I add sales tax or VAT to a price?', a: 'Multiply the net price by the tax rate and add it on. For a ₹1,000 item at 18%: tax = 1,000 × 0.18 = ₹180, so the total is ₹1,180. As a one-step formula, gross = net × (1 + rate). Switch this calculator to "Add tax" and enter the pre-tax amount.' },
-  { q: 'How do I remove VAT from a tax-inclusive price?', a: 'Divide the gross (tax-inclusive) price by 1 plus the rate — don\'t just subtract the percentage. For a £120 price that includes 20% VAT: net = 120 ÷ 1.20 = £100, so the VAT is £20. Subtracting 20% of £120 (£24) would be wrong because the 20% applies to the net, not the gross. The "Remove tax" mode does this reverse calculation for you.' },
-  { q: 'What is the difference between VAT, GST and sales tax?', a: 'They\'re all consumption taxes but collected differently. VAT (value-added tax) and GST (goods and services tax) are charged at each stage of the supply chain, with businesses reclaiming the tax they paid, so only the final consumer bears it. US-style sales tax is charged once, at the final retail sale. For the shopper the maths is the same — a percentage on top of the price — which is why this one calculator handles all three.' },
-  { q: 'Why is reverse VAT not just subtracting the percentage?', a: 'Because the tax was calculated on the smaller net amount, not the larger gross. If VAT is 20%, the gross is 120% of the net. To get back to 100% (net) you divide by 1.20, which is about a 16.7% reduction — not 20%. This is the single most common VAT mistake, and the reason a dedicated reverse calculation matters.' },
-  { q: 'Do sales tax rates vary within a country?', a: 'Often, yes. In the United States there\'s no national sales tax — each state (and many cities and counties) sets its own, so the combined rate ranges from 0% in a few states to around 10% in parts of others. VAT/GST countries usually have one standard national rate plus reduced rates for essentials like food or books. Always check the specific rate that applies to your location and product.' },
+  { q: 'How do I remove VAT from a tax-inclusive price?', a: 'Divide the gross (tax-inclusive) price by 1 plus the rate. Don\'t just subtract the percentage. For a £120 price that includes 20% VAT: net = 120 ÷ 1.20 = £100, so the VAT is £20. Subtracting 20% of £120 (£24) would be wrong because the 20% applies to the net, not the gross. The "Remove tax" mode does this reverse calculation for you.' },
+  { q: 'What is the difference between VAT, GST and sales tax?', a: 'They\'re all consumption taxes but collected differently. VAT (value-added tax) and GST (goods and services tax) are charged at each stage of the supply chain, with businesses reclaiming the tax they paid, so only the final consumer bears it. US-style sales tax is charged once, at the final retail sale. For the shopper the maths is the same (a percentage on top of the price), which is why this one calculator handles all three.' },
+  { q: 'Why is reverse VAT not just subtracting the percentage?', a: 'Because the tax was calculated on the smaller net amount, not the larger gross. If VAT is 20%, the gross is 120% of the net. To get back to 100% (net) you divide by 1.20, which is about a 16.7% reduction, not 20%. This is the single most common VAT mistake, and the reason a dedicated reverse calculation matters.' },
+  { q: 'Do sales tax rates vary within a country?', a: 'Often, yes. In the United States there\'s no national sales tax. Each state (and many cities and counties) sets its own, so the combined rate ranges from 0% in a few states to around 10% in parts of others. VAT/GST countries usually have one standard national rate plus reduced rates for essentials like food or books. Always check the specific rate that applies to your location and product.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -62,7 +62,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Sales Tax & VAT Calculator — Add or Remove Tax" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Sales Tax & VAT Calculator: Add or Remove Tax" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-lime-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -99,7 +99,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                To <strong>add tax</strong>: gross = net × (1 + rate). To <strong>remove tax</strong> from an inclusive price: net = gross ÷ (1 + rate) — not a plain subtraction. At 20% VAT, £120 inclusive = £100 net + £20 tax. Enter your amount and rate below.
+                To <strong>add tax</strong>: gross = net × (1 + rate). To <strong>remove tax</strong> from an inclusive price: net = gross ÷ (1 + rate), not a plain subtraction. At 20% VAT, £120 inclusive = £100 net + £20 tax. Enter your amount and rate below.
               </p>
             </div>
           </div>
@@ -121,7 +121,7 @@ const relatedCalcs = [
       <div class="max-w-3xl mx-auto">
         <span class="chip bg-lime-accent text-ink-900 mb-4">📊 Quick reference</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">Standard VAT / GST / sales-tax rates.</h2>
-        <p class="mt-3 text-ink-700 font-medium">Indicative headline rates — reduced rates apply to some goods, and US rates vary by state and city. Confirm the exact current rate for your case.</p>
+        <p class="mt-3 text-ink-700 font-medium">Indicative headline rates. Reduced rates apply to some goods, and US rates vary by state and city. Confirm the exact current rate for your case.</p>
         <div class="mt-8 overflow-x-auto">
           <table class="w-full bg-white border-[2.5px] border-ink-900 rounded-2xl shadow-sticker-sm overflow-hidden border-separate border-spacing-0 text-sm">
             <thead><tr class="bg-ink-900 text-white">

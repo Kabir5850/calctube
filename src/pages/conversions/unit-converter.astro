@@ -15,7 +15,7 @@ const pairsByCat = CAT_ORDER
 
 const meta = {
   slug: 'unit-converter', name: 'Unit Converter',
-  description: 'Free online unit converter for length, weight, volume, area, speed and data. Convert km to miles, kg to lbs, cm to inches, litres to gallons and more — instantly, with reference tables.',
+  description: 'Free online unit converter for length, weight, volume, area, speed and data. Convert km to miles, kg to lbs, cm to inches, litres to gallons and more, instantly, with reference tables.',
   category: 'conversion' as const,
   keywords: ['unit converter', 'km to miles', 'kg to lbs', 'cm to inches', 'metric converter', 'length converter', 'weight converter'],
   lastUpdated: '2026-07-18',
@@ -48,8 +48,8 @@ const faqs = [
   { q: 'How do you convert km to miles?', a: 'Multiply kilometres by 0.6214 (or divide by 1.6093). So 5 km = 5 × 0.6214 = 3.107 miles, and 10 km ≈ 6.21 miles. Going the other way, multiply miles by 1.6093 to get kilometres. A quick mental shortcut: miles are roughly km × 0.6, which is close enough for a rough estimate.' },
   { q: 'How do you convert kg to lbs?', a: 'Multiply kilograms by 2.2046 to get pounds. So 70 kg = 70 × 2.2046 = 154.3 lb. To reverse it, multiply pounds by 0.4536 to get kilograms. For a fast estimate, doubling the kilograms and adding 10% gets you very close (70 → 140 + 14 = 154).' },
   { q: 'How do you convert cm to inches?', a: 'Divide centimetres by 2.54 (since 1 inch = 2.54 cm exactly). So 30 cm = 30 ÷ 2.54 = 11.81 inches. To go from inches to cm, multiply by 2.54. Height example: 170 cm = 66.9 inches = 5 feet 6.9 inches.' },
-  { q: 'Are US and UK (imperial) units the same?', a: 'For length and weight, yes — an inch, foot, mile, ounce and pound are identical in both systems. But volume differs: a US gallon is 3.785 litres while a UK/imperial gallon is 4.546 litres, and US and UK pints, cups and fluid ounces differ too. This converter uses US customary volumes; adjust if you\'re working with imperial recipes.' },
-  { q: 'What is the difference between KB and KiB (data units)?', a: 'A kilobyte (KB) is 1,000 bytes, using the decimal (SI) system — how storage and network speeds are usually marketed. A kibibyte (KiB) is 1,024 bytes, the binary system operating systems often use. That 2.4% gap grows with size: a "1 TB" drive (1,000,000,000,000 bytes) shows as about 931 GiB in Windows. This converter includes both.' },
+  { q: 'Are US and UK (imperial) units the same?', a: 'For length and weight, yes. An inch, foot, mile, ounce and pound are identical in both systems. But volume differs: a US gallon is 3.785 litres while a UK/imperial gallon is 4.546 litres, and US and UK pints, cups and fluid ounces differ too. This converter uses US customary volumes; adjust if you\'re working with imperial recipes.' },
+  { q: 'What is the difference between KB and KiB (data units)?', a: 'A kilobyte (KB) is 1,000 bytes, using the decimal (SI) system, which is how storage and network speeds are usually marketed. A kibibyte (KiB) is 1,024 bytes, the binary system operating systems often use. That 2.4% gap grows with size: a "1 TB" drive (1,000,000,000,000 bytes) shows as about 931 GiB in Windows. This converter includes both.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -64,7 +64,7 @@ const schemas = [
     steps: [
       { name: 'Pick a category', text: 'Choose length, weight, volume, area, speed or data.' },
       { name: 'Choose the units', text: 'Select the unit to convert from and the unit to convert to.' },
-      { name: 'Enter a value', text: 'Type the amount — the converted result and the per-unit rate appear instantly.' },
+      { name: 'Enter a value', text: 'Type the amount. The converted result and the per-unit rate appear instantly.' },
     ],
   }),
 ];
@@ -76,7 +76,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Unit Converter — Length, Weight, Volume, Speed & Data" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Unit Converter: Length, Weight, Volume, Speed & Data" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-yellow-accent/30 rounded-full blur-[120px] float-slow"></div>

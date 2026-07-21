@@ -42,16 +42,16 @@ for (let i = 0; i < 60; i++) {
 const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(v);
 
 const faqs = [
-  { q: 'What is the difference between flat and reducing-balance interest?', a: `Flat interest is charged on the full original loan amount for the entire tenure, even as you repay. Reducing-balance interest is charged only on the outstanding principal, which falls with every EMI. On a ${fmtINR(P)} loan at a quoted 10% for 5 years, flat interest costs ${fmtINR(flatInterest)} while reducing-balance costs ${fmtINR(Math.round(redInterest))} — a difference of ${fmtINR(Math.round(flatInterest - redInterest))}.` },
-  { q: 'How do I convert a flat rate to a reducing-balance rate?', a: `A rough rule: effective reducing rate ≈ flat rate × 1.75 to 1.9 (for typical 3–5 year tenures). Precisely, a 10% flat rate on a 5-year loan equals about ${effRate.toFixed(1)}% reducing-balance — because you keep paying interest on money you have already returned. The longer the tenure, the worse the gap.` },
-  { q: 'Which loans use flat rates?', a: 'Flat rates are common on two-wheeler loans, used-car loans from dealers, gold loans, personal loans from some NBFCs, and informal lending. Bank home loans and most bank car loans use reducing-balance (that is what an EMI quote normally means). Regulation increasingly requires lenders to disclose the effective (APR/reducing) rate — always ask for it.' },
-  { q: 'Is a lower flat rate ever better than a higher reducing rate?', a: `Compare them on the same basis first: multiply the flat rate by ~1.8 to approximate its reducing equivalent, then compare. A "7% flat" (~12.5–13% reducing) is worse than a 11% reducing-balance loan despite looking cheaper. The only honest comparison is total interest paid or APR — never the headline number.` },
+  { q: 'What is the difference between flat and reducing-balance interest?', a: `Flat interest is charged on the full original loan amount for the entire tenure, even as you repay. Reducing-balance interest is charged only on the outstanding principal, which falls with every EMI. On a ${fmtINR(P)} loan at a quoted 10% for 5 years, flat interest costs ${fmtINR(flatInterest)} while reducing-balance costs ${fmtINR(Math.round(redInterest))}, a difference of ${fmtINR(Math.round(flatInterest - redInterest))}.` },
+  { q: 'How do I convert a flat rate to a reducing-balance rate?', a: `A rough rule: effective reducing rate ≈ flat rate × 1.75 to 1.9 (for typical 3–5 year tenures). Precisely, a 10% flat rate on a 5-year loan equals about ${effRate.toFixed(1)}% reducing-balance, because you keep paying interest on money you have already returned. The longer the tenure, the worse the gap.` },
+  { q: 'Which loans use flat rates?', a: 'Flat rates are common on two-wheeler loans, used-car loans from dealers, gold loans, personal loans from some NBFCs, and informal lending. Bank home loans and most bank car loans use reducing-balance (that is what an EMI quote normally means). Regulation increasingly requires lenders to disclose the effective (APR/reducing) rate. Always ask for it.' },
+  { q: 'Is a lower flat rate ever better than a higher reducing rate?', a: `Compare them on the same basis first: multiply the flat rate by ~1.8 to approximate its reducing equivalent, then compare. A "7% flat" (~12.5–13% reducing) is worse than a 11% reducing-balance loan despite looking cheaper. The only honest comparison is total interest paid or APR, never the headline number.` },
   { q: 'Why do dealers quote flat rates?', a: 'Because the number looks smaller. A dealer quoting "10% flat" sounds cheaper than a bank quoting "14% reducing," yet the flat loan costs more. It is a framing tactic, not a different kind of cheap credit. Ask every lender the same question: "What is the total interest I will pay in rupees, and what is the APR?"' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 ---
 
-<BaseLayout title="Flat vs Reducing Balance Interest Rate — The Real Difference (2026)" description={`Flat vs reducing-balance interest explained with real math: a 10% flat rate equals ~${effRate.toFixed(1)}% reducing. Comparison table on a ₹5 lakh loan, conversion rule, and how to spot the dealer trick.`} schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
+<BaseLayout title="Flat vs Reducing Balance Interest Rate: The Real Difference (2026)" description={`Flat vs reducing-balance interest explained with real math: a 10% flat rate equals ~${effRate.toFixed(1)}% reducing. Comparison table on a ₹5 lakh loan, conversion rule, and how to spot the dealer trick.`} schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
@@ -90,7 +90,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                A <strong>10% flat rate is NOT 10%</strong> — on a 5-year loan it equals about <strong>{effRate.toFixed(1)}% reducing-balance</strong>. Flat interest is charged on the full original amount forever; reducing-balance only on what you still owe. Rule of thumb: <strong>reducing ≈ flat × 1.8</strong>.
+                A <strong>10% flat rate is NOT 10%</strong>. On a 5-year loan it equals about <strong>{effRate.toFixed(1)}% reducing-balance</strong>. Flat interest is charged on the full original amount forever; reducing-balance only on what you still owe. Rule of thumb: <strong>reducing ≈ flat × 1.8</strong>.
               </p>
             </div>
           </div>
@@ -143,7 +143,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
         </table>
       </div>
       <p class="mt-5 text-ink-700 font-medium leading-relaxed max-w-3xl">
-        Same headline number, <strong>{fmtINR(Math.round(flatInterest - redInterest))} difference</strong> in interest. The flat loan keeps charging you 10% on the full {fmtINR(P)} even in month 59, when you owe almost nothing. That's why regulators push lenders to disclose the effective rate (APR) — and why you should never compare a flat quote with a reducing quote directly.
+        Same headline number, <strong>{fmtINR(Math.round(flatInterest - redInterest))} difference</strong> in interest. The flat loan keeps charging you 10% on the full {fmtINR(P)} even in month 59, when you owe almost nothing. That's why regulators push lenders to disclose the effective rate (APR), and why you should never compare a flat quote with a reducing quote directly.
       </p>
       {reviewer && <div class="mt-6"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
@@ -169,7 +169,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
             ))}
           </div>
           <p class="text-sm text-ink-300 mt-6">
-            The multiplier drifts with tenure: ~1.75× for 3 years, ~1.85× for 5 years, ~1.9× for 7 years. When it matters, compute the exact EMI both ways — our <a href="/finance/emi-calculator/" class="text-yellow-accent underline decoration-2">EMI calculator</a> uses reducing-balance, and the <a href="/finance/simple-interest-calculator/" class="text-yellow-accent underline decoration-2">simple interest calculator</a> shows the flat side.
+            The multiplier drifts with tenure: ~1.75× for 3 years, ~1.85× for 5 years, ~1.9× for 7 years. When it matters, compute the exact EMI both ways. Our <a href="/finance/emi-calculator/" class="text-yellow-accent underline decoration-2">EMI calculator</a> uses reducing-balance, and the <a href="/finance/simple-interest-calculator/" class="text-yellow-accent underline decoration-2">simple interest calculator</a> shows the flat side.
           </p>
         </div>
       </div>

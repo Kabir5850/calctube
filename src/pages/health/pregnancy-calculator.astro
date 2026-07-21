@@ -31,11 +31,11 @@ const milestones = [
 ];
 
 const faqs = [
-  { q: 'How is a due date calculated?', a: 'The standard method is Naegele\'s rule: add 280 days (40 weeks) to the first day of your last menstrual period (LMP). Equivalently, take the LMP date, subtract 3 months, and add 7 days. This assumes a regular 28-day cycle with ovulation around day 14. Only about 4% of babies arrive exactly on the due date — it\'s a best estimate of a roughly two-week window, not a deadline.' },
-  { q: 'Why does the calculator start counting from my last period, not conception?', a: 'Pregnancy is dated from the first day of your last menstrual period because most people know that date, whereas the exact day of conception is usually uncertain. This is why you\'re considered "2 weeks pregnant" at conception — the count includes the roughly two weeks before you actually ovulated. Gestational age (LMP-based) is the standard used by doctors worldwide.' },
+  { q: 'How is a due date calculated?', a: 'The standard method is Naegele\'s rule: add 280 days (40 weeks) to the first day of your last menstrual period (LMP). Equivalently, take the LMP date, subtract 3 months, and add 7 days. This assumes a regular 28-day cycle with ovulation around day 14. Only about 4% of babies arrive exactly on the due date. It\'s a best estimate of a roughly two-week window, not a deadline.' },
+  { q: 'Why does the calculator start counting from my last period, not conception?', a: 'Pregnancy is dated from the first day of your last menstrual period because most people know that date, whereas the exact day of conception is usually uncertain. This is why you\'re considered "2 weeks pregnant" at conception. The count includes the roughly two weeks before you actually ovulated. Gestational age (LMP-based) is the standard used by doctors worldwide.' },
   { q: 'How does my cycle length affect the due date?', a: 'Naegele\'s rule assumes a 28-day cycle. If your cycles are longer, you ovulate later, so your due date shifts later; shorter cycles shift it earlier. This calculator adjusts by the difference between your cycle length and 28 days. For example, a 32-day cycle pushes the estimate about 4 days later. An early ultrasound (dating scan) refines this further.' },
   { q: 'How accurate is an LMP due date compared to an ultrasound?', a: 'An LMP-based date is a good starting estimate but relies on regular cycles and an accurately remembered date. A first-trimester ultrasound (roughly weeks 8–13) measures the baby directly and is more accurate, often by several days. If the ultrasound date differs significantly from the LMP date, providers usually adopt the ultrasound date.' },
-  { q: 'What are the three trimesters?', a: 'The first trimester runs from week 1 to the end of week 13, the second from week 14 to the end of week 27, and the third from week 28 to birth (around week 40). "Full term" is from 37 weeks. Each trimester has its own screenings and milestones — the table on this page maps the main ones.' },
+  { q: 'What are the three trimesters?', a: 'The first trimester runs from week 1 to the end of week 13, the second from week 14 to the end of week 27, and the third from week 28 to birth (around week 40). "Full term" is from 37 weeks. Each trimester has its own screenings and milestones. The table on this page maps the main ones.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -62,7 +62,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Pregnancy Due Date Calculator — Weeks, Trimester & EDD" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Pregnancy Due Date Calculator: Weeks, Trimester & EDD" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-rose-300/40 rounded-full blur-[120px] float-slow"></div>
@@ -99,7 +99,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Your <strong>estimated due date</strong> is your last period plus <strong>280 days (40 weeks)</strong> — Naegele's rule. Or: LMP minus 3 months plus 7 days. Enter your dates below to see your due date, current week and trimester. An <strong>ultrasound scan</strong> gives the most accurate dating.
+                Your <strong>estimated due date</strong> is your last period plus <strong>280 days (40 weeks)</strong>, per Naegele's rule. Or: LMP minus 3 months plus 7 days. Enter your dates below to see your due date, current week and trimester. An <strong>ultrasound scan</strong> gives the most accurate dating.
               </p>
             </div>
           </div>

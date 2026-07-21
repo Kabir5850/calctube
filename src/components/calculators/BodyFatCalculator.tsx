@@ -73,11 +73,11 @@ export default function BodyFatCalculator() {
               </div>
             </div>
           ) : (
-            <div className="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 text-white font-extrabold">Check measurements — waist must be larger than neck.</div>
+            <div className="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 text-white font-extrabold">Check measurements. Waist must be larger than neck.</div>
           )}
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · US Navy circumference method — an estimate (±3–4%). DEXA or calipers are more precise. Measure waist at the navel, neck below the larynx.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · US Navy circumference method, an estimate (±3–4%). DEXA or calipers are more precise. Measure waist at the navel, neck below the larynx.</div>
     </div>
   );
 }

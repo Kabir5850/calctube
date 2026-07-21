@@ -43,10 +43,10 @@ const meta = {
 };
 
 const faqs = [
-  { q: `How do I convert ${uni.shortName} CGPA to percentage?`, a: `${uni.fullName} uses the formula ${uni.formulaText}. For example, a CGPA of ${ex} converts to ${fmtPct(exPct)}%. Enter your CGPA in the calculator above and it applies this formula instantly — or use the conversion chart on this page. ${uni.blurb}` },
+  { q: `How do I convert ${uni.shortName} CGPA to percentage?`, a: `${uni.fullName} uses the formula ${uni.formulaText}. For example, a CGPA of ${ex} converts to ${fmtPct(exPct)}%. Enter your CGPA in the calculator above and it applies this formula instantly, or use the conversion chart on this page. ${uni.blurb}` },
   { q: `What is ${ex} CGPA in percentage at ${uni.shortName}?`, a: `Using ${uni.formulaText}, a ${ex} CGPA equals ${fmtPct(exPct)}% at ${uni.shortName}. Note this differs from the CBSE-style CGPA × 9.5 rule (which would give ${fmtPct(ex * 9.5)}%), because ${uni.shortName} publishes its own conversion.` },
-  { q: `Is the ${uni.shortName} CGPA formula the same as CBSE (×9.5)?`, a: `No. CBSE and many 10-point universities multiply CGPA by 9.5, but ${uni.shortName} uses ${uni.formulaText}. Using the wrong formula can put you above or below an eligibility cut-off, so always apply your own university's method — the one built into this page.` },
-  { q: `Where do I find my official ${uni.shortName} percentage?`, a: `Your official percentage or conversion certificate comes from ${uni.fullName} itself — check your grade card, marksheet, or the university's conversion circular. Conversion formulas can change between regulation years and programs, so treat this calculator as a quick estimate and confirm the exact figure with your university when it matters for admissions or jobs.` },
+  { q: `Is the ${uni.shortName} CGPA formula the same as CBSE (×9.5)?`, a: `No. CBSE and many 10-point universities multiply CGPA by 9.5, but ${uni.shortName} uses ${uni.formulaText}. Using the wrong formula can put you above or below an eligibility cut-off, so always apply your own university's method, the one built into this page.` },
+  { q: `Where do I find my official ${uni.shortName} percentage?`, a: `Your official percentage or conversion certificate comes from ${uni.fullName} itself. Check your grade card, marksheet, or the university's conversion circular. Conversion formulas can change between regulation years and programs, so treat this calculator as a quick estimate and confirm the exact figure with your university when it matters for admissions or jobs.` },
 ];
 
 const schemas = [
@@ -108,7 +108,7 @@ const others = universities.filter((u) => u.slug !== uni.slug);
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                {uni.fullName} converts CGPA to percentage with <strong>{uni.formulaText}</strong>. So a CGPA of <strong>{ex} = {fmtPct(exPct)}%</strong>. This differs from the CBSE ×9.5 rule — enter your CGPA below to use the correct {uni.shortName} formula.
+                {uni.fullName} converts CGPA to percentage with <strong>{uni.formulaText}</strong>. So a CGPA of <strong>{ex} = {fmtPct(exPct)}%</strong>. This differs from the CBSE ×9.5 rule. Enter your CGPA below to use the correct {uni.shortName} formula.
               </p>
             </div>
           </div>
@@ -147,7 +147,7 @@ const others = universities.filter((u) => u.slug !== uni.slug);
             </tbody>
           </table>
         </div>
-        <p class="text-xs text-ink-500 mt-3 font-medium">Conversion formulas can vary by regulation year and program — confirm the exact figure on your official {uni.shortName} grade card.</p>
+        <p class="text-xs text-ink-500 mt-3 font-medium">Conversion formulas can vary by regulation year and program. Confirm the exact figure on your official {uni.shortName} grade card.</p>
       </div>
     </div>
   </section>

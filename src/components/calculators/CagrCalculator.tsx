@@ -36,7 +36,7 @@ export default function CagrCalculator() {
       return { ok: false as const, t, error: 'Starting value must be greater than zero. CAGR divides by the starting value, so a zero or negative start has no defined growth rate.' };
     }
     if (!(final > 0)) {
-      return { ok: false as const, t, error: 'Ending value must be greater than zero. A total wipe-out (or a negative ending value) means the investment lost 100% or more — a compound rate cannot be expressed for it.' };
+      return { ok: false as const, t, error: 'Ending value must be greater than zero. A total wipe-out (or a negative ending value) means the investment lost 100% or more. A compound rate cannot be expressed for it.' };
     }
     if (!(t > 0)) {
       return { ok: false as const, t, error: 'The holding period must be greater than zero. Set at least one year, or one month, before a compound annual rate can be worked out.' };
@@ -144,7 +144,7 @@ export default function CagrCalculator() {
             <input id="cagr-months" type="number" min={0} max={11} step={1} value={months} onChange={(e) => setMonths(Math.min(11, Math.max(0, Number(e.target.value) || 0)))}
               className="w-full px-3.5 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-base font-bold focus:outline-none focus:ring-4 focus:ring-yellow-accent transition-all"
               inputMode="numeric" />
-            <div className="text-[10px] text-ink-500 mt-1.5 font-bold">Optional — 0 to 11. Counted as months ÷ 12</div>
+            <div className="text-[10px] text-ink-500 mt-1.5 font-bold">Optional: 0 to 11. Counted as months ÷ 12</div>
           </div>
         </div>
 
@@ -162,7 +162,7 @@ export default function CagrCalculator() {
             <div className="flex items-start gap-2.5">
               <span className="text-lg leading-none">📉</span>
               <p className="text-xs sm:text-sm font-bold text-ink-900 !m-0 leading-snug">
-                Your ending value is below your starting value, so the CAGR is negative — a compound rate of loss. That is a valid, correctly signed result: the money shrank by {fmtPct(Math.abs(result.cagr))} a year, every year, to get from {fmtINR(initial)} to {fmtINR(final)}. Doubling time does not apply to a negative rate.
+                Your ending value is below your starting value, so the CAGR is negative, a compound rate of loss. That is a valid, correctly signed result: the money shrank by {fmtPct(Math.abs(result.cagr))} a year, every year, to get from {fmtINR(initial)} to {fmtINR(final)}. Doubling time does not apply to a negative rate.
               </p>
             </div>
           </div>
@@ -260,7 +260,7 @@ export default function CagrCalculator() {
           </>
         )}
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · CAGR is a smoothed rate — it says nothing about the volatility or drawdowns along the way</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · CAGR is a smoothed rate. It says nothing about the volatility or drawdowns along the way</div>
     </div>
   );
 }

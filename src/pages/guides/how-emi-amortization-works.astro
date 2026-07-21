@@ -47,16 +47,16 @@ const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency'
 const fmtL = (v: number) => v >= 10000000 ? `₹${(v / 10000000).toFixed(2)} Cr` : `₹${(v / 100000).toFixed(1)} L`;
 
 const faqs = [
-  { q: 'Why is most of my early EMI interest, not principal?', a: `Because interest is charged on the outstanding balance, and at the start you owe the full amount. On a ${fmtL(P)} loan at ${RATE}%, the first month's interest alone is ${fmtINR(month1Interest)} — so of your ${fmtINR(emi)} EMI, only ${fmtINR(month1Principal)} (about ${((month1Principal / emi) * 100).toFixed(0)}%) reduces the loan. As the balance falls, the interest share falls with it, and late-tenure EMIs are almost all principal.` },
-  { q: 'When will I have repaid half my home loan?', a: `Much later than halfway through the tenure. On a ${YEARS}-year loan at ${RATE}%, you cross 50% principal repaid only around year ${halfYear} — roughly two-thirds of the way in. This is why selling or refinancing early feels like "I've paid for years and barely own more of the house."` },
-  { q: 'How much does one extra EMI per year actually save?', a: `A lot more than intuition suggests. Paying one extra EMI (${fmtINR(emi)}) each year on this loan clears it about ${Math.floor(monthsSaved / 12)} years and ${monthsSaved % 12} months early and saves roughly ${fmtL(interestSaved)} in interest — a ${((interestSaved / base.cumInterest) * 100).toFixed(0)}% cut in total interest cost, because every prepaid rupee stops compounding against you immediately.` },
-  { q: 'Should I prepay my loan or invest the money instead?', a: 'Compare the loan rate with your realistic post-tax investment return. Prepaying an 8.5% loan is a guaranteed, risk-free 8.5% return. Equity may beat it over long horizons (10-12% historically in India), but with volatility. A common middle path: prepay enough to feel safe, invest the rest — and always prepay high-rate debt (personal loans, credit cards) before investing anything.' },
-  { q: 'Does EMI change when interest rates change?', a: 'On floating-rate loans in India, lenders usually keep the EMI constant and stretch or shrink the tenure when the repo rate moves. You can ask the bank to adjust the EMI instead — often smarter, since a longer tenure quietly adds interest. After every rate change, check your revised tenure, not just the EMI.' },
+  { q: 'Why is most of my early EMI interest, not principal?', a: `Because interest is charged on the outstanding balance, and at the start you owe the full amount. On a ${fmtL(P)} loan at ${RATE}%, the first month's interest alone is ${fmtINR(month1Interest)}, so of your ${fmtINR(emi)} EMI, only ${fmtINR(month1Principal)} (about ${((month1Principal / emi) * 100).toFixed(0)}%) reduces the loan. As the balance falls, the interest share falls with it, and late-tenure EMIs are almost all principal.` },
+  { q: 'When will I have repaid half my home loan?', a: `Much later than halfway through the tenure. On a ${YEARS}-year loan at ${RATE}%, you cross 50% principal repaid only around year ${halfYear}, roughly two-thirds of the way in. This is why selling or refinancing early feels like "I've paid for years and barely own more of the house."` },
+  { q: 'How much does one extra EMI per year actually save?', a: `A lot more than intuition suggests. Paying one extra EMI (${fmtINR(emi)}) each year on this loan clears it about ${Math.floor(monthsSaved / 12)} years and ${monthsSaved % 12} months early and saves roughly ${fmtL(interestSaved)} in interest, a ${((interestSaved / base.cumInterest) * 100).toFixed(0)}% cut in total interest cost, because every prepaid rupee stops compounding against you immediately.` },
+  { q: 'Should I prepay my loan or invest the money instead?', a: 'Compare the loan rate with your realistic post-tax investment return. Prepaying an 8.5% loan is a guaranteed, risk-free 8.5% return. Equity may beat it over long horizons (10-12% historically in India), but with volatility. A common middle path: prepay enough to feel safe, invest the rest, and always prepay high-rate debt (personal loans, credit cards) before investing anything.' },
+  { q: 'Does EMI change when interest rates change?', a: 'On floating-rate loans in India, lenders usually keep the EMI constant and stretch or shrink the tenure when the repo rate moves. You can ask the bank to adjust the EMI instead (often smarter, since a longer tenure quietly adds interest). After every rate change, check your revised tenure, not just the EMI.' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 ---
 
-<BaseLayout title="How EMI Amortization Really Works — Why Your First EMI Is 79% Interest" description={`Inside the EMI formula: on a ₹50L loan at 8.5%, your first EMI of ${fmtINR(emi)} pays just ${fmtINR(month1Principal)} of principal. Amortization milestones, the half-paid myth, and what one extra EMI a year saves.`} schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
+<BaseLayout title="How EMI Amortization Really Works: Why Your First EMI Is 79% Interest" description={`Inside the EMI formula: on a ₹50L loan at 8.5%, your first EMI of ${fmtINR(emi)} pays just ${fmtINR(month1Principal)} of principal. Amortization milestones, the half-paid myth, and what one extra EMI a year saves.`} schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -94,7 +94,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                On a <strong>{fmtL(P)} loan at {RATE}% for {YEARS} years</strong>, your EMI is <strong>{fmtINR(emi)}</strong> — but the first month, <strong>{fmtINR(month1Interest)}</strong> of it is interest and only <strong>{fmtINR(month1Principal)}</strong> repays the loan. You don't cross 50% repaid until around <strong>year {halfYear}</strong>.
+                On a <strong>{fmtL(P)} loan at {RATE}% for {YEARS} years</strong>, your EMI is <strong>{fmtINR(emi)}</strong>, but the first month, <strong>{fmtINR(month1Interest)}</strong> of it is interest and only <strong>{fmtINR(month1Principal)}</strong> repays the loan. You don't cross 50% repaid until around <strong>year {halfYear}</strong>.
               </p>
             </div>
           </div>
@@ -107,10 +107,10 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
     <div class="max-w-3xl mx-auto prose prose-lg">
       <h2 style="font-family: 'Inter Tight', sans-serif;">The mechanics nobody explains at loan signing</h2>
       <p class="text-ink-700 font-medium leading-relaxed">
-        An EMI is engineered to be the <em>same number every month</em> for the full tenure — that's its whole appeal. But underneath that flat payment, two moving parts trade places every single month. Interest is calculated on whatever you still owe; the rest of the EMI goes to principal. Early on you owe a lot, so interest devours the payment. Two decades later you owe little, so nearly the whole EMI chips away at principal. The payment never changes — the <em>composition</em> changes completely.
+        An EMI is engineered to be the <em>same number every month</em> for the full tenure. That's its whole appeal. But underneath that flat payment, two moving parts trade places every single month. Interest is calculated on whatever you still owe; the rest of the EMI goes to principal. Early on you owe a lot, so interest devours the payment. Two decades later you owe little, so nearly the whole EMI chips away at principal. The payment never changes. The <em>composition</em> changes completely.
       </p>
       <p class="text-ink-700 font-medium leading-relaxed">
-        Run the actual numbers for a typical Indian metro home loan — {fmtL(P)} at {RATE}% over {YEARS} years. The formula (EMI = P×r×(1+r)ⁿ ÷ ((1+r)ⁿ−1), with r the monthly rate) produces an EMI of <strong>{fmtINR(emi)}</strong>. In month one, the bank charges {RATE}%÷12 on the full {fmtL(P)}: that's <strong>{fmtINR(month1Interest)}</strong> in interest. Your loan shrinks by just {fmtINR(month1Principal)}. If you total every payment over {YEARS} years, you repay <strong>{fmtINR(totalPaid)}</strong> — the house costs you {fmtL(totalInterest)} in interest on top of the principal.
+        Run the actual numbers for a typical Indian metro home loan, {fmtL(P)} at {RATE}% over {YEARS} years. The formula (EMI = P×r×(1+r)ⁿ ÷ ((1+r)ⁿ−1), with r the monthly rate) produces an EMI of <strong>{fmtINR(emi)}</strong>. In month one, the bank charges {RATE}%÷12 on the full {fmtL(P)}: that's <strong>{fmtINR(month1Interest)}</strong> in interest. Your loan shrinks by just {fmtINR(month1Principal)}. If you total every payment over {YEARS} years, you repay <strong>{fmtINR(totalPaid)}</strong>. The house costs you {fmtL(totalInterest)} in interest on top of the principal.
       </p>
 
       <h2 style="font-family: 'Inter Tight', sans-serif;">The milestones that matter</h2>
@@ -124,7 +124,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
           <tbody>
             {[5, 10, Number(halfYear), 15, 20].filter((y, i, a) => a.indexOf(y) === i).sort((a, b) => a - b).map((y) => (
               <tr class="border-b-2 border-ink-100">
-                <td class="p-3 font-semibold text-ink-700">Year {y}{String(y) === String(halfYear) ? ' — half repaid' : ''}</td>
+                <td class="p-3 font-semibold text-ink-700">Year {y}{String(y) === String(halfYear) ? ' (half repaid)' : ''}</td>
                 <td class="p-3 text-right font-mono font-bold text-ink-900">{fmtL(base.milestones[y]?.bal ?? 0)}</td>
                 <td class="p-3 text-right font-mono font-bold text-ink-900">{fmtL(base.milestones[y]?.cumInterest ?? base.cumInterest)}</td>
               </tr>
@@ -133,12 +133,12 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
         </table>
       </div>
       <p class="text-ink-700 font-medium leading-relaxed mt-6">
-        Notice the asymmetry: five years in — a quarter of the tenure — you've barely dented the principal, yet you've already handed the bank more than {fmtL(base.milestones[5].cumInterest)} in interest. This is why refinancing to a cheaper rate is most valuable <em>early</em> in a loan, and nearly pointless in the final years: the interest is front-loaded, so the savings are too.
+        Notice the asymmetry: five years in (a quarter of the tenure), you've barely dented the principal, yet you've already handed the bank more than {fmtL(base.milestones[5].cumInterest)} in interest. This is why refinancing to a cheaper rate is most valuable <em>early</em> in a loan, and nearly pointless in the final years: the interest is front-loaded, so the savings are too.
       </p>
 
       <h2 style="font-family: 'Inter Tight', sans-serif;">The single cheapest trick in home finance</h2>
       <p class="text-ink-700 font-medium leading-relaxed">
-        Pay <strong>one extra EMI per year</strong> — a 13th payment, applied straight to principal. On this loan it shortens the tenure by about <strong>{Math.floor(monthsSaved / 12)} years {monthsSaved % 12} months</strong> and saves roughly <strong>{fmtL(interestSaved)}</strong> — {((interestSaved / base.cumInterest) * 100).toFixed(0)}% of the total interest — because a prepaid rupee at year 2 stops accruing {RATE}% for the remaining eighteen years. Indian floating-rate home loans carry <strong>no prepayment penalty</strong> by RBI rule, so the only cost is opportunity cost. Bonus math: prepaying an {RATE}% loan is a guaranteed, tax-free {RATE}% return — compare that honestly with what your money would otherwise earn.
+        Pay <strong>one extra EMI per year</strong>, a 13th payment, applied straight to principal. On this loan it shortens the tenure by about <strong>{Math.floor(monthsSaved / 12)} years {monthsSaved % 12} months</strong> and saves roughly <strong>{fmtL(interestSaved)}</strong> ({((interestSaved / base.cumInterest) * 100).toFixed(0)}% of the total interest), because a prepaid rupee at year 2 stops accruing {RATE}% for the remaining eighteen years. Indian floating-rate home loans carry <strong>no prepayment penalty</strong> by RBI rule, so the only cost is opportunity cost. Bonus math: prepaying an {RATE}% loan is a guaranteed, tax-free {RATE}% return. Compare that honestly with what your money would otherwise earn.
       </p>
       {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>

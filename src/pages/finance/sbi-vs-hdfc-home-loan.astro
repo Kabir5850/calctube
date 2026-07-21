@@ -10,8 +10,8 @@ const breadcrumbs = [
   { name: 'SBI vs HDFC', url: path },
 ];
 const faqs = [
-  { q: 'SBI vs HDFC home loan — which has lower interest rate?', a: 'SBI typically wins on rate by 15-25 basis points. SBI Regular Home Loan: 8.25-9.4%; HDFC Bank: 8.45-9.5%. The catch: SBI processing is slower (10-15 days vs HDFC\'s 5-7 days). For pure rate, SBI; for speed and digital experience, HDFC.' },
-  { q: 'SBI MaxGain vs HDFC home loan — what is the difference?', a: 'MaxGain is SBI\'s unique overdraft-linked home loan — you can park surplus money in a linked current account and reduce daily interest charge. HDFC has no equivalent product. MaxGain rates run 20-25 bps higher than SBI Regular Home Loan but the interest savings on parked surplus often offset this.' },
+  { q: 'SBI vs HDFC home loan: which has lower interest rate?', a: 'SBI typically wins on rate by 15-25 basis points. SBI Regular Home Loan: 8.25-9.4%; HDFC Bank: 8.45-9.5%. The catch: SBI processing is slower (10-15 days vs HDFC\'s 5-7 days). For pure rate, SBI; for speed and digital experience, HDFC.' },
+  { q: 'SBI MaxGain vs HDFC home loan: what is the difference?', a: 'MaxGain is SBI\'s unique overdraft-linked home loan. You can park surplus money in a linked current account and reduce daily interest charge. HDFC has no equivalent product. MaxGain rates run 20-25 bps higher than SBI Regular Home Loan but the interest savings on parked surplus often offset this.' },
   { q: 'Which bank is faster: SBI or HDFC?', a: 'HDFC Bank consistently faster: pre-approved customers can get disbursal in 3-5 working days. SBI Regular Home Loan takes 10-21 days. HDFC also has stronger mobile app processing (NetBanking + iMobile equivalent), while SBI\'s YONO is improving but still has friction.' },
   { q: 'For a ₹50 lakh home loan, which saves more?', a: 'On ₹50L at 20-year tenure: SBI at 8.5% = EMI ₹43,391/mo, total interest ₹54.13L. HDFC at 8.65% = EMI ₹43,847/mo, total interest ₹55.23L. SBI saves about ₹1.1 lakh in total interest. The trade-off: HDFC disburses 7-10 days faster, which matters if you have a possession deadline.' },
 ];
@@ -34,7 +34,7 @@ const hdfcTotal = hdfcEmi * tenureYears * 12;
 const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(v);
 ---
 
-<BaseLayout title="SBI vs HDFC Home Loan 2026 — EMI & Rates" description="SBI vs HDFC home loan compared. Current rates (8.5% vs 8.65%), processing speed, MaxGain, pre-approval, prepayment policies. With real EMI math on ₹50 lakh loan." schemas={schemas}>
+<BaseLayout title="SBI vs HDFC Home Loan 2026: EMI & Rates" description="SBI vs HDFC home loan compared. Current rates (8.5% vs 8.65%), processing speed, MaxGain, pre-approval, prepayment policies. With real EMI math on ₹50 lakh loan." schemas={schemas}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-yellow-accent/30 rounded-full blur-[120px] float-slow"></div>

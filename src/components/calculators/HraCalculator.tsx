@@ -98,17 +98,17 @@ export default function HraCalculator() {
           <div className="text-xs font-extrabold uppercase tracking-wider text-ink-700 mt-5 mb-3">HRA exemption = LEAST of three</div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className={`border-2 rounded-2xl p-4 ${result.exempt === result.a ? 'border-ink-900 bg-yellow-accent/30 shadow-sticker-sm' : 'border-ink-200 bg-ink-50'}`}>
-              <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-700 mb-1">A — Actual HRA</div>
+              <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-700 mb-1">A: Actual HRA</div>
               <div className="text-lg font-extrabold text-ink-900">{fmtINR(result.a)}</div>
               <div className="text-[10px] text-ink-600 mt-1 font-semibold">Received from employer</div>
             </div>
             <div className={`border-2 rounded-2xl p-4 ${result.exempt === result.b ? 'border-ink-900 bg-yellow-accent/30 shadow-sticker-sm' : 'border-ink-200 bg-ink-50'}`}>
-              <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-700 mb-1">B — {isMetro ? '50%' : '40%'} of Basic</div>
+              <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-700 mb-1">B: {isMetro ? '50%' : '40%'} of Basic</div>
               <div className="text-lg font-extrabold text-ink-900">{fmtINR(result.b)}</div>
               <div className="text-[10px] text-ink-600 mt-1 font-semibold">{isMetro ? 'Metro' : 'Non-metro'} tier limit</div>
             </div>
             <div className={`border-2 rounded-2xl p-4 ${result.exempt === result.c ? 'border-ink-900 bg-yellow-accent/30 shadow-sticker-sm' : 'border-ink-200 bg-ink-50'}`}>
-              <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-700 mb-1">C — Rent − 10% of Basic</div>
+              <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-700 mb-1">C: Rent − 10% of Basic</div>
               <div className="text-lg font-extrabold text-ink-900">{fmtINR(result.c)}</div>
               <div className="text-[10px] text-ink-600 mt-1 font-semibold">Excess rent over 10% basic</div>
             </div>

@@ -75,7 +75,7 @@ const schemas = [
       },
       {
         name: 'Choose a remittance channel',
-        text: `Bank wires are typically 1-3% worse than the mid-market rate shown here. For better rates use Wise, Remitly, or an exchange-house corridor — see the FAQ section for pair-specific recommendations.`,
+        text: `Bank wires are typically 1-3% worse than the mid-market rate shown here. For better rates use Wise, Remitly, or an exchange-house corridor. See the FAQ section for pair-specific recommendations.`,
       },
     ],
   }),
@@ -136,7 +136,7 @@ const relatedPairs = currencyPairs
 ---
 
 <BaseLayout
-  title={`${pair.from} to ${pair.to} Converter — Live ${toCurr.name} Rate`}
+  title={`${pair.from} to ${pair.to} Converter: Live ${toCurr.name} Rate`}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -319,26 +319,26 @@ const relatedPairs = currencyPairs
           <p>
             The {pair.from}/{pair.to} corridor is driven mostly by {fromUses[0]}{fromUses[1] ? ` and ${fromUses[1]}` : ''}.
             On the {toCurr.name} side, demand comes from {toUses[0]}{toUses[1] ? `, ${toUses[1]}` : ''}{toUses[2] ? `, and ${toUses[2]}` : ''}.
-            Because both sides see steady two-way flow, {pair.from}/{pair.to} is one of the more liquid pairs in this region — which usually means
+            Because both sides see steady two-way flow, {pair.from}/{pair.to} is one of the more liquid pairs in this region, which usually means
             tighter spreads and smaller markups than thinly-traded exotic pairs.
           </p>
           <p>
             Over the past 12 months the {fromCurr.name} has moved <strong>{yearTrendWord}</strong> against the {toCurr.name},
             and over five years it has <strong>{trendWord}</strong> (from {pair.fiveYearAgoRate} to {pair.rate}).
             If you're sending money on this corridor, that trend matters: a {fiveYearDirection === 'up' ? 'rising' : 'falling'} rate
-            means timing your transfer — or locking a rate with a forward contract for large amounts — can change the {toCurr.name} you receive by a meaningful margin.
+            means timing your transfer (or locking a rate with a forward contract for large amounts) can change the {toCurr.name} you receive by a meaningful margin.
           </p>
           <p>
-            <strong>Getting the best {pair.from} → {pair.to} rate.</strong> The figure above is the mid-market rate — the
+            <strong>Getting the best {pair.from} → {pair.to} rate.</strong> The figure above is the mid-market rate, the
             "true" rate banks and brokers reference. Most banks add a 1–3% margin on top and may charge a flat wire fee.
             Specialist services (Wise, Remitly, and regional exchange houses on this corridor) typically convert closer to mid-market.
-            Always compare the <em>effective rate after all fees</em>, not just the headline rate — on a large {pair.from} transfer,
+            Always compare the <em>effective rate after all fees</em>, not just the headline rate. On a large {pair.from} transfer,
             a 2% difference is real money.
           </p>
         </div>
 
         <p class="text-xs text-ink-500 mt-6 italic">
-          Rates shown are indicative mid-market rates as of {pair.lastUpdated} and are for informational purposes only —
+          Rates shown are indicative mid-market rates as of {pair.lastUpdated} and are for informational purposes only,
           not a quote or financial advice. Confirm the live rate with your provider before transacting.
         </p>
       </div>

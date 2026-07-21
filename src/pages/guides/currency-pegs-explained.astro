@@ -26,16 +26,16 @@ const pegs = [
 const fmtL = (v: number) => `₹${v.toLocaleString('en-IN')}`;
 
 const faqs = [
-  { q: 'What is a currency peg?', a: 'A currency peg is a policy where a country fixes its currency\'s value to another currency (usually the US dollar) at a set rate, and its central bank buys or sells reserves to keep it there. Instead of the exchange rate floating freely with supply and demand, it stays locked — the UAE dirham has been 3.6725 to the dollar since 1997, and it barely moves a fraction of a percent. The trade-off: the country imports the anchor currency\'s monetary policy and gives up control of its own interest rates.' },
-  { q: 'Why do Gulf countries peg to the US dollar?', a: 'Because they sell oil, which is priced in dollars. Pegging the dirham, riyal and other Gulf currencies to the USD removes exchange-rate risk from their main export revenue and keeps prices stable for economies that import most of what they consume. It\'s why the entire GCC region runs dollar or near-dollar pegs — their fortunes rise and fall with oil and the dollar together, so locking the two makes planning far simpler.' },
-  { q: 'What does a peg mean when I send money home?', a: 'It means the "AED side" of your remittance never moves — all the movement is on the home-currency side. When you send dirhams to India, the AED→INR rate changes only because the rupee moves against the dollar (since AED is locked to USD). So watching "USD to INR" tells you almost exactly what your "AED to INR" will do. A weakening rupee against the dollar means your pegged dirhams buy more rupees — good timing to send more.' },
-  { q: 'Can a currency peg break?', a: 'Yes, and when it does it\'s dramatic. A peg holds only as long as the central bank has the reserves and will to defend it. Historic breaks — the British pound leaving the ERM in 1992, the Swiss franc unpegging from the euro in 2015, Argentina\'s dollar peg collapsing in 2002 — caused sudden, large moves. Well-reserved oil-backed Gulf pegs are considered very stable, but "very stable" is not "impossible," which is why it\'s worth knowing your currency is pegged at all.' },
-  { q: 'Is a floating currency better than a pegged one?', a: 'Neither is universally better — it\'s a trade-off. A floating currency (rupee, pound, yen) lets a country set its own interest rates and absorb shocks through the exchange rate, but adds volatility. A peg delivers stability and low inflation imported from the anchor, at the cost of monetary independence. Countries choose based on their economy: commodity exporters and small open economies often peg; large diversified economies usually float.' },
+  { q: 'What is a currency peg?', a: 'A currency peg is a policy where a country fixes its currency\'s value to another currency (usually the US dollar) at a set rate, and its central bank buys or sells reserves to keep it there. Instead of the exchange rate floating freely with supply and demand, it stays locked. The UAE dirham has been 3.6725 to the dollar since 1997, and it barely moves a fraction of a percent. The trade-off: the country imports the anchor currency\'s monetary policy and gives up control of its own interest rates.' },
+  { q: 'Why do Gulf countries peg to the US dollar?', a: 'Because they sell oil, which is priced in dollars. Pegging the dirham, riyal and other Gulf currencies to the USD removes exchange-rate risk from their main export revenue and keeps prices stable for economies that import most of what they consume. It\'s why the entire GCC region runs dollar or near-dollar pegs. Their fortunes rise and fall with oil and the dollar together, so locking the two makes planning far simpler.' },
+  { q: 'What does a peg mean when I send money home?', a: 'It means the "AED side" of your remittance never moves. All the movement is on the home-currency side. When you send dirhams to India, the AED→INR rate changes only because the rupee moves against the dollar (since AED is locked to USD). So watching "USD to INR" tells you almost exactly what your "AED to INR" will do. A weakening rupee against the dollar means your pegged dirhams buy more rupees, good timing to send more.' },
+  { q: 'Can a currency peg break?', a: 'Yes, and when it does it\'s dramatic. A peg holds only as long as the central bank has the reserves and will to defend it. Historic breaks (the British pound leaving the ERM in 1992, the Swiss franc unpegging from the euro in 2015, Argentina\'s dollar peg collapsing in 2002) caused sudden, large moves. Well-reserved oil-backed Gulf pegs are considered very stable, but "very stable" is not "impossible," which is why it\'s worth knowing your currency is pegged at all.' },
+  { q: 'Is a floating currency better than a pegged one?', a: 'Neither is universally better. It\'s a trade-off. A floating currency (rupee, pound, yen) lets a country set its own interest rates and absorb shocks through the exchange rate, but adds volatility. A peg delivers stability and low inflation imported from the anchor, at the cost of monetary independence. Countries choose based on their economy: commodity exporters and small open economies often peg; large diversified economies usually float.' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 ---
 
-<BaseLayout title="Currency Pegs Explained (2026) — Why the Dirham Never Moves Against the Dollar" description="What a currency peg is, why the Gulf pegs to the USD, and what it means for your remittances: when AED is locked to the dollar, watching USD→INR tells you your AED→INR. Major world pegs listed." schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
+<BaseLayout title="Currency Pegs Explained (2026): Why the Dirham Never Moves Against the Dollar" description="What a currency peg is, why the Gulf pegs to the USD, and what it means for your remittances: when AED is locked to the dollar, watching USD→INR tells you your AED→INR. Major world pegs listed." schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -73,7 +73,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                A currency <strong>peg</strong> fixes one currency to another. The <strong>UAE dirham has been 3.6725 to the US dollar since 1997</strong> and barely moves. So when you send money home, the AED side is frozen — <strong>your AED→INR rate changes only because the rupee moves against the dollar.</strong> Watch USD→INR and you're watching your remittance.
+                A currency <strong>peg</strong> fixes one currency to another. The <strong>UAE dirham has been 3.6725 to the US dollar since 1997</strong> and barely moves. So when you send money home, the AED side is frozen. <strong>Your AED→INR rate changes only because the rupee moves against the dollar.</strong> Watch USD→INR and you're watching your remittance.
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
     <div class="max-w-4xl mx-auto prose prose-lg">
       <h2 style="font-family: 'Inter Tight', sans-serif;">A currency held in place by policy</h2>
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
-        Most currencies float — their value bobs up and down every second with trade, interest rates and sentiment. A pegged currency doesn't. Its central bank picks a target value against an anchor currency and defends it, buying or selling foreign reserves whenever the market tries to push the rate away. The result is a rate that looks almost flat on a chart for decades. For the millions working in the Gulf and sending money home, this isn't trivia: it changes how you read the exchange rate entirely.
+        Most currencies float. Their value bobs up and down every second with trade, interest rates and sentiment. A pegged currency doesn't. Its central bank picks a target value against an anchor currency and defends it, buying or selling foreign reserves whenever the market tries to push the rate away. The result is a rate that looks almost flat on a chart for decades. For the millions working in the Gulf and sending money home, this isn't trivia: it changes how you read the exchange rate entirely.
       </p>
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         Here are major pegged currencies and their anchors:
@@ -103,7 +103,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
             {pegs.map((p, i) => (
               <tr class={`border-b-2 border-ink-100 ${i % 2 ? 'bg-ink-50' : ''}`}>
                 <td class="p-3 font-bold text-ink-900">
-                  {p.slug ? <a href={`/conversions/currency/${p.slug}/`} class="text-ink-900 no-underline hover:underline">{p.code} — {p.name}</a> : <span>{p.code} — {p.name}</span>}
+                  {p.slug ? <a href={`/conversions/currency/${p.slug}/`} class="text-ink-900 no-underline hover:underline">{p.code} ({p.name})</a> : <span>{p.code} ({p.name})</span>}
                 </td>
                 <td class="p-3 font-mono text-ink-800">{p.peg}</td>
                 <td class="p-3 text-ink-700 font-semibold hidden sm:table-cell">{p.anchor}</td>
@@ -116,7 +116,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 
       <h2 style="font-family: 'Inter Tight', sans-serif;">What it means for your money</h2>
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
-        The practical takeaway is simple and useful. Because the dirham, riyal and their Gulf peers are locked to the dollar, <strong>the only thing moving your remittance is your home currency against the dollar.</strong> If the rupee weakens from ₹83 to ₹85 per dollar, your dirhams suddenly buy about 2.4% more rupees — a genuinely better time to send a large transfer. You don't need to track "AED to INR" as a separate thing; track the dollar cross for your home currency, and you know exactly what your dirhams are worth. It also means a strong-dollar year is a good year to remit, and a weak-dollar year is a good year to hold. The peg turns a two-currency puzzle into a one-number decision.
+        The practical takeaway is simple and useful. Because the dirham, riyal and their Gulf peers are locked to the dollar, <strong>the only thing moving your remittance is your home currency against the dollar.</strong> If the rupee weakens from ₹83 to ₹85 per dollar, your dirhams suddenly buy about 2.4% more rupees, a genuinely better time to send a large transfer. You don't need to track "AED to INR" as a separate thing; track the dollar cross for your home currency, and you know exactly what your dirhams are worth. It also means a strong-dollar year is a good year to remit, and a weak-dollar year is a good year to hold. The peg turns a two-currency puzzle into a one-number decision.
       </p>
       {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>

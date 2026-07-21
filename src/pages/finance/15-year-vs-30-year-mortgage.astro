@@ -14,9 +14,9 @@ const breadcrumbs = [
 const faqs = [
   { q: 'Which is better: 15-year or 30-year mortgage?', a: 'Mathematically, the 15-year wins for total cost: lower rate, far less total interest, faster equity. The 30-year wins for monthly affordability and flexibility. The right answer depends on your cash flow: if you can comfortably afford the 15-year payment AND have already maxed retirement contributions, take the 15-year. Otherwise, take the 30-year and make occasional principal pre-payments.' },
   { q: 'How much money does a 15-year mortgage save?', a: 'On a $400,000 loan: 15-year at 5.75% costs $3,322/mo and $198,000 total interest. 30-year at 6.5% costs $2,528/mo and $510,000 total interest. The 15-year saves $312,000 in interest at the cost of $794/mo extra payment. Effective return on the extra payment: roughly 12-15% guaranteed.' },
-  { q: 'Why is 15-year mortgage rate lower than 30-year?', a: 'Two reasons: (1) Shorter loans carry less duration risk for lenders — they price this in. (2) 15-year borrowers self-select for higher creditworthiness (they qualify for the higher payment), reducing default risk. The 50-75 basis point spread between 15 and 30-year is consistent across decades.' },
+  { q: 'Why is 15-year mortgage rate lower than 30-year?', a: 'Two reasons: (1) Shorter loans carry less duration risk for lenders. They price this in. (2) 15-year borrowers self-select for higher creditworthiness (they qualify for the higher payment), reducing default risk. The 50-75 basis point spread between 15 and 30-year is consistent across decades.' },
   { q: 'Can I refinance from 30-year to 15-year mortgage?', a: 'Yes, and many borrowers do this 5-10 years into a 30-year as their equity and income grow. The refinance restarts the clock but at a shorter term and typically lower rate. Compute the break-even on closing costs (typically 2-3 years) before deciding.' },
-  { q: '15-year mortgage vs invest the difference — what wins?', a: 'Historical math: investing the $794/mo difference in S&P 500 over 15 years at 7% real return = $241,000. The 15-year mortgage saves $312,000 in interest. The 15-year wins by ~$71,000, plus guaranteed return + lower stress. The "invest the difference" math only beats the mortgage when stocks return >10% real, which is above historical averages.' },
+  { q: '15-year mortgage vs invest the difference: what wins?', a: 'Historical math: investing the $794/mo difference in S&P 500 over 15 years at 7% real return = $241,000. The 15-year mortgage saves $312,000 in interest. The 15-year wins by ~$71,000, plus guaranteed return + lower stress. The "invest the difference" math only beats the mortgage when stocks return >10% real, which is above historical averages.' },
 ];
 
 // Worked example data
@@ -143,7 +143,7 @@ const schemas = [
           </div>
         </div>
         <p class="text-ink-900 font-semibold mt-3 !m-0 leading-relaxed">
-          You pay <strong>{fmtUSD(monthlyDiff)}/mo more</strong> on the 15-year. But you save <strong>{fmtUSD(interestSavings)}</strong> in total interest. Effective return on each extra dollar paid: <strong>~13% guaranteed</strong> — better than the long-term stock market average.
+          You pay <strong>{fmtUSD(monthlyDiff)}/mo more</strong> on the 15-year. But you save <strong>{fmtUSD(interestSavings)}</strong> in total interest. Effective return on each extra dollar paid: <strong>~13% guaranteed</strong>, better than the long-term stock market average.
         </p>
       </div>
     </div>

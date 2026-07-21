@@ -153,7 +153,7 @@ export default function SukanyaSamriddhiCalculator() {
           <div className="bg-rose-500 border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
             <div className="text-[10px] font-extrabold uppercase tracking-wider text-white mb-1">Interest Earned</div>
             <div className="text-3xl sm:text-4xl font-extrabold text-white leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{fmtINRShort(totalInterest)}</div>
-            <div className="text-xs text-white/90 mt-2 font-semibold">EEE — none of it is taxed</div>
+            <div className="text-xs text-white/90 mt-2 font-semibold">EEE: none of it is taxed</div>
           </div>
         </div>
 
@@ -165,7 +165,7 @@ export default function SukanyaSamriddhiCalculator() {
               <div>
                 <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-900 mb-1">The six silent years</div>
                 <p className="text-sm font-bold text-ink-900 !m-0 leading-snug">
-                  Your last deposit lands in year 15, when the balance is <strong>{fmtINR(atYear15.balance)}</strong>. Nothing more goes in, yet the account keeps compounding to <strong>{fmtINR(maturity)}</strong> by year 21 — <strong>{fmtINR(silentGrowth)}</strong> earned without a rupee of fresh money. Closing early throws that away.
+                  Your last deposit lands in year 15, when the balance is <strong>{fmtINR(atYear15.balance)}</strong>. Nothing more goes in, yet the account keeps compounding to <strong>{fmtINR(maturity)}</strong> by year 21, <strong>{fmtINR(silentGrowth)}</strong> earned without a rupee of fresh money. Closing early throws that away.
                 </p>
               </div>
             </div>
@@ -181,7 +181,7 @@ export default function SukanyaSamriddhiCalculator() {
                 const depositHeight = d.balance > 0 ? (d.totalDeposited / d.balance) * 100 : 0;
                 return (
                   <div key={d.year} className={`relative flex-1 min-w-[14px] group ${d.year === 16 ? 'ml-3 border-l-2 border-dashed border-ink-900 pl-2' : ''}`}
-                    title={`Year ${d.year} (age ${d.girlAge}) — ${d.isDepositYear ? `deposit ${fmtINR(d.depositThisYear)}` : 'no deposit, growth only'} — balance ${fmtINR(d.balance)}`}>
+                    title={`Year ${d.year} (age ${d.girlAge}): ${d.isDepositYear ? `deposit ${fmtINR(d.depositThisYear)}` : 'no deposit, growth only'}, balance ${fmtINR(d.balance)}`}>
                     <div
                       className="relative w-full border-r border-ink-900 transition-all hover:opacity-80"
                       style={
@@ -197,9 +197,9 @@ export default function SukanyaSamriddhiCalculator() {
               })}
             </div>
             <div className="flex justify-between mt-3 text-[10px] font-bold text-ink-600">
-              <span>Year 1 — deposits start</span>
-              <span>Year 15 — deposits stop</span>
-              <span>Year 21 — maturity</span>
+              <span>Year 1: deposits start</span>
+              <span>Year 15: deposits stop</span>
+              <span>Year 21: maturity</span>
             </div>
             <div className="flex flex-wrap items-center gap-4 mt-3 text-[11px] font-bold">
               <div className="flex items-center gap-1.5"><span className="w-3 h-3 bg-cyan-accent border border-ink-900 rounded-sm"></span><span className="text-ink-700">What you deposited</span></div>
@@ -238,7 +238,7 @@ export default function SukanyaSamriddhiCalculator() {
           </div>
           <div className="text-[11px] text-ink-500 mt-2 font-bold">Shaded rows are years 16–21: no deposit is accepted, interest is still credited.</div>
 
-          <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-700 mt-6 mb-3">Same {fmtINR(safe.deposit)} a year — SSY vs PPF</div>
+          <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-700 mt-6 mb-3">Same {fmtINR(safe.deposit)} a year: SSY vs PPF</div>
           <div className="bg-ink-50 border-2 border-ink-900 rounded-2xl overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -283,7 +283,7 @@ export default function SukanyaSamriddhiCalculator() {
             </table>
           </div>
           <p className="text-[11px] sm:text-xs text-ink-600 font-semibold mt-3 !mb-0 leading-relaxed">
-            Not a like-for-like race. SSY wins on two counts at once — a higher notified rate and six extra compounding years — so roughly {maturity > ppf.maturity ? fmtINR(maturity - ppf.maturity) : fmtINR(0)} of the gap comes from term as much as from rate. A PPF account extended in 5-year blocks past year 15 keeps compounding too, and PPF has no age or gender condition, no 15-year deposit cut-off, and can be opened by anyone. Both are EEE and both draw on the same ₹1.5 lakh Section 80C ceiling, so funding one fully leaves nothing for the other.
+            Not a like-for-like race. SSY wins on two counts at once (a higher notified rate and six extra compounding years), so roughly {maturity > ppf.maturity ? fmtINR(maturity - ppf.maturity) : fmtINR(0)} of the gap comes from term as much as from rate. A PPF account extended in 5-year blocks past year 15 keeps compounding too, and PPF has no age or gender condition, no 15-year deposit cut-off, and can be opened by anyone. Both are EEE and both draw on the same ₹1.5 lakh Section 80C ceiling, so funding one fully leaves nothing for the other.
           </p>
         </div>
       </div>

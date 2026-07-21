@@ -29,11 +29,16 @@ export default defineConfig({
         const prefixExcluded = ['/og-preview/', '/logo-gallery/', '/contact/'].some(
           (p) => path === p || path.startsWith(p)
         );
+        // Exact match only. /legal/ is a 62-word navigation stub that just links to
+        // the three real documents, so it is noindexed and kept out of the sitemap.
+        // Its children (/legal/privacy/, /legal/terms/, /legal/cookies/) must stay
+        // indexed — AdSense requires a reachable, indexable privacy policy.
+        const exactExcluded = ['/legal/'].includes(path);
         // Bank×state = exactly two path segments after /finance/emi-calculator/
         const isBankState = /^\/finance\/emi-calculator\/[^/]+\/[^/]+\/?$/.test(path);
         // City×bank = exactly two path segments after /finance/mortgage-calculator/cities/
         const isCityBank = /^\/finance\/mortgage-calculator\/cities\/[^/]+\/[^/]+\/?$/.test(path);
-        return !prefixExcluded && !isBankState && !isCityBank;
+        return !prefixExcluded && !exactExcluded && !isBankState && !isCityBank;
       },
       // Differentiate priorities so Google focuses crawl budget on important pages.
       // Homepage 1.0, category hubs 0.9, calculator hubs 0.8, long-tail spokes 0.5.

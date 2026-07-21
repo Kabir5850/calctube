@@ -151,7 +151,7 @@ export default function BmrCalculator() {
               <span className="text-xl font-extrabold text-ink-700 mb-1">kcal/day</span>
             </div>
             <p className="text-sm font-semibold text-ink-800 mt-2 !m-0 mt-2">
-              Calories your body burns at complete rest — organs, breathing, circulation.
+              Calories your body burns at complete rest: organs, breathing, circulation.
             </p>
           </div>
 
@@ -183,7 +183,7 @@ export default function BmrCalculator() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Mifflin-St Jeor Equation · For educational use only — consult a dietitian for personal advice</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Mifflin-St Jeor Equation · For educational use only. Consult a dietitian for personal advice</div>
     </div>
   );
 }

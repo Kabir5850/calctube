@@ -83,7 +83,7 @@ export default function PregnancyCalculator() {
           )}
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Estimate only (Naegele's rule, LMP + 280 days). An ultrasound dating scan is more accurate — always follow your doctor or midwife.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Estimate only (Naegele's rule, LMP + 280 days). An ultrasound dating scan is more accurate. Always follow your doctor or midwife.</div>
     </div>
   );
 }

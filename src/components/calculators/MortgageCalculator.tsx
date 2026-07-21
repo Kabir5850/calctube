@@ -583,7 +583,7 @@ export default function MortgageCalculator({
                   {biweekly && extraPayment > 0 ? 'Biweekly + Extra' : biweekly ? 'Biweekly' : 'Extra Payment'} Savings
                 </div>
                 <p className="text-sm font-bold text-emerald-900">
-                  Save <span className="text-emerald-700">{fmt(extraSavings.interestSaved)}</span> in interest — pay off{' '}
+                  Save <span className="text-emerald-700">{fmt(extraSavings.interestSaved)}</span> in interest. Pay off{' '}
                   <span className="text-emerald-700">{fmtMonths(extraSavings.monthsSaved)}</span> early.
                 </p>
                 <p className="text-xs text-emerald-600 mt-0.5">
@@ -716,7 +716,7 @@ export default function MortgageCalculator({
         <span>·</span>
         <span>
           Includes P&amp;I, property tax, insurance{hasPMI ? ', PMI' : ''}{hoaFee > 0 ? ', HOA' : ''}.
-          Estimates only — consult a licensed lender for exact rates.
+          Estimates only. Consult a licensed lender for exact rates.
         </span>
       </div>
     </div>

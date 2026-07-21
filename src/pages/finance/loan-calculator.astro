@@ -24,9 +24,9 @@ const breadcrumbs = [
 ];
 const faqs = [
   { q: 'How is a loan payment calculated?', a: 'The standard formula is M = P × [r(1+r)^n] / [(1+r)^n − 1], where P is the principal, r is the monthly interest rate (annual ÷ 12), and n is the number of monthly payments (years × 12).' },
-  { q: 'Does this work for any kind of loan?', a: 'Yes — personal, auto, student, business, or any installment loan with a fixed rate and term. The math is identical.' },
+  { q: 'Does this work for any kind of loan?', a: 'Yes: personal, auto, student, business, or any installment loan with a fixed rate and term. The math is identical.' },
   { q: 'Does it include fees or origination charges?', a: 'No. The calculator shows pure interest and principal. Most lenders charge an origination fee (1–8% of the loan amount) on top. Ask your lender for the APR which folds those fees in.' },
-  { q: 'Fixed vs variable rate — which does this assume?', a: 'Fixed. The rate you enter is treated as constant for the entire term. If you have a variable-rate loan, your actual payment will vary.' },
+  { q: 'Fixed vs variable rate: which does this assume?', a: 'Fixed. The rate you enter is treated as constant for the entire term. If you have a variable-rate loan, your actual payment will vary.' },
   { q: 'How can I reduce the total interest I pay?', a: 'Three options: a shorter term, a lower rate (refinance or improve credit), or extra principal payments. Even one extra payment per year cuts a 30-year loan by ~4 years.' },
 ];
 const schemas = [buildCalculatorSchema(meta, path), buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
@@ -38,7 +38,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Loan Calculator — Monthly Payment & Total" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Loan Calculator: Monthly Payment & Total" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">

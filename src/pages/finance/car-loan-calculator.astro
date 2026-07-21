@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'car-loan-calculator', name: 'Car Loan Calculator',
-  description: 'Free car loan EMI calculator (2026). Enter vehicle price, down payment, interest rate and tenure — get monthly EMI, total interest, and the true total cost of the car with a year-by-year balance chart.',
+  description: 'Free car loan EMI calculator (2026). Enter vehicle price, down payment, interest rate and tenure. Get monthly EMI, total interest, and the true total cost of the car with a year-by-year balance chart.',
   category: 'finance' as const,
   keywords: ['car loan calculator', 'car loan emi calculator', 'auto loan calculator', 'vehicle loan emi', 'car emi'],
   lastUpdated: '2026-07-01', ratingValue: '4.8', ratingCount: '104',
@@ -19,9 +19,9 @@ const breadcrumbs = [
 ];
 const faqs = [
   { q: 'How is car loan EMI calculated?', a: 'Car loans use the standard reducing-balance EMI formula: EMI = P × r × (1+r)ⁿ ÷ ((1+r)ⁿ − 1), where P is the loan amount (price minus down payment), r is the monthly rate (annual ÷ 12), and n is the number of months. A $20,000 loan at 9% for 5 years works out to about $415/month.' },
-  { q: 'What is a good down payment for a car?', a: 'A common rule is 20% for a new car and 10% minimum for used — enough to cover the instant depreciation that happens the moment you drive off, so you are never "underwater" (owing more than the car is worth). A larger down payment also reduces total interest and can qualify you for a better rate.' },
+  { q: 'What is a good down payment for a car?', a: 'A common rule is 20% for a new car and 10% minimum for used, enough to cover the instant depreciation that happens the moment you drive off, so you are never "underwater" (owing more than the car is worth). A larger down payment also reduces total interest and can qualify you for a better rate.' },
   { q: 'What car loan tenure should I choose?', a: 'Shorter is cheaper: at 9%, a 5-year loan costs roughly 60% more total interest than a 3-year loan on the same amount. Longer tenures (6–8 years) lower the monthly EMI but you pay interest for longer and risk owing more than the car is worth mid-loan. The sweet spot for most buyers is 3–5 years.' },
-  { q: 'Do car loans use flat or reducing-balance interest?', a: 'Bank car loans are usually reducing-balance (interest charged on outstanding principal), which is what this calculator uses. Some dealers and NBFCs quote a "flat rate" that looks lower but is charged on the full original amount for the whole tenure — a 7% flat rate roughly equals a 12.5–13% reducing rate. Always ask which one is being quoted.' },
+  { q: 'Do car loans use flat or reducing-balance interest?', a: 'Bank car loans are usually reducing-balance (interest charged on outstanding principal), which is what this calculator uses. Some dealers and NBFCs quote a "flat rate" that looks lower but is charged on the full original amount for the whole tenure. A 7% flat rate roughly equals a 12.5–13% reducing rate. Always ask which one is being quoted.' },
   { q: 'What is the 20/4/10 rule for buying a car?', a: 'A popular affordability guideline: put at least 20% down, finance for no more than 4 years, and keep total monthly vehicle costs (EMI + insurance + fuel) under 10% of your gross monthly income. It keeps the car from crowding out savings and other goals.' },
 ];
 const schemas = [buildCalculatorSchema(meta, path), buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
@@ -33,7 +33,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Car Loan Calculator 2026 — EMI, Interest & Total Cost" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Car Loan Calculator 2026: EMI, Interest & Cost" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
@@ -109,7 +109,7 @@ const relatedCalcs = [
           <div class="bg-lime-accent border-[2.5px] border-ink-900 rounded-2xl p-6 shadow-sticker-sm">
             <div class="text-4xl font-extrabold mb-3" style="font-family: 'Inter Tight', sans-serif;">📉</div>
             <h3 class="!text-lg !mt-0 !mb-2 !text-ink-900" style="font-family: 'Inter Tight', sans-serif;">Depreciation is the real cost</h3>
-            <p class="text-sm text-ink-900 font-medium leading-snug !m-0">A new car loses ~15–20% of value in year one — often more than the interest. A bigger down payment keeps you above water.</p>
+            <p class="text-sm text-ink-900 font-medium leading-snug !m-0">A new car loses ~15–20% of value in year one, often more than the interest. A bigger down payment keeps you above water.</p>
           </div>
         </div>
       </div>

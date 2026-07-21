@@ -24,7 +24,7 @@ const lastUpdated = '2026-05-25';
 
     <h2>What are cookies?</h2>
     <p>
-      Cookies are small text files stored on your device by your browser when you visit a website. Some cookies are essential — without them, parts of the site stop working. Others are used for analytics or advertising. This page lists every cookie we use, why we use it, and how you can control them.
+      Cookies are small text files stored on your device by your browser when you visit a website. Some cookies are essential. Without them, parts of the site stop working. Others are used for analytics or advertising. This page lists every cookie we use, why we use it, and how you can control them.
     </p>
 
     <h2>Your control: Google certified CMP + Consent Mode v2</h2>
@@ -34,18 +34,18 @@ const lastUpdated = '2026-05-25';
       Consent Management Platform with three choices:
     </p>
     <ul>
-      <li><strong>Consent</strong> — analytics and personalized ad cookies are enabled. We see anonymized traffic patterns and you may see relevant ads.</li>
-      <li><strong>Do not consent</strong> — only strictly-necessary cookies and non-personalized ads. The calculators still work perfectly.</li>
-      <li><strong>Manage options</strong> — granular control over each purpose and vendor under the IAB Transparency &amp; Consent Framework.</li>
+      <li><strong>Consent</strong>: analytics and personalized ad cookies are enabled. We see anonymized traffic patterns and you may see relevant ads.</li>
+      <li><strong>Do not consent</strong>: only strictly-necessary cookies and non-personalized ads. The calculators still work perfectly.</li>
+      <li><strong>Manage options</strong>: granular control over each purpose and vendor under the IAB Transparency &amp; Consent Framework.</li>
     </ul>
     <p>
       We pair this CMP with <a href="https://developers.google.com/tag-platform/security/concepts/consent-mode" target="_blank" rel="noopener">Google Consent Mode v2</a>
-      in default-deny mode: until you make a choice, Google Analytics and Google AdSense run in <em>consent-denied</em> mode — no personal identifiers
+      in default-deny mode: until you make a choice, Google Analytics and Google AdSense run in <em>consent-denied</em> mode. No personal identifiers
       are stored and no personalization happens. Your decision is remembered in cookies managed by Google's CMP (<code>FCNEC</code>, <code>FCCDCF</code>)
       so the banner doesn't reappear on every visit.
     </p>
     <p>
-      Visitors outside the EU/EEA/UK/Switzerland are not legally required to be prompted, so the banner doesn't show automatically — but
+      Visitors outside the EU/EEA/UK/Switzerland are not legally required to be prompted, so the banner doesn't show automatically, but
       everyone gets the same default-deny treatment for personalization and analytics until consent is signaled.
     </p>
     <p>
@@ -81,7 +81,7 @@ const lastUpdated = '2026-05-25';
       </tbody>
     </table>
     <p class="text-sm text-slate-600">
-      <strong>Essential cookies are always set</strong> regardless of your banner choice — they make the site work and protect it from abuse. They contain no personal identifiers.
+      <strong>Essential cookies are always set</strong> regardless of your banner choice. They make the site work and protect it from abuse. They contain no personal identifiers.
     </p>
 
     <h3>Analytics (only set after you accept)</h3>
@@ -153,14 +153,14 @@ const lastUpdated = '2026-05-25';
 
     <h3>Local storage (not a cookie, but worth knowing)</h3>
     <p>
-      A few calculators (mortgage, EMI, SIP) save your last-used inputs in your browser's <code>localStorage</code> so you don't have to re-enter them on your next visit. This data <strong>never leaves your device</strong> — it isn't sent to any server. Clearing your browser data removes it.
+      A few calculators (mortgage, EMI, SIP) save your last-used inputs in your browser's <code>localStorage</code> so you don't have to re-enter them on your next visit. This data <strong>never leaves your device</strong>. It isn't sent to any server. Clearing your browser data removes it.
     </p>
 
     <h2>Third-party services and where to opt out</h2>
     <ul>
-      <li><strong>Google Analytics</strong> — opt out browser-wide with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener nofollow">Google Analytics Opt-out Add-on</a>.</li>
-      <li><strong>Google personalized ads</strong> — manage at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener nofollow">Google Ads Settings</a>.</li>
-      <li><strong>Cloudflare cookies</strong> — see <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener nofollow">Cloudflare's cookie policy</a>.</li>
+      <li><strong>Google Analytics</strong>: opt out browser-wide with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener nofollow">Google Analytics Opt-out Add-on</a>.</li>
+      <li><strong>Google personalized ads</strong>: manage at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener nofollow">Google Ads Settings</a>.</li>
+      <li><strong>Cloudflare cookies</strong>: see <a href="https://www.cloudflare.com/cookie-policy/" target="_blank" rel="noopener nofollow">Cloudflare's cookie policy</a>.</li>
       <li><strong>Industry-wide opt-out</strong> for behavioral ads: <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener nofollow">YourOnlineChoices.eu</a> (EU), <a href="https://optout.aboutads.info/" target="_blank" rel="noopener nofollow">DAA WebChoices</a> (US).</li>
     </ul>
 
@@ -168,7 +168,7 @@ const lastUpdated = '2026-05-25';
     <p>
       Calctube respects the legal-safe default: until you actively grant consent through Google's CMP banner, we treat your visit as if Do Not Track were on.
       Analytics still receives an anonymized pageview-only signal (Consent Mode v2's denied-state ping) so we can roughly count traffic, but no identifiers persist and no behavioral profile is built.
-      Browser-level Global Privacy Control (GPC) signals are also honored — if your browser sends GPC, the CMP treats it as a "do not consent" signal automatically.
+      Browser-level Global Privacy Control (GPC) signals are also honored. If your browser sends GPC, the CMP treats it as a "do not consent" signal automatically.
     </p>
 
     <h2>Children's privacy</h2>

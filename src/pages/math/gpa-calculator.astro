@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'gpa-calculator', name: 'GPA Calculator',
-  description: 'Free GPA calculator on the 4.0 scale. Add your courses, letter grades and credit hours to get your semester or cumulative GPA instantly — with the full grade-point table.',
+  description: 'Free GPA calculator on the 4.0 scale. Add your courses, letter grades and credit hours to get your semester or cumulative GPA instantly, with the full grade-point table.',
   category: 'math' as const,
   keywords: ['gpa calculator', 'gpa', 'college gpa calculator', 'grade point average', '4.0 scale gpa', 'cumulative gpa', 'semester gpa'],
   lastUpdated: '2026-07-18',
@@ -35,10 +35,10 @@ const gradeTable = [
 ];
 
 const faqs = [
-  { q: 'How is GPA calculated?', a: 'GPA is a credit-weighted average of your grade points. For each course, multiply the grade point (A = 4.0, B = 3.0, etc.) by the course\'s credit hours to get "quality points". Add up all quality points, add up all credit hours, then divide: GPA = total quality points ÷ total credit hours. A 4-credit A (16 points) counts twice as much as a 2-credit A (8 points), which is why credit hours matter — a high grade in a heavy course lifts your GPA more than the same grade in a light one.' },
-  { q: 'What is the difference between semester GPA and cumulative GPA?', a: 'Semester (or term) GPA uses only the courses from a single term. Cumulative GPA (CGPA in the US sense) uses every course you\'ve taken across all terms. To get cumulative GPA in this calculator, simply enter all your courses from every semester together — the credit-weighting handles the rest. Your transcript usually shows both.' },
-  { q: 'Is A+ worth 4.0 or 4.3?', a: 'It depends on the school. Most US universities cap the unweighted scale at 4.0, so A+ and A are both 4.0 — that\'s the default here. Some schools award 4.3 for an A+ (which can push a cumulative GPA above 4.0). Weighted scales for Honors/AP/IB classes go higher still (often 5.0). Check your institution\'s grading key; if yours uses 4.3, treat the result here as a slight underestimate.' },
-  { q: 'How do I convert percentage or CGPA (out of 10) to GPA?', a: 'There is no single official formula, but a common approximation for India\'s 10-point CGPA is GPA ≈ CGPA × 0.4 (so a 9.0 CGPA ≈ 3.6 GPA), and for percentages many US universities use the WES rough bands (above 60% ≈ 4.0 for some Indian institutions, which is why WES evaluation matters). For study-abroad applications, always use the target university\'s or WES\'s official conversion — not a rule of thumb.' },
+  { q: 'How is GPA calculated?', a: 'GPA is a credit-weighted average of your grade points. For each course, multiply the grade point (A = 4.0, B = 3.0, etc.) by the course\'s credit hours to get "quality points". Add up all quality points, add up all credit hours, then divide: GPA = total quality points ÷ total credit hours. A 4-credit A (16 points) counts twice as much as a 2-credit A (8 points), which is why credit hours matter. A high grade in a heavy course lifts your GPA more than the same grade in a light one.' },
+  { q: 'What is the difference between semester GPA and cumulative GPA?', a: 'Semester (or term) GPA uses only the courses from a single term. Cumulative GPA (CGPA in the US sense) uses every course you\'ve taken across all terms. To get cumulative GPA in this calculator, simply enter all your courses from every semester together. The credit-weighting handles the rest. Your transcript usually shows both.' },
+  { q: 'Is A+ worth 4.0 or 4.3?', a: 'It depends on the school. Most US universities cap the unweighted scale at 4.0, so A+ and A are both 4.0. That\'s the default here. Some schools award 4.3 for an A+ (which can push a cumulative GPA above 4.0). Weighted scales for Honors/AP/IB classes go higher still (often 5.0). Check your institution\'s grading key; if yours uses 4.3, treat the result here as a slight underestimate.' },
+  { q: 'How do I convert percentage or CGPA (out of 10) to GPA?', a: 'There is no single official formula, but a common approximation for India\'s 10-point CGPA is GPA ≈ CGPA × 0.4 (so a 9.0 CGPA ≈ 3.6 GPA), and for percentages many US universities use the WES rough bands (above 60% ≈ 4.0 for some Indian institutions, which is why WES evaluation matters). For study-abroad applications, always use the target university\'s or WES\'s official conversion, not a rule of thumb.' },
   { q: 'What is a good GPA?', a: 'On the 4.0 scale, 3.5+ is generally considered strong (honors range), 3.0–3.5 is good, 2.0–3.0 is satisfactory, and below 2.0 usually risks academic probation. "Good" is relative to your goal: competitive grad schools and scholarships often want 3.5+, while simply graduating typically requires a 2.0 cumulative minimum.' },
 ];
 const schemas = [
@@ -53,7 +53,7 @@ const schemas = [
     estimatedCost: { value: '0', currency: 'USD' },
     steps: [
       { name: 'List your courses', text: 'Add each course with its letter grade and credit hours.' },
-      { name: 'Convert grades to points', text: 'Each letter maps to a grade point — A = 4.0, B+ = 3.3, and so on.' },
+      { name: 'Convert grades to points', text: 'Each letter maps to a grade point: A = 4.0, B+ = 3.3, and so on.' },
       { name: 'Weight by credits', text: 'Multiply each grade point by the course credit hours to get quality points.' },
       { name: 'Divide', text: 'GPA = total quality points ÷ total credit hours.' },
     ],
@@ -67,7 +67,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="GPA Calculator — 4.0 Scale, Semester & Cumulative" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="GPA Calculator: 4.0 Scale, Semester & Cumulative" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-violet-300/40 rounded-full blur-[120px] float-slow"></div>
@@ -127,7 +127,7 @@ const relatedCalcs = [
       <div class="max-w-3xl mx-auto">
         <span class="chip bg-violet-300 text-ink-900 mb-4">📊 Quick reference</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">Letter grade to GPA points.</h2>
-        <p class="mt-3 text-ink-700 font-medium">The standard US unweighted 4.0 scale. Percentage bands are typical — your school's cut-offs may differ by a point or two.</p>
+        <p class="mt-3 text-ink-700 font-medium">The standard US unweighted 4.0 scale. Percentage bands are typical. Your school's cut-offs may differ by a point or two.</p>
         <div class="mt-8 overflow-x-auto">
           <table class="w-full bg-white border-[2.5px] border-ink-900 rounded-2xl shadow-sticker-sm overflow-hidden border-separate border-spacing-0 text-sm">
             <thead><tr class="bg-ink-900 text-white">

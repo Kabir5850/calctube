@@ -39,8 +39,8 @@ export default function GpaCalculator() {
 
   const band = gpa >= 3.7 ? 'Excellent (First Class / Dean\'s list territory)'
     : gpa >= 3.0 ? 'Good (solid B / upper-second)'
-    : gpa >= 2.0 ? 'Satisfactory (C average — passing)'
-    : 'Below average — check your academic standing';
+    : gpa >= 2.0 ? 'Satisfactory (C average, passing)'
+    : 'Below average. Check your academic standing';
 
   return (
     <div className="relative not-prose">
@@ -90,7 +90,7 @@ export default function GpaCalculator() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Unweighted 4.0 scale (A/A+ = 4.0). Honors/AP weighting and A+ = 4.3 vary by school — check your transcript key.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Unweighted 4.0 scale (A/A+ = 4.0). Honors/AP weighting and A+ = 4.3 vary by school. Check your transcript key.</div>
     </div>
   );
 }

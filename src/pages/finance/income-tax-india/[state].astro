@@ -28,7 +28,7 @@ const meta = {
   // Income tax is FEDERAL in India — what actually differs by state is
   // Professional Tax and HRA tier. Lead with that (it's also the only honest
   // differentiator between these 16 pages, per scaled-content guidance).
-  name: `Take-Home & Professional Tax Calculator — ${state.name}`,
+  name: `Take-Home & Professional Tax Calculator: ${state.name}`,
   description: `${state.name} take-home salary calculator (FY 2025-26): ${state.monthlyProfessionalTax > 0 ? `₹${state.monthlyProfessionalTax}/mo state Professional Tax` : 'zero Professional Tax (state-exempt)'}, HRA ${state.hraTier === 'metro' ? '50%' : '40%'} tier, and Old vs New regime income tax compared.`,
   category: 'finance' as const,
   keywords: state.metaKeywords,
@@ -110,7 +110,7 @@ const hraExemption = state.hraTier === 'metro' ? '50%' : '40%';
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick context</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
                 {state.name} {state.monthlyProfessionalTax === 0 ? (
-                  <span>does NOT levy Professional Tax — saving ₹2,500/year vs Maharashtra/Karnataka residents.</span>
+                  <span>does NOT levy Professional Tax, saving ₹2,500/year vs Maharashtra/Karnataka residents.</span>
                 ) : (
                   <span>levies Professional Tax of ₹{state.monthlyProfessionalTax}/month (~₹{ptYearly}/year) on income above the slab threshold.</span>
                 )} {state.name} cities qualify for <strong>{hraExemption} HRA exemption</strong> ({state.hraTier === 'metro' ? 'tier-1 metro' : 'tier-2'} status under Section 10(13A)). Use the calculator below to compare Old vs New regime for your salary.

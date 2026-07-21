@@ -12,7 +12,7 @@ const breadcrumbs = [
 const faqs = [
   { q: 'HDFC or ICICI for a personal loan in India?', a: 'HDFC tends to win on rate for prime borrowers (10.5-11.5% vs ICICI 10.85-12%). ICICI wins on pre-approval speed for existing iMobile customers (sometimes 24-72 hour disbursal vs HDFC\'s 3-5 days). For first-time applicants, HDFC has a slightly better digital-only flow.' },
   { q: 'What is the lowest personal loan rate in India?', a: 'For prime salaried borrowers (750+ CIBIL, stable income from a top employer) in 2026: HDFC, SBI, and ICICI offer rates around 10.5-11.0%. SBI is slightly cheaper but slower. Public sector banks (BoB, Canara) match the rates but have stricter documentation requirements.' },
-  { q: 'Pre-approved offers from HDFC vs ICICI — what is the catch?', a: 'Both banks aggressively market pre-approved offers to existing customers. HDFC\'s offers are typically valid for 30 days and have stricter eligibility. ICICI\'s iMobile pre-approved offers are valid for 90 days but require the customer to maintain salary credits + minimum balance. Both have small print on processing fees that bring effective APR up by 50-100 bps.' },
+  { q: 'Pre-approved offers from HDFC vs ICICI: what is the catch?', a: 'Both banks aggressively market pre-approved offers to existing customers. HDFC\'s offers are typically valid for 30 days and have stricter eligibility. ICICI\'s iMobile pre-approved offers are valid for 90 days but require the customer to maintain salary credits + minimum balance. Both have small print on processing fees that bring effective APR up by 50-100 bps.' },
   { q: 'How do prepayment charges compare?', a: 'Both banks waive prepayment penalty for floating-rate retail personal loans as per RBI mandate. Fixed-rate personal loans (less common): HDFC charges 4%, ICICI charges 2-5%. Always check whether your specific loan is floating (most are) or fixed.' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
@@ -33,7 +33,7 @@ const iciciTotal = iciciEmi * tenureYears * 12;
 const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(v);
 ---
 
-<BaseLayout title="HDFC vs ICICI Personal Loan 2026 — Rates" description="HDFC vs ICICI Bank personal loan compared. Real EMI on ₹10 lakh, rates, processing fees, pre-approval, prepayment. With 2026 current rates." schemas={schemas}>
+<BaseLayout title="HDFC vs ICICI Personal Loan 2026: Rates" description="HDFC vs ICICI Bank personal loan compared. Real EMI on ₹10 lakh, rates, processing fees, pre-approval, prepayment. With 2026 current rates." schemas={schemas}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/30 rounded-full blur-[120px] float-slow"></div>

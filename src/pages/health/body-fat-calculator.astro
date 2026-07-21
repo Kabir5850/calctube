@@ -28,11 +28,11 @@ const ranges = [
 ];
 
 const faqs = [
-  { q: 'How does the US Navy body fat method work?', a: 'It estimates body fat from a few tape-measure circumferences plus your height, using a formula validated against hydrostatic (underwater) weighing. For men: %BF = 86.010 × log₁₀(waist − neck) − 70.041 × log₁₀(height) + 36.76. For women it adds the hip measurement. Because fat tends to accumulate around the waist, the waist-to-neck (and hip) relationship is a decent proxy for overall body fat — no calipers or lab needed.' },
-  { q: 'How do I measure correctly?', a: 'Use a flexible tape and don\'t pull it tight. Measure your neck just below the larynx (Adam\'s apple), sloping slightly down at the front. Measure your waist at the navel for men, and at the narrowest point for women. Women also measure the hips at the widest point. Take each measurement twice and average them — a 1 cm error can shift the result by about a percentage point.' },
-  { q: 'How accurate is it?', a: 'The Navy method is typically within about 3–4% of a DEXA or hydrostatic result for most people, which is good for a free tape-measure test. It can be less accurate for very muscular or very lean individuals, since it doesn\'t distinguish where the circumference comes from. For tracking progress, consistency matters more than absolute accuracy — measure the same way each time.' },
-  { q: 'What is a healthy body fat percentage?', a: 'For men, roughly 14–24% is considered fitness-to-acceptable, and for women 21–31%, per American Council on Exercise (ACE) ranges. "Essential fat" (2–5% men, 10–13% women) is the minimum the body needs. Athletes often sit below the fitness band. Very low body fat carries health risks, so lower isn\'t automatically better — the category table on this page shows the full breakdown.' },
-  { q: 'Is body fat percentage better than BMI?', a: 'They measure different things. BMI is just weight relative to height and can\'t tell muscle from fat — a muscular athlete can have a high BMI but low body fat. Body fat percentage directly estimates fat, so it\'s more informative for fitness. Used together they give a fuller picture; you can cross-check with our BMI calculator.' },
+  { q: 'How does the US Navy body fat method work?', a: 'It estimates body fat from a few tape-measure circumferences plus your height, using a formula validated against hydrostatic (underwater) weighing. For men: %BF = 86.010 × log₁₀(waist − neck) − 70.041 × log₁₀(height) + 36.76. For women it adds the hip measurement. Because fat tends to accumulate around the waist, the waist-to-neck (and hip) relationship is a decent proxy for overall body fat, no calipers or lab needed.' },
+  { q: 'How do I measure correctly?', a: 'Use a flexible tape and don\'t pull it tight. Measure your neck just below the larynx (Adam\'s apple), sloping slightly down at the front. Measure your waist at the navel for men, and at the narrowest point for women. Women also measure the hips at the widest point. Take each measurement twice and average them. A 1 cm error can shift the result by about a percentage point.' },
+  { q: 'How accurate is it?', a: 'The Navy method is typically within about 3–4% of a DEXA or hydrostatic result for most people, which is good for a free tape-measure test. It can be less accurate for very muscular or very lean individuals, since it doesn\'t distinguish where the circumference comes from. For tracking progress, consistency matters more than absolute accuracy. Measure the same way each time.' },
+  { q: 'What is a healthy body fat percentage?', a: 'For men, roughly 14–24% is considered fitness-to-acceptable, and for women 21–31%, per American Council on Exercise (ACE) ranges. "Essential fat" (2–5% men, 10–13% women) is the minimum the body needs. Athletes often sit below the fitness band. Very low body fat carries health risks, so lower isn\'t automatically better. The category table on this page shows the full breakdown.' },
+  { q: 'Is body fat percentage better than BMI?', a: 'They measure different things. BMI is just weight relative to height and can\'t tell muscle from fat. A muscular athlete can have a high BMI but low body fat. Body fat percentage directly estimates fat, so it\'s more informative for fitness. Used together they give a fuller picture; you can cross-check with our BMI calculator.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -59,7 +59,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Body Fat Calculator — US Navy Method (Men & Women)" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Body Fat Calculator: US Navy Method (Men & Women)" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-rose-300/40 rounded-full blur-[120px] float-slow"></div>

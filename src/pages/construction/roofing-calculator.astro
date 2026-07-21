@@ -27,8 +27,8 @@ const pitchRows = [4, 6, 8, 10, 12].map((rise) => {
 
 const faqs = [
   { q: 'How many bundles of shingles do I need?', a: 'Architectural asphalt shingles are sold three bundles to a roofing square (100 square feet of roof). Work out the roof area, divide by 100 to get squares, multiply by 3, then add a waste allowance. A 40 × 30 ft home (1,200 sq ft footprint) with a 6/12 pitch has about 1,342 sq ft of roof, or 13.4 squares. That is 40 bundles bare, and rounding up with 10% waste gives 45 bundles.' },
-  { q: 'What is a roofing square?', a: 'A roofing square is the trade unit for roof area and always equals 100 square feet — a 10 × 10 ft patch of roof surface. Shingles, underlayment and labour are all quoted per square, so the first job of any estimate is to convert the roof area into squares by dividing the total square footage by 100. The 1,342 sq ft roof above works out to 13.4 squares.' },
-  { q: 'How does roof pitch change how much material I need?', a: 'A steeper roof covers more surface for the same footprint. Multiply the footprint by the pitch factor √(1 + (rise/12)²) to get the true sloped area. On the same 1,200 sq ft footprint the roof area grows from about 1,265 sq ft at a 4/12 pitch (factor 1.054) to 1,697 sq ft at a 12/12 pitch (factor 1.414) — roughly 34% more shingles for the steeper roof.' },
+  { q: 'What is a roofing square?', a: 'A roofing square is the trade unit for roof area and always equals 100 square feet, a 10 × 10 ft patch of roof surface. Shingles, underlayment and labour are all quoted per square, so the first job of any estimate is to convert the roof area into squares by dividing the total square footage by 100. The 1,342 sq ft roof above works out to 13.4 squares.' },
+  { q: 'How does roof pitch change how much material I need?', a: 'A steeper roof covers more surface for the same footprint. Multiply the footprint by the pitch factor √(1 + (rise/12)²) to get the true sloped area. On the same 1,200 sq ft footprint the roof area grows from about 1,265 sq ft at a 4/12 pitch (factor 1.054) to 1,697 sq ft at a 12/12 pitch (factor 1.414), roughly 34% more shingles for the steeper roof.' },
   { q: 'How do I measure my roof footprint?', a: 'The footprint is the ground area the building covers, not the sloped roof itself. Measure the outside length and width of the structure in feet and multiply them: a 40 ft by 30 ft house has a 1,200 sq ft footprint. The calculator then applies the pitch factor to convert that flat footprint into actual roof surface area, so you never have to climb onto the roof to measure the slope.' },
   { q: 'How much waste should I add for a shingle order?', a: 'A 10% allowance is standard for a simple gable roof and covers starter courses, ridge caps, cut-off at rakes and a few damaged shingles. Complex roofs with many hips, valleys and dormers waste more, so bump it to 15%. On the 13.4-square example, 10% waste turns 41 bundles into 45; that extra material is far cheaper than a second delivery mid-job.' },
 ];
@@ -57,7 +57,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Roofing Calculator — Squares, Shingle Bundles & Roof Area" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Roofing Calculator: Squares, Shingle Bundles & Roof Area" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-violet-300/40 rounded-full blur-[120px] float-slow"></div>

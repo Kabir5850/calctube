@@ -98,7 +98,7 @@ export default function FractionCalculator() {
               </div>
             </div>
           ) : (
-            <div className="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 text-white font-extrabold">Denominator can't be zero — check your inputs.</div>
+            <div className="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 text-white font-extrabold">Denominator can't be zero. Check your inputs.</div>
           )}
         </div>
       </div>

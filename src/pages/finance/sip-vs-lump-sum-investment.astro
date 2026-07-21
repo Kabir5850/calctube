@@ -10,10 +10,10 @@ const breadcrumbs = [
   { name: 'SIP vs Lump Sum', url: path },
 ];
 const faqs = [
-  { q: 'SIP vs Lump Sum — which gives higher returns?', a: 'In a rising market, Lump Sum wins because more money is exposed to compounding for longer. In a volatile or falling market, SIP wins via rupee-cost averaging. Historically over 15+ years in Indian equities: Lump Sum has outperformed SIP by ~1-2% IRR on average. But you have to actually have the lump sum available at the right time — which most retail investors don\'t.' },
-  { q: 'Can I do both SIP and Lump Sum?', a: 'Yes, and this is the optimal real-world approach. Use Lump Sum when you receive a windfall (bonus, gift, inheritance) — invest immediately. Use SIP for your monthly salary surplus. The hybrid approach reduces single-entry timing risk while capturing market exposure as soon as funds are available.' },
-  { q: 'What is rupee cost averaging in SIP?', a: 'When you invest a fixed rupee amount monthly into a mutual fund or stock, you automatically buy MORE units when prices are low and FEWER units when prices are high. Over time, your average cost per unit is lower than the average price — that\'s rupee cost averaging. It only beats lump sum when the market is volatile/declining during your investment period.' },
-  { q: 'For a windfall of ₹10 lakh, SIP or Lump Sum?', a: 'If you\'re 100% sure you want it invested in equities and your time horizon is 10+ years, Lump Sum statistically beats SIP-of-windfall (i.e., spreading ₹10L over 12 months). If you\'re anxious about timing or markets feel "high", a 6-12 month STP (Systematic Transfer Plan from a liquid fund) is the middle path — captures most of the upside without the all-in timing risk.' },
+  { q: 'SIP vs Lump Sum: which gives higher returns?', a: 'In a rising market, Lump Sum wins because more money is exposed to compounding for longer. In a volatile or falling market, SIP wins via rupee-cost averaging. Historically over 15+ years in Indian equities: Lump Sum has outperformed SIP by ~1-2% IRR on average. But you have to actually have the lump sum available at the right time, which most retail investors don\'t.' },
+  { q: 'Can I do both SIP and Lump Sum?', a: 'Yes, and this is the optimal real-world approach. Use Lump Sum when you receive a windfall (bonus, gift, inheritance). Invest immediately. Use SIP for your monthly salary surplus. The hybrid approach reduces single-entry timing risk while capturing market exposure as soon as funds are available.' },
+  { q: 'What is rupee cost averaging in SIP?', a: 'When you invest a fixed rupee amount monthly into a mutual fund or stock, you automatically buy MORE units when prices are low and FEWER units when prices are high. Over time, your average cost per unit is lower than the average price. That\'s rupee cost averaging. It only beats lump sum when the market is volatile/declining during your investment period.' },
+  { q: 'For a windfall of ₹10 lakh, SIP or Lump Sum?', a: 'If you\'re 100% sure you want it invested in equities and your time horizon is 10+ years, Lump Sum statistically beats SIP-of-windfall (i.e., spreading ₹10L over 12 months). If you\'re anxious about timing or markets feel "high", a 6-12 month STP (Systematic Transfer Plan from a liquid fund) is the middle path. It captures most of the upside without the all-in timing risk.' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 
@@ -34,7 +34,7 @@ const sipFinal = monthlySIP * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
 const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(v);
 ---
 
-<BaseLayout title="SIP vs Lump Sum: Which Strategy Wins?" description="SIP vs Lump Sum compared with real numbers. ₹10 lakh invested over 10 years at 12% CAGR — see which strategy actually wins and when each is right." schemas={schemas}>
+<BaseLayout title="SIP vs Lump Sum: Which Strategy Wins?" description="SIP vs Lump Sum compared with real numbers. ₹10 lakh invested over 10 years at 12% CAGR. See which strategy actually wins and when each is right." schemas={schemas}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-lime-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -49,7 +49,7 @@ const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency'
         </div>
         <h1 class="!text-4xl sm:!text-5xl md:!text-6xl !font-extrabold !tracking-tight !leading-[1.05] text-ink-900" style="font-family: 'Inter Tight', sans-serif; letter-spacing: -0.035em;">SIP vs Lump Sum <span class="text-gradient-brand">Investment.</span></h1>
         <div class="mt-7 bg-yellow-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker">
-          <p class="text-ink-900 text-base sm:text-lg !m-0 leading-relaxed font-medium"><strong>TL;DR:</strong> Lump Sum mathematically wins in rising markets — money compounds longer. SIP wins in volatile/falling markets via rupee-cost averaging. Over 10+ years at 12% CAGR, Lump Sum beats SIP by ~₹{Math.round((lumpSumFinal - sipFinal) / 100000)} lakh on the same ₹10L principal.</p>
+          <p class="text-ink-900 text-base sm:text-lg !m-0 leading-relaxed font-medium"><strong>TL;DR:</strong> Lump Sum mathematically wins in rising markets. Money compounds longer. SIP wins in volatile/falling markets via rupee-cost averaging. Over 10+ years at 12% CAGR, Lump Sum beats SIP by ~₹{Math.round((lumpSumFinal - sipFinal) / 100000)} lakh on the same ₹10L principal.</p>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@ const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency'
         </div>
       </div>
       <div class="mt-5 bg-cyan-accent border-[2.5px] border-ink-900 rounded-2xl p-6 shadow-sticker">
-        <p class="text-ink-900 font-semibold !m-0 leading-relaxed"><strong>Lump Sum wins by {fmtINR(lumpSumFinal - sipFinal)} on this scenario</strong> — purely because the full ₹10L is earning returns for the full 10 years from day 1, while SIP money only enjoys partial-period compounding. This is true ONLY for steady upward markets. In a 2008-2009 or 2020 crash scenario, SIP would have outperformed.</p>
+        <p class="text-ink-900 font-semibold !m-0 leading-relaxed"><strong>Lump Sum wins by {fmtINR(lumpSumFinal - sipFinal)} on this scenario</strong>, purely because the full ₹10L is earning returns for the full 10 years from day 1, while SIP money only enjoys partial-period compounding. This is true ONLY for steady upward markets. In a 2008-2009 or 2020 crash scenario, SIP would have outperformed.</p>
       </div>
     </div>
   </section>

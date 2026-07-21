@@ -24,11 +24,11 @@ const table = incomes.map((i) => ({ i, needs: i * 0.5, wants: i * 0.3, save: i *
 const fmt = (n: number) => Math.round(n).toLocaleString('en-IN');
 
 const faqs = [
-  { q: 'What is the 50/30/20 budget rule?', a: 'It\'s a simple framework popularised by US Senator Elizabeth Warren: spend 50% of your take-home pay on needs, 30% on wants, and put 20% toward savings and debt repayment. Needs are essentials you can\'t skip — rent, groceries, utilities, minimum loan payments, transport. Wants are lifestyle choices like dining out, subscriptions and holidays. The 20% builds your emergency fund, investments and extra debt payoff. It\'s a starting point you can adjust.' },
-  { q: 'Should the budget use gross or net income?', a: 'Net — your take-home pay after income tax and mandatory deductions like provident fund or health insurance. Budgeting off gross salary overstates what you actually have to spend. If your employer already deducts retirement contributions, some people count those toward the 20% savings bucket; just be consistent about which figure you start from.' },
-  { q: 'What if my needs are more than 50% of my income?', a: 'That\'s common in high-rent cities and on lower incomes. If needs exceed 50%, trim the wants bucket first rather than the savings — but never drop savings to zero. Even a 10% savings rate builds a buffer. Over time, the levers are increasing income, reducing fixed costs (rent, EMIs), or both. Adjust the sliders on this calculator to model a split that actually fits.' },
+  { q: 'What is the 50/30/20 budget rule?', a: 'It\'s a simple framework popularised by US Senator Elizabeth Warren: spend 50% of your take-home pay on needs, 30% on wants, and put 20% toward savings and debt repayment. Needs are essentials you can\'t skip: rent, groceries, utilities, minimum loan payments, transport. Wants are lifestyle choices like dining out, subscriptions and holidays. The 20% builds your emergency fund, investments and extra debt payoff. It\'s a starting point you can adjust.' },
+  { q: 'Should the budget use gross or net income?', a: 'Net: your take-home pay after income tax and mandatory deductions like provident fund or health insurance. Budgeting off gross salary overstates what you actually have to spend. If your employer already deducts retirement contributions, some people count those toward the 20% savings bucket; just be consistent about which figure you start from.' },
+  { q: 'What if my needs are more than 50% of my income?', a: 'That\'s common in high-rent cities and on lower incomes. If needs exceed 50%, trim the wants bucket first rather than the savings, but never drop savings to zero. Even a 10% savings rate builds a buffer. Over time, the levers are increasing income, reducing fixed costs (rent, EMIs), or both. Adjust the sliders on this calculator to model a split that actually fits.' },
   { q: 'How much should I keep as an emergency fund?', a: 'A common target is three to six months of essential expenses (your "needs" total), kept in an easily accessible account like a savings account or liquid fund. If your income is irregular or you\'re a sole earner, aim toward the higher end. Build it from the 20% savings bucket before locking money into longer-term or higher-risk investments.' },
-  { q: 'Is 50/30/20 the only way to budget?', a: 'No — it\'s just an easy-to-remember one. Alternatives include zero-based budgeting (every unit of income is assigned a job), the envelope system, or paying yourself first (automate savings, then spend the rest). The best budget is the one you\'ll actually stick to. This calculator lets you set your own percentages, so you can model whatever method suits you.' },
+  { q: 'Is 50/30/20 the only way to budget?', a: 'No. It\'s just an easy-to-remember one. Alternatives include zero-based budgeting (every unit of income is assigned a job), the envelope system, or paying yourself first (automate savings, then spend the rest). The best budget is the one you\'ll actually stick to. This calculator lets you set your own percentages, so you can model whatever method suits you.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -55,7 +55,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Budget Calculator — The 50/30/20 Rule for Your Income" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Budget Calculator: 50/30/20 Rule for Your Income" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-lime-accent/30 rounded-full blur-[120px] float-slow"></div>

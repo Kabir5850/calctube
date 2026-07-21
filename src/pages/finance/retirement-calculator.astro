@@ -46,11 +46,11 @@ const faqs = [
   },
   {
     q: 'How much do I need to retire comfortably?',
-    a: 'A widely used rule is the "25× rule" — save 25 times your expected annual spending. If you plan to spend $60,000/year, aim for $1.5 million. This is based on the 4% safe withdrawal rate from decades of portfolio research. Your actual target depends on lifestyle, healthcare, Social Security, and other income sources.',
+    a: 'A widely used rule is the "25× rule": save 25 times your expected annual spending. If you plan to spend $60,000/year, aim for $1.5 million. This is based on the 4% safe withdrawal rate from decades of portfolio research. Your actual target depends on lifestyle, healthcare, Social Security, and other income sources.',
   },
   {
     q: 'What if I start saving late?',
-    a: 'Starting later means shorter compounding time, so you\'ll need to contribute more each month to reach the same target. The calculator updates instantly as you adjust the current age — raise monthly contributions to compensate for fewer years of growth. Even 10 extra years of compounding at 7% roughly doubles your balance.',
+    a: 'Starting later means shorter compounding time, so you\'ll need to contribute more each month to reach the same target. The calculator updates instantly as you adjust the current age. Raise monthly contributions to compensate for fewer years of growth. Even 10 extra years of compounding at 7% roughly doubles your balance.',
   },
 ];
 
@@ -67,7 +67,7 @@ const reviewer = getAuthor('aisha-rahman')!;
 ---
 
 <BaseLayout
-  title="Retirement Savings Calculator — Project Your Nest Egg"
+  title="Retirement Savings Calculator: Project Your Nest Egg"
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -135,7 +135,7 @@ const reviewer = getAuthor('aisha-rahman')!;
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick Answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Contributing <strong class="font-extrabold">$500/month</strong> starting at age 30 with <strong class="font-extrabold">$10,000</strong> already saved, at <strong class="font-extrabold">7% annual return</strong>, gives you about <strong class="font-extrabold">$1.56M</strong> by age 65 — roughly <strong class="font-extrabold">$590K in today's dollars</strong> after 3% inflation.
+                Contributing <strong class="font-extrabold">$500/month</strong> starting at age 30 with <strong class="font-extrabold">$10,000</strong> already saved, at <strong class="font-extrabold">7% annual return</strong>, gives you about <strong class="font-extrabold">$1.56M</strong> by age 65, roughly <strong class="font-extrabold">$590K in today's dollars</strong> after 3% inflation.
               </p>
             </div>
           </div>
@@ -159,12 +159,12 @@ const reviewer = getAuthor('aisha-rahman')!;
 
         <h2 style="font-family: 'Inter Tight', sans-serif;">How Retirement Compounding Works</h2>
         <p>
-          The power behind retirement savings is compound interest — earning returns not just on your contributions but on your accumulated gains. At 7% annual return, money roughly doubles every 10 years. This means starting at 25 instead of 35 can more than double your retirement balance, even with identical monthly contributions. The calculator uses a standard future-value annuity formula for your monthly contributions combined with a lump-sum formula for your existing savings.
+          The power behind retirement savings is compound interest, earning returns not just on your contributions but on your accumulated gains. At 7% annual return, money roughly doubles every 10 years. This means starting at 25 instead of 35 can more than double your retirement balance, even with identical monthly contributions. The calculator uses a standard future-value annuity formula for your monthly contributions combined with a lump-sum formula for your existing savings.
         </p>
 
         <h2 style="font-family: 'Inter Tight', sans-serif;">Why Inflation-Adjusted Value Matters</h2>
         <p>
-          A projected balance of $2 million in 35 years sounds impressive, but inflation means that $2M won't buy what $2M buys today. At 3% annual inflation, $2M in 35 years is equivalent to about $710K in today's purchasing power. Always check the inflation-adjusted figure — it gives you a realistic sense of what your nest egg will actually be worth when you retire. The 3% default reflects the historical US CPI long-run average, though your local inflation rate may differ.
+          A projected balance of $2 million in 35 years sounds impressive, but inflation means that $2M won't buy what $2M buys today. At 3% annual inflation, $2M in 35 years is equivalent to about $710K in today's purchasing power. Always check the inflation-adjusted figure. It gives you a realistic sense of what your nest egg will actually be worth when you retire. The 3% default reflects the historical US CPI long-run average, though your local inflation rate may differ.
         </p>
 
         <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/publications/savings-fitness" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">DOL Savings Fitness Guide</a> · <a href="https://www.ssa.gov/pubs/EN-05-10024.pdf" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">SSA Retirement Benefits publication</a> · <a href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-contributions" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">IRS Retirement Contribution Limits</a></p>

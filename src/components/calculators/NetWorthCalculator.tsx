@@ -221,7 +221,7 @@ export default function NetWorthCalculator() {
               {!isPositive && '-'}{fmt(Math.abs(netWorth))}
             </div>
             <div className={`text-xs mt-2 font-semibold ${isPositive ? 'text-ink-800' : 'text-white/90'}`}>
-              {isPositive ? 'Assets exceed liabilities — positive net worth' : 'Liabilities exceed assets — negative net worth'}
+              {isPositive ? 'Assets exceed liabilities, positive net worth' : 'Liabilities exceed assets, negative net worth'}
             </div>
           </div>
 
@@ -249,7 +249,7 @@ export default function NetWorthCalculator() {
                 {debtRatio.toFixed(1)}%
               </div>
               <div className="text-[10px] text-ink-700 mt-1 font-semibold">
-                {debtRatio < 30 ? '✓ Low — great shape' : debtRatio < 60 ? '⚠ Moderate — manageable' : '⚠ High — reduce debt'}
+                {debtRatio < 30 ? '✓ Low: great shape' : debtRatio < 60 ? '⚠ Moderate: manageable' : '⚠ High: reduce debt'}
               </div>
             </div>
           </div>

@@ -73,7 +73,7 @@ export default function ConcreteCalculator() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Bag counts are for pre-mixed concrete (80 lb ≈ 0.6 ft³ yield). Ready-mix trucks are sold by the cubic yard — order to the nearest ¼ yard.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Bag counts are for pre-mixed concrete (80 lb ≈ 0.6 ft³ yield). Ready-mix trucks are sold by the cubic yard. Order to the nearest ¼ yard.</div>
     </div>
   );
 }

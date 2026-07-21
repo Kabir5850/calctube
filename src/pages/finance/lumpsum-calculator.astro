@@ -40,11 +40,11 @@ const faqs = [
   },
   {
     q: 'How much does the expense ratio really cost me?',
-    a: 'The expense ratio is deducted from the fund’s NAV every day, so the returns you see quoted are already net of it — but the drag compounds silently. Take a fund earning 12% a year before costs on a ₹1,00,000 lumpsum held for 10 years: at a 0.2% expense ratio you end with roughly ₹3,05,000, and at 1.5% with about ₹2,71,000. That is around ₹34,000 of difference on a single ₹1 lakh investment, and the gap widens sharply over 20 years or with larger sums. Direct plans cost less than regular plans because no distributor commission is embedded, and index funds usually cost less than active ones.',
+    a: 'The expense ratio is deducted from the fund’s NAV every day, so the returns you see quoted are already net of it, but the drag compounds silently. Take a fund earning 12% a year before costs on a ₹1,00,000 lumpsum held for 10 years: at a 0.2% expense ratio you end with roughly ₹3,05,000, and at 1.5% with about ₹2,71,000. That is around ₹34,000 of difference on a single ₹1 lakh investment, and the gap widens sharply over 20 years or with larger sums. Direct plans cost less than regular plans because no distributor commission is embedded, and index funds usually cost less than active ones.',
   },
   {
     q: 'Why does the inflation-adjusted figure matter?',
-    a: 'Nominal maturity values flatter long horizons. At 6% inflation prices roughly double every 12 years, so a ₹3.11 lakh corpus ten years out buys what about ₹1,73,000 buys today — and today’s number is what people actually plan around for school fees, rent, or a down payment. The gap widens with tenure: over 20 years, 6% inflation cuts purchasing power to roughly 31% of the nominal figure. That is why this calculator divides future value by (1 + inflation)^years and shows the result as a headline card. It is also why a 7% fixed deposit can feel safe while barely preserving purchasing power after tax.',
+    a: 'Nominal maturity values flatter long horizons. At 6% inflation prices roughly double every 12 years, so a ₹3.11 lakh corpus ten years out buys what about ₹1,73,000 buys today, and today’s number is what people actually plan around for school fees, rent, or a down payment. The gap widens with tenure: over 20 years, 6% inflation cuts purchasing power to roughly 31% of the nominal figure. That is why this calculator divides future value by (1 + inflation)^years and shows the result as a headline card. It is also why a 7% fixed deposit can feel safe while barely preserving purchasing power after tax.',
   },
 ];
 
@@ -56,7 +56,7 @@ const schemas = [
     description: 'Step-by-step instructions for estimating the future value of a one-time mutual fund investment, including the inflation-adjusted value.',
     totalTime: 'PT1M', estimatedCost: { value: '0', currency: 'INR' },
     steps: [
-      { name: 'Enter the amount you are investing once', text: 'Type the single upfront amount — a bonus, maturity proceeds, or sale money. No monthly instalments are assumed.' },
+      { name: 'Enter the amount you are investing once', text: 'Type the single upfront amount: a bonus, maturity proceeds, or sale money. No monthly instalments are assumed.' },
       { name: 'Set a realistic expected annual return', text: 'Use 10–12% for diversified equity funds, 8–10% for hybrid funds, and 6–8% for debt funds. Returns compound annually here.' },
       { name: 'Choose how long the money stays invested', text: 'Pick the tenure in years. Longer horizons let the compounding curve steepen and reduce the impact of a poorly timed entry.' },
       { name: 'Set inflation and read the real value', text: 'Enter an inflation rate to see what the corpus is worth in today’s money, alongside future value, total gains, and absolute return.' },
@@ -99,7 +99,7 @@ const reviewer = getAuthor('aisha-rahman');
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Lumpsum future value = <strong>amount × (1 + return)<sup>years</sup></strong>. A <strong>₹1,00,000</strong> one-time investment at <strong>12% a year for 10 years</strong> grows to <strong>₹3,10,585</strong> — gains of <strong>₹2,10,585</strong>, an absolute return of <strong>210.6%</strong>, or 3.11× your money. Adjust for <strong>6% inflation</strong> and that corpus is worth about <strong>₹1,73,429</strong> in today's money.
+                Lumpsum future value = <strong>amount × (1 + return)<sup>years</sup></strong>. A <strong>₹1,00,000</strong> one-time investment at <strong>12% a year for 10 years</strong> grows to <strong>₹3,10,585</strong>: gains of <strong>₹2,10,585</strong>, an absolute return of <strong>210.6%</strong>, or 3.11× your money. Adjust for <strong>6% inflation</strong> and that corpus is worth about <strong>₹1,73,429</strong> in today's money.
               </p>
             </div>
           </div>
@@ -122,7 +122,7 @@ const reviewer = getAuthor('aisha-rahman');
       <div class="max-w-4xl mx-auto">
         <span class="chip-pink mb-4">⚖️ Honest comparison</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
-          Where a lumpsum beats a SIP — and where it doesn't.
+          Where a lumpsum beats a SIP, and where it doesn't.
         </h2>
         <div class="mt-8 prose prose-lg max-w-none">
           <p class="text-ink-700 leading-relaxed font-medium">
@@ -132,7 +132,7 @@ const reviewer = getAuthor('aisha-rahman');
             The cost of that edge is <strong>timing risk</strong>, concentrated in a single day. Invest at a market low and a lumpsum is close to unbeatable; invest just before a sharp drawdown and you spend years recovering ground a staggered entry would never have lost. A SIP does not eliminate risk, it simply spreads the entry price across many NAVs so no single day dominates the outcome. That is a fair trade for money you cannot afford to see fall 30% in the first year.
           </p>
           <p class="text-ink-700 leading-relaxed font-medium">
-            A middle path many investors use for large sums is a <strong>staggered lumpsum</strong> — park the money in a liquid fund and move it into equity over six to twelve months via a systematic transfer plan. You give up some compounding time in exchange for a smoother entry. Compare the two approaches side by side with the <a href="/finance/sip-calculator/">SIP calculator</a>, or read the longer breakdown in <a href="/finance/sip-vs-lump-sum-investment/">SIP vs lump sum investment</a>.
+            A middle path many investors use for large sums is a <strong>staggered lumpsum</strong>: park the money in a liquid fund and move it into equity over six to twelve months via a systematic transfer plan. You give up some compounding time in exchange for a smoother entry. Compare the two approaches side by side with the <a href="/finance/sip-calculator/">SIP calculator</a>, or read the longer breakdown in <a href="/finance/sip-vs-lump-sum-investment/">SIP vs lump sum investment</a>.
           </p>
         </div>
       </div>

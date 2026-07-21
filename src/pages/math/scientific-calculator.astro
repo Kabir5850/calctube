@@ -28,15 +28,15 @@ const functions = [
   { fn: 'π', use: 'Pi ≈ 3.14159' },
   { fn: 'e', use: "Euler's number ≈ 2.71828" },
   { fn: 'n!', use: 'Factorial, e.g. 5! = 120' },
-  { fn: '%', use: 'Percent — divides the number by 100' },
+  { fn: '%', use: 'Percent: divides the number by 100' },
 ];
 
 const faqs = [
-  { q: 'How do I use degrees vs radians for trig functions?', a: 'Use the DEG / RAD toggle in the top-right of the calculator. In DEG mode, sin(30) = 0.5 because 30 is read as degrees; in RAD mode the same input is treated as 30 radians and gives a very different answer. Most school and everyday geometry uses degrees, while calculus and physics usually use radians — pick the one your problem expects before you calculate.' },
-  { q: 'What is the difference between log and ln?', a: '"log" is the common logarithm, base 10 — so log(1000) = 3 because 10³ = 1000. "ln" is the natural logarithm, base e (≈ 2.718), which appears throughout calculus, growth and decay. So log and ln of the same number give different values; use log for base-10 work and ln when the maths involves continuous growth or the constant e.' },
-  { q: 'How do I calculate powers and roots?', a: 'For powers, use the xʸ (^) button: type the base, press ^, then the exponent — 2 ^ 10 = 1024. For square roots use the √ button, which inserts √( for you, so √(144) = 12. For other roots, use a fractional exponent: a cube root is the power 1/3, e.g. 27 ^ (1÷3) = 3.' },
+  { q: 'How do I use degrees vs radians for trig functions?', a: 'Use the DEG / RAD toggle in the top-right of the calculator. In DEG mode, sin(30) = 0.5 because 30 is read as degrees; in RAD mode the same input is treated as 30 radians and gives a very different answer. Most school and everyday geometry uses degrees, while calculus and physics usually use radians. Pick the one your problem expects before you calculate.' },
+  { q: 'What is the difference between log and ln?', a: '"log" is the common logarithm, base 10, so log(1000) = 3 because 10³ = 1000. "ln" is the natural logarithm, base e (≈ 2.718), which appears throughout calculus, growth and decay. So log and ln of the same number give different values; use log for base-10 work and ln when the maths involves continuous growth or the constant e.' },
+  { q: 'How do I calculate powers and roots?', a: 'For powers, use the xʸ (^) button: type the base, press ^, then the exponent: 2 ^ 10 = 1024. For square roots use the √ button, which inserts √( for you, so √(144) = 12. For other roots, use a fractional exponent: a cube root is the power 1/3, e.g. 27 ^ (1÷3) = 3.' },
   { q: 'How does the percentage button work?', a: 'The % button divides the current number by 100, turning it into its decimal form. So 50% becomes 0.5, and 200 × 15% evaluates as 200 × 0.15 = 30. It\'s handy for quick percentage-of calculations without converting by hand.' },
-  { q: 'Is the calculator private — is my data sent anywhere?', a: 'Yes, it\'s private. Every calculation runs locally in your browser with no data sent to any server. There\'s nothing to sign up for and no history stored, so you can use it freely for homework, exams practice, engineering or finance work.' },
+  { q: 'Is the calculator private? Is my data sent anywhere?', a: 'Yes, it\'s private. Every calculation runs locally in your browser with no data sent to any server. There\'s nothing to sign up for and no history stored, so you can use it freely for homework, exams practice, engineering or finance work.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -63,7 +63,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Scientific Calculator — Trig, Log, Powers & π (Online)" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Scientific Calculator: Trig, Log, Powers & π (Online)" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-violet-300/40 rounded-full blur-[120px] float-slow"></div>

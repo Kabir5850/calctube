@@ -41,7 +41,7 @@ const faqs = [
   },
   {
     q: 'Is Professional Tax deductible from income tax?',
-    a: 'Yes. Professional Tax (PT) paid is fully deductible under Section 16(iii) of the Income Tax Act, regardless of which regime you choose. PT is a state-level levy capped at ₹2,500/year — it is automatically deducted by employers and reflected in Form 16.',
+    a: 'Yes. Professional Tax (PT) paid is fully deductible under Section 16(iii) of the Income Tax Act, regardless of which regime you choose. PT is a state-level levy capped at ₹2,500/year. It is automatically deducted by employers and reflected in Form 16.',
   },
   {
     q: 'How is HRA exemption calculated?',
@@ -64,13 +64,13 @@ const schemas = [
   {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'India Income Tax Calculator — All States FY 2025-26',
+    name: 'India Income Tax Calculator: All States FY 2025-26',
     description: meta.description,
     url: `https://calctube.com${path}/`,
     isPartOf: { '@id': 'https://calctube.com/#website' },
     hasPart: indiaStates.map((s) => ({
       '@type': 'WebPage',
-      name: `Income Tax Calculator — ${s.name}`,
+      name: `Income Tax Calculator: ${s.name}`,
       url: `https://calctube.com/finance/income-tax-india/${s.slug}/`,
     })),
   },
@@ -164,7 +164,7 @@ const reviewer = getAuthor('aisha-rahman');
           State-specific calculators.
         </h2>
         <p class="text-ink-700 mt-3 text-lg font-medium max-w-2xl">
-          Professional Tax slabs, HRA metro tier, and cost-of-living context — all localised per state.
+          Professional Tax slabs, HRA metro tier, and cost-of-living context, all localised per state.
         </p>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-8">
           {indiaStates.map((s) => (
@@ -191,8 +191,8 @@ const reviewer = getAuthor('aisha-rahman');
       <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">3 inputs. Instant answer.</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mt-8">
         {[
-          { num: '1', text: 'Enter your gross annual salary (CTC or take-home — use CTC for tax calculation)', color: 'bg-yellow-accent' },
-          { num: '2', text: 'Enter your deductions — 80C, HRA, NPS, home loan interest, standard deduction', color: 'bg-pink-accent text-white' },
+          { num: '1', text: 'Enter your gross annual salary (CTC or take-home; use CTC for tax calculation)', color: 'bg-yellow-accent' },
+          { num: '2', text: 'Enter your deductions: 80C, HRA, NPS, home loan interest, standard deduction', color: 'bg-pink-accent text-white' },
           { num: '3', text: 'Pick your state to include the correct Professional Tax slab and HRA tier', color: 'bg-cyan-accent' },
         ].map((step) => (
           <div class={`${step.color} border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm`}>

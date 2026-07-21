@@ -10,10 +10,10 @@ const breadcrumbs = [
   { name: 'PPF vs ELSS', url: path },
 ];
 const faqs = [
-  { q: 'PPF vs ELSS — which is better for Section 80C?', a: 'Both qualify for ₹1.5 lakh deduction under Section 80C. PPF gives ~7.1% guaranteed (tax-free) over 15 years. ELSS gives 12-15% historical (taxable LTCG above ₹1 lakh) over similar period. ELSS has higher returns but volatility; PPF has lower returns but absolute capital safety. The Old Tax Regime is required to claim 80C — irrelevant if you\'re on the New Regime.' },
+  { q: 'PPF vs ELSS: which is better for Section 80C?', a: 'Both qualify for ₹1.5 lakh deduction under Section 80C. PPF gives ~7.1% guaranteed (tax-free) over 15 years. ELSS gives 12-15% historical (taxable LTCG above ₹1 lakh) over similar period. ELSS has higher returns but volatility; PPF has lower returns but absolute capital safety. The Old Tax Regime is required to claim 80C (irrelevant if you\'re on the New Regime).' },
   { q: 'Should I do PPF or ELSS for retirement?', a: 'For most Indian retirement portfolios, ELSS dominates over 15-20 year horizons. Historical data: ELSS funds have averaged 13-14% CAGR over 20 years vs PPF\'s 7.1%. The compounding gap is massive: ₹1.5L annually for 20 years yields ~₹70 lakh in PPF vs ~₹1.5 crore in ELSS. ELSS volatility is real but historically rewarded over decades.' },
-  { q: 'PPF lock-in vs ELSS lock-in — what is the difference?', a: 'PPF: 15-year lock-in (with 5-year extensions). Partial withdrawals allowed after year 7. Premature closure only on serious medical grounds. ELSS: 3-year lock-in (the shortest among Section 80C options). After 3 years, units are freely redeemable. For flexibility, ELSS wins clearly.' },
-  { q: 'Can I do both PPF and ELSS for tax saving?', a: 'Yes — and many investors do. Split ₹1.5L between PPF (₹50K for the guaranteed-return anchor) and ELSS (₹1L for growth). This hybrid gives you both the safety and the growth components. After 80C is maxed, consider NPS Tier 1 (₹50K extra under Section 80CCD-1B) for additional tax-saving + retirement planning.' },
+  { q: 'PPF lock-in vs ELSS lock-in: what is the difference?', a: 'PPF: 15-year lock-in (with 5-year extensions). Partial withdrawals allowed after year 7. Premature closure only on serious medical grounds. ELSS: 3-year lock-in (the shortest among Section 80C options). After 3 years, units are freely redeemable. For flexibility, ELSS wins clearly.' },
+  { q: 'Can I do both PPF and ELSS for tax saving?', a: 'Yes, and many investors do. Split ₹1.5L between PPF (₹50K for the guaranteed-return anchor) and ELSS (₹1L for growth). This hybrid gives you both the safety and the growth components. After 80C is maxed, consider NPS Tier 1 (₹50K extra under Section 80CCD-1B) for additional tax-saving + retirement planning.' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 
@@ -33,7 +33,7 @@ const totalInvested = annualInvestment * years;
 const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(v);
 ---
 
-<BaseLayout title="PPF vs ELSS — 15-Year Return Comparison" description="PPF vs ELSS compared for Indian investors. Real 15-year math on ₹1.5L/year investment. Lock-in, tax treatment, risk, and the smart hybrid approach." schemas={schemas}>
+<BaseLayout title="PPF vs ELSS: 15-Year Return Comparison" description="PPF vs ELSS compared for Indian investors. Real 15-year math on ₹1.5L/year investment. Lock-in, tax treatment, risk, and the smart hybrid approach." schemas={schemas}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-yellow-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -97,8 +97,8 @@ const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency'
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">Why not both?</h2>
         <p class="text-ink-700 mt-4 text-lg font-medium leading-relaxed">Most balanced Indian portfolios split the Section 80C ₹1.5L between PPF and ELSS:</p>
         <ul class="mt-4 space-y-2 text-ink-800 font-medium">
-          <li class="flex gap-2"><span class="text-lime-accent">→</span><span><strong>PPF ₹50,000/year</strong> as the safety anchor — guaranteed 7%+ tax-free over 15 years</span></li>
-          <li class="flex gap-2"><span class="text-lime-accent">→</span><span><strong>ELSS ₹1,00,000/year</strong> as the growth engine — accept volatility for ~13% historical CAGR</span></li>
+          <li class="flex gap-2"><span class="text-lime-accent">→</span><span><strong>PPF ₹50,000/year</strong> as the safety anchor, guaranteed 7%+ tax-free over 15 years</span></li>
+          <li class="flex gap-2"><span class="text-lime-accent">→</span><span><strong>ELSS ₹1,00,000/year</strong> as the growth engine: accept volatility for ~13% historical CAGR</span></li>
           <li class="flex gap-2"><span class="text-lime-accent">→</span><span>Both qualify for 80C; both lock up money but with different horizons (15 vs 3 years)</span></li>
           <li class="flex gap-2"><span class="text-lime-accent">→</span><span>Combined returns: ~10-11% blended IRR with significantly reduced downside risk vs pure ELSS</span></li>
         </ul>

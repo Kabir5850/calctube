@@ -23,10 +23,10 @@ const points = [-40, -18, 0, 10, 20, 25, 30, 37, 40, 100];
 const table = points.map((c) => ({ c, f: c * 9 / 5 + 32, k: c + 273.15 }));
 
 const faqs = [
-  { q: 'How do you convert Celsius to Fahrenheit?', a: 'Multiply the Celsius temperature by 9/5 (which is 1.8), then add 32: °F = °C × 9/5 + 32. So 20 °C = 20 × 1.8 + 32 = 68 °F, and 37 °C (body temperature) = 98.6 °F. A rough mental shortcut is "double it and add 30" — 20 °C → 40 + 30 = 70 °F, close to the exact 68.' },
-  { q: 'How do you convert Fahrenheit to Celsius?', a: 'Subtract 32 first, then multiply by 5/9: °C = (°F − 32) × 5/9. So 98.6 °F = (98.6 − 32) × 5/9 = 37 °C, and 100 °F = 37.8 °C. The subtract-then-scale order matters — doing it the other way gives the wrong answer.' },
-  { q: 'At what temperature do Celsius and Fahrenheit read the same?', a: 'At −40 degrees. −40 °C = −40 °F exactly — it\'s the single point where the two scales cross. You can verify it with the formula: −40 × 9/5 + 32 = −72 + 32 = −40. It\'s a handy sanity check that you\'ve got the conversion right.' },
-  { q: 'What is Kelvin and how does it relate to Celsius?', a: 'Kelvin is the SI base unit of temperature, used in science. It has the same degree size as Celsius but starts at absolute zero — the coldest possible temperature — instead of water\'s freezing point. To convert, just add 273.15: K = °C + 273.15. So 0 °C = 273.15 K and 25 °C = 298.15 K. Kelvin never uses a degree symbol or negative values in normal use.' },
+  { q: 'How do you convert Celsius to Fahrenheit?', a: 'Multiply the Celsius temperature by 9/5 (which is 1.8), then add 32: °F = °C × 9/5 + 32. So 20 °C = 20 × 1.8 + 32 = 68 °F, and 37 °C (body temperature) = 98.6 °F. A rough mental shortcut is "double it and add 30": 20 °C → 40 + 30 = 70 °F, close to the exact 68.' },
+  { q: 'How do you convert Fahrenheit to Celsius?', a: 'Subtract 32 first, then multiply by 5/9: °C = (°F − 32) × 5/9. So 98.6 °F = (98.6 − 32) × 5/9 = 37 °C, and 100 °F = 37.8 °C. The subtract-then-scale order matters. Doing it the other way gives the wrong answer.' },
+  { q: 'At what temperature do Celsius and Fahrenheit read the same?', a: 'At −40 degrees. −40 °C = −40 °F exactly. It\'s the single point where the two scales cross. You can verify it with the formula: −40 × 9/5 + 32 = −72 + 32 = −40. It\'s a handy sanity check that you\'ve got the conversion right.' },
+  { q: 'What is Kelvin and how does it relate to Celsius?', a: 'Kelvin is the SI base unit of temperature, used in science. It has the same degree size as Celsius but starts at absolute zero (the coldest possible temperature) instead of water\'s freezing point. To convert, just add 273.15: K = °C + 273.15. So 0 °C = 273.15 K and 25 °C = 298.15 K. Kelvin never uses a degree symbol or negative values in normal use.' },
   { q: 'What is normal body temperature in Celsius and Fahrenheit?', a: 'Normal human body temperature is about 37 °C, which equals 98.6 °F. A reading of 38 °C (100.4 °F) or above is generally considered a fever. Because thermometers and individuals vary, anything from roughly 36.1–37.2 °C (97–99 °F) is within the normal range.' },
 ];
 const schemas = [
@@ -53,7 +53,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Temperature Converter — Celsius, Fahrenheit & Kelvin" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Temperature Converter: Celsius, Fahrenheit & Kelvin" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/30 rounded-full blur-[120px] float-slow"></div>

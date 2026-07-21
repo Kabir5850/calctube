@@ -63,7 +63,7 @@ export default function RoofingCalculator() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Architectural shingles come 3 bundles per square (100 ft²). Measure hips, valleys and dormers separately on complex roofs — they need extra material.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Architectural shingles come 3 bundles per square (100 ft²). Measure hips, valleys and dormers separately on complex roofs. They need extra material.</div>
     </div>
   );
 }

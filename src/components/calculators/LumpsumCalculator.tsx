@@ -91,7 +91,7 @@ export default function LumpsumCalculator() {
                 inputMode="numeric" />
             </div>
             <input type="range" min={5000} max={5000000} step={5000} value={Math.min(amount, 5000000)} onChange={(e) => setAmount(Number(e.target.value))} className="w-full mt-2 accent-orange-500" aria-label="Investment amount slider" />
-            <div className="text-[10px] text-ink-500 mt-1.5 font-bold">Invested once, upfront — no monthly instalments</div>
+            <div className="text-[10px] text-ink-500 mt-1.5 font-bold">Invested once, upfront (no monthly instalments)</div>
           </div>
           <div>
             <label htmlFor="lump-return" className="block text-xs font-extrabold uppercase tracking-wider text-ink-700 mb-2">Expected Annual Return</label>
@@ -141,7 +141,7 @@ export default function LumpsumCalculator() {
             <div className="flex items-start gap-2.5">
               <span className="text-lg leading-none">⚠️</span>
               <p className="text-xs sm:text-sm font-bold text-ink-900 !m-0 leading-snug">
-                Investment period is zero, so nothing has compounded yet — your future value equals the amount you put in. Set a tenure of at least one year to see growth.
+                Investment period is zero, so nothing has compounded yet. Your future value equals the amount you put in. Set a tenure of at least one year to see growth.
               </p>
             </div>
           </div>
@@ -178,7 +178,7 @@ export default function LumpsumCalculator() {
             </div>
             <p className="text-[11px] sm:text-xs text-ink-600 font-semibold mt-3 !mb-0 leading-relaxed">
               Annual compounding on a single upfront investment. Discounting that back at {safe.inflation}% inflation
-              gives <strong>{fmtINR(result.realValue)}</strong> in today's purchasing power — inflation quietly absorbs {fmtINR(result.inflationCost)} of the headline figure.
+              gives <strong>{fmtINR(result.realValue)}</strong> in today's purchasing power. Inflation quietly absorbs {fmtINR(result.inflationCost)} of the headline figure.
             </p>
           </div>
 

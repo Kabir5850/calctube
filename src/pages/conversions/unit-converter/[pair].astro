@@ -86,7 +86,7 @@ const breadcrumbs = [
 // FAQs — computed, unique per pair.
 const faqs = isTemp ? [
   { q: `What is ${exIn} ${from.symbol} in ${to.name}?`, a: `${exIn} ${from.symbol} equals ${fmt(exOut)} ${to.symbol}. Using the formula ${formulaText}, you convert directly without a lookup table. The reference table on this page lists more common ${from.name} values converted to ${to.name}.` },
-  { q: `How do you convert ${from.name} to ${to.name}?`, a: `Apply the formula ${formulaText}. Temperature scales don't share a zero point, so you can't just multiply by a single factor the way you would for length or weight — you have to shift as well as scale. For example, ${exIn} ${from.symbol} works out to ${fmt(exOut)} ${to.symbol}.` },
+  { q: `How do you convert ${from.name} to ${to.name}?`, a: `Apply the formula ${formulaText}. Temperature scales don't share a zero point, so you can't just multiply by a single factor the way you would for length or weight. You have to shift as well as scale. For example, ${exIn} ${from.symbol} works out to ${fmt(exOut)} ${to.symbol}.` },
   { q: `Why isn't ${from.name} to ${to.name} a simple multiplication?`, a: `Because the two scales start at different points. ${cap(from.name)} is used for ${from.usage}, while ${to.name} is used for ${to.usage}. Converting between them means both rescaling the degree size and offsetting the zero, which is why the formula has both a multiply and an add or subtract.` },
 ] : [
   { q: `How many ${to.plural} are in a ${from.name}?`, a: `One ${from.name} equals ${factorStr} ${to.plural}. So to convert, multiply the number of ${from.plural} by ${factorStr}. For instance, ${exIn} ${from.plural} = ${fmt(exOut)} ${to.plural}.` },
@@ -208,7 +208,7 @@ const relatedPairs = unitPairs
               One {from.name} is exactly {factorStr} {to.plural}, so converting is a single multiplication:
               multiply the {from.name} figure by <strong>{factorStr}</strong> to get {to.plural}, or divide by {factorStr}
               (multiply by {inverseStr}) to go back. {cap(from.plural)} are commonly used for {from.usage}, while {to.plural}
-              are used for {to.usage} — which is why this conversion comes up so often.
+              are used for {to.usage}, which is why this conversion comes up so often.
             </p>
           )}
         </div>

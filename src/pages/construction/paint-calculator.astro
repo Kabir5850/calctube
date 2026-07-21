@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'paint-calculator', name: 'Paint Calculator',
-  description: 'Free paint calculator. Work out how many gallons or litres of paint you need for a room from its dimensions, coats, doors and windows — coverage and waste handled for you.',
+  description: 'Free paint calculator. Work out how many gallons or litres of paint you need for a room from its dimensions, coats, doors and windows. Coverage and waste handled for you.',
   category: 'construction' as const,
   keywords: ['paint calculator', 'how much paint do i need', 'paint coverage calculator', 'gallons of paint', 'room paint calculator', 'wall paint calculator'],
   lastUpdated: '2026-07-19',
@@ -32,10 +32,10 @@ const rooms = [
 ];
 
 const faqs = [
-  { q: 'How much paint do I need for a room?', a: 'Measure the walls: wall area = 2 × (length + width) × height. For a 12 × 12 ft room with 9 ft walls that is 2 × 24 × 9 = 432 sq ft, minus about 21 sq ft per door and 15 sq ft per window. Divide the paintable area by the coverage rate (roughly 350 sq ft per gallon) and multiply by the number of coats. So 432 sq ft at 2 coats needs about 2.5 gallons — round up to 3 one-gallon cans.' },
+  { q: 'How much paint do I need for a room?', a: 'Measure the walls: wall area = 2 × (length + width) × height. For a 12 × 12 ft room with 9 ft walls that is 2 × 24 × 9 = 432 sq ft, minus about 21 sq ft per door and 15 sq ft per window. Divide the paintable area by the coverage rate (roughly 350 sq ft per gallon) and multiply by the number of coats. So 432 sq ft at 2 coats needs about 2.5 gallons. Round up to 3 one-gallon cans.' },
   { q: 'How many square feet does a gallon of paint cover?', a: 'A gallon of interior wall paint covers roughly 350–400 sq ft in one coat on smooth, primed drywall. In metric, a litre covers about 11 m². Rough, textured, porous or dark-to-light surfaces cover less and may need an extra coat or a primer. This calculator uses 350 sq ft per gallon, which is a safe planning figure.' },
   { q: 'How many coats of paint do I need?', a: 'Two coats is standard for a durable, even finish, and it is what most manufacturers assume in their coverage claims. You can sometimes get away with one coat when repainting a similar colour, but going light-over-dark, covering patches, or painting bare drywall usually needs a primer plus two topcoats. Set the number of coats in the calculator to match your job.' },
-  { q: 'Should I subtract doors and windows?', a: 'Yes, for a more accurate estimate — you are not painting those surfaces. A standard interior door is about 21 sq ft and an average window about 15 sq ft. The calculator deducts these automatically based on the counts you enter. For a rough estimate you can skip it, which simply builds in a little extra paint.' },
+  { q: 'Should I subtract doors and windows?', a: 'Yes, for a more accurate estimate. You are not painting those surfaces. A standard interior door is about 21 sq ft and an average window about 15 sq ft. The calculator deducts these automatically based on the counts you enter. For a rough estimate you can skip it, which simply builds in a little extra paint.' },
   { q: 'Do I need primer, and does it count as a coat?', a: 'Primer is recommended on bare drywall, patched areas, glossy surfaces, and big colour changes. It seals the surface so the topcoat covers evenly and you may need fewer finish coats. Primer is a separate product with its own coverage, so buy it in addition to your topcoat paint rather than counting it as one of your colour coats.' },
 ];
 const schemas = [
@@ -63,7 +63,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Paint Calculator — How Much Paint for a Room?" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Paint Calculator: How Much Paint for a Room?" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -100,7 +100,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Paint = <strong>wall area × coats ÷ coverage</strong>. A gallon covers ~350 sq ft. A typical 12 × 12 ft room (2 coats) needs about <strong>2.5 gallons</strong> — round up to 3 cans. Enter your room below; doors and windows are deducted for you.
+                Paint = <strong>wall area × coats ÷ coverage</strong>. A gallon covers ~350 sq ft. A typical 12 × 12 ft room (2 coats) needs about <strong>2.5 gallons</strong>. Round up to 3 cans. Enter your room below; doors and windows are deducted for you.
               </p>
             </div>
           </div>

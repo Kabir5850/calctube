@@ -38,7 +38,7 @@ export const indiaStates: IndiaStateData[] = [
     faqs: [
       {
         q: 'Is the cost of living in Mumbai justified by Maharashtra salaries?',
-        a: 'Mumbai is India\'s most expensive city — rent and groceries run 40-60% above other metros. But mid-career IT/finance roles pay ₹15-30 lakh (vs ₹10-20 lakh in Bangalore for the same role). The math nets out for senior IC and management roles; junior roles often see better real income in Pune or Hyderabad.',
+        a: 'Mumbai is India\'s most expensive city. Rent and groceries run 40-60% above other metros. But mid-career IT/finance roles pay ₹15-30 lakh (vs ₹10-20 lakh in Bangalore for the same role). The math nets out for senior IC and management roles; junior roles often see better real income in Pune or Hyderabad.',
       },
       {
         q: 'Are there state-specific tax breaks in Maharashtra?',
@@ -62,7 +62,7 @@ export const indiaStates: IndiaStateData[] = [
     hraTier: 'metro',
     avgSalaryMid: 1800000,
     topIndustries: ['IT Services', 'Software Products', 'Biotechnology', 'Aerospace', 'R&D Captives'],
-    marketContext: 'Karnataka, especially Bengaluru, is the Silicon Valley of India — accounting for over 35% of India\'s IT exports. Home to all major global tech captives (Microsoft, Google, Amazon, Adobe, Salesforce, Cisco) and India\'s biggest startup ecosystem.',
+    marketContext: 'Karnataka, especially Bengaluru, is the Silicon Valley of India, accounting for over 35% of India\'s IT exports. Home to all major global tech captives (Microsoft, Google, Amazon, Adobe, Salesforce, Cisco) and India\'s biggest startup ecosystem.',
     taxNote: 'Karnataka follows the standard Professional Tax structure (₹2,500/year max). Bengaluru is HRA tier-1 metro (50% HRA exemption). The state offers SEZ benefits for IT parks (Electronic City, Whitefield, ORR) but these benefit employers, not employees.',
     faqs: [
       {
@@ -74,8 +74,8 @@ export const indiaStates: IndiaStateData[] = [
         a: 'Traffic costs Bengaluru employees roughly 10-15 working days per year in commute time. Many tech employees now choose hybrid/remote roles AND live further from work (Doddaballapur, Devanahalli) where rent runs 50-70% less. The annual financial impact of choosing the right neighborhood can be ₹3-6 lakh in saved rent + commute costs.',
       },
       {
-        q: 'Karnataka professional tax vs Maharashtra — which is cheaper?',
-        a: 'Identical at the top — both states cap at ₹2,500/year. Karnataka\'s PT slabs kick in at lower income thresholds, so freshers/junior employees pay slightly more. Senior employees pay the same maximum either way. The bigger financial difference is HRA: both are metro tier-1, so HRA exemption is 50% in both.',
+        q: 'Karnataka professional tax vs Maharashtra: which is cheaper?',
+        a: 'Identical at the top. Both states cap at ₹2,500/year. Karnataka\'s PT slabs kick in at lower income thresholds, so freshers/junior employees pay slightly more. Senior employees pay the same maximum either way. The bigger financial difference is HRA: both are metro tier-1, so HRA exemption is 50% in both.',
       },
     ],
     metaKeywords: ['income tax calculator karnataka', 'bangalore tax calculator', 'bengaluru income tax', 'karnataka professional tax'],
@@ -91,12 +91,12 @@ export const indiaStates: IndiaStateData[] = [
     hraTier: 'metro',
     avgSalaryMid: 1400000,
     topIndustries: ['Automotive Manufacturing', 'IT Services', 'Textiles', 'Healthcare', 'Heavy Industries'],
-    marketContext: 'Tamil Nadu is India\'s 2nd largest state economy and the most industrialized state by GDP per capita. Chennai is the "Detroit of India" — hosting Hyundai, Ford, BMW, Renault-Nissan, Daimler. Coimbatore is a textile and engineering hub. Tier-2 cities like Tiruchirapalli and Madurai have growing IT presence.',
-    taxNote: 'Tamil Nadu uses unique half-yearly PT collection (₹1,250 every 6 months — Sep and March) rather than monthly. Chennai is HRA tier-1 metro. Tamil Nadu offers e-stamp duty discounts on female buyers (1% subsidy) — but this is property-purchase only, not income-tax related.',
+    marketContext: 'Tamil Nadu is India\'s 2nd largest state economy and the most industrialized state by GDP per capita. Chennai is the "Detroit of India", hosting Hyundai, Ford, BMW, Renault-Nissan, Daimler. Coimbatore is a textile and engineering hub. Tier-2 cities like Tiruchirapalli and Madurai have growing IT presence.',
+    taxNote: 'Tamil Nadu uses unique half-yearly PT collection (₹1,250 every 6 months, Sep and March) rather than monthly. Chennai is HRA tier-1 metro. Tamil Nadu offers e-stamp duty discounts on female buyers (1% subsidy), but this is property-purchase only, not income-tax related.',
     faqs: [
       {
         q: 'How is Tamil Nadu Professional Tax different from other states?',
-        a: 'Tamil Nadu is one of the few Indian states that collects PT half-yearly (not monthly) — ₹1,250 in September and ₹1,250 in March. The total annual liability matches the national cap of ₹2,500. This affects cash-flow planning but not total tax burden.',
+        a: 'Tamil Nadu is one of the few Indian states that collects PT half-yearly (not monthly): ₹1,250 in September and ₹1,250 in March. The total annual liability matches the national cap of ₹2,500. This affects cash-flow planning but not total tax burden.',
       },
       {
         q: 'Why does Tamil Nadu have lower IT salaries than Bangalore?',
@@ -104,7 +104,7 @@ export const indiaStates: IndiaStateData[] = [
       },
       {
         q: 'Which Tamil Nadu city is best for an IT career financially?',
-        a: 'Chennai remains the top choice — largest IT employer base (TCS, Cognizant, Infosys, Wipro all have major Chennai centers). Coimbatore is rising — TCS, Bosch, Infosys have expanded, and cost of living is 30% lower than Chennai. For Tamil-speaking talent, Coimbatore now offers better real income for mid-level roles than Chennai for many.',
+        a: 'Chennai remains the top choice, with the largest IT employer base (TCS, Cognizant, Infosys, Wipro all have major Chennai centers). Coimbatore is rising. TCS, Bosch, Infosys have expanded, and cost of living is 30% lower than Chennai. For Tamil-speaking talent, Coimbatore now offers better real income for mid-level roles than Chennai for many.',
       },
     ],
     metaKeywords: ['income tax calculator tamil nadu', 'chennai tax calculator', 'tamil nadu professional tax', 'coimbatore income tax'],
@@ -121,19 +121,19 @@ export const indiaStates: IndiaStateData[] = [
     avgSalaryMid: 1200000,
     topIndustries: ['Petrochemicals', 'Diamond Polishing', 'Textiles', 'Pharmaceuticals', 'Manufacturing'],
     marketContext: 'Gujarat has India\'s highest manufacturing PMI consistently. Surat dominates diamond polishing (~80% of world\'s rough-to-polished diamonds). Ahmedabad has a strong pharma cluster (Zydus, Torrent). GIFT City (Gujarat International Finance Tec-City) is India\'s first International Financial Services Centre.',
-    taxNote: 'Gujarat PT cap is ₹2,400/year (slightly less than national ₹2,500 max). HRA tier-2 (non-metro) applies to all Gujarat cities including Ahmedabad — meaning 40% HRA exemption (not 50%). GIFT City employees can enjoy tax holidays for certain capital gains under the IFSCA framework.',
+    taxNote: 'Gujarat PT cap is ₹2,400/year (slightly less than national ₹2,500 max). HRA tier-2 (non-metro) applies to all Gujarat cities including Ahmedabad, meaning 40% HRA exemption (not 50%). GIFT City employees can enjoy tax holidays for certain capital gains under the IFSCA framework.',
     faqs: [
       {
         q: 'What is GIFT City and does it affect my tax?',
-        a: 'GIFT City (Gujarat International Finance Tec-City) is India\'s first International Financial Services Centre. Companies operating there get a 10-year tax holiday. Salaried employees of GIFT City companies face standard Indian income tax rules — there\'s no personal tax benefit for being employed there (unlike Mauritius or Singapore FTZs).',
+        a: 'GIFT City (Gujarat International Finance Tec-City) is India\'s first International Financial Services Centre. Companies operating there get a 10-year tax holiday. Salaried employees of GIFT City companies face standard Indian income tax rules, there\'s no personal tax benefit for being employed there (unlike Mauritius or Singapore FTZs).',
       },
       {
         q: 'Why does Gujarat have HRA tier-2 status when Ahmedabad is a major city?',
-        a: 'HRA tier-1 status (50% exemption) is only granted to the four "metros" — Delhi, Mumbai, Kolkata, Chennai. All other Indian cities including Bangalore, Hyderabad, Pune, Ahmedabad are technically tier-2 (40% exemption) per the Income Tax Act — although the IT department often informally treats Bangalore and Pune as metros. For Gujarat, the 40% calculation is standard.',
+        a: 'HRA tier-1 status (50% exemption) is only granted to the four "metros": Delhi, Mumbai, Kolkata, Chennai. All other Indian cities including Bangalore, Hyderabad, Pune, Ahmedabad are technically tier-2 (40% exemption) per the Income Tax Act, although the IT department often informally treats Bangalore and Pune as metros. For Gujarat, the 40% calculation is standard.',
       },
       {
         q: 'Is Gujarat\'s professional tax cap really lower than other states?',
-        a: 'Yes — Gujarat caps PT at ₹2,400/year (₹200/mo × 12) vs the national maximum allowed of ₹2,500. Most states (Maharashtra, Karnataka, Andhra) use the full ₹2,500 cap. The ₹100 difference is trivial but real — Gujarat slightly under-collects vs the national cap.',
+        a: 'Yes. Gujarat caps PT at ₹2,400/year (₹200/mo × 12) vs the national maximum allowed of ₹2,500. Most states (Maharashtra, Karnataka, Andhra) use the full ₹2,500 cap. The ₹100 difference is trivial but real. Gujarat slightly under-collects vs the national cap.',
       },
     ],
     metaKeywords: ['income tax calculator gujarat', 'ahmedabad tax calculator', 'gift city tax', 'gujarat professional tax', 'surat income tax'],
@@ -144,25 +144,25 @@ export const indiaStates: IndiaStateData[] = [
     capital: 'New Delhi',
     emoji: '🏛️',
     monthlyProfessionalTax: 0,
-    ptSlabsNote: 'Delhi does NOT levy Professional Tax — one of the few Indian states/UTs without state-level PT.',
+    ptSlabsNote: 'Delhi does NOT levy Professional Tax, one of the few Indian states/UTs without state-level PT.',
     costOfLivingIndex: 88,
     hraTier: 'metro',
     avgSalaryMid: 1600000,
     topIndustries: ['Government Services', 'Professional Services', 'IT/ITES', 'Media', 'Hospitality'],
     marketContext: 'Delhi NCT is India\'s capital, hosting the central government, embassies, PSU headquarters, and major media organizations. The greater NCR (including Gurgaon and Noida) is the second-largest urban agglomeration after Mumbai. Gurgaon (Gurugram) hosts most MNC India HQs (Google, Microsoft, Genpact, Accenture).',
-    taxNote: 'Delhi is ONE OF THE FEW Indian states/UTs that does not levy Professional Tax — saving you ₹2,500/year. Delhi is HRA tier-1 metro (50% exemption). Note: if you live in Delhi but work in Gurgaon (Haryana), your employer\'s state determines PT, not yours.',
+    taxNote: 'Delhi is ONE OF THE FEW Indian states/UTs that does not levy Professional Tax, saving you ₹2,500/year. Delhi is HRA tier-1 metro (50% exemption). Note: if you live in Delhi but work in Gurgaon (Haryana), your employer\'s state determines PT, not yours.',
     faqs: [
       {
         q: 'Does Delhi really have no Professional Tax?',
         a: 'Correct. Delhi NCT is one of the few Indian states/UTs (along with UP, Bihar, Punjab, Haryana, Rajasthan, J&K) that does not levy Professional Tax. If you\'re employed by a Delhi-registered company, you save ₹2,500/year vs employees in Maharashtra, Karnataka, or Tamil Nadu.',
       },
       {
-        q: 'I live in Delhi but work in Gurgaon — which state\'s rules apply?',
-        a: 'Your employer\'s state of incorporation determines PT, not your residence. Gurgaon is in Haryana, which also doesn\'t levy PT — so you\'re still PT-free. If you worked in Noida (Uttar Pradesh, no PT) you\'d also be fine. If you worked in a Maharashtra/Karnataka-registered company\'s Delhi office, that\'s a gray area — typically the employer follows the state of registration.',
+        q: 'I live in Delhi but work in Gurgaon: which state\'s rules apply?',
+        a: 'Your employer\'s state of incorporation determines PT, not your residence. Gurgaon is in Haryana, which also doesn\'t levy PT, so you\'re still PT-free. If you worked in Noida (Uttar Pradesh, no PT) you\'d also be fine. If you worked in a Maharashtra/Karnataka-registered company\'s Delhi office, that\'s a gray area, typically the employer follows the state of registration.',
       },
       {
         q: 'Is Delhi HRA at metro tier-1 (50%) for tax purposes?',
-        a: 'Yes — Delhi is one of the four official Indian metros (with Mumbai, Chennai, Kolkata) under Section 10(13A). This means 50% of basic salary can be HRA-exempt (vs 40% in other cities). Combined with Delhi\'s lower-than-Mumbai cost of living, this is a quietly significant tax advantage for high earners.',
+        a: 'Yes. Delhi is one of the four official Indian metros (with Mumbai, Chennai, Kolkata) under Section 10(13A). This means 50% of basic salary can be HRA-exempt (vs 40% in other cities). Combined with Delhi\'s lower-than-Mumbai cost of living, this is a quietly significant tax advantage for high earners.',
       },
     ],
     metaKeywords: ['income tax calculator delhi', 'delhi income tax', 'gurgaon tax calculator', 'noida income tax'],
@@ -173,13 +173,13 @@ export const indiaStates: IndiaStateData[] = [
     capital: 'Lucknow',
     emoji: '🌾',
     monthlyProfessionalTax: 0,
-    ptSlabsNote: 'Uttar Pradesh does NOT levy Professional Tax — same as Delhi.',
+    ptSlabsNote: 'Uttar Pradesh does NOT levy Professional Tax, same as Delhi.',
     costOfLivingIndex: 55,
     hraTier: 'non-metro',
     avgSalaryMid: 900000,
     topIndustries: ['Agriculture', 'Sugar', 'Textiles', 'IT/ITES (Noida)', 'Manufacturing'],
     marketContext: 'Uttar Pradesh is India\'s most populous state (~240 million). Economy is split between rural agriculture (Mathura, Aligarh, Meerut) and urban services. Noida and Greater Noida are major IT/ITES hubs. Lucknow is the administrative and educational center. Kanpur is industrial. The state has seen recent infrastructure investment (Expressway, Jewar airport).',
-    taxNote: 'UP does not levy Professional Tax — same advantage as Delhi. Noida-based tech employees are HRA tier-2 (40% exemption) even though they\'re in the NCR. This is a minor disadvantage vs Delhi-based peers who get 50% HRA exemption.',
+    taxNote: 'UP does not levy Professional Tax, same advantage as Delhi. Noida-based tech employees are HRA tier-2 (40% exemption) even though they\'re in the NCR. This is a minor disadvantage vs Delhi-based peers who get 50% HRA exemption.',
     faqs: [
       {
         q: 'Why is Noida HRA tier-2 if it\'s in the NCR?',
@@ -191,7 +191,7 @@ export const indiaStates: IndiaStateData[] = [
       },
       {
         q: 'How does Uttar Pradesh\'s low cost of living affect tax planning?',
-        a: 'In Lucknow, Kanpur, and tier-2 UP cities, a ₹15 lakh salary stretches like ₹25 lakh in Mumbai. But tax is computed at national rates regardless of state — so your tax bill is identical to a Mumbai earner at the same gross. The real benefit is post-tax purchasing power, not lower tax.',
+        a: 'In Lucknow, Kanpur, and tier-2 UP cities, a ₹15 lakh salary stretches like ₹25 lakh in Mumbai. But tax is computed at national rates regardless of state, so your tax bill is identical to a Mumbai earner at the same gross. The real benefit is post-tax purchasing power, not lower tax.',
       },
     ],
     metaKeywords: ['income tax calculator uttar pradesh', 'noida tax calculator', 'lucknow income tax', 'up income tax'],
@@ -208,19 +208,19 @@ export const indiaStates: IndiaStateData[] = [
     avgSalaryMid: 1100000,
     topIndustries: ['Financial Services', 'IT/ITES', 'Engineering', 'Tea & Jute', 'Manufacturing'],
     marketContext: 'West Bengal is India\'s 6th largest state economy. Kolkata (the third metro) houses the regional HQ of major nationalized banks (SBI Kolkata Circle), eastern HQ of TCS/Wipro/Cognizant, and ITC Limited. Tea, jute, and engineering remain historically dominant. Salt Lake (Sector V) is the major IT cluster.',
-    taxNote: 'Kolkata is one of the four official Indian metros (HRA tier-1, 50% exemption). West Bengal levies PT at ₹2,500/year max. The state has a slightly progressive PT (₹150/mo at lower income, ₹200 at higher) — most other states are flat-rate.',
+    taxNote: 'Kolkata is one of the four official Indian metros (HRA tier-1, 50% exemption). West Bengal levies PT at ₹2,500/year max. The state has a slightly progressive PT (₹150/mo at lower income, ₹200 at higher). Most other states are flat-rate.',
     faqs: [
       {
         q: 'Is Kolkata still classified as a metro for HRA purposes?',
-        a: 'Yes — Kolkata is one of the four officially-designated Indian metros (with Delhi, Mumbai, Chennai) under Section 10(13A) for HRA. Despite lower modern relevance in IT compared to Bangalore or Hyderabad, the legal metro status remains. Kolkata employees get 50% HRA exemption (vs 40% for Bangalore, Hyderabad, Pune, Ahmedabad).',
+        a: 'Yes. Kolkata is one of the four officially-designated Indian metros (with Delhi, Mumbai, Chennai) under Section 10(13A) for HRA. Despite lower modern relevance in IT compared to Bangalore or Hyderabad, the legal metro status remains. Kolkata employees get 50% HRA exemption (vs 40% for Bangalore, Hyderabad, Pune, Ahmedabad).',
       },
       {
         q: 'Are West Bengal IT salaries competitive with other Indian cities?',
-        a: 'West Bengal IT salaries run 15-25% below Bangalore for equivalent roles — partly due to lower GCC concentration, partly due to lower cost of living (which depresses local salary norms). The cost of living offset is significant: Kolkata rents and groceries run 50-60% of Bangalore. For mid-career employees, real income is comparable.',
+        a: 'West Bengal IT salaries run 15-25% below Bangalore for equivalent roles, partly due to lower GCC concentration, partly due to lower cost of living (which depresses local salary norms). The cost of living offset is significant: Kolkata rents and groceries run 50-60% of Bangalore. For mid-career employees, real income is comparable.',
       },
       {
         q: 'How does the West Bengal Professional Tax compare to neighbors?',
-        a: 'West Bengal\'s PT is identical to Karnataka and Maharashtra at the top tier (₹2,500/year max). It\'s slightly more progressive than flat-rate states — lower-income workers pay less PT. Neighboring Odisha and Bihar have no PT, slightly favoring those states for low/mid-income workers in border districts.',
+        a: 'West Bengal\'s PT is identical to Karnataka and Maharashtra at the top tier (₹2,500/year max). It\'s slightly more progressive than flat-rate states. Lower-income workers pay less PT. Neighboring Odisha and Bihar have no PT, slightly favoring those states for low/mid-income workers in border districts.',
       },
     ],
     metaKeywords: ['income tax calculator west bengal', 'kolkata tax calculator', 'west bengal professional tax', 'bengal income tax'],
@@ -237,10 +237,10 @@ export const indiaStates: IndiaStateData[] = [
     avgSalaryMid: 1700000,
     topIndustries: ['IT/ITES', 'Pharmaceuticals', 'Aerospace', 'Biotechnology', 'Financial Services'],
     marketContext: 'Telangana (split from Andhra Pradesh in 2014) has rapidly become India\'s 3rd-largest IT exporter. Hyderabad hosts the largest Microsoft campus outside Redmond, Amazon\'s biggest India campus, Google\'s second-largest India campus, and major pharma (Dr. Reddy\'s, Aurobindo, Hetero). HITEC City and Gachibowli are the major IT clusters.',
-    taxNote: 'Telangana follows the standard PT structure (₹2,500/year max) but with a slightly progressive slab. Hyderabad is HRA tier-2 (40% exemption) despite being India\'s 4th-largest tech employer — this is a legal classification not commercial. State industrial policy aggressively subsidizes commercial real estate (HITEC City).',
+    taxNote: 'Telangana follows the standard PT structure (₹2,500/year max) but with a slightly progressive slab. Hyderabad is HRA tier-2 (40% exemption) despite being India\'s 4th-largest tech employer. This is a legal classification not commercial. State industrial policy aggressively subsidizes commercial real estate (HITEC City).',
     faqs: [
       {
-        q: 'Hyderabad IT salaries vs Bangalore — which is better?',
+        q: 'Hyderabad IT salaries vs Bangalore: which is better?',
         a: 'Hyderabad salaries are approximately 5-10% below Bangalore for equivalent roles. The compensation gap has narrowed dramatically in 2022-2026 as global firms (Microsoft, Google, Amazon) invested heavily in Hyderabad. Cost of living is 20-30% lower than Bangalore. For mid-career and senior roles, Hyderabad now offers higher real income than Bangalore.',
       },
       {
@@ -265,19 +265,19 @@ export const indiaStates: IndiaStateData[] = [
     hraTier: 'non-metro',
     avgSalaryMid: 1000000,
     topIndustries: ['Agriculture', 'Pharma', 'IT (Visakhapatnam)', 'Manufacturing', 'Port-based Trade'],
-    marketContext: 'Post the 2014 Telangana split, Andhra Pradesh has invested heavily in rebuilding commercial centers. Visakhapatnam is the largest urban economy (port, steel, pharma). Tirupati and Vijayawada are growing tech-services hubs. The state offers aggressive tax incentives for SEZs and "Special Industrial Areas" — but these benefit employers, not personal tax.',
-    taxNote: 'AP follows the post-split PT structure (same as Telangana). All AP cities are HRA tier-2 (40% exemption) — including Visakhapatnam, Tirupati, and Vijayawada. State has minimal personal-tax-relevant incentives beyond PT.',
+    marketContext: 'Post the 2014 Telangana split, Andhra Pradesh has invested heavily in rebuilding commercial centers. Visakhapatnam is the largest urban economy (port, steel, pharma). Tirupati and Vijayawada are growing tech-services hubs. The state offers aggressive tax incentives for SEZs and "Special Industrial Areas", but these benefit employers, not personal tax.',
+    taxNote: 'AP follows the post-split PT structure (same as Telangana). All AP cities are HRA tier-2 (40% exemption), including Visakhapatnam, Tirupati, and Vijayawada. State has minimal personal-tax-relevant incentives beyond PT.',
     faqs: [
       {
         q: 'Is Visakhapatnam emerging as an IT alternative to Hyderabad?',
-        a: 'Yes — Visakhapatnam (Vizag) has seen GCC investment from Wipro, Tech Mahindra, and Conduent. Salaries run 15-20% below Hyderabad but cost of living is 30-40% lower. For early-career employees seeking faster equity build-up via lower rent, Vizag offers strong real-income upside.',
+        a: 'Yes. Visakhapatnam (Vizag) has seen GCC investment from Wipro, Tech Mahindra, and Conduent. Salaries run 15-20% below Hyderabad but cost of living is 30-40% lower. For early-career employees seeking faster equity build-up via lower rent, Vizag offers strong real-income upside.',
       },
       {
         q: 'How does AP\'s industrial policy affect personal taxes?',
-        a: 'Andhra Pradesh\'s state industrial policy provides employer-side benefits (capital subsidy, electricity tariff reduction, GST credit). None of these directly reduce personal income tax for employees. The indirect benefit is more local jobs at competitive salaries — but for tax purposes, AP employees face identical federal tax rates.',
+        a: 'Andhra Pradesh\'s state industrial policy provides employer-side benefits (capital subsidy, electricity tariff reduction, GST credit). None of these directly reduce personal income tax for employees. The indirect benefit is more local jobs at competitive salaries, but for tax purposes, AP employees face identical federal tax rates.',
       },
       {
-        q: 'Andhra Pradesh PT vs Telangana PT — any difference?',
+        q: 'Andhra Pradesh PT vs Telangana PT: any difference?',
         a: 'The two states implemented near-identical PT structures post their 2014 split. Both cap at ₹2,500/year. The slab thresholds differ marginally (₹50-100 in monthly cutoff thresholds) but the practical tax burden for mid-to-high earners is identical at ₹200/month / ₹2,500 annual.',
       },
     ],
@@ -289,13 +289,13 @@ export const indiaStates: IndiaStateData[] = [
     capital: 'Jaipur',
     emoji: '🏰',
     monthlyProfessionalTax: 0,
-    ptSlabsNote: 'Rajasthan does NOT levy Professional Tax — same as Delhi, UP, Bihar, Punjab, Haryana.',
+    ptSlabsNote: 'Rajasthan does NOT levy Professional Tax, same as Delhi, UP, Bihar, Punjab, Haryana.',
     costOfLivingIndex: 58,
     hraTier: 'non-metro',
     avgSalaryMid: 950000,
     topIndustries: ['Tourism & Hospitality', 'Textiles', 'Marble & Stone', 'Government Services', 'IT (Jaipur)'],
     marketContext: 'Rajasthan is India\'s largest state by area but mid-tier by economic output. Jaipur is the administrative and IT services capital (TCS, Infosys, Wipro have presence). Udaipur is a tourism heavyweight. The state has growing food-processing and renewable energy sectors. State industrial policy emphasizes textile clusters (Bhilwara, Sanganer).',
-    taxNote: 'Rajasthan is among Indian states that do NOT levy Professional Tax — saving ₹2,500/year vs Maharashtra/Karnataka residents. All Rajasthan cities are HRA tier-2 (40% exemption).',
+    taxNote: 'Rajasthan is among Indian states that do NOT levy Professional Tax, saving ₹2,500/year vs Maharashtra/Karnataka residents. All Rajasthan cities are HRA tier-2 (40% exemption).',
     faqs: [
       {
         q: 'Is Jaipur a viable IT career destination?',
@@ -303,7 +303,7 @@ export const indiaStates: IndiaStateData[] = [
       },
       {
         q: 'Does Rajasthan offer any unique tax breaks?',
-        a: 'Personal income tax: no state-level breaks (no state income tax in India). The PT exemption ₹2,500/year saving is the main personal tax advantage. State industrial policy has employer-side incentives for solar, textile, and food-processing units — these flow through to wages indirectly but don\'t reduce personal tax.',
+        a: 'Personal income tax: no state-level breaks (no state income tax in India). The PT exemption ₹2,500/year saving is the main personal tax advantage. State industrial policy has employer-side incentives for solar, textile, and food-processing units. These flow through to wages indirectly but don\'t reduce personal tax.',
       },
       {
         q: 'How does living in Jaipur compare financially to Delhi NCR?',
@@ -324,19 +324,19 @@ export const indiaStates: IndiaStateData[] = [
     avgSalaryMid: 1100000,
     topIndustries: ['Remittances & Banking', 'Tourism', 'IT (Technopark, Infopark)', 'Spices & Agriculture', 'Healthcare'],
     marketContext: 'Kerala has India\'s highest human development index but mid-tier industrial output. The state\'s economy is heavily remittance-dependent (Gulf earnings ~30% of GSDP). Technopark (Thiruvananthapuram) and Infopark (Kochi) are the major IT clusters. Kerala has India\'s highest literacy rate and healthcare access.',
-    taxNote: 'Kerala uses half-yearly PT collection (like Tamil Nadu) — ₹1,250 in September and March. Cochin and Trivandrum are HRA tier-2 (40% exemption). The state has zero state-level income tax additions but mandates higher minimum wages than most states.',
+    taxNote: 'Kerala uses half-yearly PT collection (like Tamil Nadu): ₹1,250 in September and March. Cochin and Trivandrum are HRA tier-2 (40% exemption). The state has zero state-level income tax additions but mandates higher minimum wages than most states.',
     faqs: [
       {
         q: 'Why are Kerala IT salaries lower than other Indian states?',
-        a: 'Kerala salaries run 20-30% below Bangalore for equivalent roles. Reasons: smaller IT employer base (Technopark + Infopark vs Electronic City + Whitefield + ORR), more locally-oriented economy (remittance + tourism), and lower commercial real estate density. Cost of living offset is significant — Kochi/Trivandrum rents run 40-50% of Bangalore.',
+        a: 'Kerala salaries run 20-30% below Bangalore for equivalent roles. Reasons: smaller IT employer base (Technopark + Infopark vs Electronic City + Whitefield + ORR), more locally-oriented economy (remittance + tourism), and lower commercial real estate density. Cost of living offset is significant. Kochi/Trivandrum rents run 40-50% of Bangalore.',
       },
       {
         q: 'How do Gulf remittances affect Kerala\'s tax landscape?',
-        a: 'Personal income tax: NRI Kerala residents face Indian tax rates if Indian resident (180+ days). True non-residents are not taxed in India on foreign income. This creates a unique Kerala tax planning ecosystem — many families optimize between India-based salary income and Gulf-based NRI status. Most middle-class Kerala families have at least one NRI earner.',
+        a: 'Personal income tax: NRI Kerala residents face Indian tax rates if Indian resident (180+ days). True non-residents are not taxed in India on foreign income. This creates a unique Kerala tax planning ecosystem. Many families optimize between India-based salary income and Gulf-based NRI status. Most middle-class Kerala families have at least one NRI earner.',
       },
       {
         q: 'Is the Kerala Professional Tax different in its mechanics?',
-        a: 'Kerala (like Tamil Nadu) collects PT half-yearly — ₹1,250 in September, ₹1,250 in March — rather than monthly. The annual total matches the ₹2,500 cap. This affects cash-flow timing but not total burden. Most Kerala employers handle this automatically through payroll.',
+        a: 'Kerala (like Tamil Nadu) collects PT half-yearly (₹1,250 in September, ₹1,250 in March) rather than monthly. The annual total matches the ₹2,500 cap. This affects cash-flow timing but not total burden. Most Kerala employers handle this automatically through payroll.',
       },
     ],
     metaKeywords: ['income tax calculator kerala', 'kochi tax calculator', 'kerala professional tax', 'thiruvananthapuram tax'],
@@ -352,12 +352,12 @@ export const indiaStates: IndiaStateData[] = [
     hraTier: 'non-metro',
     avgSalaryMid: 1000000,
     topIndustries: ['Agriculture', 'Food Processing', 'Textiles', 'Sports Goods (Jalandhar)', 'IT (Mohali)'],
-    marketContext: 'Punjab\'s economy is heavily agrarian (wheat-rice belt) but with significant industrial pockets — Mohali for IT/Pharma, Ludhiana for textiles and bicycles, Jalandhar for sports goods. Chandigarh (a Union Territory) functions as the joint capital with Haryana and hosts much of Punjab\'s administrative employment.',
-    taxNote: 'Punjab introduced Professional Tax in 2018 — late compared to most southern states. PT cap is ₹2,500/year. Chandigarh (UT) does not levy PT — many Punjab residents who work in Chandigarh save the ₹2,500/year. All Punjab cities are HRA tier-2.',
+    marketContext: 'Punjab\'s economy is heavily agrarian (wheat-rice belt) but with significant industrial pockets: Mohali for IT/Pharma, Ludhiana for textiles and bicycles, Jalandhar for sports goods. Chandigarh (a Union Territory) functions as the joint capital with Haryana and hosts much of Punjab\'s administrative employment.',
+    taxNote: 'Punjab introduced Professional Tax in 2018, late compared to most southern states. PT cap is ₹2,500/year. Chandigarh (UT) does not levy PT. Many Punjab residents who work in Chandigarh save the ₹2,500/year. All Punjab cities are HRA tier-2.',
     faqs: [
       {
-        q: 'I live in Punjab but work in Chandigarh — what about Professional Tax?',
-        a: 'Chandigarh is a Union Territory and does NOT levy Professional Tax. If your employer is registered in Chandigarh, you pay no PT — even if you live in Mohali (Punjab) or Panchkula (Haryana). This is a quiet ₹2,500/year savings for many Tricity-area workers. Your employer\'s state of registration determines PT, not your residence.',
+        q: 'I live in Punjab but work in Chandigarh: what about Professional Tax?',
+        a: 'Chandigarh is a Union Territory and does NOT levy Professional Tax. If your employer is registered in Chandigarh, you pay no PT, even if you live in Mohali (Punjab) or Panchkula (Haryana). This is a quiet ₹2,500/year savings for many Tricity-area workers. Your employer\'s state of registration determines PT, not your residence.',
       },
       {
         q: 'How does Punjab\'s late PT implementation affect existing employees?',
@@ -365,7 +365,7 @@ export const indiaStates: IndiaStateData[] = [
       },
       {
         q: 'Are Punjab agricultural earnings tax-exempt?',
-        a: 'Agricultural income is exempt from Indian central income tax (Article 270, Constitution). However, agricultural income is "aggregated" for rate purposes — meaning a farmer with ₹5L agricultural and ₹5L salary income is taxed on the ₹5L salary at the slab rate applicable to ₹10L total. Most middle-class Punjab agricultural families face this dynamic.',
+        a: 'Agricultural income is exempt from Indian central income tax (Article 270, Constitution). However, agricultural income is "aggregated" for rate purposes, meaning a farmer with ₹5L agricultural and ₹5L salary income is taxed on the ₹5L salary at the slab rate applicable to ₹10L total. Most middle-class Punjab agricultural families face this dynamic.',
       },
     ],
     metaKeywords: ['income tax calculator punjab', 'punjab professional tax', 'chandigarh tax calculator', 'mohali income tax'],
@@ -382,15 +382,15 @@ export const indiaStates: IndiaStateData[] = [
     avgSalaryMid: 800000,
     topIndustries: ['Agriculture', 'Textiles (Indore)', 'IT (Indore, Bhopal)', 'Manufacturing', 'Tourism'],
     marketContext: 'Madhya Pradesh is centrally located in India and has emerged as a logistics hub. Indore has been ranked India\'s cleanest city for consecutive years and has growing IT presence (TCS, Infosys, Cognizant). Bhopal hosts the administrative cluster. Jabalpur and Gwalior have industrial pockets.',
-    taxNote: 'MP follows standard PT (₹2,500/year cap). All MP cities are HRA tier-2 (40% exemption). State industrial policy offers stamp duty waivers for new investments above ₹100 crore — relevant for businesses, not personal tax.',
+    taxNote: 'MP follows standard PT (₹2,500/year cap). All MP cities are HRA tier-2 (40% exemption). State industrial policy offers stamp duty waivers for new investments above ₹100 crore, relevant for businesses, not personal tax.',
     faqs: [
       {
         q: 'Is Indore emerging as a viable IT city?',
-        a: 'Yes — Indore has seen significant IT investment in 2021-2026. TCS, Infosys, Persistent, and HCL all have meaningful Indore presence. Salaries run 20-25% below Bangalore but cost of living is 50% lower. For early-career employees and those preferring tier-2 city living, Indore offers strong real-income outcomes.',
+        a: 'Yes. Indore has seen significant IT investment in 2021-2026. TCS, Infosys, Persistent, and HCL all have meaningful Indore presence. Salaries run 20-25% below Bangalore but cost of living is 50% lower. For early-career employees and those preferring tier-2 city living, Indore offers strong real-income outcomes.',
       },
       {
         q: 'Why is MP\'s cost of living so low?',
-        a: 'MP has the lowest urban cost-of-living index in major Indian states — Bhopal and Indore run roughly 50-55% of Mumbai costs. Reasons: lower commercial real estate density, abundant local food production, and limited international migration pressure on housing. Mid-career professionals can save 30-40% of post-tax income in MP cities vs metros.',
+        a: 'MP has the lowest urban cost-of-living index in major Indian states. Bhopal and Indore run roughly 50-55% of Mumbai costs. Reasons: lower commercial real estate density, abundant local food production, and limited international migration pressure on housing. Mid-career professionals can save 30-40% of post-tax income in MP cities vs metros.',
       },
       {
         q: 'Are there MP-specific tax advantages I should know about?',
@@ -405,16 +405,16 @@ export const indiaStates: IndiaStateData[] = [
     capital: 'Chandigarh',
     emoji: '🏢',
     monthlyProfessionalTax: 0,
-    ptSlabsNote: 'Haryana does NOT levy Professional Tax — same as Delhi, UP, Bihar, Punjab, Rajasthan, J&K.',
+    ptSlabsNote: 'Haryana does NOT levy Professional Tax, same as Delhi, UP, Bihar, Punjab, Rajasthan, J&K.',
     costOfLivingIndex: 75,
     hraTier: 'non-metro',
     avgSalaryMid: 1600000,
     topIndustries: ['IT/ITES (Gurgaon)', 'Automotive (Manesar, Bawal)', 'Pharma', 'Logistics', 'Financial Services'],
     marketContext: 'Haryana, particularly Gurgaon (now officially Gurugram), is one of India\'s premier corporate hubs. Gurgaon hosts the India HQ of Microsoft, Google, Adobe, Accenture, Genpact, McKinsey, BCG, Bain. Manesar and Bawal are automotive belts (Maruti Suzuki, Hero MotoCorp, Honda). Sonipat and Faridabad have manufacturing.',
-    taxNote: 'Haryana is among the Indian states that do NOT levy Professional Tax — saving ₹2,500/year. Gurgaon is HRA tier-2 (40% exemption) — a significant disadvantage vs Delhi-based peers (50%) at the same salary. This is a quiet ₹40-80K/year tax difference for high earners working in Gurgaon vs Delhi.',
+    taxNote: 'Haryana is among the Indian states that do NOT levy Professional Tax, saving ₹2,500/year. Gurgaon is HRA tier-2 (40% exemption), a significant disadvantage vs Delhi-based peers (50%) at the same salary. This is a quiet ₹40-80K/year tax difference for high earners working in Gurgaon vs Delhi.',
     faqs: [
       {
-        q: 'I live in Delhi but work in Gurgaon — best of both worlds?',
+        q: 'I live in Delhi but work in Gurgaon: best of both worlds?',
         a: 'Yes, somewhat. Gurgaon offers no PT (₹2,500 saved) and slightly higher salary norms than Delhi. Delhi residence (if Delhi-registered employer) gets 50% HRA exemption. The catch: if your employer is registered in Gurgaon (most are), the HRA is computed at 40%. Net effect depends on your specific rental and salary.',
       },
       {
@@ -423,7 +423,7 @@ export const indiaStates: IndiaStateData[] = [
       },
       {
         q: 'Is the no-PT advantage in Haryana meaningful?',
-        a: 'For most workers: a modest ₹2,500/year saving (~₹200/month). For high earners: meaningful when stacked with other benefits — combined with no state income tax (federal-only) and the Gurgaon employment density. Compared to a Mumbai-based peer at the same gross income, a Gurgaon employee saves ₹2,500 on PT but loses 10% HRA exemption — net negative for high earners.',
+        a: 'For most workers: a modest ₹2,500/year saving (~₹200/month). For high earners: meaningful when stacked with other benefits, combined with no state income tax (federal-only) and the Gurgaon employment density. Compared to a Mumbai-based peer at the same gross income, a Gurgaon employee saves ₹2,500 on PT but loses 10% HRA exemption, net negative for high earners.',
       },
     ],
     metaKeywords: ['income tax calculator haryana', 'gurgaon tax calculator', 'gurugram income tax', 'haryana professional tax'],
@@ -434,7 +434,7 @@ export const indiaStates: IndiaStateData[] = [
     capital: 'Patna',
     emoji: '🌾',
     monthlyProfessionalTax: 0,
-    ptSlabsNote: 'Bihar does NOT levy Professional Tax — saving ₹2,500/year.',
+    ptSlabsNote: 'Bihar does NOT levy Professional Tax, saving ₹2,500/year.',
     costOfLivingIndex: 50,
     hraTier: 'non-metro',
     avgSalaryMid: 700000,
@@ -444,7 +444,7 @@ export const indiaStates: IndiaStateData[] = [
     faqs: [
       {
         q: 'Are there meaningful Bihar tax advantages?',
-        a: 'Yes — no Professional Tax (₹2,500/year saving) plus India\'s lowest cost of living. For remote workers earning metro-level salaries but living in Bihar, post-tax purchasing power is roughly 1.8-2x what the same salary buys in Mumbai. This is the largest cost-of-living tax arbitrage in India.',
+        a: 'Yes, no Professional Tax (₹2,500/year saving) plus India\'s lowest cost of living. For remote workers earning metro-level salaries but living in Bihar, post-tax purchasing power is roughly 1.8-2x what the same salary buys in Mumbai. This is the largest cost-of-living tax arbitrage in India.',
       },
       {
         q: 'How does Bihar\'s remittance economy affect tax planning?',
@@ -468,8 +468,8 @@ export const indiaStates: IndiaStateData[] = [
     hraTier: 'non-metro',
     avgSalaryMid: 900000,
     topIndustries: ['Mining (Coal, Iron Ore, Bauxite)', 'Steel', 'IT/ITES (Bhubaneswar)', 'Heavy Industry', 'Tourism'],
-    marketContext: 'Odisha is India\'s mineral capital — producing over 50% of India\'s aluminum, iron ore, and chromite. Major steel and aluminum plants (Tata Steel Kalinganagar, Vedanta, NALCO). Bhubaneswar is emerging as an IT services hub (Infosys, TCS, Wipro have campuses). The state has aggressive industrial investment incentives.',
-    taxNote: 'Odisha follows the standard progressive PT structure (max ₹2,500/year). All Odisha cities are HRA tier-2 (40% exemption). The state offers Investment Promotion Package incentives for new manufacturing — relevant for employers, not individual tax.',
+    marketContext: 'Odisha is India\'s mineral capital, producing over 50% of India\'s aluminum, iron ore, and chromite. Major steel and aluminum plants (Tata Steel Kalinganagar, Vedanta, NALCO). Bhubaneswar is emerging as an IT services hub (Infosys, TCS, Wipro have campuses). The state has aggressive industrial investment incentives.',
+    taxNote: 'Odisha follows the standard progressive PT structure (max ₹2,500/year). All Odisha cities are HRA tier-2 (40% exemption). The state offers Investment Promotion Package incentives for new manufacturing, relevant for employers, not individual tax.',
     faqs: [
       {
         q: 'Is Bhubaneswar competitive with Bangalore for IT careers?',
@@ -481,7 +481,7 @@ export const indiaStates: IndiaStateData[] = [
       },
       {
         q: 'How does Odisha PT compare to other eastern states?',
-        a: 'Odisha collects PT (₹2,500/year max) — unlike neighboring Bihar (no PT). West Bengal has similar PT structure to Odisha. Odisha\'s PT is progressive (₹150 at lower income, ₹200 at higher). For salaried employees above ₹25K/month, the burden is identical to Maharashtra and Karnataka at the top.',
+        a: 'Odisha collects PT (₹2,500/year max), unlike neighboring Bihar (no PT). West Bengal has similar PT structure to Odisha. Odisha\'s PT is progressive (₹150 at lower income, ₹200 at higher). For salaried employees above ₹25K/month, the burden is identical to Maharashtra and Karnataka at the top.',
       },
     ],
     metaKeywords: ['income tax calculator odisha', 'bhubaneswar tax calculator', 'odisha professional tax', 'orissa income tax'],

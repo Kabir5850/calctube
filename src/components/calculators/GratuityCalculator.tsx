@@ -97,7 +97,7 @@ export default function GratuityCalculator() {
             <div className="flex items-start gap-2.5">
               <span className="text-lg leading-none">⚠️</span>
               <p className="text-xs sm:text-sm font-bold text-ink-900 !m-0 leading-snug">
-                Below the 5-year eligibility threshold. Gratuity normally requires 5 years of continuous service. The amount below is shown for reference only — it becomes payable if service reaches 5 years, or immediately in case of death or disablement, where the 5-year rule is waived.
+                Below the 5-year eligibility threshold. Gratuity normally requires 5 years of continuous service. The amount below is shown for reference only. It becomes payable if service reaches 5 years, or immediately in case of death or disablement, where the 5-year rule is waived.
               </p>
             </div>
           </div>

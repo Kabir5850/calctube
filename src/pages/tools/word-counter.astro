@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'word-counter', name: 'Word Counter',
-  description: 'Free word counter and character counter. Count words, characters, sentences, paragraphs and reading time as you type — with common limits for essays, tweets and meta tags.',
+  description: 'Free word counter and character counter. Count words, characters, sentences, paragraphs and reading time as you type, with common limits for essays, tweets and meta tags.',
   category: 'other' as const,
   keywords: ['word counter', 'character counter', 'count words', 'word count tool', 'letter counter', 'reading time calculator'],
   lastUpdated: '2026-07-19',
@@ -31,10 +31,10 @@ const limits = [
 ];
 
 const faqs = [
-  { q: 'How does the word counter count words?', a: 'It splits your text on spaces and line breaks and counts the resulting chunks, ignoring empty gaps — the same way most word processors do. So "New York" counts as two words and "well-being" as one. Numbers and standalone symbols separated by spaces count as words too. The count updates instantly as you type or paste, with no button to press.' },
-  { q: 'What is the difference between characters with and without spaces?', a: '"Characters" counts every keystroke including spaces, tabs and line breaks — this is what platforms like Twitter/X and SMS use for their limits. "Characters without spaces" strips all whitespace, which some assignments and forms ask for. This tool shows both so you can match whichever limit applies.' },
-  { q: 'How is reading time calculated?', a: 'Reading time is the word count divided by an average silent reading speed of about 200 words per minute, so a 1,000-word article is roughly a 5-minute read. Speaking time uses a slower ~130 words per minute, since talking aloud is slower than reading — useful for estimating how long a speech or script will run. Both are estimates; individual speeds vary.' },
-  { q: 'Is my text stored or uploaded anywhere?', a: 'No. The counter runs entirely in your browser using JavaScript — your text never leaves your device and nothing is sent to a server or saved. You can safely paste private drafts, essays or confidential documents. Closing the tab clears everything.' },
+  { q: 'How does the word counter count words?', a: 'It splits your text on spaces and line breaks and counts the resulting chunks, ignoring empty gaps, the same way most word processors do. So "New York" counts as two words and "well-being" as one. Numbers and standalone symbols separated by spaces count as words too. The count updates instantly as you type or paste, with no button to press.' },
+  { q: 'What is the difference between characters with and without spaces?', a: '"Characters" counts every keystroke including spaces, tabs and line breaks. This is what platforms like Twitter/X and SMS use for their limits. "Characters without spaces" strips all whitespace, which some assignments and forms ask for. This tool shows both so you can match whichever limit applies.' },
+  { q: 'How is reading time calculated?', a: 'Reading time is the word count divided by an average silent reading speed of about 200 words per minute, so a 1,000-word article is roughly a 5-minute read. Speaking time uses a slower ~130 words per minute, since talking aloud is slower than reading, useful for estimating how long a speech or script will run. Both are estimates; individual speeds vary.' },
+  { q: 'Is my text stored or uploaded anywhere?', a: 'No. The counter runs entirely in your browser using JavaScript. Your text never leaves your device and nothing is sent to a server or saved. You can safely paste private drafts, essays or confidential documents. Closing the tab clears everything.' },
   { q: 'How many pages is a certain word count?', a: 'A rough rule for standard formatting (12pt, double-spaced) is about 250 words per page, so 500 words is ~2 pages and 1,000 words is ~4 pages. Single-spaced roughly doubles the words per page (~500). Actual length depends on font, spacing and margins, so treat page estimates as approximate.' },
 ];
 const schemas = [
@@ -61,7 +61,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Word Counter — Count Words, Characters & Reading Time" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Word Counter: Count Words, Characters & Reading Time" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-lime-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -98,7 +98,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Paste your text below to count <strong>words, characters, sentences and paragraphs</strong> instantly, plus an estimated <strong>reading time</strong> (about 200 words per minute). Everything runs in your browser — nothing is uploaded.
+                Paste your text below to count <strong>words, characters, sentences and paragraphs</strong> instantly, plus an estimated <strong>reading time</strong> (about 200 words per minute). Everything runs in your browser. Nothing is uploaded.
               </p>
             </div>
           </div>

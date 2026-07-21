@@ -40,15 +40,15 @@ const fmtINR = (v: number) => new Intl.NumberFormat('en-IN', { style: 'currency'
 
 const faqs = [
   { q: 'How is gratuity calculated in India?', a: `For employees covered under the Payment of Gratuity Act, gratuity = (15 ÷ 26) × last-drawn monthly salary (basic + DA) × number of completed years of service. The 15/26 is 15 days' wages for every completed year, using 26 as the number of working days in a month. On a last-drawn ${fmtINR(LAST_SALARY)}/month basic + DA with ${example.years} years of service, that works out to ${fmtINR(example.gratuity)}.` },
-  { q: 'Who is eligible for gratuity?', a: 'You need at least 5 years of continuous service with the same employer, in an establishment covered by the Payment of Gratuity Act (broadly, factories, mines, and any shop or establishment with 10 or more employees). The 5-year rule is waived if service ends due to death or disablement — the nominee or employee is paid regardless of tenure. Gratuity is payable on resignation, retirement, superannuation, or termination (except for termination on grounds of moral turpitude).' },
-  { q: 'Is gratuity taxable?', a: `For private-sector employees covered under the Act, gratuity is tax-free up to a lifetime ceiling of ${fmtL(TAX_FREE_CAP)} — the exemption is the least of (a) actual gratuity received, (b) ${fmtL(TAX_FREE_CAP)}, and (c) the formula amount. Anything above the ceiling is taxed as salary. Government employees get gratuity fully tax-free. The ${fmtL(TAX_FREE_CAP)} cap is cumulative across your career, so gratuity from an earlier job reduces the exemption available on a later one.` },
-  { q: 'What salary is used — gross or basic?', a: 'Only basic salary plus dearness allowance (DA) count. HRA, conveyance, special allowance, bonuses, overtime and other allowances are excluded. This is why gratuity is often smaller than people expect: on a package where basic is deliberately kept low, the gratuity base is low too. Use your latest payslip\'s basic + DA line, not your CTC or take-home.' },
-  { q: 'How are partial years of service counted?', a: 'A completed year plus any additional service of more than 6 months rounds UP to the next full year; 6 months or less is ignored. So 10 years 7 months counts as 11 years, but 10 years 6 months counts as 10. Note this rounding applies only to employers covered by the Act. Employers not covered use a different basis — (15 ÷ 30) × average of the last 10 months\' salary × years — with no rounding up of the final part-year.' },
+  { q: 'Who is eligible for gratuity?', a: 'You need at least 5 years of continuous service with the same employer, in an establishment covered by the Payment of Gratuity Act (broadly, factories, mines, and any shop or establishment with 10 or more employees). The 5-year rule is waived if service ends due to death or disablement. The nominee or employee is paid regardless of tenure. Gratuity is payable on resignation, retirement, superannuation, or termination (except for termination on grounds of moral turpitude).' },
+  { q: 'Is gratuity taxable?', a: `For private-sector employees covered under the Act, gratuity is tax-free up to a lifetime ceiling of ${fmtL(TAX_FREE_CAP)}. The exemption is the least of (a) actual gratuity received, (b) ${fmtL(TAX_FREE_CAP)}, and (c) the formula amount. Anything above the ceiling is taxed as salary. Government employees get gratuity fully tax-free. The ${fmtL(TAX_FREE_CAP)} cap is cumulative across your career, so gratuity from an earlier job reduces the exemption available on a later one.` },
+  { q: 'What salary is used, gross or basic?', a: 'Only basic salary plus dearness allowance (DA) count. HRA, conveyance, special allowance, bonuses, overtime and other allowances are excluded. This is why gratuity is often smaller than people expect: on a package where basic is deliberately kept low, the gratuity base is low too. Use your latest payslip\'s basic + DA line, not your CTC or take-home.' },
+  { q: 'How are partial years of service counted?', a: 'A completed year plus any additional service of more than 6 months rounds UP to the next full year; 6 months or less is ignored. So 10 years 7 months counts as 11 years, but 10 years 6 months counts as 10. Note this rounding applies only to employers covered by the Act. Employers not covered use a different basis: (15 ÷ 30) × average of the last 10 months\' salary × years, with no rounding up of the final part-year.' },
 ];
 const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 ---
 
-<BaseLayout title={`Gratuity Calculation (2026) — The 15/26 Formula, ₹20L Tax-Free`} description={`Gratuity = (15 ÷ 26) × last-drawn basic + DA × years of service, tax-free up to ₹20 lakh. On ₹50k basic + DA over ${example.years} years that's ${fmtINR(example.gratuity)}. Full table by tenure (5/10/20/30 yrs) + the tax rule.`} schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
+<BaseLayout title={`Gratuity Calculation (2026): The 15/26 Formula, ₹20L Tax-Free`} description={`Gratuity = (15 ÷ 26) × last-drawn basic + DA × years of service, tax-free up to ₹20 lakh. On ₹50k basic + DA over ${example.years} years that's ${fmtINR(example.gratuity)}. Full table by tenure (5/10/20/30 yrs) + the tax rule.`} schemas={schemas} publishedTime={lastUpdated} modifiedTime={lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-yellow-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -86,7 +86,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Gratuity = <strong>(15 ÷ 26) × last-drawn monthly (basic + DA) × years of service</strong>. On a {fmtINR(LAST_SALARY)}/month basic + DA over <strong>{example.years} years</strong>, that's <strong>{fmtINR(example.gratuity)}</strong> — and it's <strong>tax-free up to {fmtL(TAX_FREE_CAP)}</strong>. You need 5 years of continuous service to qualify (waived on death or disablement).
+                Gratuity = <strong>(15 ÷ 26) × last-drawn monthly (basic + DA) × years of service</strong>. On a {fmtINR(LAST_SALARY)}/month basic + DA over <strong>{example.years} years</strong>, that's <strong>{fmtINR(example.gratuity)}</strong>, and it's <strong>tax-free up to {fmtL(TAX_FREE_CAP)}</strong>. You need 5 years of continuous service to qualify (waived on death or disablement).
               </p>
             </div>
           </div>
@@ -99,7 +99,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
     <div class="max-w-4xl mx-auto prose prose-lg">
       <h2 style="font-family: 'Inter Tight', sans-serif;">The 15/26 formula, decoded</h2>
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
-        Gratuity is a lump sum your employer owes you for sticking around — statutorily, 15 days' wages for every completed year of service. The odd-looking "15 ÷ 26" is just that: 15 days out of an assumed 26 working days in a month, applied to your <strong>last-drawn</strong> basic salary plus dearness allowance (never the whole CTC). Because it scales linearly with years, the reward for a long tenure is real. Here's the payout on a {fmtINR(LAST_SALARY)}/month basic + DA across common tenures:
+        Gratuity is a lump sum your employer owes you for sticking around: statutorily, 15 days' wages for every completed year of service. The odd-looking "15 ÷ 26" is just that: 15 days out of an assumed 26 working days in a month, applied to your <strong>last-drawn</strong> basic salary plus dearness allowance (never the whole CTC). Because it scales linearly with years, the reward for a long tenure is real. Here's the payout on a {fmtINR(LAST_SALARY)}/month basic + DA across common tenures:
       </p>
       <div class="not-prose overflow-x-auto">
         <table class="w-full bg-white border-[2.5px] border-ink-900 rounded-2xl shadow-sticker-sm overflow-hidden border-separate border-spacing-0 text-sm">
@@ -115,7 +115,7 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
                 <td class="p-3 font-bold text-ink-900">{row.years} years</td>
                 <td class="p-3 text-right font-mono font-extrabold text-ink-900">{fmtINR(row.gratuity)}</td>
                 <td class="p-3 text-right font-mono font-bold text-green-700">{fmtINR(row.exempt)}</td>
-                <td class="p-3 text-right font-mono text-ink-800">{row.taxable === 0 ? '—' : fmtINR(row.taxable)}</td>
+                <td class="p-3 text-right font-mono text-ink-800">{row.taxable === 0 ? '–' : fmtINR(row.taxable)}</td>
               </tr>
             ))}
           </tbody>
@@ -123,9 +123,9 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       </div>
       <p class="text-xs text-ink-500 mt-3 font-medium">Last-drawn {fmtINR(LAST_SALARY)}/mo basic + DA, employer covered under the Payment of Gratuity Act, FY 2025-26. Figures rounded to the nearest rupee. Not tax advice.</p>
 
-      <h2 style="font-family: 'Inter Tight', sans-serif;">The ₹20 lakh tax-free ceiling — and when it bites</h2>
+      <h2 style="font-family: 'Inter Tight', sans-serif;">The ₹20 lakh tax-free ceiling, and when it bites</h2>
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
-        For most people the whole gratuity lands tax-free, because the {fmtL(TAX_FREE_CAP)} exemption is generous relative to the formula. The taxable column above stays empty right up to 30 years on a mid salary. The ceiling only bites when a high last-drawn salary meets a long tenure. Take {fmtINR(capExample.salary)}/month basic + DA over {capExample.years} years: the formula yields {fmtINR(capExample.gratuity)}, of which {fmtL(capExample.exempt)} is exempt and <strong>{fmtINR(capExample.taxable)} is taxed as salary</strong> at your slab. Two more things worth knowing: the {fmtL(TAX_FREE_CAP)} cap is a <strong>lifetime</strong> figure across all employers, and only <strong>basic + DA</strong> feed the formula — so a salary structure that keeps basic low quietly shrinks your eventual gratuity. Check your latest payslip's basic line, not your CTC, before you estimate.
+        For most people the whole gratuity lands tax-free, because the {fmtL(TAX_FREE_CAP)} exemption is generous relative to the formula. The taxable column above stays empty right up to 30 years on a mid salary. The ceiling only bites when a high last-drawn salary meets a long tenure. Take {fmtINR(capExample.salary)}/month basic + DA over {capExample.years} years: the formula yields {fmtINR(capExample.gratuity)}, of which {fmtL(capExample.exempt)} is exempt and <strong>{fmtINR(capExample.taxable)} is taxed as salary</strong> at your slab. Two more things worth knowing: the {fmtL(TAX_FREE_CAP)} cap is a <strong>lifetime</strong> figure across all employers, and only <strong>basic + DA</strong> feed the formula, so a salary structure that keeps basic low quietly shrinks your eventual gratuity. Check your latest payslip's basic line, not your CTC, before you estimate.
       </p>
       {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>

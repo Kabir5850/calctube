@@ -53,7 +53,7 @@ export default function RatioCalculator() {
         </div>
 
         <div className="p-5 sm:p-7 bg-ink-50">
-          <p className="text-xs font-extrabold uppercase tracking-wider text-ink-500 mb-3 text-center">Solve the proportion — leave one box blank</p>
+          <p className="text-xs font-extrabold uppercase tracking-wider text-ink-500 mb-3 text-center">Solve the proportion: leave one box blank</p>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <div className="w-20 sm:w-24"><input value={a} onChange={(e) => setA(e.target.value)} className={fieldCls} inputMode="decimal" aria-label="A" placeholder="A" /></div>
             <span className="text-2xl font-extrabold text-ink-900">:</span>

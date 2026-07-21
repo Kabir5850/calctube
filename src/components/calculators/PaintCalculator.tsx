@@ -67,7 +67,7 @@ export default function PaintCalculator() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Assumes ~{unit === 'imperial' ? '350 sq ft per gallon' : '11 m² per litre'} coverage. Textured or unprimed walls soak up more — add a primer coat for bare drywall.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Assumes ~{unit === 'imperial' ? '350 sq ft per gallon' : '11 m² per litre'} coverage. Textured or unprimed walls soak up more. Add a primer coat for bare drywall.</div>
     </div>
   );
 }

@@ -90,7 +90,7 @@ export default function LeaseVsBuyCalculator() {
                   {!r.buyCheaper && <span className="text-[10px] font-extrabold uppercase bg-ink-900 text-white rounded-full px-2 py-0.5">Cheaper</span>}
                 </div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-ink-900 leading-none mt-1" style={{ fontFamily: 'Inter Tight', letterSpacing: '-0.03em' }}>{fmt(r.leaseTotal)}</div>
-                <div className="text-[11px] text-ink-800 font-bold mt-1.5 leading-snug">{fmt(leaseDown)} down + {fmt(leaseMonthly)} × {leaseTerm} mo — own nothing at end</div>
+                <div className="text-[11px] text-ink-800 font-bold mt-1.5 leading-snug">{fmt(leaseDown)} down + {fmt(leaseMonthly)} × {leaseTerm} mo (own nothing at end)</div>
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'salary-calculator', name: 'Salary Calculator (India)',
-  description: 'Free India salary calculator (FY 2025-26). Convert CTC to in-hand monthly take-home — EPF, professional tax, and income tax under both old & new regimes, with the better regime picked automatically.',
+  description: 'Free India salary calculator (FY 2025-26). Convert CTC to in-hand monthly take-home: EPF, professional tax, and income tax under both old & new regimes, with the better regime picked automatically.',
   category: 'finance' as const,
   keywords: ['salary calculator', 'ctc to in hand', 'take home salary calculator', 'in hand salary', 'ctc calculator india'],
   lastUpdated: '2026-07-01', ratingValue: '4.8', ratingCount: '119',
@@ -19,9 +19,9 @@ const breadcrumbs = [
 ];
 const faqs = [
   { q: 'Why is my in-hand salary so much lower than my CTC?', a: 'CTC (cost to company) includes things you never see in your bank account: the employer\'s EPF contribution (12% of basic), gratuity provision, insurance premiums, and sometimes one-time joining bonuses or ESOPs. From the remaining gross salary, your own EPF (another 12% of basic), professional tax, and income tax (TDS) are deducted. A ₹12 lakh CTC typically lands around ₹80,000–85,000/month in hand.' },
-  { q: 'What is a typical CTC structure in India?', a: 'A common structure: Basic salary 40–50% of CTC, HRA 40–50% of basic, employer EPF 12% of basic, and the rest as special allowance plus flexi benefits (LTA, meal cards, fuel). Basic matters most — EPF, gratuity, and HRA exemption are all computed from it. A low basic means higher in-hand today but lower retirement savings.' },
-  { q: 'Which regime should I pick — old or new?', a: 'For FY 2025-26, the new regime is default and better for most salaried people because of the ₹75,000 standard deduction and zero tax up to ₹12 lakh taxable income (Section 87A rebate). The old regime only wins if your combined deductions (80C ₹1.5L, HRA exemption, home-loan interest up to ₹2L, 80D, NPS) are large — typically above ₹4–4.5 lakh a year. This calculator computes both and picks the cheaper one.' },
-  { q: 'Is EPF deducted from CTC or gross salary?', a: 'Both sides. The employer\'s 12% of basic is part of your CTC (money you never receive as salary), and your own 12% of basic is deducted from gross pay. Both go to your EPF account, so it is forced savings rather than a loss — but it does reduce the monthly credit to your bank.' },
+  { q: 'What is a typical CTC structure in India?', a: 'A common structure: Basic salary 40–50% of CTC, HRA 40–50% of basic, employer EPF 12% of basic, and the rest as special allowance plus flexi benefits (LTA, meal cards, fuel). Basic matters most. EPF, gratuity, and HRA exemption are all computed from it. A low basic means higher in-hand today but lower retirement savings.' },
+  { q: 'Which regime should I pick, old or new?', a: 'For FY 2025-26, the new regime is default and better for most salaried people because of the ₹75,000 standard deduction and zero tax up to ₹12 lakh taxable income (Section 87A rebate). The old regime only wins if your combined deductions (80C ₹1.5L, HRA exemption, home-loan interest up to ₹2L, 80D, NPS) are large, typically above ₹4–4.5 lakh a year. This calculator computes both and picks the cheaper one.' },
+  { q: 'Is EPF deducted from CTC or gross salary?', a: 'Both sides. The employer\'s 12% of basic is part of your CTC (money you never receive as salary), and your own 12% of basic is deducted from gross pay. Both go to your EPF account, so it is forced savings rather than a loss, but it does reduce the monthly credit to your bank.' },
   { q: 'What is professional tax and why does it differ by state?', a: 'Professional tax is a state-level tax on employment, capped at ₹2,500 per year by the Constitution. Karnataka and Maharashtra charge ₹200/month, West Bengal ₹208 in some slabs, while Delhi, UP, and Haryana charge none. Your employer deducts it and it is fully deductible from taxable income in the old regime.' },
 ];
 const schemas = [buildCalculatorSchema(meta, path), buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
@@ -33,7 +33,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Salary Calculator India 2026 — CTC to In-Hand Take-Home" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Salary Calculator India 2026: CTC to In-Hand Take-Home" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
@@ -72,7 +72,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                A <strong>₹12 lakh CTC</strong> (40% basic, new regime) is about <strong>₹90,200/month in hand</strong> — after employer + employee EPF (₹57,600 each) and professional tax, with <strong>zero income tax</strong> thanks to the Section 87A rebate up to ₹12L taxable income.
+                A <strong>₹12 lakh CTC</strong> (40% basic, new regime) is about <strong>₹90,200/month in hand</strong>, after employer + employee EPF (₹57,600 each) and professional tax, with <strong>zero income tax</strong> thanks to the Section 87A rebate up to ₹12L taxable income.
               </p>
             </div>
           </div>

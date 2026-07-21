@@ -26,11 +26,11 @@ const refRows = refYears.map((y) => {
 });
 
 const faqs = [
-  { q: 'How do I calculate car depreciation?', a: 'Use value = purchase price × (1 − rate/100) raised to the number of years. With a 30,000 car and a 15% annual rate, the retained factor is 0.85 per year: after 1 year the car is worth 30,000 × 0.85 = 25,500, and after 5 years it is 30,000 × 0.85^5 = 13,311. This straight-line-on-the-remaining-value method (declining balance) is a simple, currency-agnostic estimate — enter your own price, rate and holding period above to model any vehicle.' },
-  { q: 'How much value does a car lose in 5 years?', a: 'At a constant 15% annual rate, a 30,000 car is worth about 13,311 after 5 years. That is a total loss of 16,689 — or 55.6% of the original price gone in five years. Cars with slower depreciation (10%/yr) keep more value, while luxury models and EVs can lose value faster, especially in the first year.' },
+  { q: 'How do I calculate car depreciation?', a: 'Use value = purchase price × (1 − rate/100) raised to the number of years. With a 30,000 car and a 15% annual rate, the retained factor is 0.85 per year: after 1 year the car is worth 30,000 × 0.85 = 25,500, and after 5 years it is 30,000 × 0.85^5 = 13,311. This straight-line-on-the-remaining-value method (declining balance) is a simple, currency-agnostic estimate. Enter your own price, rate and holding period above to model any vehicle.' },
+  { q: 'How much value does a car lose in 5 years?', a: 'At a constant 15% annual rate, a 30,000 car is worth about 13,311 after 5 years. That is a total loss of 16,689, or 55.6% of the original price gone in five years. Cars with slower depreciation (10%/yr) keep more value, while luxury models and EVs can lose value faster, especially in the first year.' },
   { q: 'What is a typical car depreciation rate?', a: 'Many mainstream cars lose roughly 15–20% of their value each year, with the first year usually the steepest (often close to 20%). At 15% per year on a 30,000 car, the value falls to 25,500 after year 1 (85% remaining), 18,424 after year 3 (61.4% remaining), and 13,311 after year 5 (44.4% remaining). Your exact rate depends on brand, mileage, condition and demand.' },
   { q: 'Why is the first year of depreciation the steepest?', a: 'A new car loses its "new" premium the moment it is registered and becomes a used car, so the biggest single drop typically happens in year one. After that, the percentage lost each year tends to shrink as the car settles into the used market. This calculator applies a single constant annual rate for simplicity, so treat the early years as an estimate that real-world curves may fall faster than.' },
-  { q: 'How can depreciation help me decide when to sell?', a: 'Depreciation slows in later years, so holding longer spreads the loss across more time. At 15% per year, a 30,000 car retains 44.4% of its value (13,311) after 5 years but still 19.7% (5,906) after 10 years — the drop from year 5 to year 10 is much smaller than the drop in the first five years. If you want to minimise loss per year of ownership, keeping a car well past the steep early period usually helps.' },
+  { q: 'How can depreciation help me decide when to sell?', a: 'Depreciation slows in later years, so holding longer spreads the loss across more time. At 15% per year, a 30,000 car retains 44.4% of its value (13,311) after 5 years but still 19.7% (5,906) after 10 years. The drop from year 5 to year 10 is much smaller than the drop in the first five years. If you want to minimise loss per year of ownership, keeping a car well past the steep early period usually helps.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -57,7 +57,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Car Depreciation Calculator — Resale Value & Loss by Year" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Car Depreciation Calculator: Resale Value & Loss by Year" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-yellow-accent/40 rounded-full blur-[120px] float-slow"></div>
@@ -94,7 +94,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Car value = <strong>price × (1 − rate/100)<sup>years</sup></strong>. A <strong>30,000</strong> car depreciating <strong>15% a year</strong> is worth <strong>13,311</strong> after 5 years — a loss of <strong>16,689</strong>, or <strong>55.6%</strong> of its original value. Enter your own price, rate and years below.
+                Car value = <strong>price × (1 − rate/100)<sup>years</sup></strong>. A <strong>30,000</strong> car depreciating <strong>15% a year</strong> is worth <strong>13,311</strong> after 5 years, a loss of <strong>16,689</strong>, or <strong>55.6%</strong> of its original value. Enter your own price, rate and years below.
               </p>
             </div>
           </div>

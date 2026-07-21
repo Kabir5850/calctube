@@ -8,7 +8,7 @@ import { getAuthor } from '../../data/authors';
 const meta = {
   slug: 'calorie-calculator',
   name: 'Calorie Deficit Calculator',
-  description: 'Free calorie deficit calculator — enter your current weight, target weight, and activity level to get your daily calorie target and weeks to reach your goal.',
+  description: 'Free calorie deficit calculator. Enter your current weight, target weight, and activity level to get your daily calorie target and weeks to reach your goal.',
   category: 'health' as const,
   keywords: ['calorie deficit calculator', 'calorie calculator', 'weight loss calories', 'how many calories to lose weight', 'calorie target'],
   lastUpdated: '2026-05-25',
@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     q: 'What is the difference between TDEE and BMR?',
-    a: 'BMR (Basal Metabolic Rate) is the calories burned at complete rest — no movement at all. TDEE (Total Daily Energy Expenditure) multiplies BMR by your activity level to account for exercise and daily movement. You should always base a calorie deficit on TDEE, not BMR.',
+    a: 'BMR (Basal Metabolic Rate) is the calories burned at complete rest: no movement at all. TDEE (Total Daily Energy Expenditure) multiplies BMR by your activity level to account for exercise and daily movement. You should always base a calorie deficit on TDEE, not BMR.',
   },
 ];
 const schemas = [buildCalculatorSchema(meta, path), buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
@@ -55,7 +55,7 @@ const reviewer = getAuthor('priya-nair')!;
 ---
 
 <BaseLayout
-  title="Calorie Deficit Calculator — Daily Target & Weeks to Goal"
+  title="Calorie Deficit Calculator: Daily Target & Weeks to Goal"
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -144,25 +144,25 @@ const reviewer = getAuthor('priya-nair')!;
       <span class="chip-pink mb-4">🧮 The formula</span>
       <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">The calorie-deficit equation.</h2>
       <div class="mt-8 bg-ink-900 text-white border-[2.5px] border-ink-900 rounded-3xl p-6 md:p-8 shadow-sticker">
-        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 1 — Find TDEE</div>
+        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 1: Find TDEE</div>
         <div class="font-mono text-sm md:text-base font-bold mb-6">
           <span class="text-cyan-accent">TDEE</span> = BMR × Activity Multiplier
         </div>
-        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 2 — Set Daily Target</div>
+        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 2: Set Daily Target</div>
         <div class="font-mono text-sm md:text-base font-bold mb-6">
           <span class="text-pink-accent">Daily Calories</span> = <span class="text-cyan-accent">TDEE</span> − <span class="text-yellow-accent">Deficit</span>
         </div>
-        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 3 — Estimate Timeline</div>
+        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 3: Estimate Timeline</div>
         <div class="font-mono text-sm md:text-base font-bold">
           <span class="text-lime-accent">Weeks</span> = (weight to lose × 7,700 kcal) ÷ (<span class="text-yellow-accent">Deficit</span> × 7)
         </div>
         <p class="mt-6 text-sm text-ink-300">
-          1 kg of body fat ≈ 7,700 kcal (≈ 3,500 kcal per lb). Timeline is an estimate — real-world results vary with water retention, muscle gain, and metabolic adaptation.
+          1 kg of body fat ≈ 7,700 kcal (≈ 3,500 kcal per lb). Timeline is an estimate. Real-world results vary with water retention, muscle gain, and metabolic adaptation.
         </p>
       </div>
       <div class="mt-8 prose prose-lg max-w-none">
         <p>
-          A <strong>calorie deficit</strong> is the foundation of all weight loss strategies, regardless of which diet you follow. Whether it's low-carb, intermittent fasting, or keto — the common mechanism is eating fewer calories than you burn.
+          A <strong>calorie deficit</strong> is the foundation of all weight loss strategies, regardless of which diet you follow. Whether it's low-carb, intermittent fasting, or keto, the common mechanism is eating fewer calories than you burn.
         </p>
         <p>
           The calculator uses the <strong>Mifflin-St Jeor equation</strong> to estimate your BMR, then multiplies by an activity factor to get TDEE. Your daily calorie target is TDEE minus your chosen deficit, with a hard floor of 1,200 kcal/day to prevent dangerously low intake.

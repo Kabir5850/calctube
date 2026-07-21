@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'simple-interest-calculator', name: 'Simple Interest Calculator',
-  description: 'Free simple interest calculator (SI = P × R × T). Enter principal, rate, and time in years, months or days to get interest and total amount instantly — plus a simple vs compound comparison.',
+  description: 'Free simple interest calculator (SI = P × R × T). Enter principal, rate, and time in years, months or days to get interest and total amount instantly, plus a simple vs compound comparison.',
   category: 'finance' as const,
   keywords: ['simple interest', 'simple interest calculator', 'SI formula', 'principal rate time', 'interest calculator'],
   lastUpdated: '2026-07-01', ratingValue: '4.9', ratingCount: '142',
@@ -18,11 +18,11 @@ const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Finance', url: '/finance/' }, { name: 'Simple Interest', url: path },
 ];
 const faqs = [
-  { q: 'What is the simple interest formula?', a: 'Simple interest = P × R × T ÷ 100, where P is the principal, R is the annual interest rate (percent), and T is the time in years. The total amount you repay or receive is P + interest. Unlike compound interest, simple interest is charged only on the original principal — never on accumulated interest.' },
-  { q: 'How do I calculate simple interest for months or days?', a: 'Convert the time to years first. For months, divide by 12 (e.g. 6 months = 0.5 years). For days, divide by 365. This calculator does it automatically — just pick the Years, Months, or Days unit. Example: ₹50,000 at 10% for 9 months = 50,000 × 10 × (9/12) ÷ 100 = ₹3,750.' },
-  { q: 'What is the difference between simple and compound interest?', a: 'Simple interest is calculated only on the principal, so it grows in a straight line. Compound interest is calculated on the principal plus previously earned interest, so it accelerates over time. Over long periods the gap is huge — on ₹1,00,000 at 8% for 20 years, simple interest yields ₹1,60,000 while annual compounding yields ₹3,66,000. Short-term loans and many car/personal loans use simple interest; savings and investments usually compound.' },
-  { q: 'Where is simple interest actually used?', a: 'Simple interest is common on short-term personal loans, many auto loans, some certificates of deposit, treasury bills, and informal lending. In India, gold loans and many NBFC short-tenure loans quote flat/simple interest. Always check whether a lender quotes simple (flat) or reducing-balance interest — the effective cost differs a lot.' },
-  { q: 'Is a "flat rate" loan the same as simple interest?', a: 'Roughly, yes — a flat-rate loan charges interest on the full original principal for the entire tenure, which is simple interest. It looks cheaper than a reducing-balance (EMI) rate but is actually more expensive, because you keep paying interest on money you have already repaid. A 10% flat rate can equal ~18% reducing-balance. Use our EMI calculator to compare.' },
+  { q: 'What is the simple interest formula?', a: 'Simple interest = P × R × T ÷ 100, where P is the principal, R is the annual interest rate (percent), and T is the time in years. The total amount you repay or receive is P + interest. Unlike compound interest, simple interest is charged only on the original principal, never on accumulated interest.' },
+  { q: 'How do I calculate simple interest for months or days?', a: 'Convert the time to years first. For months, divide by 12 (e.g. 6 months = 0.5 years). For days, divide by 365. This calculator does it automatically. Just pick the Years, Months, or Days unit. Example: ₹50,000 at 10% for 9 months = 50,000 × 10 × (9/12) ÷ 100 = ₹3,750.' },
+  { q: 'What is the difference between simple and compound interest?', a: 'Simple interest is calculated only on the principal, so it grows in a straight line. Compound interest is calculated on the principal plus previously earned interest, so it accelerates over time. Over long periods the gap is huge: on ₹1,00,000 at 8% for 20 years, simple interest yields ₹1,60,000 while annual compounding yields ₹3,66,000. Short-term loans and many car/personal loans use simple interest; savings and investments usually compound.' },
+  { q: 'Where is simple interest actually used?', a: 'Simple interest is common on short-term personal loans, many auto loans, some certificates of deposit, treasury bills, and informal lending. In India, gold loans and many NBFC short-tenure loans quote flat/simple interest. Always check whether a lender quotes simple (flat) or reducing-balance interest. The effective cost differs a lot.' },
+  { q: 'Is a "flat rate" loan the same as simple interest?', a: 'Roughly, yes. A flat-rate loan charges interest on the full original principal for the entire tenure, which is simple interest. It looks cheaper than a reducing-balance (EMI) rate but is actually more expensive, because you keep paying interest on money you have already repaid. A 10% flat rate can equal ~18% reducing-balance. Use our EMI calculator to compare.' },
 ];
 const schemas = [buildCalculatorSchema(meta, path), buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
 const relatedCalcs = [
@@ -33,7 +33,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Simple Interest Calculator 2026 — SI = P × R × T" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Simple Interest Calculator 2026: SI = P × R × T" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
@@ -72,7 +72,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                <strong>10,000 at 8% for 5 years</strong> earns <strong>4,000</strong> in simple interest, for a total of <strong>14,000</strong>. Formula: interest = principal × rate × time ÷ 100 — charged only on the original principal, never on the interest.
+                <strong>10,000 at 8% for 5 years</strong> earns <strong>4,000</strong> in simple interest, for a total of <strong>14,000</strong>. Formula: interest = principal × rate × time ÷ 100, charged only on the original principal, never on the interest.
               </p>
             </div>
           </div>
@@ -108,10 +108,10 @@ const relatedCalcs = [
             <li class="sm:col-span-2">Total amount = <span class="font-extrabold text-cyan-accent">P</span> + <span class="font-extrabold text-pink-accent">SI</span></li>
           </ul>
           <p class="text-sm text-ink-300 mt-6">
-            For months, use T = months ÷ 12; for days, T = days ÷ 365. Because interest is never added back to the principal, the balance grows in a straight line — that's the key difference from compound interest.
+            For months, use T = months ÷ 12; for days, T = days ÷ 365. Because interest is never added back to the principal, the balance grows in a straight line. That's the key difference from compound interest.
           </p>
         </div>
-        <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/simple-interest" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">SEC Investor.gov — Simple Interest</a> · <a href="https://www.rbi.org.in/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Reserve Bank of India</a></p>
+        <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/simple-interest" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">SEC Investor.gov: Simple Interest</a> · <a href="https://www.rbi.org.in/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Reserve Bank of India</a></p>
       </div>
     </div>
   </section>

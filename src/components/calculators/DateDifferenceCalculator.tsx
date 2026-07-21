@@ -124,7 +124,7 @@ export default function DateDifferenceCalculator() {
             <>
               {result.negative && (
                 <div className="mb-4 px-4 py-2 bg-yellow-accent border-[2.5px] border-ink-900 rounded-xl text-xs font-extrabold text-ink-900">
-                  Note: End date is before start date — showing absolute difference.
+                  Note: End date is before start date, showing absolute difference.
                 </div>
               )}
               {/* Hero: total days */}

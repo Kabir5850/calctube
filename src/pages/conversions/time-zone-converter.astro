@@ -33,11 +33,11 @@ const zones = [
 ];
 
 const faqs = [
-  { q: 'How do I convert one time zone to another?', a: 'Find the UTC offset of each zone, then apply the difference. For example, New York is UTC−5 and India is UTC+5:30, a 10.5-hour gap, so 9:00 AM in New York is 7:30 PM in India (on standard time). The catch is daylight saving: many zones shift by an hour for part of the year, which changes the gap. This converter uses your browser\'s built-in time-zone database, so it applies the correct offset — including DST — for the exact date you pick.' },
+  { q: 'How do I convert one time zone to another?', a: 'Find the UTC offset of each zone, then apply the difference. For example, New York is UTC−5 and India is UTC+5:30, a 10.5-hour gap, so 9:00 AM in New York is 7:30 PM in India (on standard time). The catch is daylight saving: many zones shift by an hour for part of the year, which changes the gap. This converter uses your browser\'s built-in time-zone database, so it applies the correct offset (including DST) for the exact date you pick.' },
   { q: 'What is EST to IST?', a: 'US Eastern Time (ET) is UTC−5 in winter (EST) and UTC−4 in summer (EDT); India (IST) is a fixed UTC+5:30. So the gap is 10.5 hours in winter and 9.5 hours in summer, with India always ahead. For instance, 8:00 AM EST = 6:30 PM IST, while 8:00 AM EDT = 5:30 PM IST. Pick the date in the converter and it selects the right offset automatically.' },
-  { q: 'How does daylight saving time affect the conversion?', a: 'Daylight saving shifts a zone forward by one hour (usually spring to autumn), so the time difference between two places changes depending on the date — and the two zones may not switch on the same day. That\'s why converting with a fixed offset can be an hour off. Because this tool reads the offset for the specific date you enter, it stays correct across DST transitions.' },
-  { q: 'What is UTC and how is it different from GMT?', a: 'UTC (Coordinated Universal Time) is the global time standard that clocks and computers reference; it never observes daylight saving. GMT (Greenwich Mean Time) is effectively the same as UTC in everyday use, and it\'s also London\'s winter time — but London moves to UTC+1 (BST) in summer, so "GMT" and "London time" aren\'t always identical. For precise scheduling, UTC is the safe reference.' },
-  { q: 'What time should I schedule a meeting across zones?', a: 'Convert your proposed time into each participant\'s zone and look for an hour that\'s reasonable for everyone — roughly 8 AM to 6 PM locally. Large gaps (say India to US West Coast, 12.5–13.5 hours) leave a narrow overlap, often early morning for one side and evening for the other. Use the live clocks on this page to sanity-check what "now" is for each person before you send the invite.' },
+  { q: 'How does daylight saving time affect the conversion?', a: 'Daylight saving shifts a zone forward by one hour (usually spring to autumn), so the time difference between two places changes depending on the date, and the two zones may not switch on the same day. That\'s why converting with a fixed offset can be an hour off. Because this tool reads the offset for the specific date you enter, it stays correct across DST transitions.' },
+  { q: 'What is UTC and how is it different from GMT?', a: 'UTC (Coordinated Universal Time) is the global time standard that clocks and computers reference; it never observes daylight saving. GMT (Greenwich Mean Time) is effectively the same as UTC in everyday use, and it\'s also London\'s winter time, but London moves to UTC+1 (BST) in summer, so "GMT" and "London time" aren\'t always identical. For precise scheduling, UTC is the safe reference.' },
+  { q: 'What time should I schedule a meeting across zones?', a: 'Convert your proposed time into each participant\'s zone and look for an hour that\'s reasonable for everyone, roughly 8 AM to 6 PM locally. Large gaps (say India to US West Coast, 12.5–13.5 hours) leave a narrow overlap, often early morning for one side and evening for the other. Use the live clocks on this page to sanity-check what "now" is for each person before you send the invite.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -64,7 +64,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Time Zone Converter — EST, IST, GMT, PST & More" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Time Zone Converter: EST, IST, GMT, PST & More" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-sky-300/40 rounded-full blur-[120px] float-slow"></div>
@@ -101,7 +101,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                To convert a time between zones, apply the <strong>UTC offset difference</strong>. New York (UTC−5) to India (UTC+5:30) is +10.5 hours, so <strong>9:00 AM in New York = 7:30 PM in India</strong>. Daylight saving changes the gap by an hour — this converter handles it automatically for the date you pick.
+                To convert a time between zones, apply the <strong>UTC offset difference</strong>. New York (UTC−5) to India (UTC+5:30) is +10.5 hours, so <strong>9:00 AM in New York = 7:30 PM in India</strong>. Daylight saving changes the gap by an hour. This converter handles it automatically for the date you pick.
               </p>
             </div>
           </div>
@@ -123,7 +123,7 @@ const relatedCalcs = [
       <div class="max-w-3xl mx-auto">
         <span class="chip bg-sky-300 text-ink-900 mb-4">📊 Quick reference</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">Major time zones by UTC offset.</h2>
-        <p class="mt-3 text-ink-700 font-medium">Standard-time offsets — daylight saving shifts several of these by an hour for part of the year.</p>
+        <p class="mt-3 text-ink-700 font-medium">Standard-time offsets. Daylight saving shifts several of these by an hour for part of the year.</p>
         <div class="mt-8 overflow-x-auto">
           <table class="w-full bg-white border-[2.5px] border-ink-900 rounded-2xl shadow-sticker-sm overflow-hidden border-separate border-spacing-0 text-sm">
             <thead><tr class="bg-ink-900 text-white">

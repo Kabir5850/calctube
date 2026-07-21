@@ -8,7 +8,7 @@ import { getAuthor } from '../../data/authors';
 const meta = {
   slug: 'bmr-calculator',
   name: 'BMR Calculator',
-  description: 'Free BMR calculator using the Mifflin-St Jeor equation. Find your Basal Metabolic Rate in kcal/day for men and women — metric and imperial units.',
+  description: 'Free BMR calculator using the Mifflin-St Jeor equation. Find your Basal Metabolic Rate in kcal/day for men and women, in metric and imperial units.',
   category: 'health' as const,
   keywords: ['bmr calculator', 'basal metabolic rate', 'calories at rest', 'mifflin st jeor', 'metabolism calculator'],
   lastUpdated: '2026-05-25',
@@ -24,7 +24,7 @@ const breadcrumbs = [
 const faqs = [
   {
     q: 'What is BMR?',
-    a: 'Basal Metabolic Rate (BMR) is the number of calories your body burns at complete rest — the minimum energy needed to keep your heart beating, lungs breathing, and organs functioning. It excludes any activity, digestion, or movement.',
+    a: 'Basal Metabolic Rate (BMR) is the number of calories your body burns at complete rest, the minimum energy needed to keep your heart beating, lungs breathing, and organs functioning. It excludes any activity, digestion, or movement.',
   },
   {
     q: 'Which formula does this BMR calculator use?',
@@ -36,11 +36,11 @@ const faqs = [
   },
   {
     q: 'How is BMR different from TDEE?',
-    a: 'BMR is your calorie burn at absolute rest. TDEE (Total Daily Energy Expenditure) multiplies BMR by an activity factor — sedentary people multiply by 1.2, very active people by 1.725. Your actual daily calorie need is your TDEE, not your BMR.',
+    a: 'BMR is your calorie burn at absolute rest. TDEE (Total Daily Energy Expenditure) multiplies BMR by an activity factor. Sedentary people multiply by 1.2, very active people by 1.725. Your actual daily calorie need is your TDEE, not your BMR.',
   },
   {
     q: 'Can I eat fewer calories than my BMR?',
-    a: 'Consistently eating below BMR is not recommended. It can cause muscle loss, nutrient deficiencies, and metabolic adaptation. BMR is the floor — a hard minimum just to sustain organ function. Most dietitians recommend staying above 1,200 kcal/day for women and 1,500 kcal/day for men.',
+    a: 'Consistently eating below BMR is not recommended. It can cause muscle loss, nutrient deficiencies, and metabolic adaptation. BMR is the floor, a hard minimum just to sustain organ function. Most dietitians recommend staying above 1,200 kcal/day for women and 1,500 kcal/day for men.',
   },
 ];
 const schemas = [buildCalculatorSchema(meta, path), buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
@@ -55,7 +55,7 @@ const reviewer = getAuthor('priya-nair')!;
 ---
 
 <BaseLayout
-  title="BMR Calculator — Basal Metabolic Rate (Mifflin-St Jeor)"
+  title="BMR Calculator: Basal Metabolic Rate (Mifflin-St Jeor)"
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -98,7 +98,7 @@ const reviewer = getAuthor('priya-nair')!;
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                A <strong>30-year-old woman, 165 cm, 65 kg</strong> has a BMR of about <strong>1,430 kcal/day</strong> — meaning her body burns that many calories just to keep organs functioning at rest.
+                A <strong>30-year-old woman, 165 cm, 65 kg</strong> has a BMR of about <strong>1,430 kcal/day</strong>, meaning her body burns that many calories just to keep organs functioning at rest.
               </p>
             </div>
           </div>
@@ -125,7 +125,7 @@ const reviewer = getAuthor('priya-nair')!;
           {[
             { num: '1', text: 'Select your biological sex and choose metric or imperial units', color: 'bg-cyan-accent' },
             { num: '2', text: 'Enter your age, height, and current weight using the fields or sliders', color: 'bg-lime-accent' },
-            { num: '3', text: 'See your BMR instantly — plus a breakdown of daily calorie needs by activity level', color: 'bg-yellow-accent' },
+            { num: '3', text: 'See your BMR instantly, plus a breakdown of daily calorie needs by activity level', color: 'bg-yellow-accent' },
           ].map((step) => (
             <div class={`${step.color} border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm`}>
               <div class="text-3xl font-extrabold mb-3 leading-none" style="font-family: 'Inter Tight', sans-serif;">{step.num}</div>
@@ -157,13 +157,13 @@ const reviewer = getAuthor('priya-nair')!;
       </div>
       <div class="mt-8 prose prose-lg max-w-none">
         <p>
-          Your <strong>Basal Metabolic Rate</strong> is the number of calories your body burns at complete rest — no movement, no digestion, no activity. It represents 60–75% of total daily calorie expenditure for most sedentary people. The Mifflin-St Jeor equation is the most widely validated formula for estimating BMR in healthy adults.
+          Your <strong>Basal Metabolic Rate</strong> is the number of calories your body burns at complete rest: no movement, no digestion, no activity. It represents 60–75% of total daily calorie expenditure for most sedentary people. The Mifflin-St Jeor equation is the most widely validated formula for estimating BMR in healthy adults.
         </p>
         <p>
           BMR declines naturally with age (roughly 1–2% per decade after 20), mainly due to loss of muscle mass. Increasing lean muscle through resistance training is one of the most effective ways to counteract this decline and keep metabolic rate higher.
         </p>
         <p>
-          Use the activity multiplier table in the calculator above to find your TDEE — the actual calories you need each day accounting for your lifestyle. Sedentary office workers typically land at 1.2–1.375× BMR, while athletes can reach 1.7–1.9×.
+          Use the activity multiplier table in the calculator above to find your TDEE, the actual calories you need each day accounting for your lifestyle. Sedentary office workers typically land at 1.2–1.375× BMR, while athletes can reach 1.7–1.9×.
         </p>
         <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Mifflin MD et al. (1990), Am J Clin Nutr</a> · <a href="https://www.ncbi.nlm.nih.gov/books/NBK278991/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Institute of Medicine Dietary Reference Intakes</a></p>
       </div>

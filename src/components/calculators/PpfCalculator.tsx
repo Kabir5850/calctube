@@ -104,7 +104,7 @@ export default function PpfCalculator() {
           <div className="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
             <div className="text-[10px] font-extrabold uppercase tracking-wider text-white mb-1">Tax-Free Interest</div>
             <div className="text-3xl sm:text-4xl font-extrabold text-white leading-none" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.04em' }}>{fmtINRShort(final.interest)}</div>
-            <div className="text-xs text-white/90 mt-2 font-semibold">EEE — fully tax-exempt</div>
+            <div className="text-xs text-white/90 mt-2 font-semibold">EEE, fully tax-exempt</div>
           </div>
         </div>
 
@@ -135,7 +135,7 @@ export default function PpfCalculator() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · PPF is EEE — contributions deductible under 80C, interest tax-free, maturity tax-free</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · PPF is EEE: contributions deductible under 80C, interest tax-free, maturity tax-free</div>
     </div>
   );
 }

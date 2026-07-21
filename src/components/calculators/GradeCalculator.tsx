@@ -119,7 +119,7 @@ export default function GradeCalculator() {
               <div className="sm:col-span-2">
                 <div className="text-[10px] font-extrabold uppercase tracking-wider text-ink-900 mb-1">Letter · weight entered</div>
                 <p className="text-2xl font-extrabold text-ink-900 !m-0">{letter(weighted.pct)} <span className="text-sm font-bold">· {weighted.totalWeight}% of grade</span></p>
-                {weighted.totalWeight !== 100 && <p className="text-xs text-ink-800 mt-1 font-semibold">Tip: weights currently total {weighted.totalWeight}% — the result is normalized to what you've entered.</p>}
+                {weighted.totalWeight !== 100 && <p className="text-xs text-ink-800 mt-1 font-semibold">Tip: weights currently total {weighted.totalWeight}%. The result is normalized to what you've entered.</p>}
               </div>
             </div>
           ) : (
@@ -128,8 +128,8 @@ export default function GradeCalculator() {
               <div className="text-5xl sm:text-6xl font-extrabold text-ink-900 leading-none" style={{ fontFamily: 'Inter Tight', letterSpacing: '-0.04em' }}>{needed === null ? '—' : `${needed.toFixed(1)}%`}</div>
               {needed !== null && (
                 <p className="text-sm text-ink-900 font-bold mt-3 !m-0">
-                  {needed > 100 ? 'Even 100% on the final won\'t reach your target — aim for the highest you can, or adjust the goal.'
-                    : needed <= 0 ? 'You\'ve already secured your target — anything on the final keeps you there.'
+                  {needed > 100 ? 'Even 100% on the final won\'t reach your target. Aim for the highest you can, or adjust the goal.'
+                    : needed <= 0 ? 'You\'ve already secured your target. Anything on the final keeps you there.'
                     : `Score ${needed.toFixed(1)}% on a final worth ${finalWeight}% to finish with ${desired}%.`}
                 </p>
               )}

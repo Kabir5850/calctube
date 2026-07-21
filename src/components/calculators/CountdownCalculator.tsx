@@ -79,7 +79,7 @@ export default function CountdownCalculator() {
                 <Cell n={parts.mins} label="Minutes" />
                 <Cell n={parts.secs} label="Seconds" />
               </div>
-              {parts.past && <p className="text-sm text-ink-900 font-bold mt-3 !m-0">That date has already passed — showing time elapsed since.</p>}
+              {parts.past && <p className="text-sm text-ink-900 font-bold mt-3 !m-0">That date has already passed, showing time elapsed since.</p>}
             </div>
           ) : (
             <div className="text-ink-600 font-bold">Pick a target date to start the countdown.</div>

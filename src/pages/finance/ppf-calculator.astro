@@ -27,10 +27,10 @@ const breadcrumbs = [
 
 const faqs = [
   { q: 'What is the current PPF interest rate?', a: 'As of early 2026, the PPF interest rate is 7.1% per annum, compounded annually. The Government of India reviews and announces PPF rates every quarter through the Ministry of Finance. PPF rates have been in the 7.1-8.0% range historically, with recent quarters consistently at 7.1%. Rate changes apply to all PPF accounts including existing ones.' },
-  { q: 'What is the PPF contribution limit?', a: 'The maximum annual PPF contribution is ₹1,50,000 (₹1.5 lakh) per individual per financial year. This cap applies cumulatively across all your PPF accounts (you can have only one PPF account in your name). Minimum contribution is ₹500/year. The ₹1.5 lakh PPF contribution also qualifies for Section 80C deduction — but the 80C cap of ₹1.5 lakh is the combined limit across PPF + ELSS + life insurance + tuition fees + home loan principal + etc.' },
+  { q: 'What is the PPF contribution limit?', a: 'The maximum annual PPF contribution is ₹1,50,000 (₹1.5 lakh) per individual per financial year. This cap applies cumulatively across all your PPF accounts (you can have only one PPF account in your name). Minimum contribution is ₹500/year. The ₹1.5 lakh PPF contribution also qualifies for Section 80C deduction, but the 80C cap of ₹1.5 lakh is the combined limit across PPF + ELSS + life insurance + tuition fees + home loan principal + etc.' },
   { q: 'PPF lock-in period and partial withdrawals?', a: 'PPF has a 15-year lock-in from the date of account opening. Partial withdrawals are allowed from Year 7 onwards (50% of balance at end of 4th year preceding withdrawal year or end of preceding year, whichever is lower). Loans against PPF balance are available from Year 3 to Year 6. After 15 years, the account can be extended in 5-year blocks indefinitely with or without further contributions.' },
   { q: 'Why is PPF called EEE?', a: 'PPF is one of India\'s few "EEE" (Exempt-Exempt-Exempt) investment products: (1) Contributions are tax-deductible under Section 80C up to ₹1.5 lakh/year, (2) Annual interest earned is tax-exempt, (3) Maturity value is fully tax-exempt. This makes PPF one of the most tax-efficient long-term savings vehicles in India, particularly for high-tax-bracket investors. The 7.1% post-tax PPF rate equates to ~10.5% pre-tax for 30% slab payers.' },
-  { q: 'PPF vs ELSS for 80C — which is better?', a: 'Different risk/return profiles. PPF: guaranteed 7.1% (tax-free), 15-year lock-in, capital protection, suitable for risk-averse savers. ELSS (Equity-Linked Savings Scheme): 12-15% historical equity returns (tax-free up to ₹1 lakh/year LTCG), 3-year lock-in, market risk, suitable for younger or growth-focused investors. Many balanced portfolios use both — PPF for guaranteed corpus, ELSS for growth. Combined, they can fully utilize the ₹1.5 lakh 80C cap.' },
+  { q: 'PPF vs ELSS for 80C: which is better?', a: 'Different risk/return profiles. PPF: guaranteed 7.1% (tax-free), 15-year lock-in, capital protection, suitable for risk-averse savers. ELSS (Equity-Linked Savings Scheme): 12-15% historical equity returns (tax-free up to ₹1 lakh/year LTCG), 3-year lock-in, market risk, suitable for younger or growth-focused investors. Many balanced portfolios use both: PPF for guaranteed corpus, ELSS for growth. Combined, they can fully utilize the ₹1.5 lakh 80C cap.' },
 ];
 
 const schemas = [
@@ -44,7 +44,7 @@ const schemas = [
       { name: 'Enter annual contribution', text: 'PPF annual cap is ₹1.5 lakh. Minimum ₹500/year. The contribution also qualifies for Section 80C deduction.' },
       { name: 'Use the current PPF rate', text: 'Default is 7.1% (early 2026). The Government revises PPF rates quarterly via Ministry of Finance notification.' },
       { name: 'Choose tenure', text: 'Default 15 years (PPF lock-in). PPF can be extended in 5-year blocks: 20, 25, 30, 35 years.' },
-      { name: 'Read maturity and tax-free interest', text: 'Calculator shows total maturity, your contributions, and tax-free interest. All three are EEE — fully tax-exempt under Indian Income Tax Act.' },
+      { name: 'Read maturity and tax-free interest', text: 'Calculator shows total maturity, your contributions, and tax-free interest. All three are EEE, fully tax-exempt under Indian Income Tax Act.' },
     ],
   }),
 ];
@@ -52,7 +52,7 @@ const schemas = [
 const reviewer = getAuthor('aisha-rahman');
 ---
 
-<BaseLayout title="PPF Calculator India — Public Provident Fund 🏛️" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="PPF Calculator India: Public Provident Fund 🏛️" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-pink-accent/20 rounded-full blur-[120px] float-slow"></div>
@@ -76,7 +76,7 @@ const reviewer = getAuthor('aisha-rahman');
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Maximum ₹1,50,000/year PPF contribution at <strong>7.1%</strong> over <strong>15 years</strong> = approximately <strong>₹40.7 lakh maturity</strong> (all tax-free). Total contributed: ₹22.5 lakh. Tax-free interest: ~₹18.2 lakh. PPF is EEE — deduction under 80C + tax-free interest + tax-free maturity.
+                Maximum ₹1,50,000/year PPF contribution at <strong>7.1%</strong> over <strong>15 years</strong> = approximately <strong>₹40.7 lakh maturity</strong> (all tax-free). Total contributed: ₹22.5 lakh. Tax-free interest: ~₹18.2 lakh. PPF is EEE: deduction under 80C + tax-free interest + tax-free maturity.
               </p>
             </div>
           </div>

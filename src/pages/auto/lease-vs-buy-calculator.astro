@@ -50,10 +50,10 @@ const rows = [
 ];
 
 const faqs = [
-  { q: 'Is it cheaper to lease or buy a car?', a: `It depends on how long you keep the car and its resale value. Using the calculator defaults — a ${money(ex.price)} car financed with ${money(ex.buyDown)} down at ${ex.apr}% over ${ex.loanTerm} months versus a lease of ${money(ex.leaseMonthly)}/month with ${money(ex.leaseDown)} drive-off — over the ${ex.horizon}-month lease term buying costs about ${money(ex.buyTotal)} while leasing costs ${money(ex.leaseTotal)}. Buying is cheaper by roughly ${money(ex.savings)}, mainly because you still own an asset worth ${money(ex.resale)} at the end. Change the resale value or lease payment and the answer can flip.` },
+  { q: 'Is it cheaper to lease or buy a car?', a: `It depends on how long you keep the car and its resale value. Using the calculator defaults (a ${money(ex.price)} car financed with ${money(ex.buyDown)} down at ${ex.apr}% over ${ex.loanTerm} months versus a lease of ${money(ex.leaseMonthly)}/month with ${money(ex.leaseDown)} drive-off), over the ${ex.horizon}-month lease term buying costs about ${money(ex.buyTotal)} while leasing costs ${money(ex.leaseTotal)}. Buying is cheaper by roughly ${money(ex.savings)}, mainly because you still own an asset worth ${money(ex.resale)} at the end. Change the resale value or lease payment and the answer can flip.` },
   { q: 'How is the total cost of buying calculated?', a: `First the monthly payment is found by amortizing the amount financed (price minus down payment). For the defaults that is ${money(ex.price - ex.buyDown)} financed at ${ex.apr}% over ${ex.loanTerm} months, giving a payment of about ${money(ex.monthly)} per month. Over the ${ex.horizon}-month comparison horizon you pay ${money(ex.monthly)} × ${ex.buyPayMonths} = ${money(ex.buyPayments)}, add the ${money(ex.buyDown)} down payment, then subtract the ${money(ex.resale)} resale value because you own the car at the end. That nets to ${money(ex.buyTotal)}.` },
   { q: 'How is the total cost of leasing calculated?', a: `Leasing is simpler: you pay the drive-off amount up front plus the monthly payment for every month of the lease, and you own nothing at the end. For the defaults that is ${money(ex.leaseDown)} drive-off + ${money(ex.leaseMonthly)} × ${ex.leaseTerm} months = ${money(ex.leaseTotal)}. There is no resale value to subtract because the car goes back to the dealer, which is why leases often look cheap month-to-month but cost more over a full ownership cycle.` },
-  { q: 'Why does resale value matter so much?', a: `Resale (residual) value is the single biggest lever in a lease-versus-buy decision. When you buy, the resale value is money you get back, so it is subtracted from your total cost. In the default example the ${money(ex.resale)} resale is what makes buying win — without it, buying would cost ${money(ex.buyTotal + ex.resale)} instead of ${money(ex.buyTotal)}. Cars that hold value reward buyers; cars that depreciate fast make leasing relatively more attractive.` },
+  { q: 'Why does resale value matter so much?', a: `Resale (residual) value is the single biggest lever in a lease-versus-buy decision. When you buy, the resale value is money you get back, so it is subtracted from your total cost. In the default example the ${money(ex.resale)} resale is what makes buying win. Without it, buying would cost ${money(ex.buyTotal + ex.resale)} instead of ${money(ex.buyTotal)}. Cars that hold value reward buyers; cars that depreciate fast make leasing relatively more attractive.` },
   { q: 'What does this calculator leave out?', a: 'This is a simplified total-cost comparison. It ignores sales tax and registration, dealer and acquisition fees, maintenance and repairs, insurance differences, mileage overage charges on leases, and the time value of money (a payment made today costs more than the same payment made in three years). Leasing generally suits drivers who upgrade every few years and want lower monthly outlay and warranty coverage; buying suits people who keep cars long after the loan is paid off.' },
 ];
 const schemas = [
@@ -81,7 +81,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Lease vs Buy Car Calculator — Compare Total Cost & Savings" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Lease vs Buy Car Calculator: Compare Total Cost & Savings" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/40 rounded-full blur-[120px] float-slow"></div>
@@ -118,7 +118,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Compare <strong>total cost over the lease term</strong>. A {money(ex.price)} car financed with {money(ex.buyDown)} down at {ex.apr}% over {ex.loanTerm} months costs about <strong>{money(ex.buyTotal)}</strong> over {ex.horizon} months (after a {money(ex.resale)} resale) versus <strong>{money(ex.leaseTotal)}</strong> to lease at {money(ex.leaseMonthly)}/mo — so <strong>buying saves {money(ex.savings)}</strong>. Enter your own numbers below.
+                Compare <strong>total cost over the lease term</strong>. A {money(ex.price)} car financed with {money(ex.buyDown)} down at {ex.apr}% over {ex.loanTerm} months costs about <strong>{money(ex.buyTotal)}</strong> over {ex.horizon} months (after a {money(ex.resale)} resale) versus <strong>{money(ex.leaseTotal)}</strong> to lease at {money(ex.leaseMonthly)}/mo, so <strong>buying saves {money(ex.savings)}</strong>. Enter your own numbers below.
               </p>
             </div>
           </div>
@@ -159,7 +159,7 @@ const relatedCalcs = [
             </tbody>
           </table>
         </div>
-        <p class="mt-4 text-ink-900 font-bold">On these defaults, <span class="bg-lime-accent px-1.5 py-0.5 border-2 border-ink-900 rounded">{ex.buyCheaper ? 'buying' : 'leasing'} is cheaper by {money(ex.savings)}</span> over {ex.horizon} months — because you keep a car worth {money(ex.resale)} at the end.</p>
+        <p class="mt-4 text-ink-900 font-bold">On these defaults, <span class="bg-lime-accent px-1.5 py-0.5 border-2 border-ink-900 rounded">{ex.buyCheaper ? 'buying' : 'leasing'} is cheaper by {money(ex.savings)}</span> over {ex.horizon} months, because you keep a car worth {money(ex.resale)} at the end.</p>
       </div>
     </div>
   </section>

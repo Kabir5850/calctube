@@ -32,19 +32,19 @@ const faqs = [
   },
   {
     q: 'When should I use XIRR instead of CAGR?',
-    a: 'Use CAGR only when there is one investment at the start and one value at the end. The moment money goes in or out midway — a SIP, a top-up, a partial redemption, a dividend withdrawn — CAGR breaks, because each rupee has been invested for a different length of time. XIRR (extended internal rate of return) solves for the single annualised rate that makes all those dated cash flows net to zero, so it weights every instalment by how long it actually stayed invested. For a monthly SIP, CAGR computed on total invested versus final corpus badly understates the real return. Use XIRR there.',
+    a: 'Use CAGR only when there is one investment at the start and one value at the end. The moment money goes in or out midway (a SIP, a top-up, a partial redemption, a dividend withdrawn), CAGR breaks, because each rupee has been invested for a different length of time. XIRR (extended internal rate of return) solves for the single annualised rate that makes all those dated cash flows net to zero, so it weights every instalment by how long it actually stayed invested. For a monthly SIP, CAGR computed on total invested versus final corpus badly understates the real return. Use XIRR there.',
   },
   {
     q: 'What CAGR is realistic for Indian equity over the long run?',
-    a: 'Broad Indian equity indices have delivered roughly 11% to 13% a year in rupee terms over multi-decade periods, with the Sensex and Nifty total-return series landing in that band depending on the exact start and end dates you pick. That is a nominal figure: after 5% to 6% inflation, the real compounding is closer to 6% to 7%. Two cautions matter. First, start-date sensitivity is severe — shifting the window by two years can move the answer by several points. Second, past returns are a record, not a forecast; nothing obliges the next twenty years to resemble the last twenty.',
+    a: 'Broad Indian equity indices have delivered roughly 11% to 13% a year in rupee terms over multi-decade periods, with the Sensex and Nifty total-return series landing in that band depending on the exact start and end dates you pick. That is a nominal figure: after 5% to 6% inflation, the real compounding is closer to 6% to 7%. Two cautions matter. First, start-date sensitivity is severe. Shifting the window by two years can move the answer by several points. Second, past returns are a record, not a forecast; nothing obliges the next twenty years to resemble the last twenty.',
   },
   {
     q: 'Why does CAGR hide volatility and drawdowns?',
-    a: 'CAGR is a back-solved constant. It takes only two numbers — where you started and where you ended — and reports the single smooth rate that connects them, discarding everything in between. Two portfolios that both compounded at 12% can have had wildly different journeys: one drifting steadily upward, the other losing 45% in a single year before recovering. The investor in the second one may well have sold at the bottom and never earned that 12% at all. To see risk you need other measures: standard deviation, maximum drawdown, and the worst rolling one-year and three-year returns.',
+    a: 'CAGR is a back-solved constant. It takes only two numbers (where you started and where you ended) and reports the single smooth rate that connects them, discarding everything in between. Two portfolios that both compounded at 12% can have had wildly different journeys: one drifting steadily upward, the other losing 45% in a single year before recovering. The investor in the second one may well have sold at the bottom and never earned that 12% at all. To see risk you need other measures: standard deviation, maximum drawdown, and the worst rolling one-year and three-year returns.',
   },
   {
     q: 'How accurate is the Rule of 72?',
-    a: 'The Rule of 72 estimates doubling time by dividing 72 by the annual growth rate, and it is a genuinely good mental shortcut in the 6% to 10% range, where it lands within about one percent of the exact answer. Accuracy falls away at the extremes. At 20.11%, the rule suggests 3.58 years while the exact figure — ln(2) ÷ ln(1 + r) — is 3.78 years, an error of over two months. At very low rates it drifts the other way. Treat it as a sanity check you can do in your head, never as the number you put in a plan.',
+    a: 'The Rule of 72 estimates doubling time by dividing 72 by the annual growth rate, and it is a genuinely good mental shortcut in the 6% to 10% range, where it lands within about one percent of the exact answer. Accuracy falls away at the extremes. At 20.11%, the rule suggests 3.58 years while the exact figure, ln(2) ÷ ln(1 + r), is 3.78 years, an error of over two months. At very low rates it drifts the other way. Treat it as a sanity check you can do in your head, never as the number you put in a plan.',
   },
 ];
 
@@ -91,7 +91,7 @@ const reviewer = getAuthor('aisha-rahman');
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                CAGR = <strong>(final value ÷ initial value)<sup>(1 ÷ years)</sup> − 1</strong>. Growing <strong>₹1,00,000 into ₹2,50,000 over 5 years</strong> is a CAGR of <strong>20.11%</strong> — even though the absolute return is <strong>150%</strong>. At 20.11% money doubles in <strong>3.78 years</strong> (the Rule of 72 guesses 3.58). If the final value is lower than the initial, the CAGR is simply negative, and this calculator shows it correctly instead of returning an error.
+                CAGR = <strong>(final value ÷ initial value)<sup>(1 ÷ years)</sup> − 1</strong>. Growing <strong>₹1,00,000 into ₹2,50,000 over 5 years</strong> is a CAGR of <strong>20.11%</strong>, even though the absolute return is <strong>150%</strong>. At 20.11% money doubles in <strong>3.78 years</strong> (the Rule of 72 guesses 3.58). If the final value is lower than the initial, the CAGR is simply negative, and this calculator shows it correctly instead of returning an error.
               </p>
             </div>
           </div>

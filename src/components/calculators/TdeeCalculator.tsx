@@ -277,7 +277,7 @@ export default function TdeeCalculator() {
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Mifflin-St Jeor Equation · Macros are estimates — adjust to personal needs</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · Mifflin-St Jeor Equation · Macros are estimates. Adjust to personal needs</div>
     </div>
   );
 }

@@ -161,8 +161,8 @@ export default function SimpleInterestCalculator({ currency: currencyProp, locke
             <div>
               <div className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-accent mb-1">Simple vs Compound</div>
               <p className="!m-0 text-sm text-ink-200 font-medium">
-                Compounded annually, the same {fmt(principal)} at {rate}% would earn <strong className="text-white">{fmt(calc.compoundInterest)}</strong> —
-                that's <strong className="text-lime-accent">{fmt(Math.max(0, calc.compoundExtra))} more</strong> than simple interest.
+                Compounded annually, the same {fmt(principal)} at {rate}% would earn <strong className="text-white">{fmt(calc.compoundInterest)}</strong>.
+                That's <strong className="text-lime-accent">{fmt(Math.max(0, calc.compoundExtra))} more</strong> than simple interest.
               </p>
             </div>
             <a href="/finance/compound-interest-calculator/" className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-white text-xs font-extrabold text-ink-900 bg-white hover:bg-lime-accent no-underline transition-all whitespace-nowrap">

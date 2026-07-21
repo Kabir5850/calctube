@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'grade-calculator', name: 'Grade Calculator',
-  description: 'Free grade calculator for your weighted class grade from homework, tests and projects — plus a "what do I need on the final" mode. Enter scores and weights to see your overall grade and letter.',
+  description: 'Free grade calculator for your weighted class grade from homework, tests and projects, plus a "what do I need on the final" mode. Enter scores and weights to see your overall grade and letter.',
   category: 'math' as const,
   keywords: ['grade calculator', 'final grade calculator', 'weighted grade calculator', 'what do i need on my final', 'test grade calculator', 'class grade'],
   lastUpdated: '2026-07-18',
@@ -26,11 +26,11 @@ const bands = [
 ];
 
 const faqs = [
-  { q: 'How do you calculate a weighted grade?', a: 'Multiply each category\'s score by its weight, add them up, then divide by the total weight. If homework (92%) is worth 20%, the midterm (78%) 30%, and a project (88%) 20%, the weighted grade so far is (92×20 + 78×30 + 88×20) ÷ (20+30+20) = 6900 ÷ 70 = 84.6%. Categories that are worth more move your grade more — a great homework score barely helps if homework is only 10% of the grade.' },
-  { q: 'What grade do I need on the final to get an A?', a: 'Use the formula: needed = (goal − current × (1 − finalWeight)) ÷ finalWeight. Say you have 82% going in, want 90%, and the final is worth 30%. Then needed = (90 − 82 × 0.70) ÷ 0.30 = (90 − 57.4) ÷ 0.30 = 108.7% — meaning a 90% overall isn\'t reachable with only a 30% final. Switch to the "Grade needed on final" tab and the calculator does this instantly.' },
-  { q: 'Why is the number I need on my final over 100%?', a: 'It means your target is out of reach given how little the final is worth. If the final counts for 20% of your grade, it can move your overall grade by at most 20 points from where a 0 would put you — so a large gap between your current and desired grade can require an impossible score. Lower the target, or check whether extra credit is available.' },
+  { q: 'How do you calculate a weighted grade?', a: 'Multiply each category\'s score by its weight, add them up, then divide by the total weight. If homework (92%) is worth 20%, the midterm (78%) 30%, and a project (88%) 20%, the weighted grade so far is (92×20 + 78×30 + 88×20) ÷ (20+30+20) = 6900 ÷ 70 = 84.6%. Categories that are worth more move your grade more. A great homework score barely helps if homework is only 10% of the grade.' },
+  { q: 'What grade do I need on the final to get an A?', a: 'Use the formula: needed = (goal − current × (1 − finalWeight)) ÷ finalWeight. Say you have 82% going in, want 90%, and the final is worth 30%. Then needed = (90 − 82 × 0.70) ÷ 0.30 = (90 − 57.4) ÷ 0.30 = 108.7%, meaning a 90% overall isn\'t reachable with only a 30% final. Switch to the "Grade needed on final" tab and the calculator does this instantly.' },
+  { q: 'Why is the number I need on my final over 100%?', a: 'It means your target is out of reach given how little the final is worth. If the final counts for 20% of your grade, it can move your overall grade by at most 20 points from where a 0 would put you, so a large gap between your current and desired grade can require an impossible score. Lower the target, or check whether extra credit is available.' },
   { q: 'Do my category weights have to add up to 100%?', a: 'Not while the term is in progress. This calculator normalizes by the total weight you\'ve entered, so it shows your grade among the work graded so far. Once every category is entered and the weights total 100%, the number is your true final grade. Watch the "weight entered" note under the result to see where you stand.' },
-  { q: 'How do percentages become letter grades?', a: 'Most US schools use a 10-point scale with pluses and minuses: A is 93–100, B is 83–86, C is 73–76, and so on, with F below 60. Some use a straight scale (A = 90+) or different cut-offs. The table on this page shows the common bands, but always defer to your syllabus — a single point can change a B+ to an A-.' },
+  { q: 'How do percentages become letter grades?', a: 'Most US schools use a 10-point scale with pluses and minuses: A is 93–100, B is 83–86, C is 73–76, and so on, with F below 60. Some use a straight scale (A = 90+) or different cut-offs. The table on this page shows the common bands, but always defer to your syllabus. A single point can change a B+ to an A-.' },
 ];
 const schemas = [
   buildCalculatorSchema(meta, path),
@@ -57,7 +57,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Grade Calculator — Weighted Grade & Final Exam Needed" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Grade Calculator: Weighted Grade & Final Exam Needed" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/30 rounded-full blur-[120px] float-slow"></div>

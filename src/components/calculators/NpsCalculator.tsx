@@ -285,7 +285,7 @@ export default function NpsCalculator() {
               </tbody>
             </table>
           </div>
-          <p className="text-[11px] text-ink-500 font-semibold mt-2 !mb-0">Annuity rates are quoted by the provider you pick at 60 and vary by option — a joint-life annuity with return of purchase price pays less than a single-life annuity without it.</p>
+          <p className="text-[11px] text-ink-500 font-semibold mt-2 !mb-0">Annuity rates are quoted by the provider you pick at 60 and vary by option. A joint-life annuity with return of purchase price pays less than a single-life annuity without it.</p>
         </div>
       </div>
       <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · NPS Tier I · 60% lump sum tax-free, minimum 40% annuitised, pension taxed at slab rate</div>

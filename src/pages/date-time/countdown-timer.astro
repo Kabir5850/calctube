@@ -7,7 +7,7 @@ import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'countdown-timer', name: 'Countdown Timer & Days Until Calculator',
-  description: 'Free countdown timer and days-until calculator. Count down to any date — a birthday, exam, holiday or event — in days, hours, minutes and seconds, updating live.',
+  description: 'Free countdown timer and days-until calculator. Count down to any date (a birthday, exam, holiday or event) in days, hours, minutes and seconds, updating live.',
   category: 'date-time' as const,
   keywords: ['countdown timer', 'days until calculator', 'how many days until', 'countdown to date', 'days until', 'event countdown'],
   lastUpdated: '2026-07-18',
@@ -31,8 +31,8 @@ const durations = [
 const faqs = [
   { q: 'How do I count how many days until a date?', a: 'Subtract today\'s date from the target date. The tricky part is month lengths and leap years, which is why a calculator helps: just pick the target date above and it shows the exact number of days remaining, plus a live hours-minutes-seconds countdown. For counting to a past date, it shows the days elapsed instead.' },
   { q: 'Does the countdown update in real time?', a: 'Yes. Once you choose a date, the seconds tick down live in your device\'s local time zone, refreshing every second. The day count is calculated to midnight of the target date, so "days to go" drops by one each midnight. Leaving the tab open keeps the timer running.' },
-  { q: 'Should the countdown include the start and end day?', a: 'It depends what you\'re measuring. This tool counts full days remaining until the target — so if something is "3 days away", there are three midnights between now and then. If you need to include both the start and end date (inclusive counting, common for trip lengths or notice periods), add one to the number of days shown.' },
-  { q: 'How do time zones affect the countdown?', a: 'The countdown runs in your local time zone and counts to midnight of the target date as your device sees it. If you\'re counting to an event in another country — a product launch or a match kick-off — remember the event\'s local midnight may differ from yours by several hours. For cross-time-zone events, factor in the offset.' },
+  { q: 'Should the countdown include the start and end day?', a: 'It depends what you\'re measuring. This tool counts full days remaining until the target, so if something is "3 days away", there are three midnights between now and then. If you need to include both the start and end date (inclusive counting, common for trip lengths or notice periods), add one to the number of days shown.' },
+  { q: 'How do time zones affect the countdown?', a: 'The countdown runs in your local time zone and counts to midnight of the target date as your device sees it. If you\'re counting to an event in another country (a product launch or a match kick-off), remember the event\'s local midnight may differ from yours by several hours. For cross-time-zone events, factor in the offset.' },
   { q: 'What can I use a countdown for?', a: 'Anything with a deadline: exams and assignment due dates, a wedding or birthday, a holiday or festival, a product launch, a project milestone, or a fitness goal. Seeing the days tick down is a simple motivator and a quick way to sanity-check "do I really have enough time?" The quick-pick buttons jump to common targets like New Year.' },
 ];
 const schemas = [
@@ -59,7 +59,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Countdown Timer — Days, Hours & Minutes Until Any Date" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Countdown Timer: Days, Hours & Minutes Until Any Date" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-sky-300/40 rounded-full blur-[120px] float-slow"></div>
@@ -96,7 +96,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Pick any date and this <strong>counts down live</strong> in days, hours, minutes and seconds — perfect for a birthday, exam, holiday or launch. The <strong>days-until</strong> figure updates each midnight in your local time zone. Choose a date or a quick-pick below.
+                Pick any date and this <strong>counts down live</strong> in days, hours, minutes and seconds, perfect for a birthday, exam, holiday or launch. The <strong>days-until</strong> figure updates each midnight in your local time zone. Choose a date or a quick-pick below.
               </p>
             </div>
           </div>

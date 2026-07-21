@@ -31,7 +31,7 @@ const slabs = [
 const faqs = [
   { q: 'How do I calculate how much concrete I need?', a: 'Multiply length × width × thickness to get the volume, keeping units consistent. In feet, a 10 × 10 ft slab that is 4 inches (0.33 ft) thick is 10 × 10 × 0.333 = 33.3 cubic feet, which is 33.3 ÷ 27 = 1.23 cubic yards. Concrete is ordered by the cubic yard (or cubic meter), so always convert to those units and add a waste allowance of about 10% for spillage and uneven subgrade.' },
   { q: 'How many bags of concrete are in a cubic yard?', a: 'A cubic yard is 27 cubic feet. An 80 lb bag of pre-mixed concrete yields about 0.6 cubic feet, so a cubic yard takes roughly 45 of the 80 lb bags. A 60 lb bag yields ~0.45 ft³ (about 60 bags per yard) and a 40 lb bag ~0.30 ft³ (about 90 bags per yard). Bags make sense for small jobs; beyond about 1 cubic yard, ordering ready-mix from a truck is usually cheaper and easier.' },
-  { q: 'How thick should a concrete slab be?', a: 'Typical thicknesses are 4 inches (10 cm) for patios, walkways and shed bases, and 5–6 inches (12–15 cm) for driveways and areas that carry vehicles. Thicker slabs and those bearing heavy loads usually need reinforcing mesh or rebar. Local building codes may specify minimums, so check before you pour — this calculator lets you set any thickness.' },
+  { q: 'How thick should a concrete slab be?', a: 'Typical thicknesses are 4 inches (10 cm) for patios, walkways and shed bases, and 5–6 inches (12–15 cm) for driveways and areas that carry vehicles. Thicker slabs and those bearing heavy loads usually need reinforcing mesh or rebar. Local building codes may specify minimums, so check before you pour. This calculator lets you set any thickness.' },
   { q: 'Why should I add a waste percentage?', a: 'Real pours never match the theoretical volume exactly: the subgrade is rarely perfectly level, forms flex, some concrete sticks to the mixer or wheelbarrow, and you do not want to run short mid-pour. A 5–10% allowance covers this. Running out is far more costly than a little extra, because a second batch means a second delivery fee and a cold joint in the slab.' },
   { q: 'What is the difference between a cubic yard and a cubic meter?', a: 'Both measure volume. One cubic yard equals 0.765 cubic meters, and one cubic meter equals 1.308 cubic yards. US suppliers quote concrete in cubic yards; most other countries use cubic meters. This calculator shows both so you can order in whichever unit your supplier uses.' },
 ];
@@ -60,7 +60,7 @@ const relatedCalcs = [
 ];
 ---
 
-<BaseLayout title="Concrete Calculator — Cubic Yards, Meters & Bags" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="Concrete Calculator: Cubic Yards, Meters & Bags" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-orange-300/40 rounded-full blur-[120px] float-slow"></div>
@@ -97,7 +97,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="speakable-answer text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Concrete volume = <strong>length × width × thickness</strong>. A 10 × 10 ft slab at 4" thick is <strong>1.23 cubic yards</strong> (0.94 m³) — about <strong>56 × 80 lb bags</strong>. Enter your dimensions below and add ~10% for waste.
+                Concrete volume = <strong>length × width × thickness</strong>. A 10 × 10 ft slab at 4" thick is <strong>1.23 cubic yards</strong> (0.94 m³): about <strong>56 × 80 lb bags</strong>. Enter your dimensions below and add ~10% for waste.
               </p>
             </div>
           </div>

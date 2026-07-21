@@ -27,9 +27,9 @@ const breadcrumbs = [
 
 const faqs = [
   { q: 'What is the typical FD interest rate in India in 2026?', a: 'As of early 2026, Indian bank FD rates range from 6.5% to 7.5% for 1-3 year tenures, slightly higher (7.0-8.0%) for 5+ year tenures. Senior citizens get an additional 0.5% premium. Small finance banks (AU SFB, Equitas SFB, Ujjivan SFB) offer 8.0-9.0% rates for similar tenures. RBI cut policy rate during 2024-2025, bringing FD rates down ~75 bps from 2023 peaks.' },
-  { q: 'How is FD interest calculated — compound or simple?', a: 'Most Indian bank FDs compound interest quarterly (every 3 months). Formula: Maturity = P × (1 + r/n)^(n × t), where P is principal, r is annual rate, n is compounding frequency (4 for quarterly), and t is tenure in years. Some FDs offer monthly compounding for marginally better returns. Cumulative FDs reinvest interest; non-cumulative FDs pay interest periodically without reinvestment.' },
+  { q: 'How is FD interest calculated, compound or simple?', a: 'Most Indian bank FDs compound interest quarterly (every 3 months). Formula: Maturity = P × (1 + r/n)^(n × t), where P is principal, r is annual rate, n is compounding frequency (4 for quarterly), and t is tenure in years. Some FDs offer monthly compounding for marginally better returns. Cumulative FDs reinvest interest; non-cumulative FDs pay interest periodically without reinvestment.' },
   { q: 'Is FD interest taxable?', a: 'Yes. FD interest is added to your total income and taxed at your applicable slab rate. Banks deduct 10% TDS if your annual FD interest exceeds ₹40,000 (₹50,000 for senior citizens). You can submit Form 15G/15H if your total income is below the taxable limit to avoid TDS. The 5-year tax-saving FD qualifies for Section 80C deduction up to ₹1.5 lakh/year but the maturity interest is still taxable.' },
-  { q: 'FD vs SIP — which is better?', a: 'Different tools for different goals. FDs offer capital protection and predictable returns (6.5-7.5% in 2026), suitable for short-term goals (1-5 years), emergency funds, and risk-averse retirees. SIPs in equity mutual funds offer higher long-term returns (~12% historical average) but with significant short-term volatility, suitable for long-term goals (10-20+ years) like retirement or children\'s education. Most balanced portfolios use both: FDs for stability + SIPs for growth.' },
+  { q: 'FD vs SIP: which is better?', a: 'Different tools for different goals. FDs offer capital protection and predictable returns (6.5-7.5% in 2026), suitable for short-term goals (1-5 years), emergency funds, and risk-averse retirees. SIPs in equity mutual funds offer higher long-term returns (~12% historical average) but with significant short-term volatility, suitable for long-term goals (10-20+ years) like retirement or children\'s education. Most balanced portfolios use both: FDs for stability + SIPs for growth.' },
 ];
 
 const schemas = [
@@ -56,7 +56,7 @@ const schemas = [
 const reviewer = getAuthor('aisha-rahman');
 ---
 
-<BaseLayout title="FD Calculator India — Fixed Deposit Maturity 🏦" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="FD Calculator India: Fixed Deposit Maturity 🏦" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-accent/30 rounded-full blur-[120px] float-slow"></div>

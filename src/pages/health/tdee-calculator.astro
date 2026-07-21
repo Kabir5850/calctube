@@ -8,7 +8,7 @@ import { getAuthor } from '../../data/authors';
 const meta = {
   slug: 'tdee-calculator',
   name: 'TDEE Calculator',
-  description: 'Free TDEE calculator — Total Daily Energy Expenditure with activity level, goal calories, and macro breakdown. Metric and imperial. Updated 2026.',
+  description: 'Free TDEE calculator: Total Daily Energy Expenditure with activity level, goal calories, and macro breakdown. Metric and imperial. Updated 2026.',
   category: 'health' as const,
   keywords: ['tdee calculator', 'total daily energy expenditure', 'maintenance calories', 'calorie needs', 'macro calculator'],
   lastUpdated: '2026-05-25',
@@ -24,7 +24,7 @@ const breadcrumbs = [
 const faqs = [
   {
     q: 'What is TDEE?',
-    a: 'TDEE stands for Total Daily Energy Expenditure — the total number of calories you burn in a day, including physical activity, digestion (thermic effect of food), and resting metabolism (BMR). It is the single most important number for managing weight.',
+    a: 'TDEE stands for Total Daily Energy Expenditure, the total number of calories you burn in a day, including physical activity, digestion (thermic effect of food), and resting metabolism (BMR). It is the single most important number for managing weight.',
   },
   {
     q: 'How is TDEE calculated?',
@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: 'How many calories should I eat to lose weight?',
-    a: 'A common and safe approach is to eat 500 kcal below your TDEE per day, which creates a weekly deficit of 3,500 kcal — roughly 0.45 kg (1 lb) of fat loss per week. This calculator automatically calculates this for you when you select the "Lose Weight" goal.',
+    a: 'A common and safe approach is to eat 500 kcal below your TDEE per day, which creates a weekly deficit of 3,500 kcal, roughly 0.45 kg (1 lb) of fat loss per week. This calculator automatically calculates this for you when you select the "Lose Weight" goal.',
   },
   {
     q: 'How accurate is TDEE estimation?',
@@ -55,7 +55,7 @@ const reviewer = getAuthor('priya-nair')!;
 ---
 
 <BaseLayout
-  title="TDEE Calculator — Total Daily Energy Expenditure + Macros"
+  title="TDEE Calculator: Total Daily Energy Expenditure + Macros"
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -144,12 +144,12 @@ const reviewer = getAuthor('priya-nair')!;
       <span class="chip-pink mb-4">🧮 The formula</span>
       <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">BMR × Activity = TDEE.</h2>
       <div class="mt-8 bg-ink-900 text-white border-[2.5px] border-ink-900 rounded-3xl p-6 md:p-8 shadow-sticker">
-        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 1 — Calculate BMR (Mifflin-St Jeor)</div>
+        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 1: Calculate BMR (Mifflin-St Jeor)</div>
         <div class="font-mono text-sm md:text-base font-bold mb-6">
           Men: <span class="text-pink-accent">BMR</span> = (10 × kg) + (6.25 × cm) − (5 × age) + 5<br />
           Women: <span class="text-pink-accent">BMR</span> = (10 × kg) + (6.25 × cm) − (5 × age) − 161
         </div>
-        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 2 — Multiply by Activity Factor</div>
+        <div class="text-xs font-extrabold uppercase tracking-wider text-lime-accent mb-3">Step 2: Multiply by Activity Factor</div>
         <div class="font-mono text-sm md:text-base font-bold">
           <span class="text-cyan-accent">TDEE</span> = <span class="text-pink-accent">BMR</span> × <span class="text-yellow-accent">Activity Multiplier</span>
         </div>
@@ -159,13 +159,13 @@ const reviewer = getAuthor('priya-nair')!;
       </div>
       <div class="mt-8 prose prose-lg max-w-none">
         <p>
-          <strong>TDEE</strong> is the most practical calorie number for everyday use. Unlike BMR (which assumes you never move), TDEE accounts for all the energy you expend over a full day — walking, exercise, fidgeting, and digesting food.
+          <strong>TDEE</strong> is the most practical calorie number for everyday use. Unlike BMR (which assumes you never move), TDEE accounts for all the energy you expend over a full day: walking, exercise, fidgeting, and digesting food.
         </p>
         <p>
-          For weight management, the key relationship is simple: eat below TDEE to lose weight, match TDEE to maintain, eat above TDEE to gain. A deficit of 500 kcal/day produces roughly 0.45 kg (1 lb) of fat loss per week — a widely accepted, safe rate for most adults.
+          For weight management, the key relationship is simple: eat below TDEE to lose weight, match TDEE to maintain, eat above TDEE to gain. A deficit of 500 kcal/day produces roughly 0.45 kg (1 lb) of fat loss per week, a widely accepted, safe rate for most adults.
         </p>
         <p>
-          The macro split shown (30% protein, 25% fat, 45% carbs) is a common performance-oriented ratio. Adjust fat and carbs to personal preference — protein is the most important lever for satiety and muscle retention during a deficit.
+          The macro split shown (30% protein, 25% fat, 45% carbs) is a common performance-oriented ratio. Adjust fat and carbs to personal preference. Protein is the most important lever for satiety and muscle retention during a deficit.
         </p>
         <p class="text-xs text-ink-500 mt-6 font-medium">Sources: <a href="https://www.nap.edu/read/10490/chapter/1" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">IOM Dietary Reference Intakes for Energy (2002)</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/12082089/" rel="noopener noreferrer" target="_blank" class="underline hover:text-ink-700">Institute of Medicine Physical Activity Multipliers</a></p>
       </div>

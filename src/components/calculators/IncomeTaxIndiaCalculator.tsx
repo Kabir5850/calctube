@@ -148,7 +148,7 @@ export default function IncomeTaxIndiaCalculator({ monthlyProfessionalTax = 0, s
             <span className="text-2xl">🇮🇳</span>
             <h2 className="!text-lg sm:!text-xl !my-0 !text-ink-900 font-extrabold" style={{ fontFamily: 'Inter Tight, Inter, sans-serif', letterSpacing: '-0.02em' }}>
               India Income Tax Calculator
-              {stateName ? ` — ${stateName}` : ''}
+              {stateName ? `, ${stateName}` : ''}
             </h2>
           </div>
           <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink-900">
@@ -272,7 +272,7 @@ export default function IncomeTaxIndiaCalculator({ monthlyProfessionalTax = 0, s
             <div className="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">💡 Recommendation</div>
             <p className="text-ink-900 font-bold !m-0 leading-relaxed">
               {savings > 100 ? (
-                <>The <strong>{recommendation === 'old' ? 'Old' : 'New'} Regime</strong> saves you <strong>{fmtRupees(savings)}</strong> in tax this year. {recommendation === 'old' ? 'Old regime wins because your deductions exceed ₹4 lakh.' : 'New regime wins — you don\'t have enough deductions to beat the default lower slabs.'}</>
+                <>The <strong>{recommendation === 'old' ? 'Old' : 'New'} Regime</strong> saves you <strong>{fmtRupees(savings)}</strong> in tax this year. {recommendation === 'old' ? 'Old regime wins because your deductions exceed ₹4 lakh.' : 'New regime wins. You don\'t have enough deductions to beat the default lower slabs.'}</>
               ) : (
                 <>Both regimes produce nearly identical tax. The <strong>New Regime</strong> is simpler with no deduction documentation needed.</>
               )}
@@ -280,7 +280,7 @@ export default function IncomeTaxIndiaCalculator({ monthlyProfessionalTax = 0, s
           </div>
         </div>
       </div>
-      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · FY 2025-26 (AY 2026-27) slabs · Includes 4% cess and surcharge · Not legal/tax advice — consult a CA for filings.</div>
+      <div className="text-xs text-ink-500 mt-3 px-1 font-bold">✨ Live · FY 2025-26 (AY 2026-27) slabs · Includes 4% cess and surcharge · Not legal/tax advice. Consult a CA for filings.</div>
     </div>
   );
 }

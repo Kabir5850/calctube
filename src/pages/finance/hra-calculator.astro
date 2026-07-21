@@ -27,10 +27,10 @@ const breadcrumbs = [
 
 const faqs = [
   { q: 'How is HRA exemption calculated in India?', a: 'HRA exemption is the LEAST of three values: (A) Actual HRA received from employer, (B) 50% of basic salary for metro cities (Mumbai, Delhi, Kolkata, Chennai) or 40% for non-metro, (C) Rent paid minus 10% of basic salary. The smallest of these three is your tax-exempt HRA; the rest is added to your taxable income. This rule is in Section 10(13A) of the Income Tax Act.' },
-  { q: 'Which cities are HRA "metro" for tax purposes?', a: 'For HRA exemption purposes, only 4 cities qualify as "metro" with the 50% rule: Mumbai, Delhi (NCT), Kolkata, Chennai. All other Indian cities — including Bengaluru, Pune, Hyderabad, Ahmedabad, Surat, Jaipur — qualify only for 40% non-metro rule. This is despite Bengaluru/Pune/Hyderabad being major metros economically. The 4-metro list is from the original 1962 Income Tax Rules and has not been updated.' },
-  { q: 'HRA in old vs new tax regime — what changed?', a: 'HRA exemption is available ONLY in the Old Tax Regime, not in the New Tax Regime (which has lower slabs but eliminates most exemptions and deductions). For most salaried earners with HRA + 80C + standard deduction + home loan interest, the Old Regime is still optimal. The New Regime favors taxpayers without these deductions. Most tax-planning calculators (including ours) help compare both regimes.' },
+  { q: 'Which cities are HRA "metro" for tax purposes?', a: 'For HRA exemption purposes, only 4 cities qualify as "metro" with the 50% rule: Mumbai, Delhi (NCT), Kolkata, Chennai. All other Indian cities (including Bengaluru, Pune, Hyderabad, Ahmedabad, Surat, Jaipur) qualify only for 40% non-metro rule. This is despite Bengaluru/Pune/Hyderabad being major metros economically. The 4-metro list is from the original 1962 Income Tax Rules and has not been updated.' },
+  { q: 'HRA in old vs new tax regime: what changed?', a: 'HRA exemption is available ONLY in the Old Tax Regime, not in the New Tax Regime (which has lower slabs but eliminates most exemptions and deductions). For most salaried earners with HRA + 80C + standard deduction + home loan interest, the Old Regime is still optimal. The New Regime favors taxpayers without these deductions. Most tax-planning calculators (including ours) help compare both regimes.' },
   { q: 'Can I claim HRA if I pay rent to my parents?', a: 'Yes, but with strict conditions: (1) you must actually pay rent to your parents (preferably via bank transfer for documentation), (2) the parent must be the legal owner of the property (not you), (3) the parent must declare the rental income on their tax return, (4) for rent above ₹1 lakh/year, you must report your landlord-parent\'s PAN to your employer. Income Tax Officers routinely scrutinize parent-rent HRA claims; ensure full documentation.' },
-  { q: 'HRA documentation requirements?', a: 'For HRA above ₹3,000/month: actual rent receipts signed by landlord. For HRA above ₹1 lakh/year: landlord\'s PAN must be furnished to employer. For HRA above ₹50,000/month: tenant must deduct 5% TDS under Section 194-IB and deposit with the IT Department. Keep rent receipts, rental agreement, and bank transfer records — IT Officers can request documentation up to 6 years after filing.' },
+  { q: 'HRA documentation requirements?', a: 'For HRA above ₹3,000/month: actual rent receipts signed by landlord. For HRA above ₹1 lakh/year: landlord\'s PAN must be furnished to employer. For HRA above ₹50,000/month: tenant must deduct 5% TDS under Section 194-IB and deposit with the IT Department. Keep rent receipts, rental agreement, and bank transfer records. IT Officers can request documentation up to 6 years after filing.' },
 ];
 
 const schemas = [
@@ -42,7 +42,7 @@ const schemas = [
     totalTime: 'PT2M', estimatedCost: { value: '0', currency: 'INR' },
     steps: [
       { name: 'Select city tier', text: 'Metro (50% rule) applies only to Mumbai, Delhi, Kolkata, Chennai. All other cities use 40% non-metro rule.' },
-      { name: 'Enter basic salary', text: 'Use your basic + DA from Form 16 / payslip. Don\'t include allowances, bonuses, or perks — only basic salary counts for HRA calculation.' },
+      { name: 'Enter basic salary', text: 'Use your basic + DA from Form 16 / payslip. Don\'t include allowances, bonuses, or perks. Only basic salary counts for HRA calculation.' },
       { name: 'Enter HRA received from employer', text: 'Use the HRA component shown on your payslip or Form 16. This is monthly.' },
       { name: 'Enter monthly rent paid', text: 'Actual rent paid to your landlord. Must have receipts. For above ₹1L/yr: need landlord PAN.' },
       { name: 'Read the exemption amount', text: 'Calculator shows the LEAST of (A) actual HRA, (B) % of basic, (C) rent - 10% basic. The least is your tax-exempt HRA. Rest is taxable.' },
@@ -53,7 +53,7 @@ const schemas = [
 const reviewer = getAuthor('aisha-rahman');
 ---
 
-<BaseLayout title="HRA Calculator India — Rent Allowance 2025-26" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title="HRA Calculator India: Rent Allowance 2025-26" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-lime-accent/30 rounded-full blur-[120px] float-slow"></div>
