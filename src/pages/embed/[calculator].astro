@@ -159,7 +159,7 @@ if (!WIRED_SLUGS.has(calc.slug)) {
 const canonical = new URL(calc.href, SITE.url).toString();
 ---
 
-<EmbedLayout title={`${calc.name} — ${SITE.name}`} canonical={canonical} calcName={calc.name}>
+<EmbedLayout title={`${calc.name} | ${SITE.name}`} canonical={canonical} calcName={calc.name}>
   {calc.slug === 'mortgage-calculator' && <MortgageCalculator client:load />}
   {calc.slug === 'loan-calculator' && <LoanCalculator client:load />}
   {calc.slug === 'emi-calculator' && <EmiCalculator client:load />}

@@ -78,7 +78,7 @@ export const categoryMeta: Record<CalcCategory, { label: string; href: string; c
     href: '/tools/',
     color: 'slate',
     icon: '📝',
-    description: 'Word count, character count, and case conversion — all in-browser.',
+    description: 'Word count, character count, and case conversion, all in-browser.',
   },
 };
 
@@ -240,7 +240,7 @@ export const calculators: Calculator[] = [
     slug: 'inflation-calculator',
     href: '/finance/inflation-calculator/',
     name: 'Inflation Calculator',
-    description: 'Purchasing power over time — what past money is worth today.',
+    description: 'Purchasing power over time: what past money is worth today.',
     category: 'finance',
     keywords: ['inflation calculator', 'purchasing power', 'value of money over time', 'cpi calculator'],
     icon: '📉',
