@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/credit-score-and-home-loan-rate';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Credit Score & Home Loan Rate', url: path },
 ];
@@ -124,7 +121,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         Borrowers spend weeks comparing lenders to shave 10-15 basis points off their rate, and ignore the 100-165 basis points sitting inside their own credit score. Moving from the "Good" band to the "Very good" band is worth more than switching banks. The good news: score improvement is largely mechanical. Pay on time, keep card utilisation low, avoid a flurry of applications, and fix report errors. Start 3-6 months before you house-hunt, because the score you apply with is the price you pay for the next two decades. A free monthly CIBIL check is the highest-ROI financial habit a future home buyer has.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

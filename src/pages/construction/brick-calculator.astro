@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import BrickCalculator from '../../components/calculators/BrickCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'brick-calculator', name: 'Brick Calculator',
@@ -13,7 +11,6 @@ const meta = {
   lastUpdated: '2026-07-19',
 };
 const path = '/construction/brick-calculator';
-const reviewer = getAuthor('calctube-editorial')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Construction', url: '/construction/' }, { name: 'Brick Calculator', url: path },
 ];
@@ -106,7 +103,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <BrickCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

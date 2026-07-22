@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/currency-pegs-explained';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Currency Pegs Explained', url: path },
 ];
@@ -118,7 +115,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         The practical takeaway is simple and useful. Because the dirham, riyal and their Gulf peers are locked to the dollar, <strong>the only thing moving your remittance is your home currency against the dollar.</strong> If the rupee weakens from ₹83 to ₹85 per dollar, your dirhams suddenly buy about 2.4% more rupees, a genuinely better time to send a large transfer. You don't need to track "AED to INR" as a separate thing; track the dollar cross for your home currency, and you know exactly what your dirhams are worth. It also means a strong-dollar year is a good year to remit, and a weak-dollar year is a good year to hold. The peg turns a two-currency puzzle into a one-number decision.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

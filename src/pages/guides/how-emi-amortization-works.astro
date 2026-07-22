@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/how-emi-amortization-works';
 const lastUpdated = '2026-07-09';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'How EMI Amortization Works', url: path },
 ];
@@ -140,7 +137,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed">
         Pay <strong>one extra EMI per year</strong>, a 13th payment, applied straight to principal. On this loan it shortens the tenure by about <strong>{Math.floor(monthsSaved / 12)} years {monthsSaved % 12} months</strong> and saves roughly <strong>{fmtL(interestSaved)}</strong> ({((interestSaved / base.cumInterest) * 100).toFixed(0)}% of the total interest), because a prepaid rupee at year 2 stops accruing {RATE}% for the remaining eighteen years. Indian floating-rate home loans carry <strong>no prepayment penalty</strong> by RBI rule, so the only cost is opportunity cost. Bonus math: prepaying an {RATE}% loan is a guaranteed, tax-free {RATE}% return. Compare that honestly with what your money would otherwise earn.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

@@ -3,10 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import HraCalculator from '../../components/calculators/HraCalculator.tsx';
 import {
   buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema,
-  buildSpeakableSchema, buildHowToSchema, buildEditorialTeamSchema,
+  buildSpeakableSchema, buildHowToSchema,
 } from '../../lib/seo';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
-import { getAuthor } from '../../data/authors';
 
 const path = '/finance/hra-calculator';
 
@@ -35,7 +33,7 @@ const faqs = [
 
 const schemas = [
   buildCalculatorSchema(meta, path), buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs),
-  buildSpeakableSchema(path), buildEditorialTeamSchema(),
+  buildSpeakableSchema(path),
   buildHowToSchema({
     name: 'How to calculate HRA exemption',
     description: 'Step-by-step instructions for calculating tax-exempt House Rent Allowance under Section 10(13A) of the Income Tax Act.',
@@ -50,7 +48,6 @@ const schemas = [
   }),
 ];
 
-const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout title="HRA Calculator India: Rent Allowance 2025-26" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
@@ -86,11 +83,5 @@ const reviewer = getAuthor('aisha-rahman');
     </div>
   </section>
   <section class="container-wide pb-12 md:pb-16"><div class="max-w-4xl mx-auto"><HraCalculator client:visible /></div></section>
-  <!-- Reviewer attribution — E-E-A-T signal -->
-  <section class="container-wide pt-2 pb-8">
-    <div class="max-w-4xl mx-auto">
-      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
-    </div>
-  </section>
   <section class="bg-ink-50 border-y-2 border-ink-900"><div class="container-wide py-12 md:py-16"><div class="max-w-4xl mx-auto"><span class="chip-cyan mb-4">❓ FAQ</span><h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">HRA calculator FAQ.</h2><div class="mt-8 space-y-4">{faqs.map((faq) => (<details class="bg-white border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm group"><summary class="cursor-pointer font-bold text-ink-900 list-none flex items-start justify-between gap-4"><span style="font-family: 'Inter Tight', sans-serif;">{faq.q}</span><span class="text-ink-500 group-open:rotate-180 transition-transform">▾</span></summary><p class="mt-3 text-ink-700 font-medium leading-relaxed !mb-0">{faq.a}</p></details>))}</div></div></div></section>
 </BaseLayout>

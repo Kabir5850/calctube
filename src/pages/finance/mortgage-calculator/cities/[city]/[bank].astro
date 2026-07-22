@@ -2,8 +2,6 @@
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
 import MortgageCalculator from '../../../../../components/calculators/MortgageCalculator.tsx';
 import BankIcon from '../../../../../components/ui/BankIcon.astro';
-import AuthorBadge from '../../../../../components/ui/AuthorBadge.astro';
-import { getAuthor } from '../../../../../data/authors';
 import { indiaCities, type IndiaCityData } from '../../../../../data/india-cities';
 import { emiBanks, type BankData } from '../../../../../data/emi-banks';
 import { cityBankCombos, type CityBankCombo } from '../../../../../data/city-bank-grid';
@@ -13,7 +11,6 @@ import {
   buildFAQSchema,
   buildSpeakableSchema,
   buildHowToSchema,
-  buildEditorialTeamSchema,
 } from '../../../../../lib/seo';
 
 export async function getStaticPaths() {
@@ -83,7 +80,6 @@ const schemas = [
   buildBreadcrumbSchema(breadcrumbs),
   buildFAQSchema(allFaqs),
   buildSpeakableSchema(path),
-  buildEditorialTeamSchema(),
   buildHowToSchema({
     name: `How to calculate your ${bank.bankName} home loan EMI in ${city.name}`,
     description: `Step-by-step instructions for estimating ${bank.bankName} home loan EMI in ${city.name} at ${bank.homeLoanRate.typical}% typical rate, ${formatINRShort(city.typicalLoanAmount)} ticket size, including ${city.stampDutyPct + city.registrationPct}% stamp duty financing.`,
@@ -107,7 +103,6 @@ const otherCombosForThisBank = cityBankCombos.filter(
   (c) => c.bankSlug === bank.slug && c.citySlug !== city.slug
 );
 
-const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout
@@ -322,12 +317,6 @@ const reviewer = getAuthor('aisha-rahman');
           20–40 basis points, which compounds into lakhs over a 20-year term. Use the calculator above with each bank's rate to see your own numbers.
         </p>
       </div>
-
-      {reviewer && (
-        <div class="mt-8">
-          <AuthorBadge author={reviewer} verb="Reviewed" />
-        </div>
-      )}
     </div>
   </section>
 

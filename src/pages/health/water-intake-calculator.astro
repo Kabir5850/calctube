@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import WaterIntakeCalculator from '../../components/calculators/WaterIntakeCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'water-intake-calculator', name: 'Water Intake Calculator',
@@ -13,7 +11,6 @@ const meta = {
   lastUpdated: '2026-07-18',
 };
 const path = '/health/water-intake-calculator';
-const reviewer = getAuthor('priya-nair')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Health', url: '/health/' }, { name: 'Water Intake Calculator', url: path },
 ];
@@ -106,7 +103,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <WaterIntakeCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/finance/flat-vs-reducing-interest';
 const lastUpdated = '2026-07-01';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Finance', url: '/finance/' }, { name: 'Flat vs Reducing Interest', url: path },
 ];
@@ -145,7 +142,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="mt-5 text-ink-700 font-medium leading-relaxed max-w-3xl">
         Same headline number, <strong>{fmtINR(Math.round(flatInterest - redInterest))} difference</strong> in interest. The flat loan keeps charging you 10% on the full {fmtINR(P)} even in month 59, when you owe almost nothing. That's why regulators push lenders to disclose the effective rate (APR), and why you should never compare a flat quote with a reducing quote directly.
       </p>
-      {reviewer && <div class="mt-6"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

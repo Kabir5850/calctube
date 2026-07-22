@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/home-loan-tax-benefits';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Home Loan Tax Benefits', url: path },
 ];
@@ -116,7 +113,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         The home-loan deductions aren't just a rebate. For many borrowers they're the deciding factor in the <em>old-vs-new regime</em> choice itself. If your loan generates the full ₹2 lakh interest deduction and your 80C isn't already maxed, the old regime's deductions can outweigh the new regime's lower rates. But run the actual numbers both ways: for someone whose 80C is already full with EPF and whose interest is well under ₹2 lakh, the new regime's simpler, lower-rate structure usually wins outright. Don't assume the loan "saves tax": it only does under the old regime, and only if you have the deduction headroom to use.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

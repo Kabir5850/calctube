@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/gratuity-calculation';
 const lastUpdated = '2026-07-19';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Gratuity Calculation', url: path },
 ];
@@ -127,7 +124,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         For most people the whole gratuity lands tax-free, because the {fmtL(TAX_FREE_CAP)} exemption is generous relative to the formula. The taxable column above stays empty right up to 30 years on a mid salary. The ceiling only bites when a high last-drawn salary meets a long tenure. Take {fmtINR(capExample.salary)}/month basic + DA over {capExample.years} years: the formula yields {fmtINR(capExample.gratuity)}, of which {fmtL(capExample.exempt)} is exempt and <strong>{fmtINR(capExample.taxable)} is taxed as salary</strong> at your slab. Two more things worth knowing: the {fmtL(TAX_FREE_CAP)} cap is a <strong>lifetime</strong> figure across all employers, and only <strong>basic + DA</strong> feed the formula, so a salary structure that keeps basic low quietly shrinks your eventual gratuity. Check your latest payslip's basic line, not your CTC, before you estimate.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

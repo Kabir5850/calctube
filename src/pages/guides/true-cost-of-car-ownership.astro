@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/true-cost-of-car-ownership';
 const lastUpdated = '2026-07-20';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'True Cost of Car Ownership', url: path },
 ];
@@ -162,7 +159,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         Financing changes the picture too. The {fmtINR(interest)} of interest here is a real, avoidable cost, but only worth avoiding if your cash can't earn more than the {(LOAN_RATE*100).toFixed(1)}% loan rate elsewhere. Run your own numbers on the <a href="/finance/car-loan-calculator/">car loan calculator</a> before you decide how much to put down.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

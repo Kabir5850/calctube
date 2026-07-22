@@ -1,14 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import FlagIcon from '../../components/ui/FlagIcon.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 import { mortgageLocales } from '../../data/mortgage-locales';
 
 const path = '/guides/down-payments-around-the-world';
 const lastUpdated = '2026-07-09';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Down Payments Around the World', url: path },
 ];
@@ -129,7 +126,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         Rates tell a parallel story across all {mortgageLocales.length} markets we track: the cheapest typical rates cluster in {cheapest.map(c => c.country).join(', ')} (from {cheapest[0].typicalRate}%), the dearest in {dearest.map(c => c.country).join(', ')} (up to {dearest[0].typicalRate}%), and the global median sits near <strong>{medianRate}%</strong>. High-rate markets are almost always high-inflation markets. Lenders aren't greedier in Cairo than Copenhagen; their currency melts faster. That's also why CPI-indexed products (Chile's UF, Uruguay's UI, Iceland's verðtryggð loans) exist: they split the inflation risk so the *real* rate can stay sane.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

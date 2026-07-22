@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import InflationCalculator from '../../components/calculators/InflationCalculator.tsx';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'inflation-calculator',
@@ -63,7 +61,6 @@ const relatedCalcs = [
   { name: 'Net Worth Calculator', href: '/finance/net-worth-calculator/', desc: 'Track your assets and liabilities.', icon: '💰', color: 'bg-pink-accent' },
 ];
 
-const reviewer = getAuthor('aisha-rahman')!;
 ---
 
 <BaseLayout
@@ -148,7 +145,6 @@ const reviewer = getAuthor('aisha-rahman')!;
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <InflationCalculator client:visible />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

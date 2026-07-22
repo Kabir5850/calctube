@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import CarDepreciationCalculator from '../../components/calculators/CarDepreciationCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'car-depreciation-calculator', name: 'Car Depreciation Calculator',
@@ -13,7 +11,6 @@ const meta = {
   lastUpdated: '2026-07-19',
 };
 const path = '/auto/car-depreciation-calculator';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Auto', url: '/auto/' }, { name: 'Car Depreciation Calculator', url: path },
 ];
@@ -106,7 +103,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <CarDepreciationCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

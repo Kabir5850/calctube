@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import FractionCalculator from '../../components/calculators/FractionCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'fraction-calculator', name: 'Fraction Calculator',
@@ -13,7 +11,6 @@ const meta = {
   lastUpdated: '2026-07-18',
 };
 const path = '/math/fraction-calculator';
-const reviewer = getAuthor('calctube-editorial')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Math', url: '/math/' }, { name: 'Fraction Calculator', url: path },
 ];
@@ -115,7 +112,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <FractionCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

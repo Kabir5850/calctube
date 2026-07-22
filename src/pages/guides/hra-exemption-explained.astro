@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/hra-exemption-explained';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'HRA Exemption Explained', url: path },
 ];
@@ -121,7 +118,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         Notice how the exemption grows with rent until it hits a ceiling: the actual HRA received, or the 50% (metro) / 40% (non-metro) cap. That's the key insight: <strong>your exemption is bounded by your salary structure, not just your rent.</strong> If your basic is low (common when employers load pay into allowances to reduce their PF cost), both the "50% of basic" limb and the "10% of basic" subtraction shift, and your HRA benefit is smaller than the rent alone would suggest. And remember the regime rule above all: none of this applies under the new tax regime. Before counting on HRA, confirm you're on the old regime and that the maths, run both ways, still favours it.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

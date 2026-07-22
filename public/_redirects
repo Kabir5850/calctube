@@ -15,3 +15,7 @@
 # Saint Lucia slug consolidation (st-lucia -> saint-lucia)
 /finance/mortgage-calculator/st-lucia             /finance/mortgage-calculator/saint-lucia               301
 /finance/mortgage-calculator/st-lucia/            /finance/mortgage-calculator/saint-lucia/              301
+
+# Fabricated reviewer personas removed 2026-07-22 — 301 old author URLs to the honest About page
+/authors            /about/    301
+/authors/*          /about/    301

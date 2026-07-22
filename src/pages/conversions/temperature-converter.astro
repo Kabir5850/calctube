@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import TemperatureConverter from '../../components/calculators/TemperatureConverter.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'temperature-converter', name: 'Temperature Converter',
@@ -13,7 +11,6 @@ const meta = {
   lastUpdated: '2026-07-18',
 };
 const path = '/conversions/temperature-converter';
-const reviewer = getAuthor('calctube-editorial')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Conversions', url: '/conversions/' }, { name: 'Temperature Converter', url: path },
 ];
@@ -102,7 +99,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <TemperatureConverter client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../../components/ui/AuthorBadge.astro';
 import UnitConverter from '../../../components/calculators/UnitConverter.tsx';
 import TemperatureConverter from '../../../components/calculators/TemperatureConverter.tsx';
-import { getAuthor } from '../../../data/authors';
 import {
   unitPairs, UNITS, convert, linearFactor, fmt, TABLE_AMOUNTS, TEMP_AMOUNTS, type UnitPair,
 } from '../../../data/unit-pairs';
@@ -19,7 +17,6 @@ const from = UNITS[pair.from];
 const to = UNITS[pair.to];
 const isTemp = pair.category === 'temperature';
 const path = `/conversions/unit-converter/${pair.slug}`;
-const reviewer = getAuthor('calctube-editorial')!;
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 // Temperature reads cleaner with the scale name ("Celsius") than the plural
@@ -183,34 +180,6 @@ const relatedPairs = unitPairs
       ) : (
         <UnitConverter client:load initialCategory={pair.category} initialFrom={from.symbol} initialTo={to.symbol} />
       )}
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
-    </div>
-  </section>
-
-  <!-- FORMULA -->
-  <section class="bg-ink-50 border-y-2 border-ink-900">
-    <div class="container-wide py-12 md:py-16">
-      <div class="max-w-3xl mx-auto">
-        <span class="chip bg-yellow-accent text-ink-900 mb-4">📐 Formula</span>
-        <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">The {from.name} → {to.name} formula.</h2>
-        <div class="mt-6 bg-white border-[2.5px] border-ink-900 rounded-2xl p-6 shadow-sticker-sm">
-          <div class="text-2xl sm:text-3xl font-extrabold text-ink-900 text-center" style="font-family: 'Inter Tight';">{formulaText}</div>
-        </div>
-        <div class="prose-custom mt-6 space-y-4 text-ink-800 leading-relaxed font-medium">
-          {isTemp ? (
-            <p>
-              {cap(from.name)} and {to.name} are both temperature scales, but they don't share a zero point,
-              so converting means rescaling and offsetting. {cap(from.name)} is used for {from.usage}; {to.name} for {to.usage}.
-              Applying <strong>{formulaText}</strong>, {exIn} {from.symbol} becomes {fmt(exOut)} {to.symbol}.
-            </p>
-          ) : (
-            <p>
-              One {from.name} is exactly {factorStr} {to.plural}, so converting is a single multiplication:
-              multiply the {from.name} figure by <strong>{factorStr}</strong> to get {to.plural}, or divide by {factorStr}
-              (multiply by {inverseStr}) to go back. {cap(from.plural)} are commonly used for {from.usage}, while {to.plural}
-              are used for {to.usage}, which is why this conversion comes up so often.
-            </p>
-          )}
         </div>
       </div>
     </div>

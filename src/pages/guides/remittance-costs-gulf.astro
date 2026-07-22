@@ -1,13 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 import { currencyPairs } from '../../data/currency-pairs';
 
 const path = '/guides/remittance-costs-gulf';
 const lastUpdated = '2026-07-09';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Gulf Remittance Costs', url: path },
 ];
@@ -133,7 +130,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed mt-6">
         Two practical rules fall out of this data. First, <strong>the dirham is pegged to the dollar</strong>, so every corridor above is really "USD versus the home currency": when the rupee or taka weakens against the dollar, your dirhams buy more at home, and vice versa. Second, <strong>corridor competition sets your floor</strong>: AED→INR and AED→PHP are so contested that even average providers stay under 1.5% total cost, while thinner corridors (AED→NPR, AED→EGP) reward more comparison shopping before each transfer.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

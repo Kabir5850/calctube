@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/how-much-home-loan-can-i-afford';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'How Much Home Loan Can I Afford', url: path },
 ];
@@ -123,7 +120,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         The table shows what a bank will <em>approve</em>. What you should actually <em>borrow</em> is usually less. A max-FOIR loan leaves no cash for stamp duty and registration (which the loan can't cover, often another 6-8% of the property), no emergency fund, and no cushion if a floating rate ticks up. The comfortable version of the rule: home-loan EMI alone under 30-35% of net income, all EMIs under 40%, and six months of expenses still in the bank after you've paid the down payment. Borrow to the second number, not the first. The house you can barely afford is the one that owns you.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

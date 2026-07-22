@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import TimeZoneConverter from '../../components/calculators/TimeZoneConverter.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'time-zone-converter', name: 'Time Zone Converter',
@@ -13,7 +11,6 @@ const meta = {
   lastUpdated: '2026-07-19',
 };
 const path = '/conversions/time-zone-converter';
-const reviewer = getAuthor('calctube-editorial')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Conversions', url: '/conversions/' }, { name: 'Time Zone Converter', url: path },
 ];
@@ -113,7 +110,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <TimeZoneConverter client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

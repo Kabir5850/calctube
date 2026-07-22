@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import CgpaCalculator from '../../components/calculators/CgpaCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 import { universities } from '../../data/cgpa-universities';
 
 const meta = {
@@ -14,7 +12,6 @@ const meta = {
   lastUpdated: '2026-07-10',
 };
 const path = '/math/cgpa-to-percentage-calculator';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Math', url: '/math/' }, { name: 'CGPA to Percentage', url: path },
 ];
@@ -103,7 +100,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <CgpaCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

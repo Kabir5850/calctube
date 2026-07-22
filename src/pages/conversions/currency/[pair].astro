@@ -11,7 +11,6 @@ import {
   buildFAQSchema,
   buildSpeakableSchema,
   buildHowToSchema,
-  buildEditorialTeamSchema,
 } from '../../../lib/seo';
 
 export async function getStaticPaths() {
@@ -54,7 +53,6 @@ const schemas = [
   buildBreadcrumbSchema(breadcrumbs),
   buildFAQSchema(pair.faqs),
   buildSpeakableSchema(path),
-  buildEditorialTeamSchema(),
   buildHowToSchema({
     name: `How to convert ${pair.from} to ${pair.to}`,
     description: `Step-by-step instructions to convert ${fromCurr.name} to ${toCurr.name} using the latest 2026 exchange rate of 1 ${pair.from} = ${pair.rate} ${pair.to}.`,

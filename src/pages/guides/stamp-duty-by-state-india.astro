@@ -1,13 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 import { indiaCities } from '../../data/india-cities';
 
 const path = '/guides/stamp-duty-by-state-india';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Stamp Duty by State', url: path },
 ];
@@ -131,7 +128,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         <strong>1. Registration charges swing the total more than you'd think.</strong> {dearest.state} tops the list not because of a punishing stamp rate but because its registration charge stacks on heavily, proof that you must add both lines, never just the headline stamp percentage. <strong>2. The women's rebate is real money.</strong> In {womenStates.length} states, registering in a woman's name saves 1-2% ({fmtINR(PROP * 0.01)}-{fmtINR(PROP * 0.02)} on this flat), which is why so many Indian families put the wife's or mother's name on the deed. <strong>3. Your EMI is identical across states, your upfront cost is not.</strong> Two buyers with the same ₹50L flat and same loan pay the same monthly EMI whether they're in {cheapest.state} or {dearest.state}, but one hands over {fmtINR(PROP * (dearest.combined - cheapest.combined) / 100)} more at registration.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

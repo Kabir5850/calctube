@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import UnitConverter from '../../components/calculators/UnitConverter.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 import { unitPairs, UNITS } from '../../data/unit-pairs';
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -21,7 +19,6 @@ const meta = {
   lastUpdated: '2026-07-18',
 };
 const path = '/conversions/unit-converter';
-const reviewer = getAuthor('calctube-editorial')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Conversions', url: '/conversions/' }, { name: 'Unit Converter', url: path },
 ];
@@ -125,7 +122,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <UnitConverter client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

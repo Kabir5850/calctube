@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/prepay-home-loan-vs-invest';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Prepay Loan vs Invest', url: path },
 ];
@@ -151,7 +148,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         Before either choice, a fixed priority list beats any spreadsheet. <strong>First</strong>, clear high-cost debt. Credit cards (~36%) and personal loans (~14%) dwarf any home-loan or investment maths. <strong>Second</strong>, hold a 6-month emergency fund; prepayment is illiquid, and being cash-poor with a paid-down house is a real risk. <strong>Third</strong>, capture any free money: employer EPF match, old-regime 80C/24b deductions you'd otherwise waste. <strong>Only then</strong> does the prepay-vs-invest question apply, and at that point the honest default for most people is: prepay unless you're genuinely confident of beating your loan rate after tax. Certainty is worth a lot.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

@@ -12,7 +12,6 @@ import {
   buildFAQSchema,
   buildSpeakableSchema,
   buildHowToSchema,
-  buildEditorialTeamSchema,
 } from '../../../../lib/seo';
 
 export async function getStaticPaths() {
@@ -78,7 +77,6 @@ const schemas = [
   buildBreadcrumbSchema(breadcrumbs),
   buildFAQSchema(combo.faqs),
   buildSpeakableSchema(path),
-  buildEditorialTeamSchema(),
   buildHowToSchema({
     name: `How to calculate your ${bank.bankName} home loan EMI in ${state.name}`,
     description: `Step-by-step instructions to estimate your monthly EMI for a ${bank.bankName} home loan in ${state.name} including stamp duty (${combo.stateStampDutyPct}%) and current 2026 interest rates.`,

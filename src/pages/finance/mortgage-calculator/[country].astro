@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import GeoBanner from '../../../components/ui/GeoBanner.astro';
-import AuthorBadge from '../../../components/ui/AuthorBadge.astro';
 import FlagIcon from '../../../components/ui/FlagIcon.astro';
 import MortgageCalculator from '../../../components/calculators/MortgageCalculator.tsx';
-import { getAuthor } from '../../../data/authors';
 import {
   mortgageLocales,
   formatLocaleCurrency,
@@ -17,7 +15,6 @@ import {
   buildFAQSchema,
   buildSpeakableSchema,
   buildHowToSchema,
-  buildEditorialTeamSchema,
 } from '../../../lib/seo';
 
 export async function getStaticPaths() {
@@ -66,7 +63,6 @@ const schemas = [
   buildBreadcrumbSchema(breadcrumbs),
   buildFAQSchema(locale.faqs),
   buildSpeakableSchema(path),
-  buildEditorialTeamSchema(),
   buildHowToSchema({
     name: `How to calculate a ${locale.termLocalName} in ${locale.country}`,
     description: `Step-by-step instructions to estimate your monthly ${locale.termLocalName} payment in ${locale.country} using the ${locale.currency} currency, typical ${locale.typicalRate}% rate, and ${locale.typicalTerm}-year term.`,
@@ -107,7 +103,6 @@ const otherProminent = mortgageLocales.filter(
 );
 const otherCountries = [...sameCurrencySiblings, ...otherProminent].slice(0, 8);
 
-const reviewer = getAuthor('aisha-rahman')!;
 
 // Hreflang alternates — self-reference + x-default.
 // All content is English, so we use English language codes:
@@ -216,12 +211,6 @@ const hreflangs = [
         initialRate={locale.typicalRate}
         initialTerm={locale.typicalTerm}
       />
-      <!-- Reviewer attribution — E-E-A-T signal -->
-      {reviewer && (
-        <div class="mt-4">
-          <AuthorBadge author={reviewer} verb="Reviewed" />
-        </div>
-      )}
     </div>
   </section>
 

@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import OvulationCalculator from '../../components/calculators/OvulationCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'ovulation-calculator', name: 'Ovulation Calculator',
@@ -13,7 +11,6 @@ const meta = {
   lastUpdated: '2026-07-18',
 };
 const path = '/health/ovulation-calculator';
-const reviewer = getAuthor('priya-nair')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Health', url: '/health/' }, { name: 'Ovulation Calculator', url: path },
 ];
@@ -103,7 +100,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <OvulationCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

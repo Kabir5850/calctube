@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/sip-step-up-vs-flat';
 const lastUpdated = '2026-07-21';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Step-Up vs Flat SIP', url: path },
 ];
@@ -133,7 +130,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         Look closely at the 10% row: you invest {lakh(step10.invested - flat.invested)} more than the flat plan, but you end up with {lakh(extra10)} more. That's not a rounding quirk. It's compounding rewarding money that arrives early. A step-up front-loads your extra contributions into the early-to-middle years, exactly when there's still a decade or two of growth ahead. By the final year your SIP has climbed to about {fmtINR(finalMonthly10)}/month, but those late contributions barely have time to grow; it's the raises in years 3 through 10 that do the real work. The takeaway is simple and powerful: <em>step up early and pre-commit it,</em> so the increase happens automatically instead of depending on you to remember. Even a modest 5% step-up beats a flat SIP by {lakh(rowsWithExtra.find((r) => r.stepUp === 5)!.vsFlat)} here. The direction matters more than the exact number.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

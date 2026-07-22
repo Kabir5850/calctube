@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../../components/ui/AuthorBadge.astro';
 import CgpaCalculator from '../../../components/calculators/CgpaCalculator.tsx';
-import { getAuthor } from '../../../data/authors';
 import { universities, getUniversity, type University } from '../../../data/cgpa-universities';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../../lib/seo';
 
@@ -13,7 +11,6 @@ export async function getStaticPaths() {
 interface Props { uni: University; }
 const { uni } = Astro.props;
 const path = `/math/cgpa-to-percentage/${uni.slug}`;
-const reviewer = getAuthor('calctube-editorial')!;
 
 const ex = 8.5;
 const exPct = uni.toPct(ex);
@@ -120,7 +117,6 @@ const others = universities.filter((u) => u.slug !== uni.slug);
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <CgpaCalculator client:load initialFormula={uni.formulaKey} />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

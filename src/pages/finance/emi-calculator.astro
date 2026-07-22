@@ -4,8 +4,6 @@ import EmiCalculator from '../../components/calculators/EmiCalculator.tsx';
 import BankIcon from '../../components/ui/BankIcon.astro';
 import { emiBanks } from '../../data/emi-banks';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'emi-calculator', name: 'EMI Calculator',
@@ -33,7 +31,6 @@ const relatedCalcs = [
   { name: 'Mortgage Calculator', href: '/finance/mortgage-calculator/', desc: 'Home loan + amortization.', icon: '🏠', color: 'bg-violet-300' },
   { name: 'PPF Calculator', href: '/finance/ppf-calculator/', desc: 'PPF returns over 15 years.', icon: '🪙', color: 'bg-rose-300' },
 ];
-const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout title="EMI Calculator: Home, Personal, Auto Loan EMI" description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
@@ -89,12 +86,6 @@ const reviewer = getAuthor('aisha-rahman');
     <div class="max-w-4xl mx-auto"><EmiCalculator client:load /></div>
   </section>
 
-  <!-- Reviewer attribution — E-E-A-T signal -->
-  <section class="container-wide pt-2 pb-8">
-    <div class="max-w-4xl mx-auto">
-      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
-    </div>
-  </section>
 
   <!-- HOW TO USE -->
   <section class="bg-ink-50 border-y-2 border-ink-900">

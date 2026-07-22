@@ -2,8 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AgeCalculator from '../../components/calculators/AgeCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
-import { getAuthor } from '../../data/authors';
 
 const meta = {
   slug: 'age-calculator',
@@ -50,7 +48,6 @@ const relatedCalcs = [
   { name: 'Tip Calculator', href: '/math/tip-calculator/', desc: 'Split bills & tips easily.', icon: '🍽️', color: 'bg-yellow-accent' },
   { name: 'Percentage Calculator', href: '/math/percentage-calculator/', desc: 'Percents made easy.', icon: '🧮', color: 'bg-pink-accent' },
 ];
-const reviewer = getAuthor('calctube-editorial');
 ---
 
 <BaseLayout
@@ -117,12 +114,6 @@ const reviewer = getAuthor('calctube-editorial');
     </div>
   </section>
 
-  <!-- Reviewer attribution — E-E-A-T signal -->
-  <section class="container-wide pt-2 pb-8">
-    <div class="max-w-4xl mx-auto">
-      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
-    </div>
-  </section>
 
   <!-- HOW IT WORKS -->
   <section class="bg-ink-50 border-y-2 border-ink-900">

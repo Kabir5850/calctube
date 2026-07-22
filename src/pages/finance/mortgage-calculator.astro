@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import MortgageCalculator from '../../components/calculators/MortgageCalculator.tsx';
-import { getAuthor } from '../../data/authors';
 import { mortgageLocales } from '../../data/mortgage-locales';
 import { mortgageTerms } from '../../data/mortgage-terms';
 import {
@@ -30,7 +28,6 @@ const meta = {
 };
 
 const path = '/finance/mortgage-calculator';
-const reviewer = getAuthor('aisha-rahman')!;
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -195,7 +192,6 @@ const relatedCalcs = [
   <section class="container-wide pb-12 md:pb-16">
     <div class="max-w-4xl mx-auto">
       <MortgageCalculator client:load />
-      {reviewer && <div class="mt-4"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/fd-vs-debt-fund-vs-savings';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Where to Park Money', url: path },
 ];
@@ -117,7 +114,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         <strong>Liquidity first, return second (for the money you might actually need).</strong> Your emergency fund's job is to be there instantly when a job loss or medical bill hits; earning 3% in a savings account and never breaking a penalty is worth more than 7% locked in an FD you can't touch. But that logic flips for money with a known horizon: cash you're sure you won't need for a year or more has no business earning savings-account rates. The discipline is simply to sort your money by when you'll need it, then park each bucket where it belongs: emergency in savings/liquid, 1-3 year goals in FD/debt, and long-term wealth in equity, not any of these.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 

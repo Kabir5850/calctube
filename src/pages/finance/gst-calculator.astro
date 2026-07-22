@@ -7,10 +7,7 @@ import {
   buildFAQSchema,
   buildSpeakableSchema,
   buildHowToSchema,
-  buildEditorialTeamSchema,
 } from '../../lib/seo';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
-import { getAuthor } from '../../data/authors';
 
 const path = '/finance/gst-calculator';
 
@@ -61,7 +58,6 @@ const schemas = [
   buildBreadcrumbSchema(breadcrumbs),
   buildFAQSchema(faqs),
   buildSpeakableSchema(path),
-  buildEditorialTeamSchema(),
   buildHowToSchema({
     name: 'How to calculate GST in India',
     description: 'Step-by-step instructions for adding or removing GST from any amount using Indian standard GST rates (5%, 12%, 18%, 28%) plus CGST + SGST and IGST splits.',
@@ -76,7 +72,6 @@ const schemas = [
   }),
 ];
 
-const reviewer = getAuthor('aisha-rahman');
 ---
 
 <BaseLayout
@@ -143,12 +138,6 @@ const reviewer = getAuthor('aisha-rahman');
     </div>
   </section>
 
-  <!-- Reviewer attribution — E-E-A-T signal -->
-  <section class="container-wide pt-2 pb-8">
-    <div class="max-w-4xl mx-auto">
-      {reviewer && <AuthorBadge author={reviewer} verb="Reviewed" />}
-    </div>
-  </section>
 
   <section class="bg-ink-50 border-y-2 border-ink-900">
     <div class="container-wide py-12 md:py-16">

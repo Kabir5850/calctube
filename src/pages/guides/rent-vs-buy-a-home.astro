@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AuthorBadge from '../../components/ui/AuthorBadge.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
-import { getAuthor } from '../../data/authors';
 
 const path = '/guides/rent-vs-buy-a-home';
 const lastUpdated = '2026-07-10';
-const reviewer = getAuthor('aisha-rahman')!;
 const breadcrumbs = [
   { name: 'Home', url: '/' }, { name: 'Guides', url: '/guides/' }, { name: 'Rent vs Buy', url: path },
 ];
@@ -144,7 +141,6 @@ const schemas = [buildBreadcrumbSchema(breadcrumbs), buildFAQSchema(faqs)];
       <p class="text-ink-700 font-medium leading-relaxed max-w-3xl">
         <strong>How long you'll stay.</strong> Every other variable is secondary to the holding period, because the upfront costs of buying (stamp duty, registration, and the interest-heavy early years) only pay off with time. If there's a real chance you'll move within 3-5 years (a job change, a growing family, a city you're not sure about), the maths and the flexibility both favour renting. If you're planting roots for 7+ years, buying's forced-saving and appreciation usually win. Don't buy for the investment return; buy for the stability, and let the return be a bonus.
       </p>
-      {reviewer && <div class="not-prose mt-8"><AuthorBadge author={reviewer} verb="Reviewed" /></div>}
     </div>
   </section>
 
