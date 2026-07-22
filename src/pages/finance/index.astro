@@ -66,16 +66,18 @@ const calcs = buildHubCards('finance', {
 });
 
 // Comparison and guide pages: editorial content, not registry calculators.
+// Styled like the /guides/ hub cards (colour, icon, tag) rather than HubCard,
+// so the section reads as editorial rather than as unfinished calculator cards.
 const guides = [
-  { name: 'Old vs New Regime', href: '/finance/old-vs-new-tax-regime-india/', desc: "Side-by-side comparison of India's two income-tax regimes." },
-  { name: 'Indian City EMI Calculators', href: '/finance/mortgage-calculator/cities/', desc: 'Home loan EMI by Indian city: Mumbai, Bengaluru, Chennai, Delhi-NCR and 280+ more with local stamp duty and lender notes.' },
-  { name: 'SBI vs HDFC Home Loan', href: '/finance/sbi-vs-hdfc-home-loan/', desc: 'Compare SBI and HDFC home loan rates, processing speed, and real EMI.' },
-  { name: 'HDFC vs ICICI Personal Loan', href: '/finance/hdfc-vs-icici-personal-loan/', desc: 'HDFC vs ICICI personal loan: EMI, rates, and disbursal speed compared.' },
-  { name: 'FHA vs Conventional Mortgage', href: '/finance/fha-vs-conventional-mortgage/', desc: 'US homebuyer comparison: FHA vs conventional down payment, rates, and PMI.' },
-  { name: 'PPF vs ELSS', href: '/finance/ppf-vs-elss-investment/', desc: 'Section 80C comparison: PPF vs ELSS over 15-year returns.' },
-  { name: 'SIP vs Lump Sum', href: '/finance/sip-vs-lump-sum-investment/', desc: 'Which investment style wins: SIP vs lump sum over 10 years.' },
-  { name: '10-Year vs 30-Year Mortgage', href: '/finance/10-year-vs-30-year-mortgage/', desc: 'Total interest, EMI, and payoff tradeoffs between short and long mortgages.' },
-  { name: '15-Year vs 30-Year Mortgage', href: '/finance/15-year-vs-30-year-mortgage/', desc: 'The classic mid-tenure decision for US homebuyers.' },
+  { name: 'Old vs New Regime', href: '/finance/old-vs-new-tax-regime-india/', desc: "Side-by-side comparison of India's two income-tax regimes.", icon: '🪙', color: 'bg-yellow-accent', tag: 'India tax', cta: 'See the comparison' },
+  { name: 'Indian City EMI Calculators', href: '/finance/mortgage-calculator/cities/', desc: 'Home loan EMI by Indian city: Mumbai, Bengaluru, Chennai, Delhi-NCR and 280+ more with local stamp duty and lender notes.', icon: '🏙️', color: 'bg-cyan-accent', tag: 'Home loans', cta: 'Browse the cities' },
+  { name: 'SBI vs HDFC Home Loan', href: '/finance/sbi-vs-hdfc-home-loan/', desc: 'Compare SBI and HDFC home loan rates, processing speed, and real EMI.', icon: '🏦', color: 'bg-lime-accent', tag: 'Banks', cta: 'See the comparison' },
+  { name: 'HDFC vs ICICI Personal Loan', href: '/finance/hdfc-vs-icici-personal-loan/', desc: 'HDFC vs ICICI personal loan: EMI, rates, and disbursal speed compared.', icon: '💳', color: 'bg-pink-accent', tag: 'Personal loans', cta: 'See the comparison' },
+  { name: 'FHA vs Conventional Mortgage', href: '/finance/fha-vs-conventional-mortgage/', desc: 'US homebuyer comparison: FHA vs conventional down payment, rates, and PMI.', icon: '🇺🇸', color: 'bg-cyan-accent', tag: 'US mortgages', cta: 'See the comparison' },
+  { name: 'PPF vs ELSS', href: '/finance/ppf-vs-elss-investment/', desc: 'Section 80C comparison: PPF vs ELSS over 15-year returns.', icon: '🌱', color: 'bg-lime-accent', tag: 'Section 80C', cta: 'See the comparison' },
+  { name: 'SIP vs Lump Sum', href: '/finance/sip-vs-lump-sum-investment/', desc: 'Which investment style wins: SIP vs lump sum over 10 years.', icon: '📈', color: 'bg-yellow-accent', tag: 'Investing', cta: 'See the comparison' },
+  { name: '10-Year vs 30-Year Mortgage', href: '/finance/10-year-vs-30-year-mortgage/', desc: 'Total interest, EMI, and payoff tradeoffs between short and long mortgages.', icon: '🏠', color: 'bg-pink-accent', tag: 'Mortgages', cta: 'See the comparison' },
+  { name: '15-Year vs 30-Year Mortgage', href: '/finance/15-year-vs-30-year-mortgage/', desc: 'The classic mid-tenure decision for US homebuyers.', icon: '⏳', color: 'bg-lime-accent', tag: 'Mortgages', cta: 'See the comparison' },
 ];
 
 const breadcrumbs = [
@@ -120,7 +122,18 @@ const breadcrumbs = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {
         guides.map((c) => (
-          <HubCard href={c.href} name={c.name} desc={c.desc} />
+          <a
+            href={c.href}
+            class={`group ${c.color} border-[2.5px] border-ink-900 rounded-3xl p-6 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200 flex flex-col`}
+          >
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-4xl group-hover:rotate-12 transition-transform inline-block">{c.icon}</span>
+              <span class="text-[10px] font-extrabold uppercase tracking-wider bg-white/70 border-2 border-ink-900 rounded-full px-2.5 py-0.5 text-ink-900">{c.tag}</span>
+            </div>
+            <h3 class="!text-xl md:!text-2xl !font-extrabold !text-ink-900 !m-0 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">{c.name}</h3>
+            <p class="text-sm text-ink-800 mt-2.5 leading-snug font-medium flex-1">{c.desc}</p>
+            <div class="mt-4 font-extrabold text-ink-900 text-sm">{c.cta} →</div>
+          </a>
         ))
       }
     </div>
