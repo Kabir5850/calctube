@@ -2,13 +2,25 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
+import { buildHubCards } from '../../lib/category-hub';
 
-const liveCalcs = [
-  { name: 'Age Calculator', href: '/date-time/age-calculator/', desc: 'Exact age in years, months, and days from any birth date — plus next birthday countdown.', icon: '🎂' },
-  { name: 'Date Difference Calculator', href: '/date-time/date-difference-calculator/', desc: 'Days, weeks, and months between any two dates — with estimated working days.', icon: '📅' },
-  { name: 'Countdown Timer', href: '/date-time/countdown-timer/', desc: 'Live countdown to any date — days, hours, minutes and seconds to birthdays, exams or launches.', icon: '⏳' },
-  { name: 'Time Zone Converter', href: '/conversions/time-zone-converter/', desc: 'Convert a time between world zones (EST, IST, GMT, PST) with daylight saving handled.', icon: '🌐' },
-];
+// Derived from the calculators registry — see src/lib/category-hub.ts.
+// The time zone converter lives under /conversions/ but belongs on this hub too.
+const liveCalcs = buildHubCards('date-time', {
+  alsoInclude: ['time-zone-converter'],
+  order: [
+    'age-calculator',
+    'date-difference-calculator',
+    'countdown-timer',
+    'time-zone-converter',
+  ],
+  copy: {
+    'age-calculator': { desc: 'Exact age in years, months, and days from any birth date — plus next birthday countdown.' },
+    'date-difference-calculator': { name: 'Date Difference Calculator', desc: 'Days, weeks, and months between any two dates — with estimated working days.' },
+    'countdown-timer': { desc: 'Live countdown to any date — days, hours, minutes and seconds to birthdays, exams or launches.' },
+    'time-zone-converter': { desc: 'Convert a time between world zones (EST, IST, GMT, PST) with daylight saving handled.' },
+  },
+});
 
 const upcomingCalcs = [
   { name: 'Business Days Calculator', desc: 'Working days between dates excluding weekends and country-specific public holidays.', icon: '📆' },

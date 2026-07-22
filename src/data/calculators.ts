@@ -8,7 +8,7 @@
  *  3. The homepage, search, and category pages will auto-update
  */
 
-export type CalcCategory = 'finance' | 'health' | 'math' | 'conversion' | 'date-time' | 'construction' | 'auto';
+export type CalcCategory = 'finance' | 'health' | 'math' | 'conversion' | 'date-time' | 'construction' | 'auto' | 'tools';
 
 export interface Calculator {
   slug: string;
@@ -72,6 +72,13 @@ export const categoryMeta: Record<CalcCategory, { label: string; href: string; c
     color: 'slate',
     icon: '🚗',
     description: 'Car loan, lease vs buy, fuel cost, and mileage.',
+  },
+  tools: {
+    label: 'Text Tools',
+    href: '/tools/',
+    color: 'slate',
+    icon: '📝',
+    description: 'Word count, character count, and case conversion — all in-browser.',
   },
 };
 
@@ -217,6 +224,36 @@ export const calculators: Calculator[] = [
     category: 'finance',
     keywords: ['budget calculator', '50 30 20 rule', 'monthly budget', 'budget planner'],
     icon: '📊',
+    status: 'live',
+  },
+  {
+    slug: 'retirement-calculator',
+    href: '/finance/retirement-calculator/',
+    name: 'Retirement Calculator',
+    description: 'Project your nest egg with compound growth and inflation.',
+    category: 'finance',
+    keywords: ['retirement calculator', 'retirement savings', 'nest egg', 'retirement corpus'],
+    icon: '🏖️',
+    status: 'live',
+  },
+  {
+    slug: 'inflation-calculator',
+    href: '/finance/inflation-calculator/',
+    name: 'Inflation Calculator',
+    description: 'Purchasing power over time — what past money is worth today.',
+    category: 'finance',
+    keywords: ['inflation calculator', 'purchasing power', 'value of money over time', 'cpi calculator'],
+    icon: '📉',
+    status: 'live',
+  },
+  {
+    slug: 'net-worth-calculator',
+    href: '/finance/net-worth-calculator/',
+    name: 'Net Worth Calculator',
+    description: 'Assets minus liabilities, with your debt-to-asset ratio.',
+    category: 'finance',
+    keywords: ['net worth calculator', 'assets minus liabilities', 'personal net worth', 'debt to asset ratio'],
+    icon: '💎',
     status: 'live',
   },
 
@@ -684,6 +721,18 @@ export const calculators: Calculator[] = [
     category: 'auto',
     keywords: ['lease vs buy calculator', 'car lease vs buy', 'should i lease or buy', 'lease or finance'],
     icon: '🚗',
+    status: 'live',
+  },
+
+  // TOOLS
+  {
+    slug: 'word-counter',
+    href: '/tools/word-counter/',
+    name: 'Word Counter',
+    description: 'Live word, character, sentence and reading-time count.',
+    category: 'tools',
+    keywords: ['word counter', 'character counter', 'word count tool', 'reading time'],
+    icon: '📝',
     status: 'live',
   },
 ];

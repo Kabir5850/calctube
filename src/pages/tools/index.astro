@@ -2,10 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
+import { buildHubCards } from '../../lib/category-hub';
 
-const liveCalcs = [
-  { name: 'Word Counter', href: '/tools/word-counter/', desc: 'Count words, characters, sentences, paragraphs and reading time as you type — nothing is uploaded.', icon: '📝' },
-];
+// Derived from the calculators registry — see src/lib/category-hub.ts.
+const liveCalcs = buildHubCards('tools', {
+  copy: {
+    'word-counter': { desc: 'Count words, characters, sentences, paragraphs and reading time as you type — nothing is uploaded.' },
+  },
+});
 
 const upcomingCalcs = [
   { name: 'Character Counter', desc: 'Live character count against tweet, SMS and meta-tag limits.', icon: '🔤' },

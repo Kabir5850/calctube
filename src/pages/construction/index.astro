@@ -2,14 +2,25 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
+import { buildHubCards } from '../../lib/category-hub';
 
-const liveCalcs = [
-  { name: 'Concrete Calculator', href: '/construction/concrete-calculator/', desc: 'Cubic yards, cubic meters and bags of concrete for slabs and footings — with a waste allowance.', icon: '🧱' },
-  { name: 'Paint Calculator', href: '/construction/paint-calculator/', desc: 'Gallons or litres of paint for a room, from dimensions, coats, doors and windows.', icon: '🎨' },
-  { name: 'Tile Calculator', href: '/construction/tile-calculator/', desc: 'Tiles and boxes needed for a floor or wall, adjusted for waste and layout.', icon: '🟦' },
-  { name: 'Brick Calculator', href: '/construction/brick-calculator/', desc: 'How many bricks and mortar bags for a wall of any size, single or double layer.', icon: '🧱' },
-  { name: 'Roofing Calculator', href: '/construction/roofing-calculator/', desc: 'Roofing squares and shingle bundles from footprint and roof pitch.', icon: '🏠' },
-];
+// Derived from the calculators registry — see src/lib/category-hub.ts.
+const liveCalcs = buildHubCards('construction', {
+  order: [
+    'concrete-calculator',
+    'paint-calculator',
+    'tile-calculator',
+    'brick-calculator',
+    'roofing-calculator',
+  ],
+  copy: {
+    'concrete-calculator': { desc: 'Cubic yards, cubic meters and bags of concrete for slabs and footings — with a waste allowance.' },
+    'paint-calculator': { desc: 'Gallons or litres of paint for a room, from dimensions, coats, doors and windows.' },
+    'tile-calculator': { desc: 'Tiles and boxes needed for a floor or wall, adjusted for waste and layout.' },
+    'brick-calculator': { desc: 'How many bricks and mortar bags for a wall of any size, single or double layer.' },
+    'roofing-calculator': { desc: 'Roofing squares and shingle bundles from footprint and roof pitch.' },
+  },
+});
 
 const upcomingCalcs = [
   { name: 'Wallpaper Calculator', desc: 'Rolls of wallpaper accounting for pattern repeat and cutouts.', icon: '🖼️' },

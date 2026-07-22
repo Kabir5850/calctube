@@ -2,18 +2,33 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
+import { buildHubCards } from '../../lib/category-hub';
 
-const liveCalcs = [
-  { name: 'Percentage Calculator', href: '/math/percentage-calculator/', desc: 'What is X% of Y, percentage change, increase or decrease — every variant on one page.', icon: '％' },
-  { name: 'CGPA to Percentage', href: '/math/cgpa-to-percentage-calculator/', desc: 'Convert CGPA to percentage and back — CBSE, VTU, Anna, Mumbai, GTU and MAKAUT formulas.', icon: '🎓' },
-  { name: 'GPA Calculator', href: '/math/gpa-calculator/', desc: 'Weighted GPA on the 4.0 scale from your courses, grades and credit hours.', icon: '🎓' },
-  { name: 'Grade Calculator', href: '/math/grade-calculator/', desc: 'Your weighted class grade, and the score you need on the final exam.', icon: '📝' },
-  { name: 'Fraction Calculator', href: '/math/fraction-calculator/', desc: 'Add, subtract, multiply and divide fractions and simplify to lowest terms.', icon: '½' },
-  { name: 'Ratio Calculator', href: '/math/ratio-calculator/', desc: 'Solve proportions (A:B = C:D), simplify and scale ratios.', icon: '➗' },
-  { name: 'Scientific Calculator', href: '/math/scientific-calculator/', desc: 'Trig, logs, powers, roots, π, e and factorial — in degrees or radians.', icon: '🔬' },
-  { name: 'Tip Calculator', href: '/math/tip-calculator/', desc: 'Split a restaurant bill any way — tip %, divide between people, per-person total.', icon: '🍽️' },
-  { name: 'Discount Calculator', href: '/math/discount-calculator/', desc: 'Sale price from % off, original price, or discount % from before/after price.', icon: '🏷️' },
-];
+// Derived from the calculators registry — see src/lib/category-hub.ts.
+const liveCalcs = buildHubCards('math', {
+  order: [
+    'percentage-calculator',
+    'cgpa-to-percentage-calculator',
+    'gpa-calculator',
+    'grade-calculator',
+    'fraction-calculator',
+    'ratio-calculator',
+    'scientific-calculator',
+    'tip-calculator',
+    'discount-calculator',
+  ],
+  copy: {
+    'percentage-calculator': { desc: 'What is X% of Y, percentage change, increase or decrease — every variant on one page.' },
+    'cgpa-to-percentage-calculator': { desc: 'Convert CGPA to percentage and back — CBSE, VTU, Anna, Mumbai, GTU and MAKAUT formulas.' },
+    'gpa-calculator': { desc: 'Weighted GPA on the 4.0 scale from your courses, grades and credit hours.' },
+    'grade-calculator': { desc: 'Your weighted class grade, and the score you need on the final exam.' },
+    'fraction-calculator': { desc: 'Add, subtract, multiply and divide fractions and simplify to lowest terms.' },
+    'ratio-calculator': { desc: 'Solve proportions (A:B = C:D), simplify and scale ratios.' },
+    'scientific-calculator': { desc: 'Trig, logs, powers, roots, π, e and factorial — in degrees or radians.' },
+    'tip-calculator': { desc: 'Split a restaurant bill any way — tip %, divide between people, per-person total.' },
+    'discount-calculator': { desc: 'Sale price from % off, original price, or discount % from before/after price.' },
+  },
+});
 
 const upcomingCalcs = [
   { name: 'Statistics Calculator', desc: 'Mean, median, mode, standard deviation, variance, and quartiles from any dataset.', icon: '📊' },

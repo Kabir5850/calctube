@@ -3,23 +3,35 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
 import { currencyPairs } from '../../data/currency-pairs';
+import { buildHubCards } from '../../lib/category-hub';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
   { name: 'Conversions', url: '/conversions/' },
 ];
 
-const categories = [
-  { name: 'Currency Converters', href: '/conversions/currency/', desc: `Live exchange rates for ${currencyPairs.length}+ currency pairs — USD, INR, GBP, EUR, AED, SAR, and more.`, emoji: '💱', count: currencyPairs.length },
-];
+// Derived from the calculators registry — see src/lib/category-hub.ts.
+const cards = buildHubCards('conversion', {
+  order: ['currency-converter-hub', 'unit-converter', 'temperature-converter', 'time-zone-converter'],
+  copy: {
+    'currency-converter-hub': {
+      name: 'Currency Converters',
+      desc: `Live exchange rates for ${currencyPairs.length}+ currency pairs — USD, INR, GBP, EUR, AED, SAR, and more.`,
+      icon: '💱',
+    },
+    'unit-converter': { desc: 'Length, weight, volume, area, speed and data — km to miles, kg to lbs, cm to inches and more.' },
+    'temperature-converter': { desc: 'Celsius, Fahrenheit and Kelvin — convert instantly, with a reference table from freezing to boiling.' },
+    'time-zone-converter': { desc: 'Convert a time between world zones (EST, IST, GMT, PST) with daylight saving handled automatically.' },
+  },
+});
+
+// The currency hub gets its own card with a live pair count; the rest are plain converters.
+const currencyHub = cards.find((c) => c.slug === 'currency-converter-hub');
+if (!currencyHub) throw new Error('[conversions] currency-converter-hub is missing from the calculators registry');
+const categories = [{ ...currencyHub, count: currencyPairs.length }];
+const converters = cards.filter((c) => c.slug !== 'currency-converter-hub');
 
 const popular = currencyPairs.filter((p) => p.popularity === 'huge').slice(0, 12);
-
-const converters = [
-  { name: 'Unit Converter', href: '/conversions/unit-converter/', desc: 'Length, weight, volume, area, speed and data — km to miles, kg to lbs, cm to inches and more.', emoji: '🔄' },
-  { name: 'Temperature Converter', href: '/conversions/temperature-converter/', desc: 'Celsius, Fahrenheit and Kelvin — convert instantly, with a reference table from freezing to boiling.', emoji: '🌡️' },
-  { name: 'Time Zone Converter', href: '/conversions/time-zone-converter/', desc: 'Convert a time between world zones (EST, IST, GMT, PST) with daylight saving handled automatically.', emoji: '🌐' },
-];
 ---
 
 <BaseLayout
@@ -38,7 +50,7 @@ const converters = [
       {
         categories.map((c) => (
           <a href={c.href} class="card hover:border-brand-300 no-underline block">
-            <div class="text-2xl mb-2">{c.emoji}</div>
+            <div class="text-2xl mb-2">{c.icon}</div>
             <div class="font-semibold text-slate-900">
               {c.name} <span class="text-slate-500 font-normal">· {c.count} pairs</span>
             </div>
@@ -53,7 +65,7 @@ const converters = [
       {
         converters.map((c) => (
           <a href={c.href} class="card hover:border-brand-300 no-underline block">
-            <div class="text-2xl mb-2">{c.emoji}</div>
+            <div class="text-2xl mb-2">{c.icon}</div>
             <div class="font-semibold text-slate-900">{c.name}</div>
             <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
           </a>

@@ -2,14 +2,28 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
+import { buildHubCards } from '../../lib/category-hub';
 
-const liveCalcs = [
-  { name: 'Fuel Cost Calculator', href: '/auto/fuel-cost-calculator/', desc: 'Work out the fuel cost of any trip from distance, mileage and fuel price — one-way or round trip.', icon: '⛽' },
-  { name: 'Fuel Economy Calculator', href: '/auto/fuel-economy-calculator/', desc: 'Compute MPG or km/L from distance and fuel used, and convert between MPG, km/L and L/100km.', icon: '📊' },
-  { name: 'Car Depreciation Calculator', href: '/auto/car-depreciation-calculator/', desc: "Estimate how much a car is worth after each year at a chosen depreciation rate.", icon: '📉' },
-  { name: 'Lease vs Buy Calculator', href: '/auto/lease-vs-buy-calculator/', desc: 'Compare the total cost of leasing versus financing and keeping a car over the same term.', icon: '🚗' },
-  { name: 'Car Loan Calculator', href: '/finance/car-loan-calculator/', desc: 'Monthly EMI or payment on a car loan from price, down payment, rate and tenure.', icon: '💳' },
-];
+// Derived from the calculators registry — see src/lib/category-hub.ts.
+// The car loan calculator lives under /finance/ but belongs on this hub too.
+const liveCalcs = buildHubCards('auto', {
+  alsoInclude: ['car-loan-calculator'],
+  order: [
+    'fuel-cost-calculator',
+    'fuel-economy-calculator',
+    'car-depreciation-calculator',
+    'lease-vs-buy-calculator',
+    'car-loan-calculator',
+  ],
+  copy: {
+    'fuel-cost-calculator': { desc: 'Work out the fuel cost of any trip from distance, mileage and fuel price — one-way or round trip.' },
+    'fuel-economy-calculator': { desc: 'Compute MPG or km/L from distance and fuel used, and convert between MPG, km/L and L/100km.' },
+    'car-depreciation-calculator': { name: 'Car Depreciation Calculator', desc: 'Estimate how much a car is worth after each year at a chosen depreciation rate.' },
+    'lease-vs-buy-calculator': { name: 'Lease vs Buy Calculator', desc: 'Compare the total cost of leasing versus financing and keeping a car over the same term.' },
+    // 🚗 in the registry, but Lease vs Buy already uses it on this grid.
+    'car-loan-calculator': { desc: 'Monthly EMI or payment on a car loan from price, down payment, rate and tenure.', icon: '💳' },
+  },
+});
 
 const upcomingCalcs = [
   { name: 'Cost Per Mile Calculator', desc: 'Total running cost per mile including fuel, insurance and maintenance.', icon: '🛣️' },
