@@ -2,40 +2,77 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
+import { buildHubCards } from '../../lib/category-hub';
 
-const calcs = [
-  { name: 'Mortgage Calculator', href: '/finance/mortgage-calculator/', desc: 'Monthly payments, PITI breakdown, PMI, extra payments, biweekly savings — 160+ countries.' },
-  { name: 'Loan Calculator', href: '/finance/loan-calculator/', desc: 'General-purpose loan payment calculator for any term.' },
-  { name: 'Car Loan Calculator', href: '/finance/car-loan-calculator/', desc: 'Car loan EMI from price, down payment, interest rate and tenure.' },
-  { name: 'Salary Calculator', href: '/finance/salary-calculator/', desc: 'CTC to in-hand take-home pay — EPF, professional tax, and both tax regimes.' },
-  { name: 'Simple Interest', href: '/finance/simple-interest-calculator/', desc: 'Interest on principal only — SI = P × R × T, with the maturity total.' },
-  { name: 'Sales Tax & VAT', href: '/finance/sales-tax-calculator/', desc: 'Add or remove VAT, GST, or US sales tax at any rate — both ways.' },
-  { name: 'Budget Calculator', href: '/finance/budget-calculator/', desc: 'Split take-home income into needs, wants and savings — the 50/30/20 rule.' },
-  { name: 'Retirement Calculator', href: '/finance/retirement-calculator/', desc: 'Project your retirement savings with compound growth and inflation-adjusted values.' },
-  { name: 'Inflation Calculator', href: '/finance/inflation-calculator/', desc: 'Purchasing power over time — what is $X from [year] worth today?' },
-  { name: 'Net Worth Calculator', href: '/finance/net-worth-calculator/', desc: 'Track assets vs liabilities to see your true net worth and debt-to-asset ratio.' },
-  { name: 'EMI Calculator', href: '/finance/emi-calculator/', desc: 'Indian-style equated monthly installment calculator with bank-by-bank breakdowns.' },
-  { name: 'Compound Interest', href: '/finance/compound-interest-calculator/', desc: 'See how investments and savings grow over time.' },
-  { name: 'SIP Calculator', href: '/finance/sip-calculator/', desc: 'Indian mutual fund SIP returns calculator with goal planning.' },
-  { name: 'Lumpsum Calculator', href: '/finance/lumpsum-calculator/', desc: 'One-time investment growth, plus what the corpus is worth in today\'s money.' },
-  { name: 'CAGR Calculator', href: '/finance/cagr-calculator/', desc: 'Compound annual growth rate between any two values, with doubling time.' },
-  { name: 'FD Calculator', href: '/finance/fd-calculator/', desc: 'Fixed deposit maturity and interest by bank.' },
-  { name: 'PPF Calculator', href: '/finance/ppf-calculator/', desc: 'Public Provident Fund returns over 15 years.' },
-  { name: 'EPF Calculator', href: '/finance/epf-calculator/', desc: 'Provident fund corpus at retirement, with the 8.33% EPS pension split shown separately.' },
-  { name: 'NPS Calculator', href: '/finance/nps-calculator/', desc: 'Pension corpus at 60, the mandatory 40% annuity, and your estimated monthly pension.' },
-  { name: 'Gratuity Calculator', href: '/finance/gratuity-calculator/', desc: 'Gratuity under the 1972 Act — (15 × salary × years) ÷ 26, with the ₹20 lakh exemption.' },
-  { name: 'Sukanya Samriddhi', href: '/finance/sukanya-samriddhi-calculator/', desc: 'SSY maturity at 21 years — including the six deposit-free years most calculators skip.' },
-  { name: 'RD Calculator', href: '/finance/rd-calculator/', desc: 'Recurring deposit maturity calculator for Indian banks.' },
-  { name: 'HRA Calculator', href: '/finance/hra-calculator/', desc: 'House Rent Allowance exemption for Indian income tax.' },
-  { name: 'GST Calculator', href: '/finance/gst-calculator/', desc: 'India GST inclusive/exclusive amount and rate finder.' },
-  { name: 'Income Tax India', href: '/finance/income-tax-india/', desc: 'Old vs New regime with state Professional Tax & HRA tier — all 16 states.' },
-  { name: 'Old vs New Regime', href: '/finance/old-vs-new-tax-regime-india/', desc: 'Side-by-side comparison of India\'s two income-tax regimes.' },
-  { name: 'Indian City EMI Calculators', href: '/finance/mortgage-calculator/cities/', desc: 'Home loan EMI by Indian city — Mumbai, Bengaluru, Chennai, Delhi-NCR and 280+ more with local stamp duty and lender notes.' },
+// Derived from the calculators registry — adding an entry there is enough to
+// list it here. Copy overrides keep the longer hub blurbs; anything without one
+// falls back to the registry description.
+const calcs = buildHubCards('finance', {
+  order: [
+    'mortgage-calculator',
+    'loan-calculator',
+    'car-loan-calculator',
+    'salary-calculator',
+    'simple-interest-calculator',
+    'sales-tax-calculator',
+    'budget-calculator',
+    'retirement-calculator',
+    'inflation-calculator',
+    'net-worth-calculator',
+    'emi-calculator',
+    'compound-interest-calculator',
+    'sip-calculator',
+    'lumpsum-calculator',
+    'cagr-calculator',
+    'fd-calculator',
+    'ppf-calculator',
+    'epf-calculator',
+    'nps-calculator',
+    'gratuity-calculator',
+    'sukanya-samriddhi-calculator',
+    'rd-calculator',
+    'hra-calculator',
+    'gst-calculator',
+    'income-tax-india',
+  ],
+  copy: {
+    'mortgage-calculator': { desc: 'Monthly payments, PITI breakdown, PMI, extra payments, biweekly savings across 160+ countries.' },
+    'loan-calculator': { desc: 'General-purpose loan payment calculator for any term.' },
+    'car-loan-calculator': { desc: 'Car loan EMI from price, down payment, interest rate and tenure.' },
+    'salary-calculator': { desc: 'CTC to in-hand take-home pay: EPF, professional tax, and both tax regimes.' },
+    'simple-interest-calculator': { desc: 'Interest on principal only: SI = P × R × T, with the maturity total.' },
+    'sales-tax-calculator': { desc: 'Add or remove VAT, GST, or US sales tax at any rate, both ways.' },
+    'budget-calculator': { desc: 'Split take-home income into needs, wants and savings: the 50/30/20 rule.' },
+    'retirement-calculator': { desc: 'Project your retirement savings with compound growth and inflation-adjusted values.' },
+    'inflation-calculator': { desc: 'Purchasing power over time: what is $X from [year] worth today?' },
+    'net-worth-calculator': { desc: 'Track assets vs liabilities to see your true net worth and debt-to-asset ratio.' },
+    'emi-calculator': { desc: 'Indian-style equated monthly installment calculator with bank-by-bank breakdowns.' },
+    'compound-interest-calculator': { desc: 'See how investments and savings grow over time.' },
+    'sip-calculator': { desc: 'Indian mutual fund SIP returns calculator with goal planning.' },
+    'lumpsum-calculator': { desc: "One-time investment growth, plus what the corpus is worth in today's money." },
+    'cagr-calculator': { desc: 'Compound annual growth rate between any two values, with doubling time.' },
+    'fd-calculator': { desc: 'Fixed deposit maturity and interest by bank.' },
+    'ppf-calculator': { desc: 'Public Provident Fund returns over 15 years.' },
+    'epf-calculator': { desc: 'Provident fund corpus at retirement, with the 8.33% EPS pension split shown separately.' },
+    'nps-calculator': { desc: 'Pension corpus at 60, the mandatory 40% annuity, and your estimated monthly pension.' },
+    'gratuity-calculator': { desc: 'Gratuity under the 1972 Act: (15 × salary × years) ÷ 26, with the ₹20 lakh exemption.' },
+    'sukanya-samriddhi-calculator': { name: 'Sukanya Samriddhi', desc: 'SSY maturity at 21 years, including the six deposit-free years most calculators skip.' },
+    'rd-calculator': { desc: 'Recurring deposit maturity calculator for Indian banks.' },
+    'hra-calculator': { desc: 'House Rent Allowance exemption for Indian income tax.' },
+    'gst-calculator': { desc: 'India GST inclusive/exclusive amount and rate finder.' },
+    'income-tax-india': { desc: 'Old vs New regime with state Professional Tax & HRA tier, across all 16 states.' },
+  },
+});
+
+// Comparison and guide pages — editorial content, not registry calculators.
+const guides = [
+  { name: 'Old vs New Regime', href: '/finance/old-vs-new-tax-regime-india/', desc: "Side-by-side comparison of India's two income-tax regimes." },
+  { name: 'Indian City EMI Calculators', href: '/finance/mortgage-calculator/cities/', desc: 'Home loan EMI by Indian city: Mumbai, Bengaluru, Chennai, Delhi-NCR and 280+ more with local stamp duty and lender notes.' },
   { name: 'SBI vs HDFC Home Loan', href: '/finance/sbi-vs-hdfc-home-loan/', desc: 'Compare SBI and HDFC home loan rates, processing speed, and real EMI.' },
-  { name: 'HDFC vs ICICI Personal Loan', href: '/finance/hdfc-vs-icici-personal-loan/', desc: 'HDFC vs ICICI personal loan — EMI, rates, and disbursal speed compared.' },
-  { name: 'FHA vs Conventional Mortgage', href: '/finance/fha-vs-conventional-mortgage/', desc: 'US homebuyer comparison — FHA vs conventional down payment, rates, and PMI.' },
-  { name: 'PPF vs ELSS', href: '/finance/ppf-vs-elss-investment/', desc: 'Section 80C comparison — PPF vs ELSS over 15-year returns.' },
-  { name: 'SIP vs Lump Sum', href: '/finance/sip-vs-lump-sum-investment/', desc: 'Which investment style wins — SIP vs lump sum over 10 years.' },
+  { name: 'HDFC vs ICICI Personal Loan', href: '/finance/hdfc-vs-icici-personal-loan/', desc: 'HDFC vs ICICI personal loan: EMI, rates, and disbursal speed compared.' },
+  { name: 'FHA vs Conventional Mortgage', href: '/finance/fha-vs-conventional-mortgage/', desc: 'US homebuyer comparison: FHA vs conventional down payment, rates, and PMI.' },
+  { name: 'PPF vs ELSS', href: '/finance/ppf-vs-elss-investment/', desc: 'Section 80C comparison: PPF vs ELSS over 15-year returns.' },
+  { name: 'SIP vs Lump Sum', href: '/finance/sip-vs-lump-sum-investment/', desc: 'Which investment style wins: SIP vs lump sum over 10 years.' },
   { name: '10-Year vs 30-Year Mortgage', href: '/finance/10-year-vs-30-year-mortgage/', desc: 'Total interest, EMI, and payoff tradeoffs between short and long mortgages.' },
   { name: '15-Year vs 30-Year Mortgage', href: '/finance/15-year-vs-30-year-mortgage/', desc: 'The classic mid-tenure decision for US homebuyers.' },
 ];
@@ -61,6 +98,18 @@ const breadcrumbs = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
       {
         calcs.map((c) => (
+          <a href={c.href} class="card hover:border-brand-300 no-underline block">
+            <div class="font-semibold text-slate-900">{c.name}</div>
+            <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
+          </a>
+        ))
+      }
+    </div>
+
+    <h2 class="mt-12">Comparisons &amp; guides</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      {
+        guides.map((c) => (
           <a href={c.href} class="card hover:border-brand-300 no-underline block">
             <div class="font-semibold text-slate-900">{c.name}</div>
             <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>

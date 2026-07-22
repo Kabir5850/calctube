@@ -97,8 +97,58 @@ const schemas = [
   }),
 ];
 
-// Related cities for internal linking
-const otherCities = indiaCities.filter((c) => c.slug !== city.slug);
+// Related cities for internal linking.
+//
+// This used to dump all 272 other cities onto every page. That block alone was
+// ~2,000 words — 72-78% of each page — byte-identical across all 273 cities, so
+// the pages read as near-duplicates and the lower-demand ones were landing in
+// GSC's "Crawled - currently not indexed" bucket. Linking a focused, genuinely
+// related set instead keeps the unique city content dominant.
+//
+// Same state first: stamp duty, registration and the women-buyer discount are all
+// state-level, so those are the genuinely comparable cities. The full city index
+// at ../cities/ is linked below and from the breadcrumbs, so no city loses its
+// crawl path.
+//
+// The state list is walked as a ring starting just after this city rather than
+// from the top. A plain .slice(0, 7) would point every city in a state at the same
+// handful of big ones, leaving the tier-3 cities — exactly the ones Google is
+// declining to index — with a single inbound link. The ring gives every city in a
+// state as many inbound links as it emits.
+const RELATED_LIMIT = 11;
+const SAME_STATE_LIMIT = 7;
+const stateRing = indiaCities.filter((c) => c.stateSlug === city.stateSlug);
+const cityIndex = stateRing.findIndex((c) => c.slug === city.slug);
+const sameStateCities = [];
+for (let i = 1; i < stateRing.length && sameStateCities.length < SAME_STATE_LIMIT; i++) {
+  sameStateCities.push(stateRing[(cityIndex + i) % stateRing.length]);
+}
+// A few metros for cross-state context — useful to readers comparing against the
+// big markets, and capped so they don't soak up every page's outbound links.
+const picked = new Set([city.slug, ...sameStateCities.map((c) => c.slug)]);
+const metroCities = indiaCities
+  .filter((c) => c.hraTier === 'metro' && !picked.has(c.slug))
+  .slice(0, 3);
+metroCities.forEach((c) => picked.add(c.slug));
+
+// Fill any remainder from a ring over the full city list. Cities in single-city
+// states (Meghalaya, Manipur, Tripura…) have no state peers, so without this they
+// would emit links but receive only the one from the /cities/ index. The ring is
+// reciprocal by construction: every city is the fill target of the cities behind it.
+const globalIndex = indiaCities.findIndex((c) => c.slug === city.slug);
+const ringFill = [];
+for (
+  let i = 1;
+  i < indiaCities.length && sameStateCities.length + metroCities.length + ringFill.length < RELATED_LIMIT;
+  i++
+) {
+  const candidate = indiaCities[(globalIndex + i) % indiaCities.length];
+  if (picked.has(candidate.slug)) continue;
+  picked.add(candidate.slug);
+  ringFill.push(candidate);
+}
+
+const relatedCities = [...sameStateCities, ...metroCities, ...ringFill];
 ---
 
 <BaseLayout
@@ -323,16 +373,23 @@ const otherCities = indiaCities.filter((c) => c.slug !== city.slug);
     </div>
   </section>
 
-  <!-- OTHER CITIES -->
+  <!-- RELATED CITIES -->
   <section class="container-wide py-12 md:py-16">
     <div class="max-w-4xl mx-auto">
-      <span class="chip bg-violet-300 text-ink-900 mb-4">🌆 Other Indian cities</span>
+      <span class="chip bg-violet-300 text-ink-900 mb-4">🌆 Related cities</span>
       <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
-        Home loan calculator for other cities.
+        {sameStateCities.length > 0
+          ? `Home loan calculators near ${city.name}.`
+          : `Home loan calculators in other cities.`}
       </h2>
+      {sameStateCities.length > 0 && (
+        <p class="text-ink-700 font-medium mt-3">
+          {city.stateName} shares {city.name}'s {city.stampDutyPct}% stamp duty and {city.registrationPct}% registration charge, so these are directly comparable.
+        </p>
+      )}
 
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mt-8">
-        {otherCities.map((other) => (
+        {relatedCities.map((other) => (
           <a
             href={`/finance/mortgage-calculator/cities/${other.slug}/`}
             class="group bg-white border-[2.5px] border-ink-900 rounded-3xl p-4 sm:p-5 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
@@ -346,7 +403,10 @@ const otherCities = indiaCities.filter((c) => c.slug !== city.slug);
         ))}
       </div>
 
-      <div class="mt-6">
+      <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+        <a href="/finance/mortgage-calculator/cities/" class="font-bold underline decoration-2 underline-offset-4 decoration-violet-300">
+          Browse all {indiaCities.length} Indian cities →
+        </a>
         <a href="/finance/mortgage-calculator/" class="font-bold underline decoration-2 underline-offset-4 decoration-lime-accent">
           ← Back to main mortgage calculator
         </a>

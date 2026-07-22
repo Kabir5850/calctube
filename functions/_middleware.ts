@@ -225,6 +225,27 @@ export const onRequest: PagesFunction = async (context: PagesContext) => {
     return Response.redirect(url.toString(), 301);
   }
 
+  // Embeddable widgets must be framable by anyone — that is the entire point.
+  // public/_headers sets `frame-ancestors 'self' …` on /*, and a second, laxer CSP
+  // header would NOT loosen it: browsers enforce every CSP header they receive, so
+  // two policies intersect and the strictest wins. The only way to widen it is to
+  // replace the header on the response, which is what this does.
+  if (url.pathname.startsWith('/embed/')) {
+    const response = await next();
+    const headers = new Headers(response.headers);
+    headers.set('Content-Security-Policy', "frame-ancestors *");
+    // X-Frame-Options has no "any origin" value and would override the CSP in
+    // older browsers, so it must be absent rather than permissive.
+    headers.delete('X-Frame-Options');
+    // Spreading a Response would drop status/statusText — they are prototype
+    // getters, not own properties, so a 404 here would be served as a 200.
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
+  }
+
   // Only decorate the homepage with geo info. Deep pages serve as-requested.
   if (url.pathname !== '/' && url.pathname !== '/index.html') {
     return next();
