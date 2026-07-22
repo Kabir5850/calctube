@@ -24,6 +24,10 @@ export default defineConfig({
       // The HUB pages — bank hubs (/finance/emi-calculator/{bank}/) and city hubs
       // (/finance/mortgage-calculator/cities/{city}/) — stay indexed and in the
       // sitemap; those carry genuinely unique per-page content.
+      // The embed widgets (/embed/{slug}/) are noindex too — they mirror a
+      // calculator that already ranks on its own URL, so they must not compete
+      // with it. The /embed/ gallery itself DOES stay indexed: that is the page
+      // publishers land on to grab a snippet.
       filter: (page) => {
         const path = new URL(page).pathname;
         const prefixExcluded = ['/og-preview/', '/logo-gallery/', '/contact/'].some(
@@ -34,11 +38,13 @@ export default defineConfig({
         // Its children (/legal/privacy/, /legal/terms/, /legal/cookies/) must stay
         // indexed — AdSense requires a reachable, indexable privacy policy.
         const exactExcluded = ['/legal/'].includes(path);
+        // Individual embed widgets, but not the /embed/ gallery index.
+        const isEmbedWidget = /^\/embed\/[^/]+\/?$/.test(path);
         // Bank×state = exactly two path segments after /finance/emi-calculator/
         const isBankState = /^\/finance\/emi-calculator\/[^/]+\/[^/]+\/?$/.test(path);
         // City×bank = exactly two path segments after /finance/mortgage-calculator/cities/
         const isCityBank = /^\/finance\/mortgage-calculator\/cities\/[^/]+\/[^/]+\/?$/.test(path);
-        return !prefixExcluded && !exactExcluded && !isBankState && !isCityBank;
+        return !prefixExcluded && !exactExcluded && !isBankState && !isCityBank && !isEmbedWidget;
       },
       // Differentiate priorities so Google focuses crawl budget on important pages.
       // Homepage 1.0, category hubs 0.9, calculator hubs 0.8, long-tail spokes 0.5.
