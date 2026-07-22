@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocalizeMoney from '../../components/ui/LocalizeMoney.astro';
 import SimpleInterestCalculator from '../../components/calculators/SimpleInterestCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
 
@@ -69,7 +70,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                <strong>10,000 at 8% for 5 years</strong> earns <strong>4,000</strong> in simple interest, for a total of <strong>14,000</strong>. Formula: interest = principal × rate × time ÷ 100, charged only on the original principal, never on the interest.
+                <strong><span data-money="10000">$10,000</span> at 8% for 5 years</strong> earns <strong><span data-money="4000">$4,000</span></strong> in simple interest, for a total of <strong><span data-money="14000">$14,000</span></strong>. Formula: interest = principal × rate × time ÷ 100, charged only on the original principal, never on the interest.
               </p>
             </div>
           </div>
@@ -176,4 +177,5 @@ const relatedCalcs = [
       </div>
     </div>
   </section>
+  <LocalizeMoney />
 </BaseLayout>

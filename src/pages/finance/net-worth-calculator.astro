@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocalizeMoney from '../../components/ui/LocalizeMoney.astro';
 import NetWorthCalculator from '../../components/calculators/NetWorthCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
 
@@ -132,7 +133,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick Answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Someone with <strong class="font-extrabold">$350K home equity</strong>, <strong class="font-extrabold">$45K savings</strong>, and <strong class="font-extrabold">$80K investments</strong>, offset by a <strong class="font-extrabold">$180K mortgage</strong> and <strong class="font-extrabold">$15K credit card debt</strong>, has a <strong class="font-extrabold">net worth of $280,000</strong>.
+                Someone with <strong class="font-extrabold"><span data-money-compact="350000">$350K</span> home equity</strong>, <strong class="font-extrabold"><span data-money-compact="45000">$45K</span> savings</strong>, and <strong class="font-extrabold"><span data-money-compact="80000">$80K</span> investments</strong>, offset by a <strong class="font-extrabold"><span data-money-compact="180000">$180K</span> mortgage</strong> and <strong class="font-extrabold"><span data-money-compact="15000">$15K</span> credit card debt</strong>, has a <strong class="font-extrabold">net worth of <span data-money="280000">$280,000</span></strong>.
               </p>
             </div>
           </div>
@@ -219,4 +220,5 @@ const relatedCalcs = [
     </div>
   </section>
 
+  <LocalizeMoney />
 </BaseLayout>

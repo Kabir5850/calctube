@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocalizeMoney from '../../components/ui/LocalizeMoney.astro';
 import LoanCalculator from '../../components/calculators/LoanCalculator.tsx';
 import { loanTerms } from '../../data/loan-terms';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
@@ -73,7 +74,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                A <strong>$20,000 loan at 9.5%</strong> over 5 years works out to <strong>$420/month</strong> with about <strong>$5,194 in total interest</strong>. Adjust below.
+                A <strong><span data-money="20000">$20,000</span> loan at 9.5%</strong> over 5 years works out to <strong><span data-money="420">$420</span>/month</strong> with about <strong><span data-money="5194">$5,194</span> in total interest</strong>. Adjust below.
               </p>
             </div>
           </div>
@@ -202,4 +203,5 @@ const relatedCalcs = [
       </div>
     </div>
   </section>
+  <LocalizeMoney />
 </BaseLayout>

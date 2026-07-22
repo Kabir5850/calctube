@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocalizeMoney from '../../components/ui/LocalizeMoney.astro';
 import CarLoanCalculator from '../../components/calculators/CarLoanCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
 
@@ -69,7 +70,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                A <strong>25,000 car with 20% down at 9% for 5 years</strong> = a 20,000 loan costing about <strong>415/month</strong>, with total interest of roughly <strong>4,910</strong>. Shortening to 3 years drops interest to ~2,880.
+                A <strong><span data-money="25000">$25,000</span> car with 20% down at 9% for 5 years</strong> = a <span data-money="20000">$20,000</span> loan costing about <strong><span data-money="415">$415</span>/month</strong>, with total interest of roughly <strong><span data-money="4910">$4,910</span></strong>. Shortening to 3 years drops interest to ~<span data-money="2880">$2,880</span>.
               </p>
             </div>
           </div>
@@ -151,4 +152,5 @@ const relatedCalcs = [
       </div>
     </div>
   </section>
+  <LocalizeMoney />
 </BaseLayout>

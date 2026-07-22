@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocalizeMoney from '../../components/ui/LocalizeMoney.astro';
 import RetirementCalculator from '../../components/calculators/RetirementCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
 
@@ -132,7 +133,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick Answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                Contributing <strong class="font-extrabold">$500/month</strong> starting at age 30 with <strong class="font-extrabold">$10,000</strong> already saved, at <strong class="font-extrabold">7% annual return</strong>, gives you about <strong class="font-extrabold">$1.56M</strong> by age 65, roughly <strong class="font-extrabold">$590K in today's dollars</strong> after 3% inflation.
+                Contributing <strong class="font-extrabold"><span data-money="500">$500</span>/month</strong> starting at age 30 with <strong class="font-extrabold"><span data-money="10000">$10,000</span></strong> already saved, at <strong class="font-extrabold">7% annual return</strong>, gives you about <strong class="font-extrabold"><span data-money-compact="1560000">$1.56M</span></strong> by age 65, roughly <strong class="font-extrabold"><span data-money-compact="590000">$590K</span> in today's money</strong> after 3% inflation.
               </p>
             </div>
           </div>
@@ -221,4 +222,5 @@ const relatedCalcs = [
     </div>
   </section>
 
+  <LocalizeMoney />
 </BaseLayout>

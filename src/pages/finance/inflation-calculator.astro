@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LocalizeMoney from '../../components/ui/LocalizeMoney.astro';
 import InflationCalculator from '../../components/calculators/InflationCalculator.tsx';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
 
@@ -132,7 +133,7 @@ const relatedCalcs = [
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">Quick Answer</div>
               <p class="text-ink-900 text-base sm:text-lg leading-relaxed font-medium !m-0">
-                At <strong class="font-extrabold">3% average inflation</strong>, <strong class="font-extrabold">$10,000 in 2006</strong> is equivalent to about <strong class="font-extrabold">$18,061 in 2026</strong>. Inflation has cut its purchasing power roughly in half over 20 years.
+                At <strong class="font-extrabold">3% average inflation</strong>, <strong class="font-extrabold"><span data-money="10000">$10,000</span> in 2006</strong> is equivalent to about <strong class="font-extrabold"><span data-money="18061">$18,061</span> in 2026</strong>. Inflation has cut its purchasing power roughly in half over 20 years.
               </p>
             </div>
           </div>
@@ -221,4 +222,5 @@ const relatedCalcs = [
     </div>
   </section>
 
+  <LocalizeMoney />
 </BaseLayout>

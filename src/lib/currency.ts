@@ -81,6 +81,20 @@ export function formatMoney(value: number, currency: CurrencyOption, maxFraction
   }
 }
 
+/** Compact form for headline prose: $350K in en-US, ₹3.5L in en-IN (Intl handles lakh/crore). */
+export function formatMoneyCompact(value: number, currency: CurrencyOption): string {
+  try {
+    return new Intl.NumberFormat(currency.locale, {
+      style: 'currency',
+      currency: currency.code,
+      notation: 'compact',
+      maximumFractionDigits: 2,
+    }).format(value);
+  } catch {
+    return formatMoney(value, currency);
+  }
+}
+
 /**
  * Auto-detect currency from browser. Used by global calculator pages.
  * Order of signals:
@@ -146,5 +160,12 @@ export function setStoredCurrency(code: string): void {
     window.localStorage.setItem('calctube-currency', code.toUpperCase());
   } catch {
     /* localStorage unavailable */
+  }
+  // Broadcast so non-widget copy (the hero "Quick answer" figures) follows the
+  // dropdown too. Without this the headline and the calculator can disagree.
+  try {
+    window.dispatchEvent(new CustomEvent('calctube:currency', { detail: code.toUpperCase() }));
+  } catch {
+    /* CustomEvent unavailable */
   }
 }
