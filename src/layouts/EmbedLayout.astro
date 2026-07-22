@@ -51,14 +51,14 @@ const attributionUrl = `${canonical}?utm_source=embed&utm_medium=widget`;
     <div class="p-3 sm:p-4">
       <slot />
 
-      <p class="mt-3 text-center text-xs text-slate-500">
+      <p class="mt-3 text-center text-xs text-ink-500">
         <a
           href={attributionUrl}
           target="_blank"
           rel="noopener"
-          class="font-semibold text-slate-600 hover:text-brand-600 no-underline"
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border-2 border-ink-200 font-bold text-ink-700 hover:border-ink-900 hover:text-ink-900 no-underline transition-colors"
         >
-          Powered by {SITE.name}
+          🧮 Powered by {SITE.name}
         </a>
       </p>
     </div>
