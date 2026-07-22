@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import {
   DEFAULT_CURRENCY,
   detectClientCurrency,
+  rescaleAmount,
   formatMoney,
   setStoredCurrency,
   type CurrencyOption,
@@ -15,8 +16,20 @@ const CURRENT_YEAR = 2026;
 export default function InflationCalculator() {
   const isLocked = false;
   const [currency, setCurrency] = useState<CurrencyOption>(DEFAULT_CURRENCY);
-  useEffect(() => { setCurrency(detectClientCurrency()); }, []);
-  const handleCurrencyChange = (next: CurrencyOption) => { setCurrency(next); setStoredCurrency(next.code); };
+  useEffect(() => {
+    const next = detectClientCurrency();
+    setCurrency(next);
+    // Example amounts are authored in USD; re-express them at the region's scale so
+    // the defaults (and the hero "Quick answer" above) read natively.
+    setOrigAmount((v) => rescaleAmount(v, DEFAULT_CURRENCY, next));
+    setFutureAmount((v) => rescaleAmount(v, DEFAULT_CURRENCY, next));
+  }, []);
+  const handleCurrencyChange = (next: CurrencyOption) => {
+    setOrigAmount((v) => rescaleAmount(v, currency, next));
+    setFutureAmount((v) => rescaleAmount(v, currency, next));
+    setCurrency(next);
+    setStoredCurrency(next.code);
+  };
   const fmt = (v: number) => formatMoney(v, currency);
   const sym = currency.symbol;
   const symCls = sym.length > 1 ? 'text-xs' : '';

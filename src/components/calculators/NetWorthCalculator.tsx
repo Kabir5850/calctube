@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import {
   DEFAULT_CURRENCY,
   detectClientCurrency,
+  rescaleAmount,
   formatMoney,
   setStoredCurrency,
   type CurrencyOption,
@@ -86,8 +87,20 @@ function ItemRow({
 export default function NetWorthCalculator() {
   const isLocked = false;
   const [currency, setCurrency] = useState<CurrencyOption>(DEFAULT_CURRENCY);
-  useEffect(() => { setCurrency(detectClientCurrency()); }, []);
-  const handleCurrencyChange = (next: CurrencyOption) => { setCurrency(next); setStoredCurrency(next.code); };
+  useEffect(() => {
+    const next = detectClientCurrency();
+    setCurrency(next);
+    // Example amounts are authored in USD; re-express them at the region's scale so
+    // the defaults (and the hero "Quick answer" above) read natively.
+    setAssets((prev) => prev.map((it) => ({ ...it, value: rescaleAmount(it.value, DEFAULT_CURRENCY, next) })));
+    setLiabilities((prev) => prev.map((it) => ({ ...it, value: rescaleAmount(it.value, DEFAULT_CURRENCY, next) })));
+  }, []);
+  const handleCurrencyChange = (next: CurrencyOption) => {
+    setAssets((prev) => prev.map((it) => ({ ...it, value: rescaleAmount(it.value, currency, next) })));
+    setLiabilities((prev) => prev.map((it) => ({ ...it, value: rescaleAmount(it.value, currency, next) })));
+    setCurrency(next);
+    setStoredCurrency(next.code);
+  };
   const fmt = (v: number) => formatMoney(v, currency);
   const sym = currency.symbol;
 

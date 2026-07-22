@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import {
   DEFAULT_CURRENCY,
   detectClientCurrency,
+  rescaleAmount,
   formatMoney,
   getCurrency,
   setStoredCurrency,
@@ -19,8 +20,19 @@ export default function CarLoanCalculator({ currency: currencyProp, locked: lock
   const [currency, setCurrency] = useState<CurrencyOption>(
     currencyProp ? getCurrency(currencyProp) : DEFAULT_CURRENCY
   );
-  useEffect(() => { if (!isLocked) setCurrency(detectClientCurrency()); }, [isLocked]);
-  const handleCurrencyChange = (next: CurrencyOption) => { setCurrency(next); setStoredCurrency(next.code); };
+  useEffect(() => {
+    if (isLocked) return;
+    const next = detectClientCurrency();
+    setCurrency(next);
+    // Example amounts are authored in USD; re-express them at the region's scale so
+    // the defaults (and the hero "Quick answer" above) read natively.
+    setPrice((v) => rescaleAmount(v, DEFAULT_CURRENCY, next));
+  }, [isLocked]);
+  const handleCurrencyChange = (next: CurrencyOption) => {
+    setPrice((v) => rescaleAmount(v, currency, next));
+    setCurrency(next);
+    setStoredCurrency(next.code);
+  };
   const fmt = (v: number) => formatMoney(v, currency);
 
   const [copied, setCopied] = useState(false);

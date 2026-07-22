@@ -153,6 +153,50 @@ const REGION_TO_CURRENCY: Record<string, string> = {
   AT: 'EUR', IE: 'EUR', PT: 'EUR', GR: 'EUR', FI: 'EUR', LU: 'EUR',
 };
 
+/**
+ * Rough "typical local ticket" multiplier applied to the USD baseline EXAMPLE amounts,
+ * so a default scenario reads natively: the $20,000 loan example becomes ₹10,00,000 in
+ * India rather than a meaningless ₹20,000.
+ *
+ * These are illustrative scale factors for example inputs, NOT exchange rates, and
+ * nothing on the site presents them as a conversion. Every calculator using them is
+ * linear in its money inputs (EMI, interest, future value and net worth all scale
+ * proportionally with the amounts), so scaling every amount in a scenario by one
+ * factor scales each derived figure by the same factor and the worked example stays
+ * exactly true.
+ */
+export const REGION_AMOUNT_SCALE: Record<string, number> = {
+  USD: 1, EUR: 1, GBP: 1, CHF: 1,
+  CAD: 1.5, AUD: 1.5, NZD: 1.5, SGD: 1.5,
+  AED: 4, SAR: 4, QAR: 4,
+  KWD: 0.3, BHD: 0.4, OMR: 0.4,
+  INR: 50, PKR: 250, BDT: 100, LKR: 250, NPR: 100,
+  JPY: 150, CNY: 7, HKD: 8,
+  MYR: 4, THB: 35, IDR: 15000, PHP: 50,
+  EGP: 50, ZAR: 20, NGN: 1500, BRL: 5, MXN: 20, TRY: 30,
+};
+
+/** Example-amount scale for a currency (1 when unknown). */
+export function amountScale(currency: CurrencyOption): number {
+  return REGION_AMOUNT_SCALE[currency.code] ?? 1;
+}
+
+/** Express a USD-baseline example amount in the given currency's example scale. */
+export function scaleAmount(baseUsd: number, currency: CurrencyOption): number {
+  return Math.round(baseUsd * amountScale(currency));
+}
+
+/**
+ * Re-express an on-screen amount when the currency changes, preserving the user's
+ * intent: untouched defaults land on the new region's default, and a value the user
+ * typed keeps its relative magnitude instead of being silently reinterpreted.
+ */
+export function rescaleAmount(value: number, from: CurrencyOption, to: CurrencyOption): number {
+  const f = amountScale(from), t = amountScale(to);
+  if (!f || f === t) return value;
+  return Math.round(value * (t / f));
+}
+
 /** Persist user's currency choice (called from dropdown onChange). */
 export function setStoredCurrency(code: string): void {
   if (typeof window === 'undefined') return;

@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import {
   DEFAULT_CURRENCY,
   detectClientCurrency,
+  rescaleAmount,
   formatMoney,
   getCurrency,
   setStoredCurrency,
@@ -39,8 +40,19 @@ export default function LoanCalculator({ currency: currencyProp, locked: lockedP
   const [currency, setCurrency] = useState<CurrencyOption>(
     currencyProp ? getCurrency(currencyProp) : DEFAULT_CURRENCY
   );
-  useEffect(() => { if (!isLocked) setCurrency(detectClientCurrency()); }, [isLocked]);
-  const handleCurrencyChange = (next: CurrencyOption) => { setCurrency(next); setStoredCurrency(next.code); };
+  useEffect(() => {
+    if (isLocked) return;
+    const next = detectClientCurrency();
+    setCurrency(next);
+    // Example amounts are authored in USD; re-express them at the region's scale so
+    // the defaults (and the hero "Quick answer" above) read natively.
+    setAmount((v) => rescaleAmount(v, DEFAULT_CURRENCY, next));
+  }, [isLocked]);
+  const handleCurrencyChange = (next: CurrencyOption) => {
+    setAmount((v) => rescaleAmount(v, currency, next));
+    setCurrency(next);
+    setStoredCurrency(next.code);
+  };
   const fmt = (v: number) => formatMoney(v, currency);
 
   const [amount, setAmount] = useState<number>(20000);

@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import {
   DEFAULT_CURRENCY,
   detectClientCurrency,
+  rescaleAmount,
   formatMoney,
   getCurrency,
   setStoredCurrency,
@@ -127,7 +128,17 @@ export default function MortgageCalculator({
   const [currency, setCurrency] = useState<CurrencyOption>(
     currencyProp ? getCurrency(currencyProp) : DEFAULT_CURRENCY
   );
-  useEffect(() => { if (!isLocked) setCurrency(detectClientCurrency()); }, [isLocked]);
+  useEffect(() => {
+    if (isLocked) return;
+    const next = detectClientCurrency();
+    setCurrency(next);
+    // Example amounts are authored in USD; re-express them at the region's scale so
+    // the defaults (and the hero "Quick answer" above) read natively.
+    setLoanAmount((v) => rescaleAmount(v, DEFAULT_CURRENCY, next));
+    setHomeValue((v) => rescaleAmount(v, DEFAULT_CURRENCY, next));
+    setHoaFee((v) => rescaleAmount(v, DEFAULT_CURRENCY, next));
+    setExtraPayment((v) => rescaleAmount(v, DEFAULT_CURRENCY, next));
+  }, [isLocked]);
 
   // Read URL params on mount — allows shared links to pre-fill the calculator
   useEffect(() => {
@@ -142,7 +153,14 @@ export default function MortgageCalculator({
     } catch { /* URL API not available (SSR) */ }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const handleCurrencyChange = (next: CurrencyOption) => { setCurrency(next); setStoredCurrency(next.code); };
+  const handleCurrencyChange = (next: CurrencyOption) => {
+    setLoanAmount((v) => rescaleAmount(v, currency, next));
+    setHomeValue((v) => rescaleAmount(v, currency, next));
+    setHoaFee((v) => rescaleAmount(v, currency, next));
+    setExtraPayment((v) => rescaleAmount(v, currency, next));
+    setCurrency(next);
+    setStoredCurrency(next.code);
+  };
   const fmt = (v: number) => formatMoney(v, currency);
 
   // ── Core inputs ──────────────────────────────────────────────

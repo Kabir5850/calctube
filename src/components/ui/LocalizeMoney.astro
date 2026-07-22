@@ -19,17 +19,20 @@
     getCurrency,
     formatMoney,
     formatMoneyCompact,
+    amountScale,
     type CurrencyOption,
   } from '../../lib/currency';
 
   function localize(cur: CurrencyOption) {
+    // Scale the USD-baseline example to the region, matching the widget's defaults.
+    const k = amountScale(cur);
     document.querySelectorAll('[data-money]').forEach((el) => {
       const v = Number(el.getAttribute('data-money'));
-      if (Number.isFinite(v)) el.textContent = formatMoney(v, cur);
+      if (Number.isFinite(v)) el.textContent = formatMoney(Math.round(v * k), cur);
     });
     document.querySelectorAll('[data-money-compact]').forEach((el) => {
       const v = Number(el.getAttribute('data-money-compact'));
-      if (Number.isFinite(v)) el.textContent = formatMoneyCompact(v, cur);
+      if (Number.isFinite(v)) el.textContent = formatMoneyCompact(Math.round(v * k), cur);
     });
   }
 
