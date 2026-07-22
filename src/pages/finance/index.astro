@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import HubHero from '../../components/ui/HubHero.astro';
+import HubCard from '../../components/ui/HubCard.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
 import { buildHubCards } from '../../lib/category-hub';
 
-// Derived from the calculators registry — adding an entry there is enough to
+// Derived from the calculators registry: adding an entry there is enough to
 // list it here. Copy overrides keep the longer hub blurbs; anything without one
 // falls back to the registry description.
 const calcs = buildHubCards('finance', {
@@ -64,7 +65,7 @@ const calcs = buildHubCards('finance', {
   },
 });
 
-// Comparison and guide pages — editorial content, not registry calculators.
+// Comparison and guide pages: editorial content, not registry calculators.
 const guides = [
   { name: 'Old vs New Regime', href: '/finance/old-vs-new-tax-regime-india/', desc: "Side-by-side comparison of India's two income-tax regimes." },
   { name: 'Indian City EMI Calculators', href: '/finance/mortgage-calculator/cities/', desc: 'Home loan EMI by Indian city: Mumbai, Bengaluru, Chennai, Delhi-NCR and 280+ more with local stamp duty and lender notes.' },
@@ -84,38 +85,44 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Finance Calculators — Mortgage, Loan, EMI, Tax & More"
+  title="Finance Calculators: Mortgage, Loan, EMI, Tax"
   description="Free finance calculators for mortgages, loans, EMIs, taxes, salary, compound interest, and more. Accurate, fast, no signup."
   schemas={[buildBreadcrumbSchema(breadcrumbs)]}
 >
-  <div class="container-prose py-8">
-    <Breadcrumbs items={breadcrumbs} />
-    <h1>Finance Calculators</h1>
-    <p class="text-lg text-slate-700 mt-3">
-      Mortgage, loan, EMI, tax, salary, and investment calculators. All free, all instant.
-    </p>
+  <HubHero
+    breadcrumbs={breadcrumbs}
+    chip="💰 Finance"
+    chipClass="chip-lime"
+    stats={[
+      { label: 'Tools', value: String(calcs.length) },
+      { label: 'Comparisons', value: String(guides.length) },
+    ]}
+    titleLead="Finance Calculators."
+    titleAccent="Every number shown."
+    intro="Mortgage, loan, EMI, tax, salary, and investment calculators. All free, all instant."
+  />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+  <section class="container-wide pb-16 md:pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {
         calcs.map((c) => (
-          <a href={c.href} class="card hover:border-brand-300 no-underline block">
-            <div class="font-semibold text-slate-900">{c.name}</div>
-            <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
-          </a>
+          <HubCard href={c.href} name={c.name} desc={c.desc} icon={c.icon} />
         ))
       }
     </div>
 
-    <h2 class="mt-12">Comparisons &amp; guides</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <h2
+      class="!text-2xl sm:!text-3xl !font-extrabold text-ink-900 !mt-12 !mb-4"
+      style="font-family: 'Inter Tight', sans-serif;"
+    >
+      Comparisons &amp; guides
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {
         guides.map((c) => (
-          <a href={c.href} class="card hover:border-brand-300 no-underline block">
-            <div class="font-semibold text-slate-900">{c.name}</div>
-            <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
-          </a>
+          <HubCard href={c.href} name={c.name} desc={c.desc} />
         ))
       }
     </div>
-  </div>
+  </section>
 </BaseLayout>

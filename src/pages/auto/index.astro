@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import HubHero from '../../components/ui/HubHero.astro';
+import HubCard from '../../components/ui/HubCard.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
 import { buildHubCards } from '../../lib/category-hub';
 
-// Derived from the calculators registry — see src/lib/category-hub.ts.
+// Derived from the calculators registry. See src/lib/category-hub.ts.
 // The car loan calculator lives under /finance/ but belongs on this hub too.
 const liveCalcs = buildHubCards('auto', {
   alsoInclude: ['car-loan-calculator'],
@@ -45,7 +46,7 @@ const schemas = [
   {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Auto Calculators — Calctube',
+    name: 'Auto Calculators | Calctube',
     description: 'Free car calculators: fuel cost, fuel economy, depreciation, lease vs buy and car loan.',
     url: 'https://calctube.com/auto/',
     isPartOf: { '@id': 'https://calctube.com/#website' },
@@ -63,59 +64,52 @@ const schemas = [
 ---
 
 <BaseLayout
-  title="Auto Calculators — Fuel Cost, Economy, Depreciation & Lease"
+  title="Auto Calculators: Fuel Cost, Economy, Depreciation & Lease"
   description="Free car calculators: trip fuel cost, fuel economy (MPG/km-L), car depreciation, lease vs buy, and car loan payments. Imperial and metric. No signup."
   schemas={schemas}
 >
-  <div class="container-prose py-8">
-    <Breadcrumbs items={breadcrumbs} />
-    <h1>Auto Calculators</h1>
-    <p class="text-lg text-slate-700 mt-3">
-      Everything for running the numbers on a car — trip fuel cost, fuel economy, depreciation, lease versus buy, and loan payments. Each calculator shows the formula and works in US or metric units.
-    </p>
+  <HubHero
+    breadcrumbs={breadcrumbs}
+    chip="🚗 Auto"
+    chipClass="chip-cyan"
+    stats={[{ label: 'Tools', value: String(liveCalcs.length) }]}
+    titleLead="Auto Calculators."
+    titleAccent="The real cost."
+    intro="Everything for running the numbers on a car: trip fuel cost, fuel economy, depreciation, lease versus buy, and loan payments. Each calculator shows the formula and works in US or metric units."
+    orbA="bg-cyan-accent/30"
+    orbB="bg-lime-accent/25"
+  />
 
-    <h2 class="mt-10">Available now</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-      {liveCalcs.map((c) => (
-        <a href={c.href} class="card hover:border-brand-300 no-underline block">
-          <div class="text-3xl mb-2">{c.icon}</div>
-          <div class="font-semibold text-slate-900">{c.name}</div>
-          <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
-        </a>
-      ))}
+  <section class="container-wide pb-16 md:pb-24">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="!text-2xl sm:!text-3xl !font-extrabold text-ink-900 !mt-12 !mb-4" style="font-family: 'Inter Tight', sans-serif;">Available now</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {liveCalcs.map((c) => (
+          <HubCard href={c.href} name={c.name} desc={c.desc} icon={c.icon} />
+        ))}
+      </div>
+
+      <h2 class="!text-2xl sm:!text-3xl !font-extrabold text-ink-900 !mt-12 !mb-4" style="font-family: 'Inter Tight', sans-serif;">Coming soon</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {upcomingCalcs.map((c) => (
+          <HubCard name={c.name} desc={c.desc} icon={c.icon} soon />
+        ))}
+      </div>
+
+      <h2 class="!text-2xl sm:!text-3xl !font-extrabold text-ink-900 !mt-12 !mb-4" style="font-family: 'Inter Tight', sans-serif;">The real cost of a car</h2>
+      <p class="text-ink-700 leading-relaxed">
+        The sticker price is only the start. Fuel, depreciation, financing and the lease-versus-buy decision often matter more over the life of a car than the headline number. These calculators break each of those down with the formula shown, so you can compare options honestly before you commit.
+      </p>
+
+      <h2 class="!text-2xl sm:!text-3xl !font-extrabold text-ink-900 !mt-12 !mb-4" style="font-family: 'Inter Tight', sans-serif;">Frequently asked questions</h2>
+      <div class="space-y-3">
+        {faqs.map((f) => (
+          <details class="card">
+            <summary class="cursor-pointer font-extrabold text-ink-900" style="font-family: 'Inter Tight', sans-serif;">{f.q}</summary>
+            <p class="text-sm text-ink-700 mt-2 !leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
     </div>
-
-    <h2 class="mt-10">Coming soon</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-      {upcomingCalcs.map((c) => (
-        <div class="card opacity-70">
-          <div class="flex items-start gap-3">
-            <div class="text-3xl">{c.icon}</div>
-            <div class="flex-1">
-              <div class="font-semibold text-slate-900 flex items-center gap-2">
-                {c.name}
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 uppercase">Soon</span>
-              </div>
-              <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <h2 class="mt-10">The real cost of a car</h2>
-    <p class="text-slate-700 leading-relaxed">
-      The sticker price is only the start. Fuel, depreciation, financing and the lease-versus-buy decision often matter more over the life of a car than the headline number. These calculators break each of those down with the formula shown — so you can compare options honestly before you commit.
-    </p>
-
-    <h2 class="mt-10">Frequently asked questions</h2>
-    <div class="space-y-3 mt-4">
-      {faqs.map((f) => (
-        <details class="card">
-          <summary class="cursor-pointer font-semibold text-slate-900">{f.q}</summary>
-          <p class="text-sm text-slate-700 mt-2 !leading-relaxed">{f.a}</p>
-        </details>
-      ))}
-    </div>
-  </div>
+  </section>
 </BaseLayout>

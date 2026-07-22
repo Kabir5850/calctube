@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import HubHero from '../../components/ui/HubHero.astro';
+import HubCard from '../../components/ui/HubCard.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
 import { currencyPairs } from '../../data/currency-pairs';
 import { buildHubCards } from '../../lib/category-hub';
@@ -10,7 +11,7 @@ const breadcrumbs = [
   { name: 'Conversions', url: '/conversions/' },
 ];
 
-// Derived from the calculators registry — see src/lib/category-hub.ts.
+// Derived from the calculators registry: see src/lib/category-hub.ts.
 const cards = buildHubCards('conversion', {
   order: ['currency-converter-hub', 'unit-converter', 'temperature-converter', 'time-zone-converter'],
   copy: {
@@ -35,57 +36,68 @@ const popular = currencyPairs.filter((p) => p.popularity === 'huge').slice(0, 12
 ---
 
 <BaseLayout
-  title="Conversion Calculators — Currency & Units"
+  title="Conversion Calculators: Currency & Units"
   description={`Free conversion calculators for currency (${currencyPairs.length}+ pairs), units, and more. Live rates, no signup, mobile-first.`}
   schemas={[buildBreadcrumbSchema(breadcrumbs)]}
 >
-  <div class="container-prose py-8">
-    <Breadcrumbs items={breadcrumbs} />
-    <h1>Conversion Calculators</h1>
-    <p class="text-lg text-slate-700 mt-3">
-      Free currency and unit converters. Live exchange rates updated regularly.
-    </p>
+  <HubHero
+    breadcrumbs={breadcrumbs}
+    chip="🔄 Conversions"
+    chipClass="chip-yellow"
+    stats={[
+      { label: 'Currency pairs', value: String(currencyPairs.length) },
+      { label: 'Converters', value: String(cards.length) },
+    ]}
+    titleLead="Conversion Calculators."
+    titleAccent="Units and currency."
+    intro="Free currency and unit converters. Live exchange rates updated regularly."
+  />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+  <section class="container-wide pb-16 md:pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {
+        // The meta string carries a leading space: Astro trims the whitespace
+        // between {name} and {meta} inside HubCard, so it has to come from here.
         categories.map((c) => (
-          <a href={c.href} class="card hover:border-brand-300 no-underline block">
-            <div class="text-2xl mb-2">{c.icon}</div>
-            <div class="font-semibold text-slate-900">
-              {c.name} <span class="text-slate-500 font-normal">· {c.count} pairs</span>
-            </div>
-            <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
-          </a>
+          <HubCard href={c.href} name={c.name} desc={c.desc} icon={c.icon} meta={`· ${c.count} pairs`} />
         ))
       }
     </div>
 
-    <h2 class="mt-12">Unit &amp; time converters</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+    <h2
+      class="!text-2xl sm:!text-3xl !font-extrabold text-ink-900 !mt-12 !mb-4"
+      style="font-family: 'Inter Tight', sans-serif;"
+    >
+      Unit &amp; time converters
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {
         converters.map((c) => (
-          <a href={c.href} class="card hover:border-brand-300 no-underline block">
-            <div class="text-2xl mb-2">{c.icon}</div>
-            <div class="font-semibold text-slate-900">{c.name}</div>
-            <p class="text-sm text-slate-600 mt-1 !leading-snug">{c.desc}</p>
-          </a>
+          <HubCard href={c.href} name={c.name} desc={c.desc} icon={c.icon} />
         ))
       }
     </div>
 
-    <h2 class="mt-12">Most-searched currency pairs</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-4">
+    <h2
+      class="!text-2xl sm:!text-3xl !font-extrabold text-ink-900 !mt-12 !mb-4"
+      style="font-family: 'Inter Tight', sans-serif;"
+    >
+      Most-searched currency pairs
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
       {
         popular.map((p) => (
           <a
             href={`/conversions/currency/${p.slug}/`}
-            class="card hover:border-brand-300 no-underline block text-center"
+            class="block bg-white border-[2.5px] border-ink-900 rounded-2xl p-4 no-underline text-center shadow-sticker-sm hover:shadow-[6px_6px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-200"
           >
-            <div class="font-semibold text-slate-900">{p.from} → {p.to}</div>
-            <div class="text-xs text-slate-600 mt-1">1 {p.from} = {p.rate} {p.to}</div>
+            <div class="font-extrabold text-ink-900" style="font-family: 'Inter Tight', sans-serif;">
+              {p.from} → {p.to}
+            </div>
+            <div class="text-xs text-ink-600 mt-1 font-medium">1 {p.from} = {p.rate} {p.to}</div>
           </a>
         ))
       }
     </div>
-  </div>
+  </section>
 </BaseLayout>
