@@ -56,15 +56,22 @@ export default defineConfig({
         // cluster's underlying data/content genuinely changes. Never use the
         // build timestamp: stamping 796 URLs "changed" on every deploy teaches
         // Google the field is unreliable and it gets ignored.
+        // All clusters bumped 2026-07-22: the em-dash rewrite changed visible FAQ
+        // and prose copy in every data file feeding these pages (currency-pairs,
+        // india-cities, emi-banks, mortgage-locales, bank/city grids), and the
+        // authorship removal changed every calculator page's body and JSON-LD.
+        // This is a genuine content change, not a deploy-timestamp lie, and it
+        // matters: most "Crawled - currently not indexed" URLs in GSC were last
+        // crawled before this overhaul, so their verdict predates the rewrite.
         const CLUSTER_LASTMOD = [
-          [/^\/finance\/mortgage-calculator\/cities\//, '2026-05-17'], // india-cities data
-          [/^\/finance\/mortgage-calculator\//, '2026-07-07'],         // bank sections + H1 fix
-          [/^\/finance\/emi-calculator\//, '2026-05-24'],              // emi-banks data
-          [/^\/finance\/income-tax-india\//, '2026-07-07'],            // PT-led retitle
-          [/^\/conversions\/currency\//, '2026-07-07'],                // live-rate converter
-          [/^\/conversions\/unit-converter\//, '2026-07-19'],          // unit-pair tier
-          [/^\/math\/cgpa-to-percentage\//, '2026-07-19'],             // per-university cgpa tier
-          [/^\/$/, '2026-07-07'],                                      // homepage (geo banner)
+          [/^\/finance\/mortgage-calculator\/cities\//, '2026-07-22'], // india-cities copy rewrite
+          [/^\/finance\/mortgage-calculator\//, '2026-07-22'],         // mortgage-locales copy rewrite
+          [/^\/finance\/emi-calculator\//, '2026-07-22'],              // emi-banks + grids copy rewrite
+          [/^\/finance\/income-tax-india\//, '2026-07-22'],            // india-states copy rewrite
+          [/^\/conversions\/currency\//, '2026-07-22'],                // currency-pairs copy rewrite
+          [/^\/conversions\/unit-converter\//, '2026-07-22'],          // page copy rewrite
+          [/^\/math\/cgpa-to-percentage\//, '2026-07-22'],             // page copy rewrite
+          [/^\/$/, '2026-07-22'],                                      // homepage copy rewrite
         ];
         const match = CLUSTER_LASTMOD.find(([re]) => re.test(path));
         if (match) item.lastmod = match[1];
