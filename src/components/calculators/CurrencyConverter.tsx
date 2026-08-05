@@ -91,11 +91,13 @@ export default function CurrencyConverter({
                 {activeFrom.flag} From {activeFrom.code} ({activeFrom.name})
               </label>
               <div className="relative">
-                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none">{activeFrom.symbol}</span>
+                {/* Multi-char symbols (NZ$, AED, Mex$) shrink and get wider input padding
+                    so the typed value never renders underneath the prefix. */}
+                <span className={`absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 font-bold pointer-events-none ${activeFrom.symbol.length > 1 ? 'text-xs' : ''}`}>{activeFrom.symbol}</span>
                 <input
                   type="number" min={0} step={0.01} value={amount}
                   onChange={(e) => setAmount(Number(e.target.value) || 0)}
-                  className="w-full pl-9 pr-3 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-lg font-bold focus:outline-none focus:ring-4 focus:ring-cyan-accent transition-all"
+                  className={`w-full ${activeFrom.symbol.length > 1 ? 'pl-14' : 'pl-9'} pr-3 py-3 bg-white border-[2.5px] border-ink-900 rounded-xl text-lg font-bold focus:outline-none focus:ring-4 focus:ring-cyan-accent transition-all`}
                   inputMode="decimal"
                 />
               </div>
