@@ -41,6 +41,18 @@
   ::selection {
     @apply bg-lime-accent text-ink-900;
   }
+  /* Native number-input spinners draw in the same right-side zone as the unit
+     and % suffix badges inside the sticker-styled inputs, and float awkwardly
+     mid-input at py-3 heights. Every numeric input here has a slider, preset
+     chips or direct typing (inputMode), so the spinner is redundant chrome. */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
 }
 
 /* ==========================================================================
