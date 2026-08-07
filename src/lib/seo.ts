@@ -150,14 +150,9 @@ export function buildWebsiteSchema() {
     url: SITE.url,
     description: SITE.description,
     publisher: { '@id': `${SITE.url}/#organization` },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE.url}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    // No SearchAction: /search does not exist as a page (site search is an
+    // on-page island), and advertising a 404 target on every page just
+    // invites Googlebot to crawl /search?q=... and log soft errors.
   };
 }
 
