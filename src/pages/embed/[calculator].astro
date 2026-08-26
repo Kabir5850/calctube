@@ -44,6 +44,12 @@ import NscCalculator from '../../components/calculators/NscCalculator.tsx';
 import ScssCalculator from '../../components/calculators/ScssCalculator.tsx';
 import PostOfficeMisCalculator from '../../components/calculators/PostOfficeMisCalculator.tsx';
 import ApyCalculator from '../../components/calculators/ApyCalculator.tsx';
+import SwpCalculator from '../../components/calculators/SwpCalculator.tsx';
+import StepUpSipCalculator from '../../components/calculators/StepUpSipCalculator.tsx';
+import XirrCalculator from '../../components/calculators/XirrCalculator.tsx';
+import CapitalGainsCalculator from '../../components/calculators/CapitalGainsCalculator.tsx';
+import TdsCalculator from '../../components/calculators/TdsCalculator.tsx';
+import AdvanceTaxCalculator from '../../components/calculators/AdvanceTaxCalculator.tsx';
 import LumpsumCalculator from '../../components/calculators/LumpsumCalculator.tsx';
 import CagrCalculator from '../../components/calculators/CagrCalculator.tsx';
 import RdCalculator from '../../components/calculators/RdCalculator.tsx';
@@ -109,6 +115,12 @@ const WIRED_SLUGS = new Set([
   'scss-calculator',
   'post-office-mis-calculator',
   'apy-calculator',
+  'swp-calculator',
+  'step-up-sip-calculator',
+  'xirr-calculator',
+  'capital-gains-calculator',
+  'tds-calculator',
+  'advance-tax-calculator',
   'lumpsum-calculator',
   'cagr-calculator',
   'rd-calculator',
@@ -194,6 +206,12 @@ const canonical = new URL(calc.href, SITE.url).toString();
   {calc.slug === 'scss-calculator' && <ScssCalculator client:load />}
   {calc.slug === 'post-office-mis-calculator' && <PostOfficeMisCalculator client:load />}
   {calc.slug === 'apy-calculator' && <ApyCalculator client:load />}
+  {calc.slug === 'swp-calculator' && <SwpCalculator client:load />}
+  {calc.slug === 'step-up-sip-calculator' && <StepUpSipCalculator client:load />}
+  {calc.slug === 'xirr-calculator' && <XirrCalculator client:load />}
+  {calc.slug === 'capital-gains-calculator' && <CapitalGainsCalculator client:load />}
+  {calc.slug === 'tds-calculator' && <TdsCalculator client:load />}
+  {calc.slug === 'advance-tax-calculator' && <AdvanceTaxCalculator client:load />}
   {calc.slug === 'lumpsum-calculator' && <LumpsumCalculator client:load />}
   {calc.slug === 'cagr-calculator' && <CagrCalculator client:load />}
   {calc.slug === 'rd-calculator' && <RdCalculator client:load />}
