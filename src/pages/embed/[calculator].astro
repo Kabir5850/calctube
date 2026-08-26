@@ -40,6 +40,10 @@ import GratuityCalculator from '../../components/calculators/GratuityCalculator.
 import EpfCalculator from '../../components/calculators/EpfCalculator.tsx';
 import NpsCalculator from '../../components/calculators/NpsCalculator.tsx';
 import SukanyaSamriddhiCalculator from '../../components/calculators/SukanyaSamriddhiCalculator.tsx';
+import NscCalculator from '../../components/calculators/NscCalculator.tsx';
+import ScssCalculator from '../../components/calculators/ScssCalculator.tsx';
+import PostOfficeMisCalculator from '../../components/calculators/PostOfficeMisCalculator.tsx';
+import ApyCalculator from '../../components/calculators/ApyCalculator.tsx';
 import LumpsumCalculator from '../../components/calculators/LumpsumCalculator.tsx';
 import CagrCalculator from '../../components/calculators/CagrCalculator.tsx';
 import RdCalculator from '../../components/calculators/RdCalculator.tsx';
@@ -101,6 +105,10 @@ const WIRED_SLUGS = new Set([
   'epf-calculator',
   'nps-calculator',
   'sukanya-samriddhi-calculator',
+  'nsc-calculator',
+  'scss-calculator',
+  'post-office-mis-calculator',
+  'apy-calculator',
   'lumpsum-calculator',
   'cagr-calculator',
   'rd-calculator',
@@ -182,6 +190,10 @@ const canonical = new URL(calc.href, SITE.url).toString();
   {calc.slug === 'epf-calculator' && <EpfCalculator client:load />}
   {calc.slug === 'nps-calculator' && <NpsCalculator client:load />}
   {calc.slug === 'sukanya-samriddhi-calculator' && <SukanyaSamriddhiCalculator client:load />}
+  {calc.slug === 'nsc-calculator' && <NscCalculator client:load />}
+  {calc.slug === 'scss-calculator' && <ScssCalculator client:load />}
+  {calc.slug === 'post-office-mis-calculator' && <PostOfficeMisCalculator client:load />}
+  {calc.slug === 'apy-calculator' && <ApyCalculator client:load />}
   {calc.slug === 'lumpsum-calculator' && <LumpsumCalculator client:load />}
   {calc.slug === 'cagr-calculator' && <CagrCalculator client:load />}
   {calc.slug === 'rd-calculator' && <RdCalculator client:load />}
