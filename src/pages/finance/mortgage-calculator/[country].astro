@@ -8,6 +8,8 @@ import {
   formatLocaleCurrency,
   type LocaleData,
 } from '../../../data/mortgage-locales';
+import { extraLocalBanks } from '../../../data/mortgage-local-banks';
+import evidence from '../../../data/index-evidence.json';
 import {
   SITE,
   buildCalculatorSchema,
@@ -30,6 +32,57 @@ interface Props {
 
 const { locale } = Astro.props;
 
+// Local lenders: the locale's own list when it has one, otherwise the extended
+// set in mortgage-local-banks.ts. These drive the page title and the bank section.
+const localBanks: Array<{ name: string; note: string; rateRange?: string; ltv?: string; short?: string }> =
+  locale.localBanks ?? extraLocalBanks[locale.slug] ?? [];
+const hasBankRates = localBanks.some((b) => b.rateRange);
+
+// The English phrase people in this market type into Google. Search Console shows
+// "home loan calculator mauritius" and "bml home loan calculator", not "mortgage",
+// where the local English term is home or housing loan. The overrides cover
+// markets whose actual queries disagree with the local term on record.
+const SEARCH_TERM_OVERRIDES: Record<string, string> = { belize: 'Mortgage', maldives: 'Home Loan' };
+const localTerm = locale.termLocalName.toLowerCase();
+const searchTerm =
+  SEARCH_TERM_OVERRIDES[locale.slug] ??
+  (/housing loan/.test(localTerm)
+    ? 'Housing Loan'
+    : /home loan|home financ|housing financ/.test(localTerm)
+      ? 'Home Loan'
+      : 'Mortgage');
+const searchTermLower = searchTerm.toLowerCase();
+// Show the local-language name as a note only when it adds something.
+const showLocalTerm = !['mortgage', 'home loan', 'housing loan', 'home loan emi'].includes(localTerm);
+
+// Lender names as people search them: "Bank of Maldives (BML)" -> "BML",
+// "MCB (Mauritius Commercial Bank)" -> "MCB".
+function bankShort(bank: { name: string; short?: string }): string {
+  if (bank.short) return bank.short;
+  const m = bank.name.match(/^(.*?)\s*\(([^)]+)\)\s*$/);
+  if (!m) return bank.name;
+  return /^[A-Z]{2,6}$/.test(m[2]) ? m[2] : m[1];
+}
+const bankShorts = localBanks.map(bankShort);
+
+// Title: country + search term, then as many lender names as fit in 60 characters.
+// Keep the year when possible; drop it only if that lets another lender in.
+const titleBase = `${locale.country} ${searchTerm} Calculator`;
+let pageTitle = `${titleBase} 2026`;
+let banksInTitle = 0;
+for (const withYear of [true, false]) {
+  for (let n = Math.min(3, bankShorts.length); n >= 1; n--) {
+    const candidate = `${titleBase}${withYear ? ' 2026' : ''}: ${bankShorts.slice(0, n).join(', ')}`;
+    if (candidate.length <= 60 && n > banksInTitle) {
+      pageTitle = candidate;
+      banksInTitle = n;
+    }
+  }
+}
+const topBanks = bankShorts.slice(0, 3);
+const bankListText =
+  topBanks.length > 1 ? `${topBanks.slice(0, -1).join(', ')} and ${topBanks[topBanks.length - 1]}` : topBanks[0] ?? '';
+
 // Calculate the worked example monthly payment for the locale
 function emi(p: number, r: number, years: number): number {
   const m = r / 100 / 12;
@@ -44,8 +97,8 @@ const path = `/finance/mortgage-calculator/${locale.slug}`;
 
 const meta = {
   slug: `mortgage-calculator-${locale.slug}`,
-  name: `Mortgage Calculator (${locale.country})`,
-  description: `Free ${locale.country} mortgage calculator (2026). ${formatLocaleCurrency(locale.workedExample.amount, locale)} at ${locale.workedExample.rate}% for ${locale.workedExample.term} yrs = ~${formatLocaleCurrency(Math.round(examplePayment), locale)}/mo. Instant amortization table.`,
+  name: `${searchTerm} Calculator (${locale.country})`,
+  description: `${locale.country} ${searchTermLower} calculator (2026)${bankListText ? `, covering ${bankListText}` : ''}. ${formatLocaleCurrency(locale.workedExample.amount, locale)} at ${locale.workedExample.rate}% for ${locale.workedExample.term} yrs = ~${formatLocaleCurrency(Math.round(examplePayment), locale)}/mo. Amortization table included.`,
   category: 'finance' as const,
   keywords: locale.metaKeywords,
   lastUpdated: '2026-05-28',
@@ -95,13 +148,28 @@ const schemas = [
 
 // Related country pages — prefer same-currency siblings (EUR cluster, USD-pegged Gulf, etc.),
 // then fill with other prominent countries. Limits to 8 for stronger internal linking density.
-const sameCurrencySiblings = mortgageLocales.filter(
-  (l) => l.slug !== locale.slug && l.currency === locale.currency
-);
-const otherProminent = mortgageLocales.filter(
-  (l) => l.slug !== locale.slug && l.currency !== locale.currency
-);
-const otherCountries = [...sameCurrencySiblings, ...otherProminent].slice(0, 8);
+// Countries Google has indexed or shown in results (Search Console, Nov 2026),
+// most impressions first. Related links favour these so internal link equity
+// goes to pages with demonstrated demand instead of the first eight in the file.
+const evidenceSlugs = [...new Set([...evidence.country.impressions, ...evidence.country.indexed])];
+const evidenceRank = (slug: string) => {
+  const i = evidenceSlugs.indexOf(slug);
+  return i === -1 ? Number.MAX_SAFE_INTEGER : i;
+};
+const sameCurrencySiblings = mortgageLocales
+  .filter((l) => l.slug !== locale.slug && l.currency === locale.currency)
+  .sort((a, b) => evidenceRank(a.slug) - evidenceRank(b.slug))
+  .slice(0, 3);
+// Rotate through the evidence list by this page's position so every such country
+// collects inbound links from many pages, not just the top few.
+const evidenceLocales = evidenceSlugs
+  .map((slug) => mortgageLocales.find((l) => l.slug === slug))
+  .filter((l): l is LocaleData => Boolean(l));
+const pageIndex = mortgageLocales.findIndex((l) => l.slug === locale.slug);
+const rotated = evidenceLocales
+  .map((_, k) => evidenceLocales[(pageIndex * 3 + k) % evidenceLocales.length])
+  .filter((l) => l.slug !== locale.slug && !sameCurrencySiblings.includes(l));
+const otherCountries = [...sameCurrencySiblings, ...rotated].slice(0, 8);
 
 
 // Hreflang alternates — self-reference + x-default.
@@ -113,14 +181,10 @@ const otherCountries = [...sameCurrencySiblings, ...otherProminent].slice(0, 8);
 // is Finnish, causing a language-signal mismatch that hurts rankings.
 const contentLang = locale.language.startsWith('en') ? locale.language : 'en';
 
-// H1 must match what people actually type into Google (Latin script). For
-// locales whose local term is non-Latin (Greek, Arabic, Pashto, Thai…), a
-// mixed-script H1 like "Στεγαστικό δάνειο Calculator Cyprus" matches nothing —
-// use "Mortgage Calculator" in the H1 and surface the local term as a chip.
-const isLatinTerm = /^[ -ɏḀ-ỿ’'’-]+$/.test(locale.termLocalName);
-const h1Term = isLatinTerm
-  ? locale.termLocalName.charAt(0).toUpperCase() + locale.termLocalName.slice(1)
-  : 'Mortgage';
+// The H1 uses the English search term (searchTerm above). A local-language name
+// such as "Hypothek" or "στεγαστικό δάνειο" is shown beneath it as a note: these
+// pages are written in English and found through English queries like "mortgage
+// calculator germany", which a mixed-language H1 does not match.
 const selfUrl = `${SITE.url}${path}/`;
 const hreflangs = [
   { hreflang: contentLang, href: selfUrl },
@@ -129,7 +193,7 @@ const hreflangs = [
 ---
 
 <BaseLayout
-  title={`${locale.country} Mortgage Calculator 2026`}
+  title={pageTitle}
   description={meta.description}
   schemas={schemas}
   publishedTime={meta.lastUpdated}
@@ -175,10 +239,10 @@ const hreflangs = [
         </div>
 
         <h1 class="!text-4xl sm:!text-5xl md:!text-6xl !font-extrabold !tracking-tight !leading-[1.05] text-ink-900" style="font-family: 'Inter Tight', sans-serif; letter-spacing: -0.035em;">
-          {h1Term} Calculator
+          {searchTerm} Calculator
           <span class="text-gradient-brand inline-flex items-baseline gap-2">{locale.country} <FlagIcon slug={locale.slug} size={40} alt={`${locale.country} flag`} class="-mb-1 self-center" /></span>
         </h1>
-        {!isLatinTerm && (
+        {showLocalTerm && (
           <p class="mt-3 text-ink-600 font-semibold text-base">
             Known locally as <span class="text-ink-900 font-extrabold">{locale.termLocalName}</span>
           </p>
@@ -220,7 +284,7 @@ const hreflangs = [
       <div class="max-w-4xl mx-auto">
         <span class="chip-cyan mb-4 inline-flex items-center gap-1.5"><FlagIcon slug={locale.slug} size={18} alt={`${locale.country} flag`} /> Local context</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
-          {isLatinTerm ? `${h1Term}s` : 'Mortgages'} in {locale.country}
+          {searchTerm}s in {locale.country}
         </h2>
 
         <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -261,22 +325,23 @@ const hreflangs = [
     </div>
   </section>
 
-  <!-- LOCAL BANKS & RATES (only when locale.localBanks is populated) -->
-  {locale.localBanks && locale.localBanks.length > 0 && (
+  <!-- LOCAL BANKS (the locale's own list, or the extended set in mortgage-local-banks.ts) -->
+  {localBanks.length > 0 && (
     <section class="container-wide py-12 md:py-16">
       <div class="max-w-4xl mx-auto">
         <span class="chip-lime mb-4 inline-flex items-center gap-1.5"><FlagIcon slug={locale.slug} size={18} alt={`${locale.country} flag`} /> Local banks</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
-          {locale.country} mortgage rates by bank
+          {hasBankRates ? `${locale.country} ${searchTermLower} rates by bank` : `${searchTerm} lenders in ${locale.country}`}
         </h2>
         <p class="mt-4 text-ink-700 leading-relaxed font-medium max-w-3xl">
-          The main {locale.termLocalName} lenders in {locale.country}, with indicative 2026 rates and typical
-          loan-to-value caps. Rates vary by borrower profile, residency and property type. Use the calculator
-          above with each bank's quoted rate to compare your real monthly payment.
+          {hasBankRates
+            ? `The main ${searchTermLower} lenders in ${locale.country}, with indicative 2026 rates and typical loan-to-value caps where published. Rates vary by borrower profile, residency and property type.`
+            : `The main ${searchTermLower} lenders in ${locale.country} and how each one lends. Rates depend on borrower profile, residency and property type, so none are quoted here.`}{' '}
+          Use the calculator above with each bank's quoted rate to compare your real monthly payment.
         </p>
 
         <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {locale.localBanks.map((bank) => (
+          {localBanks.map((bank) => (
             <div class="bg-white border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
               <div class="flex flex-wrap items-center gap-2 mb-3">
                 <h3 class="!text-lg !font-extrabold !text-ink-900 !m-0 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">{bank.name}</h3>
@@ -299,8 +364,10 @@ const hreflangs = [
         </div>
 
         <p class="mt-6 text-xs text-ink-500 font-medium">
-          Indicative rates compiled from public bank disclosures and central-bank data for 2026; not a quote or
-          an offer of credit. Confirm current terms directly with the lender.
+          {hasBankRates
+            ? 'Indicative rates compiled from public bank disclosures and central-bank data for 2026; not a quote or an offer of credit.'
+            : 'Lender descriptions are general market information, not a quote or an offer of credit.'}{' '}
+          Confirm current terms directly with the lender.
         </p>
       </div>
     </section>

@@ -1,0 +1,24 @@
+{
+  "_about": "Google Search Console evidence for calctube.com, captured 2026-11-10 (property sc-domain:calctube.com). 'indexed' = URL was in Google's index on 2026-11-06. 'impressions' = URL earned at least one search impression between 2026-05-17 and 2026-11-10. Drives src/lib/indexing.ts: a programmatic page in a pruned tier stays indexable only if it appears here. Refresh from GSC before re-running a prune; do not hand-edit to add pages without evidence.",
+  "capturedOn": "2026-11-10",
+  "currency": {
+    "indexed": ["inr-to-vnd", "kwd-to-npr", "inr-to-hkd", "eur-to-inr", "usd-to-ugx", "usd-to-jod", "aed-to-idr", "bhd-to-pkr", "usd-to-omr", "sgd-to-php", "sar-to-egp", "usd-to-ngn", "cny-to-hkd", "gbp-to-cad", "gbp-to-inr", "usd-to-bwp", "usd-to-bdt", "aud-to-inr", "jpy-to-inr", "sar-to-inr", "gbp-to-zar", "usd-to-bsd", "inr-to-nzd", "aed-to-egp", "usd-to-isk", "usd-to-inr", "usd-to-zmw", "usd-to-pkr", "aed-to-npr", "usd-to-ttd", "gbp-to-aed", "usd-to-etb", "cad-to-inr", "aed-to-lkr"],
+    "impressions": ["nzd-to-inr", "usd-to-pen", "eur-to-inr", "cny-to-inr", "gbp-to-inr", "eur-to-aed", "aed-to-egp", "inr-to-idr", "cad-to-inr", "aud-to-bdt", "gbp-to-aed", "usd-to-bsd", "inr-to-nzd", "usd-to-etb", "usd-to-sar", "cny-to-hkd", "usd-to-bdt", "aed-to-myr", "usd-to-twd", "usd-to-pkr", "usd-to-inr", "usd-to-omr", "usd-to-isk", "usd-to-ugx", "nzd-to-usd", "usd-to-cad", "usd-to-jod", "inr-to-hkd", "sar-to-egp", "usd-to-zmw", "inr-to-vnd", "sar-to-inr", "usd-to-ttd", "aed-to-php", "sgd-to-php", "aed-to-inr", "inr-to-bdt", "aed-to-idr", "qar-to-pkr", "sgd-to-myr", "usd-to-huf", "eur-to-usd", "inr-to-myr", "aed-to-npr", "kwd-to-npr", "gbp-to-cad", "gbp-to-zar", "usd-to-bwp", "aud-to-inr", "bdt-to-inr", "bhd-to-pkr", "usd-to-gtq", "gbp-to-usd", "usd-to-ngn", "usd-to-aed"]
+  },
+  "city": {
+    "indexed": ["warangal", "chandrapur", "udupi", "bhagalpur", "davanagere", "shillong", "azamgarh", "vapi"],
+    "impressions": ["vapi", "bharuch", "panipat", "surendranagar", "tirupati", "palanpur", "bhagalpur", "aizawl", "warangal", "amreli", "dhule", "shillong", "kozhikode", "nagpur", "akola", "davanagere", "chandrapur", "junagadh", "bilaspur", "udupi", "valsad", "dhubri", "ara", "rourkela", "aurangabad", "kollam", "muzaffarpur"]
+  },
+  "unit": {
+    "indexed": ["km-to-miles", "celsius-to-fahrenheit", "kg-to-lbs"],
+    "impressions": []
+  },
+  "country": {
+    "indexed": ["myanmar", "belize", "finland", "maldives", "liechtenstein", "vanuatu", "uganda", "honduras", "jamaica", "mongolia", "kyrgyzstan", "singapore", "france", "barbados", "slovenia", "cambodia", "germany", "libya", "iran", "australia", "papua-new-guinea", "oman", "kosovo", "uae", "mauritius", "albania", "qatar", "eswatini", "norway", "cyprus", "fiji"],
+    "impressions": ["hong-kong", "mauritius", "germany", "singapore", "belize", "south-africa", "slovenia", "france", "uae", "maldives", "cyprus", "finland", "uganda", "jamaica", "spain", "ireland", "cambodia", "iran", "canada", "bangladesh", "netherlands", "uruguay", "myanmar", "barbados", "fiji", "oman", "albania", "belarus", "mongolia", "austria", "belgium", "kyrgyzstan", "poland", "senegal", "papua-new-guinea", "jordan", "laos", "norway", "malaysia", "liechtenstein", "sweden", "switzerland", "portugal", "japan", "italy", "new-zealand", "libya", "denmark", "kosovo", "qatar", "vanuatu", "eswatini"]
+  },
+  "bank": {
+    "indexed": ["mahindra-finance", "axis", "cosmos-bank", "hsbc-india", "bob"],
+    "impressions": ["axis", "indian-bank", "icici", "pnb", "indusind", "cosmos-bank", "hsbc-india", "kotak", "esaf-sfb", "shriram-finance", "idbi", "lakshmi-vilas", "yes-bank", "idfc-first"]
+  }
+}
