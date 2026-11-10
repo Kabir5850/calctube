@@ -29,7 +29,8 @@ const table = [10, 9.5, 9, 8.5, 8, 7.5, 7, 6.5, 6, 5.5, 5].map((c) => ({ cgpa: c
 const meta = {
   slug: `${uni.slug}-cgpa-to-percentage`,
   name: `${uni.shortName} CGPA to Percentage Calculator`,
-  description: `Convert ${uni.shortName} CGPA to percentage using the official formula: ${uni.formulaText}. So a CGPA of ${ex} = ${fmtPct(exPct)}%. Free instant calculator with a full conversion chart.`.slice(0, 155),
+  // Full text; BaseLayout truncates at a word boundary (no mid-word .slice here).
+  description: `Convert ${uni.shortName} CGPA to percentage using the official formula: ${uni.formulaText}. So a CGPA of ${ex} = ${fmtPct(exPct)}%. Free instant calculator with a full conversion chart.`,
   category: 'math' as const,
   keywords: [
     `${uni.shortName.toLowerCase()} cgpa to percentage`, `${uni.shortName.toLowerCase()} percentage calculator`,

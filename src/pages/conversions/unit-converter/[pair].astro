@@ -57,9 +57,10 @@ const fwdRows = fwdAmounts.map((a) => ({ a, out: convert(a, pair.from, pair.to) 
 const revRows = revAmounts.map((a) => ({ a, out: convert(a, pair.to, pair.from) }));
 
 // Meta
+// Full text; BaseLayout truncates at a word boundary (no mid-word .slice here).
 const desc = isTemp
-  ? `Convert ${from.name} to ${to.name} (${from.symbol} to ${to.symbol}). ${formulaText}. Free instant converter with a reference table and worked examples.`.slice(0, 155)
-  : `Convert ${from.plural} to ${to.plural}: 1 ${from.symbol} = ${factorStr} ${to.symbol}. Free ${from.name}-to-${to.name} converter with a full conversion table and formula.`.slice(0, 155);
+  ? `Convert ${from.name} to ${to.name} (${from.symbol} to ${to.symbol}). ${formulaText}. Free instant converter with a reference table and worked examples.`
+  : `Convert ${from.plural} to ${to.plural}: 1 ${from.symbol} = ${factorStr} ${to.symbol}. Free ${from.name}-to-${to.name} converter with a full conversion table and formula.`;
 
 const meta = {
   slug: `${pair.slug}-converter`,

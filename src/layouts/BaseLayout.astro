@@ -16,7 +16,9 @@ export interface Props {
   canonical?: string;
   ogImage?: string;
   noindex?: boolean;
-  schemas?: object[];
+  // Allow null entries: some builders (e.g. buildHowToSchema, now disabled)
+  // return null; they are filtered out before rendering.
+  schemas?: (object | null)[];
   publishedTime?: string;
   modifiedTime?: string;
   /** Override <html lang>. Default: 'en'. Use for localized country pages. */
@@ -40,6 +42,17 @@ const {
 
 const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE.url).toString();
 
+// Truncate at a word boundary so meta/titles never cut mid-word (e.g. "...plu…").
+// Slice to the limit, then drop back to the last space; append an ellipsis.
+function truncateAtWord(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const slice = text.slice(0, max);
+  const lastSpace = slice.lastIndexOf(' ');
+  const base = (lastSpace > max * 0.6 ? slice.slice(0, lastSpace) : slice).trimEnd();
+  // Strip a dangling punctuation char so we don't render e.g. "rate,…".
+  return base.replace(/[\s,;:.\-]+$/, '') + '…';
+}
+
 // SEO: keep the rendered <title> within ~60 visible characters (Google's SERP
 // display width). Google shows the DECODED title, so budget by visible characters
 // — not HTML-entity-expanded length. The previous logic counted '&' as 5 chars and
@@ -56,14 +69,16 @@ if (title.includes(SITE.name)) {
 } else if (title.length <= TITLE_MAX) {
   fullTitle = title;
 } else {
-  fullTitle = title.slice(0, TITLE_MAX - 1).trimEnd() + '…';
+  fullTitle = truncateAtWord(title, TITLE_MAX - 1);
 }
 
 const trimmedDescription = description.length > 155
-  ? description.slice(0, 154).trimEnd() + '…'
+  ? truncateAtWord(description, 154)
   : description;
 
-const allSchemas = [buildOrganizationSchema(), buildWebsiteSchema(), ...schemas];
+// filter(Boolean): page-level builders may return null (e.g. buildHowToSchema,
+// now disabled) — drop them so we never emit `<script>null</script>`.
+const allSchemas = [buildOrganizationSchema(), buildWebsiteSchema(), ...schemas].filter(Boolean);
 
 const navLinks = [
   { label: 'Finance', href: '/finance/' },

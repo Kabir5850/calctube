@@ -35,7 +35,10 @@ const meta = {
   name: `${pair.from} to ${pair.to} Converter`,
   // No baked-in rate here: FX moves daily and a build-time number goes stale in
   // the SERP snippet. The live rate renders client-side in the converter.
-  description: (`${pair.from} to ${pair.to} converter with live mid-market rate, historical trend & conversion table. ${pair.context.slice(0, 80)}`).slice(0, 155),
+  // Compose the full description and let BaseLayout truncate at a word boundary.
+  // (Previously this double-sliced — pair.context.slice(0,80) then .slice(0,155) —
+  // which cut mid-word twice, e.g. "...anchored by 40,000+ C".)
+  description: `${pair.from} to ${pair.to} converter with live mid-market rate, historical trend & conversion table. ${pair.context}`,
   category: 'conversion' as const,
   keywords: pair.metaKeywords,
   lastUpdated: pair.lastUpdated,

@@ -107,38 +107,21 @@ export function buildSpeakableSchema(path: string) {
 }
 
 /**
- * HowTo schema flags calculator pages as step-by-step instructions.
- * Heavily used by Google AI Overviews and Bing Copilot for "how to calculate X" queries.
+ * HowTo schema — DISABLED. Google removed HowTo rich results entirely in
+ * September 2023, so this markup earns no SERP feature and only adds weight.
+ * Returns null so the ~60 existing callers need no change; BaseLayout filters
+ * falsy schemas out of the JSON-LD it emits. Kept as a no-op (rather than deleted)
+ * to avoid touching every page's imports/call sites. Re-enabling HowTo is not
+ * recommended unless Google reinstates the feature.
  */
-export function buildHowToSchema(opts: {
+export function buildHowToSchema(_opts: {
   name: string;
   description: string;
   steps: Array<{ name: string; text: string }>;
   totalTime?: string; // ISO 8601 duration, e.g., 'PT2M'
   estimatedCost?: { value: string; currency: string };
-}) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: opts.name,
-    description: opts.description,
-    ...(opts.totalTime ? { totalTime: opts.totalTime } : {}),
-    ...(opts.estimatedCost
-      ? {
-          estimatedCost: {
-            '@type': 'MonetaryAmount',
-            currency: opts.estimatedCost.currency,
-            value: opts.estimatedCost.value,
-          },
-        }
-      : {}),
-    step: opts.steps.map((s, i) => ({
-      '@type': 'HowToStep',
-      position: i + 1,
-      name: s.name,
-      text: s.text,
-    })),
-  };
+}): null {
+  return null;
 }
 
 export function buildWebsiteSchema() {
@@ -173,15 +156,13 @@ export function buildCalculatorSchema(meta: CalculatorMeta, path: string) {
     datePublished: meta.lastUpdated,
     dateModified: meta.lastUpdated,
     keywords: meta.keywords.join(', '),
-    ...(meta.ratingValue && meta.ratingCount
-      ? {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: meta.ratingValue,
-            ratingCount: meta.ratingCount,
-          },
-        }
-      : {}),
+    // aggregateRating intentionally NOT emitted. Google's structured-data policy
+    // disallows review markup for ratings users cannot see and that are not backed
+    // by a real on-page review-collection mechanism. The per-page ratingValue/
+    // ratingCount were hardcoded, so emitting them risked a site-wide manual action
+    // for spammy structured data. The fields remain on CalculatorMeta only so the
+    // (now-ignored) page props don't break the type; wire a real voting widget with
+    // stored, visible reviews before ever re-enabling this.
   };
 }
 
