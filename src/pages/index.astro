@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CalcSearch from '../components/ui/CalcSearch.tsx';
 import CountUp from '../components/ui/CountUp.tsx';
+import HomeDeepLinks from '../components/ui/HomeDeepLinks.astro';
 import {
   calculators,
   popularCalculators,
@@ -322,6 +323,9 @@ const schemas = [buildFAQSchema(faqs)];
       }
     </div>
   </section>
+
+  <!-- Long-tail pages that can rank: countries, banks, India schemes, guides -->
+  <HomeDeepLinks />
 
   <!-- ============================================== -->
   <!--   USE CASES BENTO                               -->

@@ -18,6 +18,8 @@
     "impressions": ["hong-kong", "mauritius", "germany", "singapore", "belize", "south-africa", "slovenia", "france", "uae", "maldives", "cyprus", "finland", "uganda", "jamaica", "spain", "ireland", "cambodia", "iran", "canada", "bangladesh", "netherlands", "uruguay", "myanmar", "barbados", "fiji", "oman", "albania", "belarus", "mongolia", "austria", "belgium", "kyrgyzstan", "poland", "senegal", "papua-new-guinea", "jordan", "laos", "norway", "malaysia", "liechtenstein", "sweden", "switzerland", "portugal", "japan", "italy", "new-zealand", "libya", "denmark", "kosovo", "qatar", "vanuatu", "eswatini"]
   },
   "bank": {
+    "_rankingQueries": "Banks whose lender-named searches ranked in Google's top 20 (e.g. 'equitas small finance bank emi calculator' at 9.5, 'manappuram home loan emi calculator' at 9.7, 'sammaan capital home loan emi calculator' at 9.8).",
+    "rankingQueries": ["equitas-sfb", "manappuram-home", "indiabulls-housing", "dhanlaxmi", "cosmos-bank", "tmb", "uco", "saraswat-bank", "mahindra-finance"],
     "indexed": ["mahindra-finance", "axis", "cosmos-bank", "hsbc-india", "bob"],
     "impressions": ["axis", "indian-bank", "icici", "pnb", "indusind", "cosmos-bank", "hsbc-india", "kotak", "esaf-sfb", "shriram-finance", "idbi", "lakshmi-vilas", "yes-bank", "idfc-first"]
   }

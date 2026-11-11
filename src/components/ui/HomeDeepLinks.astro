@@ -1,0 +1,141 @@
+---
+/**
+ * Homepage links to the long-tail pages that can actually rank.
+ *
+ * The homepage is the only page on the site with any authority, and it used to
+ * link to category hubs and a handful of head-term calculators that sit at
+ * position 45-90. Search Console shows the site reaches page one for local,
+ * lender-named searches instead: country home loan pages, small-bank EMI pages
+ * and India's tax and savings schemes. This block puts those one click from the
+ * homepage. The country and bank lists come from src/data/index-evidence.json,
+ * so they follow the evidence rather than a hand-picked guess.
+ */
+import FlagIcon from './FlagIcon.astro';
+import BankIcon from './BankIcon.astro';
+import evidence from '../../data/index-evidence.json';
+import { mortgageLocales } from '../../data/mortgage-locales';
+import { emiBanks } from '../../data/emi-banks';
+import { calculators } from '../../data/calculators';
+
+const countries = evidence.country.impressions
+  .slice(0, 12)
+  .map((slug) => mortgageLocales.find((l) => l.slug === slug))
+  .filter((l) => l !== undefined);
+
+const bankSlugs = [
+  ...new Set([...evidence.bank.rankingQueries, ...evidence.bank.indexed, ...evidence.bank.impressions]),
+].slice(0, 12);
+const banks = bankSlugs.map((slug) => emiBanks.find((b) => b.slug === slug)).filter((b) => b !== undefined);
+
+const INDIA_TOOLS = [
+  'income-tax-india',
+  'salary-calculator',
+  'hra-calculator',
+  'gratuity-calculator',
+  'epf-calculator',
+  'nps-calculator',
+  'ppf-calculator',
+  'nsc-calculator',
+  'scss-calculator',
+  'post-office-mis-calculator',
+  'apy-calculator',
+  'sukanya-samriddhi-calculator',
+  'capital-gains-calculator',
+  'tds-calculator',
+  'advance-tax-calculator',
+  'gst-calculator',
+];
+const indiaTools = INDIA_TOOLS.map((slug) => calculators.find((c) => c.slug === slug && c.status === 'live')).filter(
+  (c) => c !== undefined
+);
+
+const guides = [
+  { title: 'Why your first EMI is 79% interest', href: '/guides/how-emi-amortization-works/' },
+  { title: 'How much home loan can you afford?', href: '/guides/how-much-home-loan-can-i-afford/' },
+  { title: 'Prepay your loan, or invest?', href: '/guides/prepay-home-loan-vs-invest/' },
+  { title: 'Stamp duty, state by state', href: '/guides/stamp-duty-by-state-india/' },
+  { title: 'How much gratuity will you get?', href: '/guides/gratuity-calculation/' },
+  { title: 'Down payments around the world', href: '/guides/down-payments-around-the-world/' },
+];
+
+const pill =
+  'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border-2 border-ink-900 text-sm font-bold text-ink-900 no-underline hover:bg-lime-accent transition-colors';
+const card = 'bg-white border-[2.5px] border-ink-900 rounded-3xl p-5 sm:p-6 shadow-sticker';
+const cardTitle = '!text-xl !font-extrabold !text-ink-900 !mt-0 !mb-1';
+---
+
+<section id="local" class="container-wide pb-16 md:pb-24">
+  <div class="mb-8 md:mb-10">
+    <span class="chip-cyan mb-4">📍 Local detail</span>
+    <h2 class="!text-4xl sm:!text-5xl md:!text-6xl !mt-4 !mb-3 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
+      Down to the lender.
+    </h2>
+    <p class="text-base md:text-lg text-ink-600 max-w-2xl">
+      Home loan calculators set up for a specific country or bank, and the Indian tax and savings schemes the big calculator sites leave out.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <div class={card}>
+      <h3 class={cardTitle} style="font-family: 'Inter Tight', sans-serif;">Home loans and mortgages by country</h3>
+      <p class="text-sm text-ink-600 font-medium !mt-0 mb-4">Local currency, typical rates and the main lenders in each market.</p>
+      <div class="flex flex-wrap gap-2">
+        {
+          countries.map((c) => (
+            <a href={`/finance/mortgage-calculator/${c.slug}/`} class={pill}>
+              <FlagIcon slug={c.slug} size={18} alt="" />
+              {c.country}
+            </a>
+          ))
+        }
+        <a href="/finance/mortgage-calculator/" class={`${pill} !bg-ink-900 !text-white`}>All {mortgageLocales.length} countries →</a>
+      </div>
+    </div>
+
+    <div class={card}>
+      <h3 class={cardTitle} style="font-family: 'Inter Tight', sans-serif;">EMI calculators by Indian bank</h3>
+      <p class="text-sm text-ink-600 font-medium !mt-0 mb-4">Each lender's home, personal and car loan rates, fees and prepayment terms.</p>
+      <div class="flex flex-wrap gap-2">
+        {
+          banks.map((b) => (
+            <a href={`/finance/emi-calculator/${b.slug}/`} class={pill}>
+              <BankIcon slug={b.slug} size={18} alt="" />
+              {b.bankName}
+            </a>
+          ))
+        }
+        <a href="/finance/emi-calculator/" class={`${pill} !bg-ink-900 !text-white`}>All {emiBanks.length} lenders →</a>
+      </div>
+    </div>
+
+    <div class={card}>
+      <h3 class={cardTitle} style="font-family: 'Inter Tight', sans-serif;">India tax and savings schemes</h3>
+      <p class="text-sm text-ink-600 font-medium !mt-0 mb-4">Old and new regime tax, and the government schemes most people actually hold.</p>
+      <div class="flex flex-wrap gap-2">
+        {
+          indiaTools.map((t) => (
+            <a href={t.href} class={pill}>
+              <span aria-hidden="true">{t.icon}</span>
+              {t.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class={card}>
+      <h3 class={cardTitle} style="font-family: 'Inter Tight', sans-serif;">Guides with the working shown</h3>
+      <p class="text-sm text-ink-600 font-medium !mt-0 mb-4">Every figure computed, so you can check it against your own numbers.</p>
+      <div class="flex flex-wrap gap-2">
+        {
+          guides.map((g) => (
+            <a href={g.href} class={pill}>
+              {g.title}
+            </a>
+          ))
+        }
+        <a href="/guides/" class={`${pill} !bg-ink-900 !text-white`}>All guides →</a>
+      </div>
+    </div>
+  </div>
+</section>
