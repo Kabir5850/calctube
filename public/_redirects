@@ -11,6 +11,11 @@
 /finance/tax-calculator-india/           /finance/old-vs-new-tax-regime-india/   301
 # Bajaj Housing slug consolidation (was duplicate of bajaj-housing-finance)
 /finance/emi-calculator/bajaj-housing/*           /finance/emi-calculator/bajaj-housing-finance/:splat   301
+# Payments banks cannot lend under RBI rules, so their EMI pages were removed 2026-11-11
+/finance/emi-calculator/paytm-payments-bank       /finance/emi-calculator/                               301
+/finance/emi-calculator/paytm-payments-bank/*     /finance/emi-calculator/                               301
+/finance/emi-calculator/airtel-payments-bank      /finance/emi-calculator/                               301
+/finance/emi-calculator/airtel-payments-bank/*    /finance/emi-calculator/                               301
 
 # Saint Lucia slug consolidation (st-lucia -> saint-lucia)
 /finance/mortgage-calculator/st-lucia             /finance/mortgage-calculator/saint-lucia               301
