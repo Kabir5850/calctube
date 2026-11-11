@@ -89,6 +89,8 @@ export default defineConfig({
           [/^\/finance\/mortgage-calculator\//, '2026-07-22'],         // mortgage-locales copy rewrite
           // 2026-11-11: duplicate entries removed, so these three now build from their fuller definition
           [/^\/finance\/emi-calculator\/(equitas-sfb|au-sfb|ujjivan-sfb)\/$/, '2026-11-11'],
+          // 2026-11-12: housing finance companies no longer show personal/car loan rates they do not offer
+          [/^\/finance\/emi-calculator\/(lic-housing|pnb-housing|indiabulls-housing|aavas|aptus|india-shelter|repco-home|manappuram-home|muthoot-homefin|iifl-home|edelweiss-housing|mahindra-rural-housing|reliance-home|tata-capital-housing)\/$/, '2026-11-12'],
           [/^\/finance\/emi-calculator\//, '2026-07-22'],              // emi-banks + grids copy rewrite
           [/^\/finance\/income-tax-india\//, '2026-07-22'],            // india-states copy rewrite
           [/^\/conversions\/currency\//, '2026-07-22'],                // currency-pairs copy rewrite

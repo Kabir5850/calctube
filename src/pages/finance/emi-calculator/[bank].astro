@@ -25,10 +25,19 @@ interface Props {
 const { bank } = Astro.props;
 const path = `/finance/emi-calculator/${bank.slug}`;
 
+// Housing finance companies lend for homes and against property only, so their
+// entries carry no personal or car loan rate and the page shows home loans alone.
+const personalRate = bank.personalLoanRate;
+const carRate = bank.carLoanRate;
+const homeLoanOnly = !personalRate || !carRate;
+
 const meta = {
   slug: `emi-calculator-${bank.slug}`,
   name: `${bank.bankName} EMI Calculator`,
-  description: `Free ${bank.bankName} EMI calculator (2026). Home loan from ${bank.homeLoanRate.min}%, personal from ${bank.personalLoanRate.min}%, car from ${bank.carLoanRate.min}% p.a. Monthly EMI, total interest & amortization table.`,
+  description:
+    personalRate && carRate
+      ? `Free ${bank.bankName} EMI calculator (2026). Home loan from ${bank.homeLoanRate.min}%, personal from ${personalRate.min}%, car from ${carRate.min}% p.a. Monthly EMI, total interest & amortization table.`
+      : `${bank.bankName} home loan EMI calculator (2026). Home loans from ${bank.homeLoanRate.min}% to ${bank.homeLoanRate.max}% p.a., typical ${bank.homeLoanRate.typical}%. Monthly EMI, total interest & amortization table.`,
   category: 'finance' as const,
   keywords: bank.metaKeywords,
   lastUpdated: '2026-05-28',
@@ -48,13 +57,16 @@ const schemas = [
   buildSpeakableSchema(path),
   buildHowToSchema({
     name: `How to calculate your ${bank.bankName} EMI`,
-    description: `Step-by-step instructions to estimate your monthly EMI for ${bank.bankName} home, personal, or car loan using current 2026 interest rates.`,
+    description: `Step-by-step instructions to estimate your monthly EMI for a ${bank.bankName} ${homeLoanOnly ? 'home loan' : 'home, personal, or car loan'} using current 2026 interest rates.`,
     totalTime: 'PT2M',
     estimatedCost: { value: '0', currency: 'INR' },
     steps: [
       {
         name: 'Choose the loan type',
-        text: `Pick home, personal, or car loan. ${bank.bankName} current typical rates: home ${bank.homeLoanRate.typical}%, personal ${bank.personalLoanRate.typical}%, car ${bank.carLoanRate.typical}%.`,
+        text:
+          personalRate && carRate
+            ? `Pick home, personal, or car loan. ${bank.bankName} current typical rates: home ${bank.homeLoanRate.typical}%, personal ${personalRate.typical}%, car ${carRate.typical}%.`
+            : `${bank.bankName} is a housing finance company, so choose home loan. Its current typical home loan rate is ${bank.homeLoanRate.typical}%.`,
       },
       {
         name: 'Enter the loan amount',
@@ -66,7 +78,7 @@ const schemas = [
       },
       {
         name: 'Choose the tenure',
-        text: `Pick the number of years to repay. ${bank.bankName} offers up to 30 years on home loans, 5 years on personal loans, and 7 years on car loans.`,
+        text: `Pick the number of years to repay. ${bank.bankName} offers up to 30 years on home loans${homeLoanOnly ? '' : ', 5 years on personal loans, and 7 years on car loans'}.`,
       },
       {
         name: 'Read the EMI and total interest',
@@ -156,10 +168,10 @@ const otherBanks = [...sameTierBanks, ...otherTierBanks].slice(0, 8);
       <div class="max-w-4xl mx-auto">
         <span class="chip-pink mb-4">📊 Current rates</span>
         <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">
-          {bank.bankName} loan rates (May 2026)
+          {bank.bankName} {homeLoanOnly ? 'home loan' : 'loan'} rates (May 2026)
         </h2>
 
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class={`mt-8 grid grid-cols-1 gap-4 ${homeLoanOnly ? '' : 'md:grid-cols-3'}`}>
           <div class="bg-lime-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
             <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-2">🏠 Home Loan</div>
             <div class="text-2xl font-extrabold text-ink-900 leading-none" style="font-family: 'Inter Tight', sans-serif;">
@@ -167,21 +179,31 @@ const otherBanks = [...sameTierBanks, ...otherTierBanks].slice(0, 8);
             </div>
             <div class="text-xs text-ink-800 mt-2 font-semibold">typical: {bank.homeLoanRate.typical}% p.a.</div>
           </div>
-          <div class="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
-            <div class="text-xs font-extrabold uppercase tracking-wider text-white mb-2">💵 Personal Loan</div>
-            <div class="text-2xl font-extrabold text-white leading-none" style="font-family: 'Inter Tight', sans-serif;">
-              {bank.personalLoanRate.min}–{bank.personalLoanRate.max}%
+          {personalRate && (
+            <div class="bg-pink-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-white mb-2">💵 Personal Loan</div>
+              <div class="text-2xl font-extrabold text-white leading-none" style="font-family: 'Inter Tight', sans-serif;">
+                {personalRate.min}–{personalRate.max}%
+              </div>
+              <div class="text-xs text-white/90 mt-2 font-semibold">typical: {personalRate.typical}% p.a.</div>
             </div>
-            <div class="text-xs text-white/90 mt-2 font-semibold">typical: {bank.personalLoanRate.typical}% p.a.</div>
-          </div>
-          <div class="bg-cyan-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
-            <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-2">🚗 Car Loan</div>
-            <div class="text-2xl font-extrabold text-ink-900 leading-none" style="font-family: 'Inter Tight', sans-serif;">
-              {bank.carLoanRate.min}–{bank.carLoanRate.max}%
+          )}
+          {carRate && (
+            <div class="bg-cyan-accent border-[2.5px] border-ink-900 rounded-2xl p-5 shadow-sticker-sm">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-2">🚗 Car Loan</div>
+              <div class="text-2xl font-extrabold text-ink-900 leading-none" style="font-family: 'Inter Tight', sans-serif;">
+                {carRate.min}–{carRate.max}%
+              </div>
+              <div class="text-xs text-ink-800 mt-2 font-semibold">typical: {carRate.typical}% p.a.</div>
             </div>
-            <div class="text-xs text-ink-800 mt-2 font-semibold">typical: {bank.carLoanRate.typical}% p.a.</div>
-          </div>
+          )}
         </div>
+        {homeLoanOnly && (
+          <p class="mt-4 text-sm text-ink-700 font-medium">
+            {bank.bankName} is a housing finance company. It lends for home purchase, construction and improvement, and
+            against property. It does not offer personal or car loans, so only a home loan rate is shown.
+          </p>
+        )}
 
         <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-white border-2 border-ink-900 rounded-2xl p-5 shadow-sticker-sm">

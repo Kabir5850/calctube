@@ -10,8 +10,13 @@ export interface BankData {
   emoji: string;
   hqLocation: string;
   homeLoanRate: { min: number; max: number; typical: number };
-  personalLoanRate: { min: number; max: number; typical: number };
-  carLoanRate: { min: number; max: number; typical: number };
+  /**
+   * Personal and car loan rates. Omitted for housing finance companies, which
+   * lend only for homes and against property; the page then shows the home loan
+   * rate alone. Never fill these with a guess for a lender that has no such product.
+   */
+  personalLoanRate?: { min: number; max: number; typical: number };
+  carLoanRate?: { min: number; max: number; typical: number };
   processingFee: string;
   prepaymentPolicy: string;
   marketContext: string;
@@ -1609,8 +1614,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Mumbai, Maharashtra',
     homeLoanRate: { min: 8.50, max: 11.50, typical: 9.00 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '0.25-0.50% of loan amount (min ₹3,000, max ₹15,000) for home loans. Frequent festive-season fee waivers and rate concessions for women borrowers and salaried applicants.',
     prepaymentPolicy: 'Zero foreclosure/prepayment charges on floating-rate home loans for individual borrowers (RBI mandate). Fixed-rate or non-individual loans attract 2% prepayment penalty.',
     marketContext: 'LIC Housing Finance, incorporated in 1989 and promoted by Life Insurance Corporation of India, is the second-largest HFC in India after the HDFC Ltd-HDFC Bank merger absorbed the erstwhile #1. The company has an outstanding loan book of approximately ₹2.9 lakh crore as of FY26, with home loans contributing nearly 80%. LICHFL operates through 280+ marketing offices and 25+ back-office processing centres, with particularly deep penetration in Tier-2 and Tier-3 towns across Maharashtra, Gujarat, Tamil Nadu, Telangana, and Uttar Pradesh. Backed by LIC\'s 40%+ shareholding, it enjoys AAA credit ratings from CRISIL and CARE, allowing it to borrow at near-bank rates from the bond market.',
@@ -1645,8 +1648,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'New Delhi',
     homeLoanRate: { min: 8.75, max: 14.00, typical: 9.25 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '0.35-1.0% of loan amount (min ₹10,000) for home loans. Higher for self-employed and Unnati affordable-segment loans (up to 1.5%).',
     prepaymentPolicy: 'Zero prepayment charges on floating-rate individual home loans. Fixed-rate loans attract 2% on outstanding principal if prepaid from non-own-source funds.',
     marketContext: 'PNB Housing Finance, promoted by Punjab National Bank (which retains ~28% stake post-dilution), was incorporated in 1988 and is among India\'s top-5 HFCs with an AUM of approximately ₹65,000 crore as of FY26. After Carlyle Group exited its stake in 2023, the company has been led by MD & CEO Girish Kousgi (since 2022) with a strategy pivot toward self-employed and affordable housing segments under the "Roshni" affordable vertical and "Unnati" mass-affluent vertical. PNBHFL operates through 300+ branches across 20 states, with strongest penetration in North and West India.',
@@ -1681,8 +1682,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Gurugram, Haryana',
     homeLoanRate: { min: 9.75, max: 14.50, typical: 10.50 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '0.5-1.5% of loan amount (min ₹10,000) for retail home loans. Construction-finance and LAP attract 1-2%.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans per RBI/NHB norms. 2-4% on fixed-rate loans and corporate developer loans.',
     marketContext: 'Sammaan Capital, the rebranded entity of Indiabulls Housing Finance, was renamed in 2024 as part of a strategic reset under the new management led by Gagan Banga. Originally founded in 2005 as a high-growth wholesale-and-retail HFC, the company peaked at an AUM of over ₹1.3 lakh crore before the 2019 ILFS/DHFL contagion exposed its over-reliance on wholesale developer lending. Post-restructuring, the loan book has been actively deleveraged to approximately ₹70,000 crore, with the mix now tilted toward retail home loans and away from corporate developer exposure. The company is listed on BSE/NSE and has undergone significant board restructuring and capital infusion.',
@@ -1717,8 +1716,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Jaipur, Rajasthan',
     homeLoanRate: { min: 10.50, max: 16.00, typical: 12.00 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '1.0-2.0% of loan amount (min ₹5,000) for affordable home loans. LAP processing 1.5-2.5%.',
     prepaymentPolicy: 'Zero foreclosure charges on floating-rate individual home loans (RBI mandated). 4% on fixed-rate loans if prepaid from non-own-source funds.',
     marketContext: 'Aavas Financiers, founded in 2011 (originally as AU Housing Finance before AU SFB acquired the small-finance-bank license and spun off the HFC), is one of India\'s leading affordable-housing-focused HFCs. Headquartered in Jaipur, Aavas operates through 380+ branches concentrated in Rajasthan, Madhya Pradesh, Gujarat, Maharashtra, and select northern/central states, with an AUM of approximately ₹16,000 crore. The average ticket size is just ₹9-10 lakh, and over 60% of borrowers are self-employed or in the informal economy. Listed on BSE/NSE since October 2018, Aavas is backed by Kedaara Capital and Partners Group as anchor investors and carries AA ratings.',
@@ -1753,8 +1750,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Chennai, Tamil Nadu',
     homeLoanRate: { min: 11.00, max: 16.50, typical: 12.50 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '1.0-2.0% of loan amount (min ₹3,500) for affordable home loans. Insurance and legal/technical charges separate.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans (RBI mandated). 4% on fixed-rate loans prepaid from non-own-source funds within 3 years.',
     marketContext: 'Aptus Value Housing Finance, founded in 2009 by Anand Mahindra-associated and WestBridge Capital-backed promoters, is a leading South India-focused affordable-housing HFC. Listed on BSE/NSE in August 2021, Aptus operates ~280 branches concentrated in Tamil Nadu, Andhra Pradesh, Karnataka, and Telangana, with an AUM of approximately ₹8,000 crore as of FY26. Average ticket size is ₹8-9 lakh, with over 70% of borrowers being self-employed in the informal economy, small farmers, daily-wage earners, and small business owners. Aptus carries AA- ratings and has consistently been among the most profitable HFCs in India by return-on-assets (RoA 7-8%).',
@@ -1789,8 +1784,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Gurugram, Haryana',
     homeLoanRate: { min: 11.50, max: 17.00, typical: 13.00 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '1.5-2.5% of loan amount (min ₹4,000) for affordable home loans. LAP attracts 2.0-3.0%.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans (RBI mandated). 4% on fixed-rate loans prepaid from non-own-source funds.',
     marketContext: 'India Shelter Finance, founded in 1998 and re-promoted by WestBridge Capital and Nexus Venture Partners in 2010, is a Gurugram-headquartered affordable-housing HFC focused on the self-employed informal-sector segment. The company completed its IPO in December 2023 and now has an AUM of approximately ₹6,500 crore across 240+ branches in 15 states, with strongest presence in Rajasthan, Maharashtra, Madhya Pradesh, and Gujarat. Average ticket size is ₹10-11 lakh, and over 70% of borrowers are first-time formal borrowers without prior banking credit history. India Shelter carries A+ to AA- ratings and emphasises a fully in-house, branch-led sourcing model.',
@@ -1825,8 +1818,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Chennai, Tamil Nadu',
     homeLoanRate: { min: 10.50, max: 14.50, typical: 11.50 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '0.5-1.5% of loan amount (min ₹3,500) for home loans. LAP attracts 1.5-2.0%.',
     prepaymentPolicy: 'Zero foreclosure charges on floating-rate individual home loans (RBI mandated). 2% on fixed-rate loans prepaid from non-own-source funds.',
     marketContext: 'Repco Home Finance, incorporated in 2000, is promoted by the Repatriates Cooperative Finance and Development Bank Ltd (Repco Bank), a government-promoted entity originally established to support Sri Lankan repatriates. Headquartered in Chennai, Repco operates ~180 branches concentrated in Tamil Nadu, Karnataka, Andhra Pradesh, Telangana, Kerala, and Maharashtra, with an AUM of approximately ₹14,000 crore as of FY26. Repco focuses on affordable and mid-segment home loans with average ticket sizes of ₹13-15 lakh, and over 55% of borrowers are self-employed. The company is listed on BSE/NSE since April 2013 and carries AA- ratings.',
@@ -1861,8 +1852,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Valapad, Thrissur, Kerala',
     homeLoanRate: { min: 10.50, max: 16.00, typical: 12.00 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '1.0-2.0% of loan amount (min ₹3,500) for affordable home loans. LAP processing 1.5-2.5%.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans (RBI mandated). 4% on fixed-rate loans prepaid from non-own-source funds.',
     marketContext: 'Manappuram Home Finance, incorporated in 2010, is a wholly-owned subsidiary of Manappuram Finance Limited, one of India\'s largest gold-loan NBFCs founded by VP Nandakumar. Headquartered in Thrissur, Kerala, Manappuram Home Finance leverages its parent\'s gold-loan branch network (5,000+ touchpoints) for affordable-housing customer acquisition and cross-sell. The HFC operates with an AUM in the ₹1,500-2,000 crore range and focuses on self-employed informal-sector borrowers in Kerala, Tamil Nadu, Andhra Pradesh, and select North Indian states, with average ticket sizes of ₹8-12 lakh.',
@@ -1897,8 +1886,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Mumbai, Maharashtra',
     homeLoanRate: { min: 10.50, max: 15.50, typical: 12.00 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '1.0-2.0% of loan amount (min ₹3,500) for home loans. LAP attracts 1.5-2.5%.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans (RBI mandated). 4% on fixed-rate loans prepaid from non-own-source funds within 3 years.',
     marketContext: 'Muthoot Homefin (India), incorporated in 2011, is a wholly-owned housing-finance subsidiary of Muthoot Finance Limited, India\'s largest gold-loan NBFC promoted by the M.G. George Muthoot family. The HFC has an AUM of approximately ₹2,000 crore, operating through a mix of own branches and cross-leverage of Muthoot Finance\'s 5,000+ gold-loan branch network. Muthoot Homefin focuses on affordable-housing borrowers in Kerala, Tamil Nadu, Maharashtra, Gujarat, and select North Indian states, with average ticket sizes of ₹8-12 lakh and a self-employed informal-sector borrower mix.',
@@ -1933,8 +1920,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Gurugram, Haryana',
     homeLoanRate: { min: 9.50, max: 14.50, typical: 10.50 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '0.5-1.5% of loan amount (min ₹5,000) for home loans. Affordable Swaraj loans and LAP can attract 1.5-2.5%.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans (RBI mandated). 2-4% on fixed-rate and corporate loans.',
     marketContext: 'IIFL Home Finance, a subsidiary of IIFL Finance Limited (part of the IIFL Group founded by Nirmal Jain), is one of India\'s leading mid-sized HFCs with an AUM of approximately ₹35,000 crore as of FY26. The company operates through 380+ branches and serves a hybrid mix of mass-affluent home loans (₹25 lakh-₹2 crore tickets) in metros and Tier-1 cities, plus an affordable-housing vertical called Swaraj that targets self-employed informal-sector borrowers with ticket sizes of ₹8-15 lakh. IIFL Home Finance is held majority by IIFL Finance with strategic investment from Abu Dhabi Investment Authority (ADIA), and carries AA ratings.',
@@ -1969,8 +1954,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Mumbai, Maharashtra',
     homeLoanRate: { min: 10.25, max: 15.00, typical: 11.50 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '1.0-2.0% of loan amount (min ₹5,000) for home loans. LAP attracts 1.5-2.5%.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans (RBI mandated). 2-4% on fixed-rate and non-individual loans.',
     marketContext: 'Edelweiss Housing Finance, incorporated in 2008, is a subsidiary of Nuvama Wealth Management and the broader Edelweiss group founded by Rashesh Shah. Following the Edelweiss group\'s post-2019 strategic restructuring (which included demergers of asset management, wealth management, and life insurance businesses), Edelweiss Housing Finance has been deliberately operating as a smaller, more focused HFC with an AUM of approximately ₹3,000 crore. The company focuses on mass-affluent self-employed and salaried borrowers in metros and Tier-1 cities, with average ticket sizes of ₹30-50 lakh, and carries A+/AA- ratings.',
@@ -2005,8 +1988,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Mumbai, Maharashtra',
     homeLoanRate: { min: 11.50, max: 18.00, typical: 13.00 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '1.5-2.5% of loan amount (min ₹2,500) for rural home loans. Generally higher for first-cycle informal borrowers.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans (RBI mandated). 4% on fixed-rate loans prepaid from non-own-source funds.',
     marketContext: 'Mahindra Rural Housing Finance, incorporated in 2007, is a subsidiary of Mahindra & Mahindra Financial Services Limited (Mahindra Finance), itself part of the Mahindra Group founded by the Mahindra family. The company has an AUM of approximately ₹13,000 crore and is India\'s largest rural-focused HFC, operating through Mahindra Finance\'s 1,300+ branch network across deep rural India. The borrower mix is dominated by self-employed informal-sector rural households, small farmers, dairy owners, kirana shop owners, tractor-finance customers cross-sold home loans, with average ticket sizes of ₹3-7 lakh.',
@@ -2041,8 +2022,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Mumbai, Maharashtra',
     homeLoanRate: { min: 11.00, max: 16.00, typical: 13.00 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: 'Variable, generally 1-2% of loan amount for restructured/legacy book servicing. New lending is minimal as of 2026.',
     prepaymentPolicy: 'Zero foreclosure on floating-rate individual home loans (RBI mandated) for existing legacy customers. Fixed-rate loans subject to original sanction terms.',
     marketContext: 'Reliance Home Finance, incorporated in 2008 as part of the erstwhile Anil Ambani-led Reliance Capital group, faced severe financial stress from 2019 onwards along with the broader Reliance Capital insolvency. After a multi-year resolution process under the RBI-supervised IBC framework, Reliance Capital and its subsidiaries (including Reliance Home Finance) were acquired by Authum Investment & Infrastructure Limited in 2024 as part of a comprehensive resolution plan. The legacy home loan book has been significantly written down and restructured, with new lending currently minimal as the resolved entity focuses on legacy-book recovery and management transition. Borrowers should treat this entity with caution and verify the status of any new lending offerings.',
@@ -2077,8 +2056,6 @@ export const emiBanks: BankData[] = [
     emoji: '🏘️',
     hqLocation: 'Mumbai, Maharashtra',
     homeLoanRate: { min: 8.50, max: 13.50, typical: 8.95 },
-    personalLoanRate: { min: 12.0, max: 18.0, typical: 13.5 },
-    carLoanRate: { min: 9.5, max: 13.0, typical: 10.5 },
     processingFee: '0.25-1.0% of loan amount (min ₹5,000) for home loans. Festive waivers common for prime salaried profiles.',
     prepaymentPolicy: 'Zero foreclosure charges on floating-rate individual home loans (RBI mandated). 2-4% on fixed-rate home loans, LAP, and corporate loans.',
     marketContext: 'Tata Capital Housing Finance, incorporated in 2008, is a wholly-owned housing-finance subsidiary of Tata Capital Limited, the financial services arm of the Tata Group founded under Tata Sons. The company has an AUM of approximately ₹40,000 crore as of FY26 and is one of the largest mass-affluent HFCs in India, focused on prime salaried and self-employed borrowers in metros and Tier-1 cities. Tata Capital Housing Finance is rated AAA by CRISIL, ICRA, and CARE on the strength of the Tata Group parentage and conservative underwriting. Tata Capital itself is preparing for a much-anticipated IPO in 2025-2026 (post the RBI Upper-Layer NBFC mandate), which will further strengthen its parent capital base.',
