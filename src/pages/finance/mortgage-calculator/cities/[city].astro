@@ -5,6 +5,7 @@ import {
   indiaCities,
   type IndiaCityData,
 } from '../../../../data/india-cities';
+import { isIndexable, onlyIndexable } from '../../../../lib/indexing';
 import {
   buildCalculatorSchema,
   buildBreadcrumbSchema,
@@ -117,38 +118,44 @@ const schemas = [
 // state as many inbound links as it emits.
 const RELATED_LIMIT = 11;
 const SAME_STATE_LIMIT = 7;
-const stateRing = indiaCities.filter((c) => c.stateSlug === city.stateSlug);
+// Only cities Google has shown interest in are linked (src/lib/indexing.ts). The
+// rings below walk that list, so a city that is not indexable itself (index -1)
+// simply starts each ring from the top.
+const linkableCities = onlyIndexable('city', indiaCities);
+const stateRing = linkableCities.filter((c) => c.stateSlug === city.stateSlug);
 const cityIndex = stateRing.findIndex((c) => c.slug === city.slug);
 const sameStateCities = [];
-for (let i = 1; i < stateRing.length && sameStateCities.length < SAME_STATE_LIMIT; i++) {
-  sameStateCities.push(stateRing[(cityIndex + i) % stateRing.length]);
+for (let i = 1; i <= stateRing.length && sameStateCities.length < SAME_STATE_LIMIT; i++) {
+  const candidate = stateRing[(cityIndex + i + stateRing.length) % stateRing.length];
+  if (candidate.slug !== city.slug) sameStateCities.push(candidate);
 }
 // A few metros for cross-state context — useful to readers comparing against the
 // big markets, and capped so they don't soak up every page's outbound links.
 const picked = new Set([city.slug, ...sameStateCities.map((c) => c.slug)]);
-const metroCities = indiaCities
+const metroCities = linkableCities
   .filter((c) => c.hraTier === 'metro' && !picked.has(c.slug))
   .slice(0, 3);
 metroCities.forEach((c) => picked.add(c.slug));
 
-// Fill any remainder from a ring over the full city list. Cities in single-city
+// Fill any remainder from a ring over the linkable cities. Cities in single-city
 // states (Meghalaya, Manipur, Tripura…) have no state peers, so without this they
-// would emit links but receive only the one from the /cities/ index. The ring is
-// reciprocal by construction: every city is the fill target of the cities behind it.
-const globalIndex = indiaCities.findIndex((c) => c.slug === city.slug);
+// would emit links but receive few. The ring is reciprocal by construction: every
+// city is the fill target of the cities behind it.
+const globalIndex = linkableCities.findIndex((c) => c.slug === city.slug);
 const ringFill = [];
 for (
   let i = 1;
-  i < indiaCities.length && sameStateCities.length + metroCities.length + ringFill.length < RELATED_LIMIT;
+  i <= linkableCities.length && sameStateCities.length + metroCities.length + ringFill.length < RELATED_LIMIT;
   i++
 ) {
-  const candidate = indiaCities[(globalIndex + i) % indiaCities.length];
+  const candidate = linkableCities[(globalIndex + i + linkableCities.length) % linkableCities.length];
   if (picked.has(candidate.slug)) continue;
   picked.add(candidate.slug);
   ringFill.push(candidate);
 }
 
 const relatedCities = [...sameStateCities, ...metroCities, ...ringFill];
+const indexable = isIndexable('city', city.slug);
 ---
 
 <BaseLayout
@@ -157,6 +164,7 @@ const relatedCities = [...sameStateCities, ...metroCities, ...ringFill];
   schemas={schemas}
   publishedTime={meta.lastUpdated}
   modifiedTime={meta.lastUpdated}
+  noindex={!indexable}
 >
   <!-- HERO -->
   <section class="relative overflow-hidden bg-white">

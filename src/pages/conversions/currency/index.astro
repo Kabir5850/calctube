@@ -5,6 +5,8 @@ import FlagIcon from '../../../components/ui/FlagIcon.astro';
 import { buildBreadcrumbSchema, buildFAQSchema } from '../../../lib/seo';
 import { currencyPairs, currencies } from '../../../data/currency-pairs';
 import { flagSlugForCurrency } from '../../../lib/flag-helpers';
+import { isIndexable } from '../../../lib/indexing';
+import MaybeLink from '../../../components/ui/MaybeLink.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -64,8 +66,9 @@ const faqs = [
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
       {
         huge.map((p) => (
-          <a
+          <MaybeLink
             href={`/conversions/currency/${p.slug}/`}
+            indexable={isIndexable('currency', p.slug)}
             class="group block bg-white border-[2.5px] border-ink-900 rounded-2xl p-4 no-underline shadow-sticker-sm hover:shadow-sticker hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-200"
           >
             <div class="font-extrabold text-ink-900 text-sm flex items-center gap-1.5 flex-wrap">
@@ -74,7 +77,7 @@ const faqs = [
               {flagSlugForCurrency(p.to) && <FlagIcon slug={flagSlugForCurrency(p.to)!} size={18} alt={p.to} />}
             </div>
             <div class="text-xs text-ink-600 mt-1.5 font-semibold">1 {p.from} = {p.rate} {p.to}</div>
-          </a>
+          </MaybeLink>
         ))
       }
     </div>
@@ -91,13 +94,14 @@ const faqs = [
           <p class="text-sm text-ink-600 font-medium max-w-3xl">{g.currency.popularUses.join(' · ')}</p>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 mt-4">
             {g.pairs.map((p) => (
-              <a
+              <MaybeLink
                 href={`/conversions/currency/${p.slug}/`}
+                indexable={isIndexable('currency', p.slug)}
                 class="block px-3 py-2 rounded-xl bg-white border-2 border-ink-200 hover:border-ink-900 hover:bg-lime-accent/20 no-underline text-sm font-semibold text-ink-900 transition-colors"
               >
                 <span>{p.from} → {p.to}</span>
                 <span class="text-ink-500 ml-2">{p.rate}</span>
-              </a>
+              </MaybeLink>
             ))}
           </div>
         </section>

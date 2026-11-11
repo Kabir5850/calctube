@@ -2,6 +2,24 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import { readFileSync } from 'node:fs';
+
+// Evidence-gated indexing, mirrored from src/lib/indexing.ts (this config cannot
+// import TypeScript). A currency, city or unit page stays in the sitemap only if
+// Search Console shows it indexed or with at least one impression; the rest are
+// noindexed by their templates and must not be advertised here.
+const evidence = JSON.parse(readFileSync(new URL('./src/data/index-evidence.json', import.meta.url), 'utf8'));
+const keepSet = (tier) => new Set([...evidence[tier].indexed, ...evidence[tier].impressions]);
+const PRUNED_TIERS = [
+  [/^\/conversions\/currency\/([^/]+)\/?$/, keepSet('currency')],
+  [/^\/finance\/mortgage-calculator\/cities\/([^/]+)\/?$/, keepSet('city')],
+  [/^\/conversions\/unit-converter\/([^/]+)\/?$/, keepSet('unit')],
+];
+const isPrunedPage = (path) =>
+  PRUNED_TIERS.some(([re, keep]) => {
+    const m = path.match(re);
+    return m !== null && !keep.has(m[1]);
+  });
 
 // https://astro.build/config
 export default defineConfig({
@@ -44,7 +62,7 @@ export default defineConfig({
         const isBankState = /^\/finance\/emi-calculator\/[^/]+\/[^/]+\/?$/.test(path);
         // City×bank = exactly two path segments after /finance/mortgage-calculator/cities/
         const isCityBank = /^\/finance\/mortgage-calculator\/cities\/[^/]+\/[^/]+\/?$/.test(path);
-        return !prefixExcluded && !exactExcluded && !isBankState && !isCityBank && !isEmbedWidget;
+        return !prefixExcluded && !exactExcluded && !isBankState && !isCityBank && !isEmbedWidget && !isPrunedPage(path);
       },
       // Differentiate priorities so Google focuses crawl budget on important pages.
       // Homepage 1.0, category hubs 0.9, calculator hubs 0.8, long-tail spokes 0.5.
@@ -65,13 +83,18 @@ export default defineConfig({
         // crawled before this overhaul, so their verdict predates the rewrite.
         const CLUSTER_LASTMOD = [
           [/^\/finance\/mortgage-calculator\/cities\//, '2026-07-22'], // india-cities copy rewrite
+          // Country pages, 2026-11-11: titles and H1 moved to the local search term,
+          // lender sections added for 34 countries, meta and related links rewritten.
+          [/^\/finance\/mortgage-calculator\/[^/]+\/$/, '2026-11-11'],
           [/^\/finance\/mortgage-calculator\//, '2026-07-22'],         // mortgage-locales copy rewrite
+          // 2026-11-11: duplicate entries removed, so these three now build from their fuller definition
+          [/^\/finance\/emi-calculator\/(equitas-sfb|au-sfb|ujjivan-sfb)\/$/, '2026-11-11'],
           [/^\/finance\/emi-calculator\//, '2026-07-22'],              // emi-banks + grids copy rewrite
           [/^\/finance\/income-tax-india\//, '2026-07-22'],            // india-states copy rewrite
           [/^\/conversions\/currency\//, '2026-07-22'],                // currency-pairs copy rewrite
           [/^\/conversions\/unit-converter\//, '2026-07-22'],          // page copy rewrite
           [/^\/math\/cgpa-to-percentage\//, '2026-07-22'],             // page copy rewrite
-          [/^\/$/, '2026-07-22'],                                      // homepage copy rewrite
+          [/^\/$/, '2026-11-11'],                                      // homepage: local/lender link block added
         ];
         const match = CLUSTER_LASTMOD.find(([re]) => re.test(path));
         if (match) item.lastmod = match[1];

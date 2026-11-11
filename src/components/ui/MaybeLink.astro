@@ -1,0 +1,29 @@
+---
+/**
+ * A link that only joins the crawl graph when its target is indexable.
+ *
+ * Indexable targets render as a normal <a href>. Targets that are noindexed (see
+ * src/lib/indexing.ts) render as a keyboard-focusable element that navigates on
+ * click or Enter, handled by the [data-nav] listener in BaseLayout. Visitors can
+ * still reach every page; crawlers are not sent to pages we have asked them not
+ * to index, so internal link equity stays on the pages that can rank.
+ */
+interface Props {
+  href: string;
+  indexable: boolean;
+  class?: string;
+}
+const { href, indexable, class: className = '' } = Astro.props;
+---
+
+{
+  indexable ? (
+    <a href={href} class={className}>
+      <slot />
+    </a>
+  ) : (
+    <span role="link" tabindex="0" data-nav={href} class={`${className} cursor-pointer`}>
+      <slot />
+    </span>
+  )
+}

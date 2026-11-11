@@ -5,6 +5,7 @@ import HubCard from '../../components/ui/HubCard.astro';
 import { buildBreadcrumbSchema } from '../../lib/seo';
 import { currencyPairs } from '../../data/currency-pairs';
 import { buildHubCards } from '../../lib/category-hub';
+import { onlyIndexable } from '../../lib/indexing';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -32,7 +33,12 @@ if (!currencyHub) throw new Error('[conversions] currency-converter-hub is missi
 const categories = [{ ...currencyHub, count: currencyPairs.length }];
 const converters = cards.filter((c) => c.slug !== 'currency-converter-hub');
 
-const popular = currencyPairs.filter((p) => p.popularity === 'huge').slice(0, 12);
+// Link only pairs that are indexable (src/lib/indexing.ts), biggest corridors first.
+const indexablePairs = onlyIndexable('currency', currencyPairs);
+const popular = [
+  ...indexablePairs.filter((p) => p.popularity === 'huge'),
+  ...indexablePairs.filter((p) => p.popularity !== 'huge'),
+].slice(0, 12);
 ---
 
 <BaseLayout

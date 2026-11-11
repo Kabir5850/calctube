@@ -440,6 +440,19 @@ const navLinks = [
           }
         });
       })();
+
+      // Navigation for MaybeLink targets that are not crawlable anchors
+      // (noindexed pages, see src/lib/indexing.ts). Click or Enter follows them.
+      (function () {
+        function go(e) {
+          const el = e.target && e.target.closest ? e.target.closest('[data-nav]') : null;
+          if (el) window.location.href = el.getAttribute('data-nav');
+        }
+        document.addEventListener('click', go);
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') go(e);
+        });
+      })();
     </script>
   </body>
 </html>

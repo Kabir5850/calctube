@@ -5,6 +5,8 @@ import TemperatureConverter from '../../../components/calculators/TemperatureCon
 import {
   unitPairs, UNITS, convert, linearFactor, fmt, TABLE_AMOUNTS, TEMP_AMOUNTS, type UnitPair,
 } from '../../../data/unit-pairs';
+import { isIndexable, onlyIndexable } from '../../../lib/indexing';
+import MaybeLink from '../../../components/ui/MaybeLink.astro';
 import { buildCalculatorSchema, buildBreadcrumbSchema, buildFAQSchema, buildHowToSchema, buildSpeakableSchema } from '../../../lib/seo';
 
 export async function getStaticPaths() {
@@ -115,12 +117,20 @@ const schemas = [
 
 // Reverse + related pairs (internal linking for crawl + UX).
 const reversePair = unitPairs.find((p) => p.from === pair.to && p.to === pair.from) || null;
-const relatedPairs = unitPairs
-  .filter((p) => p.slug !== pair.slug && p.slug !== reversePair?.slug && p.category === pair.category)
-  .slice(0, 6);
+// Only indexable conversions are linked (src/lib/indexing.ts): same category
+// first, then the rest.
+const linkablePairs = onlyIndexable('unit', unitPairs).filter(
+  (p) => p.slug !== pair.slug && p.slug !== reversePair?.slug
+);
+const relatedPairs = [
+  ...linkablePairs.filter((p) => p.category === pair.category),
+  ...linkablePairs.filter((p) => p.category !== pair.category),
+].slice(0, 6);
+const relatedSameCategory = relatedPairs.every((p) => p.category === pair.category);
+const indexable = isIndexable('unit', pair.slug);
 ---
 
-<BaseLayout title={`${fromCap} to ${toCap} Converter (${from.symbol} to ${to.symbol})`} description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated}>
+<BaseLayout title={`${fromCap} to ${toCap} Converter (${from.symbol} to ${to.symbol})`} description={meta.description} schemas={schemas} publishedTime={meta.lastUpdated} modifiedTime={meta.lastUpdated} noindex={!indexable}>
   <section class="relative overflow-hidden bg-white">
     <div class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
       <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-yellow-accent/30 rounded-full blur-[120px] float-slow"></div>
@@ -249,11 +259,11 @@ const relatedPairs = unitPairs
   {reversePair && (
     <section class="container-wide py-10 md:py-12">
       <div class="max-w-4xl mx-auto">
-        <a href={`/conversions/unit-converter/${reversePair.slug}/`} class="group block bg-yellow-accent border-[2.5px] border-ink-900 rounded-3xl p-6 sm:p-7 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
+        <MaybeLink href={`/conversions/unit-converter/${reversePair.slug}/`} indexable={isIndexable('unit', reversePair.slug)} class="group block bg-yellow-accent border-[2.5px] border-ink-900 rounded-3xl p-6 sm:p-7 no-underline shadow-sticker hover:shadow-[8px_8px_0_0_rgba(15,23,42,0.9)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200">
           <div class="text-xs font-extrabold uppercase tracking-wider text-ink-900 mb-1">↔ Convert the other way</div>
           <div class="text-xl sm:text-2xl font-extrabold text-ink-900 leading-tight" style="font-family: 'Inter Tight', sans-serif;">{toCap} to {isTemp ? from.name : from.plural} converter</div>
           <div class="text-sm text-ink-800 mt-1 font-semibold">{isTemp ? tempFormula(pair.to, pair.from) : `1 ${to.symbol} = ${inverseStr} ${from.symbol}`}</div>
-        </a>
+        </MaybeLink>
       </div>
     </section>
   )}
@@ -263,7 +273,7 @@ const relatedPairs = unitPairs
     <div class="container-wide py-12 md:py-16">
       <div class="max-w-4xl mx-auto">
         <span class="chip bg-violet-300 text-ink-900 mb-4">🔗 Related conversions</span>
-        <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">More {pair.category} conversions.</h2>
+        <h2 class="!text-3xl sm:!text-4xl !mt-4 !leading-tight" style="font-family: 'Inter Tight', sans-serif;">{relatedSameCategory ? `More ${pair.category} conversions.` : 'More unit conversions.'}</h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mt-8">
           {relatedPairs.map((other) => {
             const of = UNITS[other.from], ot = UNITS[other.to];
